@@ -1,4 +1,4 @@
-# Employee Management System
+# Employee Management Full-Stack Application
 
 ## Table of Contents
 
@@ -16,7 +16,7 @@
 
 ## Overview
 
-The Employee Management System is a dynamic full-stack application that seamlessly combines cutting-edge and traditional technologies. By integrating a modern React frontend with a classic Spring Boot backend, this project demonstrates how new and established technologies can harmoniously work together to create a robust and efficient application for managing employee and department data.
+The Employee Management System is a dynamic full-stack application that seamlessly combines cutting-edge and traditional technologies. By integrating a modern **React** frontend with a classic **Spring Boot** backend, this project demonstrates how new and established technologies can harmoniously work together to create a robust and efficient application for managing employee and department data!
 
 ## Key Technologies
 
@@ -28,14 +28,10 @@ The Employee Management System is a dynamic full-stack application that seamless
   - **Redux**: A predictable state container for managing application state.
 - **Java Spring Boot (Backend)**: A powerful, established Java framework for building production-ready applications with Java, offering robust backend support and data management.
   - **Spring Data JPA**: A part of the Spring Data project that makes it easy to implement JPA-based repositories.
-  - **Spring Data MongoDB**: A part of the Spring Data project that provides easy integration with MongoDB.
-  - **Spring Data MySQL**: A part of the Spring Data project that provides easy integration with MySQL.
   - **Spring Boot Actuator**: A set of production-ready features that help monitor and manage the application.
   - **Spring Boot DevTools**: Tools that improve the development experience with automatic restarts and live reload.
   - **Spring Boot Starter Web**: A starter for building web applications, including RESTful, application, and WebSocket services.
   - **Spring Boot Starter Data JPA**: A starter for using Spring Data JPA with Hibernate.
-  - **Spring Boot Starter Data MongoDB**: A starter for using MongoDB with Spring Data MongoDB.
-  - **Spring Boot Starter Data MySQL**: A starter for using MySQL with Spring Data JPA.
   - **RESTful APIs**: Representational state transfer (REST) APIs for communication between the frontend and backend.
 - **MySQL**: A reliable relational database for structured data storage.
 - **MongoDB**: A flexible NoSQL database for non-relational data.
