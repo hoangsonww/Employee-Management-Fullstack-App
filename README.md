@@ -9,6 +9,7 @@
 - [Backend Setup](#backend-setup)
 - [Frontend Setup](#frontend-setup)
 - [Detailed Component Instructions](#detailed-component-instructions)
+- [Containerization](#containerization)
 - [Troubleshooting](#troubleshooting)
 - [Contributing](#contributing)
 - [License](#license)
