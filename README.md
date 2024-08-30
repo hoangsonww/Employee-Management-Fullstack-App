@@ -161,7 +161,9 @@ Feel free to change the database name, username, and password, and even add more
 
 ### 4. Start the Backend Server
 
-Run the following command to start the Spring Boot application:
+Before starting the server, ensure that MySQL and MongoDB are running and properly configured on your local machine!
+
+Then, run the following command to start the Spring Boot application:
 
 ```bash
 mvn spring-boot:run
