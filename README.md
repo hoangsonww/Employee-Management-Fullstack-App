@@ -21,7 +21,22 @@ The Employee Management System is a dynamic full-stack application that seamless
 ## Key Technologies
 
 - **React (Frontend)**: A modern JavaScript library for building user interfaces, providing a responsive and interactive experience.
-- **Spring Boot (Backend)**: A powerful, established Java framework for building production-ready applications with Java, offering robust backend support and data management.
+  - **React Router**: A routing library for React that enables navigation and URL handling in single-page applications.
+  - **Chart.js**: A JavaScript library for creating responsive and customizable charts and graphs.
+  - **Axios**: A promise-based HTTP client for making API requests.
+  - **Tailwind CSS**: A utility-first CSS framework for creating custom designs with minimal CSS.
+  - **Redux**: A predictable state container for managing application state.
+- **Java Spring Boot (Backend)**: A powerful, established Java framework for building production-ready applications with Java, offering robust backend support and data management.
+  - **Spring Data JPA**: A part of the Spring Data project that makes it easy to implement JPA-based repositories.
+  - **Spring Data MongoDB**: A part of the Spring Data project that provides easy integration with MongoDB.
+  - **Spring Data MySQL**: A part of the Spring Data project that provides easy integration with MySQL.
+  - **Spring Boot Actuator**: A set of production-ready features that help monitor and manage the application.
+  - **Spring Boot DevTools**: Tools that improve the development experience with automatic restarts and live reload.
+  - **Spring Boot Starter Web**: A starter for building web applications, including RESTful, application, and WebSocket services.
+  - **Spring Boot Starter Data JPA**: A starter for using Spring Data JPA with Hibernate.
+  - **Spring Boot Starter Data MongoDB**: A starter for using MongoDB with Spring Data MongoDB.
+  - **Spring Boot Starter Data MySQL**: A starter for using MySQL with Spring Data JPA.
+  - **RESTful APIs**: Representational state transfer (REST) APIs for communication between the frontend and backend.
 - **MySQL**: A reliable relational database for structured data storage.
 - **MongoDB**: A flexible NoSQL database for non-relational data.
 
@@ -177,6 +192,8 @@ The backend will be available at [http://localhost:8080](http://localhost:8080).
   ```bash
   curl -X GET http://localhost:8080/api/departments/1
   ```
+  
+- Feel free to add more API endpoints as needed...
 
 ## Frontend Setup
 
@@ -281,6 +298,8 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Contact
 
-For any questions or issues, please contact [info@employee-management.com](mailto:info@employee-management.com).
+For any questions or issues, please contact [hoangson091104@gmail.com](mailto:hoangson091104@gmail.com).
 
 ---
+
+Thank you for visiting today! ❤️

@@ -42,6 +42,7 @@ employee-management-app
 - **Material-UI**: For UI components and styling.
 - **Chart.js**: For rendering charts and graphs.
 - **Axios**: For making HTTP requests (if used in `employeeService` and `departmentService`).
+- **Tailwind CSS**: For utility-first CSS framework (if used in `App.css`).
 
 ## Setup Instructions
 
@@ -142,4 +143,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Contact
 
-For any questions or issues, please contact [info@movie-verse.com](mailto:info@movie-verse.com).
+For any questions or issues, please contact [hoangson091104@gmail.com](mailto:hoangson091104@gmail.com).
