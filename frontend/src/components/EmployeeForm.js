@@ -12,28 +12,55 @@ const EmployeeForm = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const departmentsData = await getAllDepartments();
-      setDepartments(departmentsData);
-      if (id) {
-        const employeeData = await getEmployeeById(id);
-        setEmployee(employeeData);
+      try {
+        const departmentsData = await getAllDepartments();
+        setDepartments(departmentsData);
+
+        if (id) {
+          const employeeData = await getEmployeeById(id);
+          // Check if employeeData is not null and contains the expected fields
+          if (employeeData) {
+            setEmployee({
+              firstName: employeeData.firstName || '',
+              lastName: employeeData.lastName || '',
+              email: employeeData.email || '',
+              department: {
+                id: employeeData.department ? employeeData.department.id : '' // Handle potential null values
+              }
+            });
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        // Handle error (e.g., show a message to the user)
       }
     };
     fetchData();
   }, [id]);
 
   const handleChange = (e) => {
-    setEmployee({ ...employee, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    // Handle nested department.id
+    if (name === 'department.id') {
+      setEmployee({ ...employee, department: { id: value } });
+    } else {
+      setEmployee({ ...employee, [name]: value });
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (id) {
-      await updateEmployee(id, employee);
-    } else {
-      await addEmployee(employee);
+    try {
+      if (id) {
+        await updateEmployee(id, employee);
+      } else {
+        await addEmployee(employee);
+      }
+      navigate('/employees');
+    } catch (error) {
+      console.error('Error saving employee:', error);
+      // Handle error (e.g., show a message to the user)
     }
-    navigate('/employees');
   };
 
   return (
@@ -46,7 +73,7 @@ const EmployeeForm = () => {
         select
         label="Department"
         name="department.id"
-        value={employee.department.id}
+        value={employee.department.id || ''}
         onChange={handleChange}
         required
       >

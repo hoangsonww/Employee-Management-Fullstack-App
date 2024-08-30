@@ -20,8 +20,10 @@ public class Employee {
   private String lastName;
   private String email;
 
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "department_id", nullable = false)
   @JsonBackReference // Prevent circular reference
   private Department department;
+
+  private int age;
 }

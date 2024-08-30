@@ -27,34 +27,34 @@ public class DataInitializer implements CommandLineRunner {
 
   @Override
   public void run(String... args) {
-    // Check if data already exists to prevent duplicates
-    if (departmentRepository.count() == 0 && employeeRepository.count() == 0) {
-      // Create fake departments
-      List<Department> departments = new ArrayList<>();
-      for (int i = 1; i <= 5; i++) {
-        Department department = new Department();
-        department.setName(faker.company().industry());
-        departments.add(department);
-      }
-      departmentRepository.saveAll(departments);
+    // Always clear existing data before inserting new data
+    employeeRepository.deleteAll();
+    departmentRepository.deleteAll();
 
-      // Create fake employees
-      List<Employee> employees = new ArrayList<>();
-      for (int i = 1; i <= 20; i++) {
-        Employee employee = new Employee();
-        employee.setFirstName(faker.name().firstName());
-        employee.setLastName(faker.name().lastName());
-        employee.setEmail(faker.internet().emailAddress());
-
-        // Assign a random department to each employee
-        employee.setDepartment(departments.get(random.nextInt(departments.size())));
-        employees.add(employee);
-      }
-      employeeRepository.saveAll(employees);
-
-      System.out.println("Fake data initialized successfully!");
-    } else {
-      System.out.println("Data already exists, skipping initialization.");
+    // Create fake departments
+    List<Department> departments = new ArrayList<>();
+    for (int i = 1; i <= 5; i++) {
+      Department department = new Department();
+      department.setName(faker.company().industry());
+      departments.add(department);
     }
+    departmentRepository.saveAll(departments);
+
+    // Create fake employees with ages
+    List<Employee> employees = new ArrayList<>();
+    for (int i = 1; i <= 20; i++) {
+      Employee employee = new Employee();
+      employee.setFirstName(faker.name().firstName());
+      employee.setLastName(faker.name().lastName());
+      employee.setEmail(faker.internet().emailAddress());
+      employee.setAge(random.nextInt(40) + 20); // Assign a random age between 20 and 60
+
+      // Assign a random department to each employee
+      employee.setDepartment(departments.get(random.nextInt(departments.size())));
+      employees.add(employee);
+    }
+    employeeRepository.saveAll(employees);
+
+    System.out.println("Fake data initialized successfully, replacing any existing data!");
   }
 }

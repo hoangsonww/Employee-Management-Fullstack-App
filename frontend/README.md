@@ -1,70 +1,145 @@
-# Getting Started with Create React App
+# Employee Management System - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+The Employee Management System frontend is a React-based application that provides a user interface for managing employee and department data. The app includes features for viewing, adding, editing, and deleting employees and departments. It also includes visualizations for employee metrics such as growth over time and distribution by age range.
 
-In the project directory, you can run:
+## File Structure
 
-### `npm start`
+Here's a high-level overview of the file structure:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```
+employee-management-app
+│
+├── backend
+│   └── (Backend code)
+│
+└── frontend
+    ├── public
+    ├── src
+    │   ├── components
+    │   │   ├── Dashboard.js
+    │   │   ├── EmployeeList.js
+    │   │   ├── EmployeeForm.js
+    │   │   ├── DepartmentList.js
+    │   │   ├── DepartmentForm.js
+    │   │   └── Navbar.js
+    │   ├── services
+    │   │   ├── employeeService.js
+    │   │   └── departmentService.js
+    │   ├── App.js
+    │   ├── index.js
+    │   ├── index.css
+    │   ├── reportWebVitals.js
+    │   └── App.css
+    └── package.json
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Dependencies
 
-### `npm test`
+- **React**: Frontend library for building user interfaces.
+- **React Router DOM**: For handling routing and navigation.
+- **Material-UI**: For UI components and styling.
+- **Chart.js**: For rendering charts and graphs.
+- **Axios**: For making HTTP requests (if used in `employeeService` and `departmentService`).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Setup Instructions
 
-### `npm run build`
+### 1. Clone the Repository
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+git clone <repository-url>
+cd <repository-folder>
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 2. Install Dependencies
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Ensure you have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed. Run the following command to install the required dependencies:
 
-### `npm run eject`
+```bash
+npm install
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 3. Set Up Environment Variables
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Create a `.env` file in the root of your project if it doesn't already exist. Add any required environment variables. For example:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```env
+REACT_APP_API_URL=http://localhost:8080/api
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Make sure to replace the `REACT_APP_API_URL` with your backend server URL.
 
-## Learn More
+### 4. Start the Development Server
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Run the following command to start the development server:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+npm start
+```
 
-### Code Splitting
+This will start the React development server and open the application in your default web browser. The app will be available at [http://localhost:3000](http://localhost:3000).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### 5. Build for Production
 
-### Analyzing the Bundle Size
+To create a production build of your application, run:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```bash
+npm run build
+```
 
-### Making a Progressive Web App
+The build files will be generated in the `build` directory. You can deploy these files to your production server.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### 6. Running Tests
 
-### Advanced Configuration
+To run tests, use:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```bash
+npm test
+```
 
-### Deployment
+This will start the test runner and execute your test cases.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Detailed Component Instructions
 
-### `npm run build` fails to minify
+### `Dashboard.js`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Displays various metrics related to employees, such as total employee count, average age, employee growth over time, and distribution by age range. It uses `react-chartjs-2` to render bar charts.
+
+### `EmployeeList.js`
+
+Shows a list of employees with options to search, paginate, and delete entries. Includes a link to add a new employee and edit existing employees.
+
+### `EmployeeForm.js`
+
+Provides a form for adding or editing employee details. Fetches departments to populate the department dropdown. Uses `useParams` to determine if it's in edit mode or add mode.
+
+### `DepartmentList.js`
+
+Displays a list of departments with options to search, paginate, and delete entries. Includes a link to add a new department and edit existing departments.
+
+### `DepartmentForm.js`
+
+Provides a form for adding or editing department details.
+
+### `Navbar.js`
+
+The navigation bar component that includes links to various pages such as Dashboard, Employees, and Departments. Highlights the currently active page.
+
+## Troubleshooting
+
+- **Error: Cannot read properties of undefined (reading 'id')**: Ensure that the `employee` object in `EmployeeForm` is correctly initialized and that the `id` parameter is correctly passed. Check the `getEmployeeById` and `updateEmployee` functions for proper handling of data.
+
+- **Chart Issues**: Ensure `Chart.js` and `react-chartjs-2` are correctly installed and configured. Verify that the chart data passed to components is in the correct format.
+
+## Contributing
+
+If you'd like to contribute to the project, please fork the repository and submit a pull request with your changes. Ensure that you follow the project's coding standards and include relevant tests for new features.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+For any questions or issues, please contact [info@movie-verse.com](mailto:info@movie-verse.com).

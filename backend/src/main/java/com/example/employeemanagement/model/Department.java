@@ -3,8 +3,8 @@ package com.example.employeemanagement.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.util.List;
 
 @Data
@@ -20,6 +20,6 @@ public class Department {
   private String name;
 
   @OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
-  @JsonManagedReference // Prevent circular reference
+  @JsonManagedReference
   private List<Employee> employees;
 }
