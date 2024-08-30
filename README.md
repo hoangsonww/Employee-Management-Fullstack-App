@@ -4,6 +4,7 @@
 
 - [Overview](#overview)
 - [Key Technologies](#key-technologies)
+- [User Interface](#user-interface)
 - [File Structure](#file-structure)
 - [Backend Setup](#backend-setup)
 - [Frontend Setup](#frontend-setup)
@@ -17,20 +18,34 @@
 
 The Employee Management System is a dynamic full-stack application that seamlessly combines cutting-edge and traditional technologies. By integrating a modern React frontend with a classic Spring Boot backend, this project demonstrates how new and established technologies can harmoniously work together to create a robust and efficient application for managing employee and department data.
 
-## User Interface
-
-The frontend of the Employee Management System provides a user-friendly interface for managing employees and departments. It includes features for viewing, adding, editing, and deleting employees and departments. The app also includes visualizations for employee metrics such as growth over time and distribution by age range.
-
-<p align="center" style="cursor: pointer">
-  <img src="../images/uwu.webp" alt="The MovieVerse Logo" style="border-radius: 10px" width="200"/>
-</p>
-
 ## Key Technologies
 
 - **React (Frontend)**: A modern JavaScript library for building user interfaces, providing a responsive and interactive experience.
 - **Spring Boot (Backend)**: A powerful, established Java framework for building production-ready applications with Java, offering robust backend support and data management.
 - **MySQL**: A reliable relational database for structured data storage.
 - **MongoDB**: A flexible NoSQL database for non-relational data.
+
+## User Interface
+
+The frontend of the Employee Management System provides a user-friendly interface for managing employees and departments. It includes features for viewing, adding, editing, and deleting employees and departments. The app also includes visualizations for employee metrics such as growth over time and distribution by age range.
+
+**Dashboard Page:**
+
+<p align="center" style="cursor: pointer">
+  <img src="img/dashboard.png" alt="Dashboard Page" style="border-radius: 10px" width="100%"/>
+</p>
+
+**Employee List Page:**
+
+<p align="center" style="cursor: pointer">
+  <img src="img/employees-page.png" alt="Employee List Page" style="border-radius: 10px" width="100%"/>
+</p>
+
+**Department List Page:**
+
+<p align="center" style="cursor: pointer">
+  <img src="img/departments-page.png" alt="Department List Page" style="border-radius: 10px" width="100%"/>
+</p>
 
 ## File Structure
 
