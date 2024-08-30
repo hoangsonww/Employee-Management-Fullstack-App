@@ -157,6 +157,8 @@ spring.jpa.hibernate.ddl-auto=update
 spring.data.mongodb.uri=mongodb://localhost:27017/employee_management
 ```
 
+Feel free to change the database name, username, and password, and even add more configurations as needed.
+
 ### 4. Start the Backend Server
 
 Run the following command to start the Spring Boot application:
