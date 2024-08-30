@@ -276,18 +276,10 @@ The navigation bar component that includes links to various pages such as Dashbo
 
 ## Containerization
 
-If you'd also like to containerize the project, the project also includes a `dockerfile` and `docker-compose.yaml` file for containerization. You can build and run the application in a Docker container using the following steps:
-
-### 1. Build the Docker Image
+If you'd also like to containerize the project, the project also includes the `dockerfile` and `docker-compose.yaml` files for containerization. You can build and run the application in a Docker container using the following command:
 
 ```bash
-docker build -t employee-management-app .
-```
-
-### 2. Run the Docker Container
-
-```bash
-docker run -p 8080:8080 employee-management-app
+docker-compose up --build
 ```
 
 The application will be available at [http://localhost:8080](http://localhost:8080).
