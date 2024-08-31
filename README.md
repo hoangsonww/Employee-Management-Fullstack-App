@@ -97,10 +97,14 @@ employee-management-app
 │   └── compose.yaml
 │
 └── frontend
+    ├── build
     ├── public
     │   ├── index.html
     │   └── favicon.ico
     │   └── manifest.json
+    │   └── robots.txt
+    │   └── icon-192x192.webp
+    │   └── icon-512x512.webp
     ├── src
     │   ├── components
     │   │   ├── Dashboard.js
@@ -117,6 +121,7 @@ employee-management-app
     │   ├── index.css
     │   ├── reportWebVitals.js
     │   └── App.css
+        │   └── App.css
     └── package.json
 ```
 
