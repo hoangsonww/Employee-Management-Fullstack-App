@@ -43,7 +43,6 @@ const Dashboard = () => {
 
       setAgeRangeData(ageRanges);
 
-      // Mock employee growth data for a simple bar chart and line chart
       setEmployeeGrowth([
         { month: 'January', count: 50 },
         { month: 'February', count: 70 },
