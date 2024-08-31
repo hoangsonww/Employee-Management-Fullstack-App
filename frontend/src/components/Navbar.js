@@ -6,7 +6,6 @@ const Navbar = () => {
   const location = useLocation();
   const currentPath = location.pathname;
 
-  // Determine if a link is active based on the current path
   const isActive = (path) => currentPath === path;
 
   return (
