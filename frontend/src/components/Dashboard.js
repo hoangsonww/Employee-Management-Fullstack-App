@@ -92,7 +92,6 @@ const Dashboard = () => {
     ],
   };
 
-  // Chart data for employee growth over time (Bar chart)
   const employeeGrowthData = employeeGrowth.length
     ? {
       labels: employeeGrowth.map((d) => d.month),
