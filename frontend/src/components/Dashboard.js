@@ -107,7 +107,6 @@ const Dashboard = () => {
     }
     : null;
 
-  // Chart data for employee growth over time (Line chart)
   const lineChartData = employeeGrowth.length
     ? {
       labels: employeeGrowth.map((d) => d.month),
