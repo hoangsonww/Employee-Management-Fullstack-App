@@ -121,7 +121,9 @@ employee-management-app
     │   ├── index.css
     │   ├── reportWebVitals.js
     │   └── App.css
-        │   └── App.css
+    │   └── theme.js
+    └── Dockerfile
+    └── package.json
     └── package.json
 ```
 
