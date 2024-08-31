@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Bar, Pie, Line } from 'react-chartjs-2'; // Import Line chart component
+import { Bar, Pie, Line } from 'react-chartjs-2';
 import { getAllEmployees } from '../services/employeeService';
 import { getAllDepartments } from '../services/departmentService';
 import { Chart, CategoryScale, LinearScale, BarElement, LineElement, PointElement, Title, Tooltip, Legend, ArcElement } from 'chart.js';
 import { Card, CardContent, Grid, Typography, Box } from '@mui/material';
 
-// Register Chart.js components
 Chart.register(CategoryScale, LinearScale, BarElement, LineElement, PointElement, Title, Tooltip, Legend, ArcElement);
 
 const Dashboard = () => {
