@@ -25,14 +25,13 @@ const EmployeeForm = () => {
               lastName: employeeData.lastName || '',
               email: employeeData.email || '',
               department: {
-                id: employeeData.department ? employeeData.department.id : '' // Handle potential null values
+                id: employeeData.department ? employeeData.department.id : ''
               }
             });
           }
         }
       } catch (error) {
         console.error('Error fetching data:', error);
-        // Handle error (e.g., show a message to the user)
       }
     };
     fetchData();
@@ -40,7 +39,7 @@ const EmployeeForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    // Handle nested department.id
+
     if (name === 'department.id') {
       setEmployee({ ...employee, department: { id: value } });
     } else {
