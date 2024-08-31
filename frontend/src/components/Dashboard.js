@@ -79,7 +79,6 @@ const Dashboard = () => {
     ],
   };
 
-  // Chart data for average employee age
   const averageAgeChartData = {
     labels: ['Average Age'],
     datasets: [
