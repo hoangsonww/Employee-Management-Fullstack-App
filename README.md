@@ -124,7 +124,7 @@ employee-management-app
     │   └── theme.js
     ├── Dockerfile
     ├── postcss.config.js
-    ├──
+    ├── tailwind.config.js
     └── package.json
 ```
 
