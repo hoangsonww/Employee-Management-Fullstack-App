@@ -68,7 +68,6 @@ const Dashboard = () => {
     ],
   };
 
-  // Chart data for employee count by age range
   const ageRangeChartData = {
     labels: Object.keys(ageRangeData),
     datasets: [
