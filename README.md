@@ -64,6 +64,8 @@ The frontend of the Employee Management System provides a user-friendly interfac
 ```
 employee-management-app
 │
+├── docker-compose.yaml
+│
 ├── backend
 │   ├── src
 │   │   ├── main
