@@ -22,12 +22,10 @@ const Dashboard = () => {
       setEmployeeCount(employees.length);
       setDepartmentCount(departments.length);
 
-      // Calculate the average age of employees
       const totalAge = employees.reduce((sum, emp) => sum + emp.age, 0);
       const avgAge = employees.length ? totalAge / employees.length : 0;
       setAverageAge(avgAge.toFixed(1));
 
-      // Calculate the employee count by age range
       const ageRanges = {
         '20-29': 0,
         '30-39': 0,
