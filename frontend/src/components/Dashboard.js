@@ -122,7 +122,6 @@ const Dashboard = () => {
     }
     : null;
 
-  // Pie chart data for age range distribution
   const pieChartData = {
     labels: Object.keys(ageRangeData),
     datasets: [
