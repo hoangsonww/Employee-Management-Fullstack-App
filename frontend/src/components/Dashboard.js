@@ -153,7 +153,7 @@ const Dashboard = () => {
       <Grid container spacing={4}>
         {/* Total Overview Chart */}
         <Grid item xs={12} md={6}>
-          <Card>
+          <Card sx={{ height: '100%' }}>
             <CardContent>
               <Typography variant="h6" component="div">
                 Total Overview
@@ -165,7 +165,7 @@ const Dashboard = () => {
 
         {/* Employee Count by Age Range Chart */}
         <Grid item xs={12} md={6}>
-          <Card>
+          <Card sx={{ height: '100%' }}>
             <CardContent>
               <Typography variant="h6" component="div">
                 Employee Count by Age Range
@@ -177,7 +177,7 @@ const Dashboard = () => {
 
         {/* Employee Growth Over Time Chart */}
         <Grid item xs={12} md={6}>
-          <Card>
+          <Card sx={{ height: '100%' }}>
             <CardContent>
               <Typography variant="h6" component="div">
                 Employee Growth Over Time
@@ -189,7 +189,7 @@ const Dashboard = () => {
 
         {/* Average Age of Employees Chart */}
         <Grid item xs={12} md={6}>
-          <Card>
+          <Card sx={{ height: '100%' }}>
             <CardContent>
               <Typography variant="h6" component="div">
                 Average Age of Employees
@@ -200,8 +200,8 @@ const Dashboard = () => {
         </Grid>
 
         {/* Pie Chart for Age Range Distribution */}
-        <Grid item xs={12} md={6}>
-          <Card>
+        <Grid item xs={12} md={6} mb={4}>
+          <Card sx={{ height: '100%' }}>
             <CardContent>
               <Typography variant="h6" component="div">
                 Age Range Distribution
@@ -212,8 +212,8 @@ const Dashboard = () => {
         </Grid>
 
         {/* Line Chart for Employee Growth Trend */}
-        <Grid item xs={12} md={6}>
-          <Card>
+        <Grid item xs={12} md={6} mb={4}>
+          <Card sx={{ height: '100%' }}>
             <CardContent>
               <Typography variant="h6" component="div">
                 Employee Growth Trend
