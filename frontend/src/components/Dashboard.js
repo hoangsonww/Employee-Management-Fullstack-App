@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Bar, Pie } from 'react-chartjs-2';
+import { Bar, Pie, Line } from 'react-chartjs-2'; // Import Line chart component
 import { getAllEmployees } from '../services/employeeService';
 import { getAllDepartments } from '../services/departmentService';
-import { Chart, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement } from 'chart.js';
+import { Chart, CategoryScale, LinearScale, BarElement, LineElement, PointElement, Title, Tooltip, Legend, ArcElement } from 'chart.js';
 import { Card, CardContent, Grid, Typography, Box } from '@mui/material';
 
 // Register Chart.js components
-Chart.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement);
+Chart.register(CategoryScale, LinearScale, BarElement, LineElement, PointElement, Title, Tooltip, Legend, ArcElement);
 
 const Dashboard = () => {
   const [employeeCount, setEmployeeCount] = useState(0);
@@ -46,7 +46,7 @@ const Dashboard = () => {
 
       setAgeRangeData(ageRanges);
 
-      // Mock employee growth data for a simple bar chart
+      // Mock employee growth data for a simple bar chart and line chart
       setEmployeeGrowth([
         { month: 'January', count: 50 },
         { month: 'February', count: 70 },
@@ -99,7 +99,7 @@ const Dashboard = () => {
     ],
   };
 
-  // Chart data for employee growth over time
+  // Chart data for employee growth over time (Bar chart)
   const employeeGrowthData = employeeGrowth.length
     ? {
       labels: employeeGrowth.map((d) => d.month),
@@ -110,6 +110,22 @@ const Dashboard = () => {
           backgroundColor: '#36A2EB',
           borderColor: '#36A2EB',
           borderWidth: 1,
+        },
+      ],
+    }
+    : null;
+
+  // Chart data for employee growth over time (Line chart)
+  const lineChartData = employeeGrowth.length
+    ? {
+      labels: employeeGrowth.map((d) => d.month),
+      datasets: [
+        {
+          label: 'Employee Growth Trend',
+          data: employeeGrowth.map((d) => d.count),
+          fill: false,
+          borderColor: '#FF6384',
+          tension: 0.1,
         },
       ],
     }
@@ -191,6 +207,18 @@ const Dashboard = () => {
                 Age Range Distribution
               </Typography>
               <Pie data={pieChartData} />
+            </CardContent>
+          </Card>
+        </Grid>
+
+        {/* Line Chart for Employee Growth Trend */}
+        <Grid item xs={12} md={6}>
+          <Card>
+            <CardContent>
+              <Typography variant="h6" component="div">
+                Employee Growth Trend
+              </Typography>
+              {lineChartData ? <Line data={lineChartData} /> : <Typography>No data available</Typography>}
             </CardContent>
           </Card>
         </Grid>
