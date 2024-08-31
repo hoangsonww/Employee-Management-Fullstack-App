@@ -120,14 +120,24 @@ employee-management-app
 
 ## Backend Setup
 
-### 1. Clone the Repository
+### 1. Ensure that you are using Java 11. If not, follow the instructions below:
+
+- For MacOS:
+    ```bash
+    brew install openjdk@11
+    export JAVA_HOME=/usr/local/opt/openjdk@11
+    ```
+  
+- For Windows: Download OpenJDK 11 from [https://jdk.java.net/archive/](https://jdk.java.net/archive/) and follow the installation instructions.
+
+### 2. Clone the Repository
 
 ```bash
 git clone <repository-url>
 cd backend
 ```
 
-### 2. Install Dependencies
+### 3. Install Dependencies
 
 Ensure you have [Maven](https://maven.apache.org/) and [Java JDK](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) installed. Run the following command to install them:
 
@@ -143,7 +153,7 @@ Next, install the project dependencies:
 mvn install
 ```
 
-### 3. Configure the Application
+### 4. Configure the Application
 
 Update `src/main/resources/application.properties` with your MySQL and MongoDB configuration:
 
@@ -160,7 +170,7 @@ spring.data.mongodb.uri=mongodb://localhost:27017/employee_management
 
 Feel free to change the database name, username, and password, and even add more configurations as needed.
 
-### 4. Start the Backend Server
+### 5. Start the Backend Server
 
 Before starting the server, ensure that MySQL and MongoDB are running and properly configured on your local machine!
 
@@ -172,7 +182,7 @@ mvn spring-boot:run
 
 The backend will be available at [http://localhost:8080](http://localhost:8080).
 
-### 5. Access the API Endpoints
+### 6. Access the API Endpoints
 
 - **Get All Employees:**
   ```bash

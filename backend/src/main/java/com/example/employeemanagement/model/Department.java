@@ -3,7 +3,7 @@ package com.example.employeemanagement.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.util.List;
 

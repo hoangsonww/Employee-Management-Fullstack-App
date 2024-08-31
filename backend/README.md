@@ -58,6 +58,8 @@ employee-management-app
 
 ## Setup Instructions
 
+#### Important: Java 11 is required to run this project.
+
 ### 1. Clone the Repository
 
 ```bash
