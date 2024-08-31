@@ -251,14 +251,6 @@ npm run build
 
 The build files will be generated in the `build` directory. You can deploy these files to your production server.
 
-### 6. Running Tests
-
-To run tests, use:
-
-```bash
-npm test
-```
-
 ## Detailed Component Instructions
 
 ### `Dashboard.js`

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Bar } from 'react-chartjs-2';
+import { Bar, Pie } from 'react-chartjs-2';
 import { getAllEmployees } from '../services/employeeService';
 import { getAllDepartments } from '../services/departmentService';
-import { Chart, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
+import { Chart, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement } from 'chart.js';
 import { Card, CardContent, Grid, Typography, Box } from '@mui/material';
 
 // Register Chart.js components
-Chart.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+Chart.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement);
 
 const Dashboard = () => {
   const [employeeCount, setEmployeeCount] = useState(0);
@@ -115,6 +115,20 @@ const Dashboard = () => {
     }
     : null;
 
+  // Pie chart data for age range distribution
+  const pieChartData = {
+    labels: Object.keys(ageRangeData),
+    datasets: [
+      {
+        label: 'Age Range Distribution',
+        data: Object.values(ageRangeData),
+        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
+        borderColor: ['#ffffff'],
+        borderWidth: 1,
+      },
+    ],
+  };
+
   return (
     <Box sx={{ marginTop: '2rem' }}>
       <Typography variant="h4" component="h1" sx={{ marginBottom: '1rem', textAlign: 'center', fontWeight: 600 }}>
@@ -165,6 +179,18 @@ const Dashboard = () => {
                 Average Age of Employees
               </Typography>
               <Bar data={averageAgeChartData} options={{ scales: { y: { beginAtZero: true, suggestedMax: 100 } } }} />
+            </CardContent>
+          </Card>
+        </Grid>
+
+        {/* Pie Chart for Age Range Distribution */}
+        <Grid item xs={12} md={6}>
+          <Card>
+            <CardContent>
+              <Typography variant="h6" component="div">
+                Age Range Distribution
+              </Typography>
+              <Pie data={pieChartData} />
             </CardContent>
           </Card>
         </Grid>
