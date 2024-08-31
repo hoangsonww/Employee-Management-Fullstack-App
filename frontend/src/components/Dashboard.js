@@ -55,7 +55,6 @@ const Dashboard = () => {
     fetchData();
   }, []);
 
-  // Chart data for total overview
   const totalOverviewData = {
     labels: ['Employees', 'Departments'],
     datasets: [
