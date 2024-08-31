@@ -123,7 +123,7 @@ employee-management-app
     │   └── App.css
     │   └── theme.js
     ├── Dockerfile
-    └── postcss.config.js
+    ├── postcss.config.js
     
     └── package.json
 ```
