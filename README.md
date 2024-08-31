@@ -122,8 +122,9 @@ employee-management-app
     │   ├── reportWebVitals.js
     │   └── App.css
     │   └── theme.js
-    └── Dockerfile
+    ├── Dockerfile
     └── postcss.config.js
+    
     └── package.json
 ```
 
