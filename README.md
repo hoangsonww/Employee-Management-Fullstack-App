@@ -99,7 +99,7 @@ employee-management-app
 │   │   │   └── java
 │   │   │       └── com
 │   │   │           └── example
-│   │   │               └── employeemanagement
+│   │                   └── employeemanagement
 │   │                       └── EmployeeManagementApplicationTests.java
 │   ├── .gitignore
 │   └── pom.xml
