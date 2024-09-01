@@ -116,6 +116,7 @@ The backend server will be available at [http://localhost:8080](http://localhost
 Here are some example API endpoints you can use to interact with the backend:
 
 - **Get All Employees:**
+
   ```bash
   curl -X GET http://localhost:8080/api/employees
   ```
