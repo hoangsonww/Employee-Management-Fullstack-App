@@ -146,6 +146,7 @@ Here are some example API endpoints you can use to interact with the backend:
   ```
 
 - **Get All Departments:**
+
   ```bash
   curl -X GET http://localhost:8080/api/departments
   ```
