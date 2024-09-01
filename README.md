@@ -69,7 +69,7 @@ employee-management-app
 ├── docker-compose.yaml
 ├── .mvn
 │   └── wrapper
-
+│       └── maven-wrapper.properties
 │
 ├── backend
 │   ├── src
