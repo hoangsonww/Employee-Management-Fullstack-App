@@ -97,7 +97,7 @@ employee-management-app
 │   │   │       └── data.sql
 │   │   ├── test
 │   │   │   └── java
-│   │   │       └── com
+│   │           └── com
 │   │               └── example
 │   │                   └── employeemanagement
 │   │                       └── EmployeeManagementApplicationTests.java
