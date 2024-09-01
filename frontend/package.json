@@ -8,6 +8,9 @@
     "type": "git",
     "url": "git+https://github.com/hoangsonww/Employee-Management-Fullstack-App.git",
   },
+  "bugs": {
+    "url": "https://github.com/hoangsonww/Employee-Management-Fullstack-App/issues",
+  },
   "description": "The frontend of the Employee Management Fullstack App",
   "dependencies": {
     "@emotion/react": "^11.13.3",
