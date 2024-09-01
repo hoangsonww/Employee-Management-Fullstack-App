@@ -328,8 +328,13 @@ The application will be available at [http://localhost:8080](http://localhost:80
 - Regardless of the error, perhaps you can try running the following commands to clean and rebuild the project:
 
   ```bash
-  mvn clean
-  mvn install
+  mvn clean install
+  ```
+
+  If the issue persists, you can run Maven with more detailed logging to identify the problem:
+
+  ```bash
+  mvn -X spring-boot:run
   ```
 
 ### Frontend Issues
