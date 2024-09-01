@@ -73,7 +73,7 @@ employee-management-app
 
 ```bash
 git clone https://github.com/hoangsonww/Employee-Management-Fullstack-App.git
-cd <repository-folder>/backend
+cd Employee-Management/backend
 ```
 
 ### 2. Install Dependencies
