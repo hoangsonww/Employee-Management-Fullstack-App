@@ -11,6 +11,8 @@ Here's a high-level overview of the file structure:
 ```
 employee-management-app
 │
+├── docker-compose.yaml
+│
 ├── backend
 │   └── (Backend code)
 │
