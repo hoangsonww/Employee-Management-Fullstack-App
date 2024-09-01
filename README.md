@@ -280,6 +280,14 @@ npm run build
 
 The build files will be generated in the `build` directory. You can deploy these files to your production server.
 
+### 6. Test the Application (Optional)
+
+To run tests for the frontend application, use the following command:
+
+```bash
+npm test
+```
+
 ## Detailed Component Instructions
 
 ### `Dashboard.js`
