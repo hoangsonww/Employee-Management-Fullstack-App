@@ -1,7 +1,6 @@
 # Employee Management Full-Stack Application
 
 ## Table of Contents
-
 - [Overview](#overview)
 - [Key Technologies](#key-technologies)
 - [User Interface](#user-interface)
