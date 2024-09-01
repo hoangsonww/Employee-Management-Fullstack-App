@@ -96,7 +96,7 @@ employee-management-app
 │   │   │       ├── application.properties
 │   │   │       └── data.sql
 │   │   ├── test
-│   │   │   └── java
+│   │       └── java
 │   │           └── com
 │   │               └── example
 │   │                   └── employeemanagement
