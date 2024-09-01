@@ -22,6 +22,8 @@ The backend of the Employee Management System is built using Spring Boot, a powe
 ```
 employee-management-app
 │
+├── docker-compose.yaml
+│
 ├── backend
 │   ├── src
 │   │   ├── main
