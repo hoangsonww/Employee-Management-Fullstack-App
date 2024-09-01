@@ -157,7 +157,7 @@ employee-management-app
 ### 2. Clone the Repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/hoangsonww/Employee-Management-Fullstack-App.git
 cd backend
 ```
 
