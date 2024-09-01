@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Employee Management System frontend is a React-based application that provides a user interface for managing employee and department data. The app includes features for viewing, adding, editing, and deleting employees and departments. It also includes visualizations for employee metrics such as growth over time and distribution by age range.
+The Employee Management System frontend is a **React-based** application that provides a user interface for managing employee and department data. The app includes features for viewing, adding, editing, and deleting employees and departments. It also includes visualizations for employee metrics such as growth over time and distribution by age range.
 
 ## File Structure
 
