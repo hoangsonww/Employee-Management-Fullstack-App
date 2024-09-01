@@ -128,6 +128,7 @@ Here are some example API endpoints you can use to interact with the backend:
   ```
 
 - **Create a New Employee:**
+
   ```bash
   curl -X POST http://localhost:8080/api/employees -H "Content-Type: application/json" -d '{"firstName": "John", "lastName": "Doe", "email": "john.doe@example.com", "departmentId": 1}'
   ```
