@@ -62,6 +62,7 @@ The frontend of the Employee Management System provides a user-friendly interfac
 </p>
 
 ## File Structure
+
 ```
 employee-management-app
 │
