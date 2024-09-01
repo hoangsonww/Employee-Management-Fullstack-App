@@ -209,6 +209,7 @@ The backend will be available at [http://localhost:8080](http://localhost:8080).
 ### 6. Access the API Endpoints
 
 - **Get All Employees:**
+
   ```bash
   curl -X GET http://localhost:8080/api/employees
   ```
