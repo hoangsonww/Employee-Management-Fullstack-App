@@ -34,6 +34,7 @@ The Employee Management System is a dynamic full-stack application that seamless
   - **Spring Boot Starter Web**: A starter for building web applications, including RESTful, application, and WebSocket services.
   - **Spring Boot Starter Data JPA**: A starter for using Spring Data JPA with Hibernate.
   - **RESTful APIs**: Representational state transfer (REST) APIs for communication between the frontend and backend.
+- **Docker**: A containerization platform for packaging applications and their dependencies.
 - **MySQL**: A reliable relational database for structured data storage.
 - **MongoDB**: A flexible NoSQL database for non-relational data.
 
