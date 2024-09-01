@@ -343,6 +343,18 @@ The application will be available at [http://localhost:8080](http://localhost:80
 
 - **Chart Issues**: Ensure `Chart.js` and `react-chartjs-2` are correctly installed and configured. Verify that the chart data passed to components is in the correct format.
 
+- Regardless of the error, perhaps you can try running the following commands to clean and rebuild the project:
+
+  ```bash
+  npm install
+  ```
+
+  If the issue persists, you can run the React development server with more detailed logging to identify the problem:
+
+  ```bash
+  npm start --verbose
+  ```
+
 ## Contributing
 
 If you'd like to contribute to the project, please fork the repository and submit a pull request with your changes. Ensure that you follow the project's coding standards and include relevant tests for new features.
