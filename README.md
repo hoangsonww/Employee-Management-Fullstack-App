@@ -95,6 +95,9 @@ employee-management-app
 │   │   │   └── resources
 │   │   │       ├── application.properties
 │   │   │       └── data.sql
+│   │   ├── test
+│   │   │   └── java
+│   │   │       └── com
 │   └── pom.xml
 │   └── compose.yaml
 │
