@@ -221,6 +221,7 @@ The backend will be available at [http://localhost:8080](http://localhost:8080).
   ```
 
 - **Get All Departments:**
+
   ```bash
   curl -X GET http://localhost:8080/api/departments
   ```
