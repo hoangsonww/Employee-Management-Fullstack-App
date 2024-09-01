@@ -239,7 +239,7 @@ The backend will be available at [http://localhost:8080](http://localhost:8080).
 ### 1. Clone the Repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/hoangsonww/Employee-Management-Fullstack-App.git
 cd frontend
 ```
 
