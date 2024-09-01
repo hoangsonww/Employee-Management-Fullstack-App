@@ -140,6 +140,7 @@ Here are some example API endpoints you can use to interact with the backend:
   ```
 
 - **Delete an Employee:**
+
   ```bash
   curl -X DELETE http://localhost:8080/api/employees/1
   ```
