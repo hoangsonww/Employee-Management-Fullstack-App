@@ -34,5 +34,4 @@ test('navigates to EmployeeForm when "Add Employee" is clicked', () => {
   );
 
   fireEvent.click(screen.getByText(/Add Employee/i));
-  // This assumes you have logic to test navigation
 });
