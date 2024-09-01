@@ -98,7 +98,7 @@ employee-management-app
 │   │   ├── test
 │   │   │   └── java
 │   │   │       └── com
-│   │   │           └── example
+│   │               └── example
 │   │                   └── employeemanagement
 │   │                       └── EmployeeManagementApplicationTests.java
 │   ├── .gitignore
