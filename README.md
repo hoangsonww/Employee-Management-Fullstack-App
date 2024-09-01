@@ -140,6 +140,7 @@ employee-management-app
     ├── tailwind.config.js
     └── package.json
 ```
+
 ## Backend Setup
 
 ### 1. Ensure that you are using Java 11. If not, follow the instructions below:
