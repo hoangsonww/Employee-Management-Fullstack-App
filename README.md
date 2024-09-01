@@ -27,6 +27,7 @@ The Employee Management System is a dynamic full-stack application that seamless
   - **Axios**: A promise-based HTTP client for making API requests.
   - **Tailwind CSS**: A utility-first CSS framework for creating custom designs with minimal CSS.
   - **Redux**: A predictable state container for managing application state.
+  - **Jest and React Testing Library**: Testing libraries for unit and integration testing React components.
 - **Java Spring Boot (Backend)**: A powerful, established Java framework for building production-ready applications with Java, offering robust backend support and data management.
   - **Spring Data JPA**: A part of the Spring Data project that makes it easy to implement JPA-based repositories.
   - **Spring Boot Actuator**: A set of production-ready features that help monitor and manage the application.
