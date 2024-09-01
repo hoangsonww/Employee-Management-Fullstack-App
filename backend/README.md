@@ -122,6 +122,7 @@ Here are some example API endpoints you can use to interact with the backend:
   ```
 
 - **Get Employee by ID:**
+
   ```bash
   curl -X GET http://localhost:8080/api/employees/1
   ```
