@@ -208,6 +208,9 @@ SQL script for preloading sample data into the MySQL database.
 
 - **`Port Already in Use`**: If the default port `8080` is already in use, change the port in `application.properties` or terminate the conflicting process.
 
+- **`CORS Error`**: If you encounter CORS issues, ensure that the `CorsConfig.java` class is correctly configured.
+
+
 
 ## Contributing
 
