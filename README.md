@@ -100,7 +100,8 @@ employee-management-app
 │   │   │       └── com
 │   │   │           └── example
 │   │   │               └── employeemanagement
-│   │   │                   └── EmployeeManagementApplicationTests.java
+│   │                       └── EmployeeManagementApplicationTests.java
+│   ├── .gitignore
 │   └── pom.xml
 │   └── compose.yaml
 │
