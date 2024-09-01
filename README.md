@@ -232,7 +232,7 @@ The backend will be available at [http://localhost:8080](http://localhost:8080).
   curl -X GET http://localhost:8080/api/departments/1
   ```
   
-- Feel free to add more API endpoints as needed...
+- **Feel free to add more API endpoints as needed...**
 
 ## Frontend Setup
 
