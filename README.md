@@ -152,6 +152,7 @@ employee-management-app
     ```
   
 - For Windows: Download OpenJDK 11 from [https://jdk.java.net/archive/](https://jdk.java.net/archive/) and follow the installation instructions.
+
 - Also, ensure that MongoDB and MySQL are installed and running on your local machine.
 
 ### 2. Clone the Repository
