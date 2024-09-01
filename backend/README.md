@@ -210,7 +210,7 @@ SQL script for preloading sample data into the MySQL database.
 
 - **`CORS Error`**: If you encounter CORS issues, ensure that the `CorsConfig.java` class is correctly configured.
 
-- **`Build failed`**: If the Maven build fails, check if you are using Java 11 and have the necessary dependencies installed. Check the error logs for more details.
+- **`Build failed`**: If the Maven build fails, check if you are using Java 11 and have the necessary dependencies installed. Also, check the error logs for more details.
 
 ## Contributing
 
