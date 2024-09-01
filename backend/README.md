@@ -49,6 +49,13 @@ employee-management-app
 │   │   │   └── resources
 │   │   │       ├── application.properties
 │   │   │       └── data.sql
+│   │   └── test
+│   │       └── java
+│   │           └── com
+│   │               └── example
+│   │                   └── employeemanagement
+│   │                       └── EmployeeManagementApplicationTests.java
+│   ├── .gitignore
 │   └── pom.xml
 │   └── compose.yaml
 │
