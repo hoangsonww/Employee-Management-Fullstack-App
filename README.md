@@ -323,7 +323,7 @@ The navigation bar component that includes links to various pages such as Dashbo
 
 ## Containerization
 
-If you'd also like to containerize the project, the project also includes the `dockerfile` and `docker-compose.yaml` files for containerization. You can build and run the application in a Docker container using the following command:
+If you'd also like to containerize/dockerize the project, the project also includes the `dockerfile` and `docker-compose.yaml` files for containerization. You can build and run the application in a Docker container using the following command:
 
 ```bash
 docker-compose up --build
