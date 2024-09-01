@@ -99,6 +99,8 @@ employee-management-app
 │   │   │   └── java
 │   │   │       └── com
 │   │   │           └── example
+│   │   │               └── employeemanagement
+│   │   │                   └── EmployeeManagementApplicationTests.java
 │   └── pom.xml
 │   └── compose.yaml
 │
