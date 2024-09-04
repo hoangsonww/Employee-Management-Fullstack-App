@@ -389,7 +389,7 @@ If you'd also like to containerize the project, the project also includes the `d
 docker compose up --build
 ```
 
-The application will be available at [http://localhost:8080](http://localhost:8080).
+This command will build the Docker images for the frontend and backend, create containers, and start the application. Feel free to view them in Docker Desktop.
 
 ## Troubleshooting
 
