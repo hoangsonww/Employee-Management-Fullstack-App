@@ -353,6 +353,8 @@ To run tests for the frontend application, use the following command:
 npm test
 ```
 
+**NOTE: You might need different IDEs for the backend and the frontend. FYI, I used IntelliJ IDEA for the backend and Webstorm for the frontend.**
+
 ## Detailed Component Instructions
 
 ### `Dashboard.js`
