@@ -5,8 +5,11 @@ import com.example.employeemanagement.model.Employee;
 import com.example.employeemanagement.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -18,12 +21,18 @@ public class EmployeeController {
   private EmployeeService employeeService;
 
   // Get all employees
+  @Operation(summary = "Get all employees", description = "Retrieve a list of all employees")
   @GetMapping
   public List<Employee> getAllEmployees() {
     return employeeService.getAllEmployees();
   }
 
   // Get employee by ID
+  @Operation(summary = "Get employee by ID", description = "Retrieve a specific employee by their ID")
+  @ApiResponses(value = {
+      @ApiResponse(responseCode = "200", description = "Employee found"),
+      @ApiResponse(responseCode = "404", description = "Employee not found")
+  })
   @GetMapping("/{id}")
   public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id) {
     Employee employee = employeeService.getEmployeeById(id)
@@ -32,12 +41,18 @@ public class EmployeeController {
   }
 
   // Create a new employee
+  @Operation(summary = "Create a new employee", description = "Create a new employee record")
   @PostMapping
   public Employee createEmployee(@RequestBody Employee employee) {
     return employeeService.saveEmployee(employee);
   }
 
   // Update an existing employee
+  @Operation(summary = "Update an existing employee", description = "Update an existing employee's details")
+  @ApiResponses(value = {
+      @ApiResponse(responseCode = "200", description = "Employee updated"),
+      @ApiResponse(responseCode = "404", description = "Employee not found")
+  })
   @PutMapping("/{id}")
   public ResponseEntity<Employee> updateEmployee(@PathVariable Long id, @RequestBody Employee employeeDetails) {
     Employee employee = employeeService.getEmployeeById(id)
@@ -53,6 +68,11 @@ public class EmployeeController {
   }
 
   // Delete an employee
+  @Operation(summary = "Delete an employee", description = "Delete an employee record by ID")
+  @ApiResponses(value = {
+      @ApiResponse(responseCode = "204", description = "Employee deleted"),
+      @ApiResponse(responseCode = "404", description = "Employee not found")
+  })
   @DeleteMapping("/{id}")
   public ResponseEntity<Void> deleteEmployee(@PathVariable Long id) {
     Employee employee = employeeService.getEmployeeById(id)

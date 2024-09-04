@@ -56,6 +56,12 @@
       <artifactId>javafaker</artifactId>
       <version>1.0.2</version>
     </dependency>
+    <!-- Springdoc OpenAPI UI -->
+    <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-ui</artifactId>
+      <version>1.7.0</version>
+    </dependency>
   </dependencies>
   <build>
     <plugins>
