@@ -1,6 +1,7 @@
 {
-  "name": "frontend",
-  "version": "0.1.0",
+  "name": "employee-management-system-frontend",
+  "displayName": "Employee Management System Frontend",
+  "version": "1.1.0",
   "private": true,
   "author": "Son Nguyen",
   "license": "MIT",
