@@ -171,7 +171,7 @@ cd backend
 
 ### 3. Install Dependencies
 
-Ensure you have [Maven](https://maven.apache.org/) and [Java JDK](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) installed. Run the following command to install them:
+First, ensure you have [Maven](https://maven.apache.org/) and [Java JDK](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) installed. Run the following command to install them:
 
 - For MacOS:
     ```bash
@@ -326,7 +326,7 @@ The navigation bar component that includes links to various pages such as Dashbo
 If you'd also like to containerize the project, the project also includes the `dockerfile` and `docker-compose.yaml` files for containerization. You can build and run the application in a Docker container using the following command:
 
 ```bash
-docker-compose up --build
+docker compose up --build
 ```
 
 The application will be available at [http://localhost:8080](http://localhost:8080).
