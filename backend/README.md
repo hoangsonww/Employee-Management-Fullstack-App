@@ -203,6 +203,12 @@ Configuration file for Spring Boot, including database connection settings.
 
 SQL script for preloading sample data into the MySQL database.
 
+## Swagger API Documentation
+
+The backend API is documented using Swagger, which provides a user-friendly interface for exploring the available endpoints. To access the Swagger UI, navigate to [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html) after starting the backend server.
+
+
+
 ## Troubleshooting
 
 ### Common Issues
