@@ -207,7 +207,11 @@ SQL script for preloading sample data into the MySQL database.
 
 The backend API is documented using Swagger, which provides a user-friendly interface for exploring the available endpoints. To access the Swagger UI, navigate to [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html) after starting the backend server.
 
+If you have everything set up correctly, you should see the Swagger UI with a list of available endpoints and the ability to test them directly from the browser:
 
+<p align="center" style="cursor: pointer">
+  <img src="../img/apis.png" alt="Swagger UI" style="border-radius: 10px" width="100%"/>
+</p>
 
 ## Troubleshooting
 
