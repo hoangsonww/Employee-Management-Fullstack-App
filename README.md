@@ -299,8 +299,6 @@ This application also uses Swagger to provide an interactive API documentation i
 - **Interactive Documentation**: Developers can easily understand and use the API.
 - **Quick Testing**: Test the API endpoints directly from the browser without needing a separate tool.
 - **Clear Communication**: Provides a standardized way of documenting your API, making it easier for others to understand and consume.
-- **Consistency**: Ensures that all API endpoints are documented in a consistent manner.
-- **Automatic Generation**: Automatically generates the API documentation based on the code, reducing the need for manual documentation.
 
 ## Frontend Setup
 
