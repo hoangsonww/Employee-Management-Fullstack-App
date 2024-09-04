@@ -7,7 +7,23 @@
 - [User Interface](#user-interface)
 - [File Structure](#file-structure)
 - [Backend Setup](#backend-setup)
+  - [Prerequisites](#1-prerequisites)
+  - [Clone the Repository](#2-clone-the-repository)
+  - [Install Dependencies](#3-install-dependencies)
+  - [Configure the Application](#4-configure-the-application)
+  - [Start the Backend Server](#5-start-the-backend-server)
+  - [Access the API Endpoints](#6-access-the-api-endpoints)
+  - [API Documentation](#7-api-documentation)
+    - [Overview](#overview-1)
+    - [How to Access the API Documentation](#how-to-access-the-api-documentation)
+    - [Benefits of Using Swagger UI](#benefits-of-using-swagger-ui)
 - [Frontend Setup](#frontend-setup)
+  - [Clone the Repository](#1-clone-the-repository)
+  - [Install Dependencies](#2-install-dependencies)
+  - [Set Up Environment Variables](#3-set-up-environment-variables)
+  - [Start the Development Server](#4-start-the-development-server)
+  - [Build for Production](#5-build-for-production)
+  - [Test the Application (Optional)](#6-test-the-application-optional)
 - [Detailed Component Instructions](#detailed-component-instructions)
 - [Containerization](#containerization)
 - [Troubleshooting](#troubleshooting)
@@ -150,7 +166,9 @@ employee-management-app
 
 ## Backend Setup
 
-### 1. Ensure that you are using Java 11. If not, follow the instructions below:
+### 1. Prerequisites
+
+Ensure that you have Java 11 installed on your local machine. If not, follow the instructions below:
 
 - For MacOS:
     ```bash
@@ -241,6 +259,46 @@ The backend will be available at [http://localhost:8080](http://localhost:8080).
   ```
   
 - **Feel free to add more API endpoints as needed...**
+
+### 7. API Documentation
+
+#### Overview
+
+This application also uses Swagger to provide an interactive API documentation interface. The Swagger UI allows developers to explore the available API endpoints, view detailed information about each endpoint, and test the endpoints directly from the browser.
+
+#### How to Access the API Documentation
+
+1. **Start the Backend Server**: Ensure that the backend server is running. You can start the server by navigating to the backend directory and running:
+
+   ```bash
+   mvn spring-boot:run
+   ```
+
+2. **Open the Swagger UI**: Once the server is up and running, you can access the Swagger UI by navigating to the following URL in your web browser:
+
+   [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
+
+   This will open the Swagger interface where you can explore the API endpoints.
+
+3. Alternatively, for those who need the raw OpenAPI JSON, it is available at:
+
+   [http://localhost:8080/v3/api-docs](http://localhost:8080/v3/api-docs)
+
+4. **Explore the API Endpoints**:
+  - Use the sidebar or the search bar to navigate through the available API endpoints.
+  - Click on an endpoint to view its details, including the request method (GET, POST, PUT, DELETE), parameters, request body, and possible responses.
+  - You can also test the endpoints directly by clicking the **"Try it out"** button, providing the necessary input, and executing the request.
+  - If you have everything set up correctly, you should see the following Swagger UI interface:
+
+<p align="center" style="cursor: pointer">
+  <img src="img/apis.png" alt="Swagger UI" style="border-radius: 10px" width="100%"/>
+</p>
+
+#### Benefits of Using Swagger UI
+
+- **Interactive Documentation**: Developers can easily understand and use the API.
+- **Quick Testing**: Test the API endpoints directly from the browser without needing a separate tool.
+- **Clear Communication**: Provides a standardized way of documenting your API, making it easier for others to understand and consume.
 
 ## Frontend Setup
 
