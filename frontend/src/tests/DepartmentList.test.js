@@ -6,12 +6,12 @@ import '@testing-library/jest-dom/extend-expect';
 // Mocking department data
 const departments = [
   { id: 1, name: 'IT' },
-  { id: 2, name: 'HR' }
+  { id: 2, name: 'HR' },
 ];
 
 // Mocking the service
 jest.mock('../services/departmentService', () => ({
-  getDepartments: jest.fn(() => Promise.resolve(departments))
+  getDepartments: jest.fn(() => Promise.resolve(departments)),
 }));
 
 test('renders list of departments', async () => {

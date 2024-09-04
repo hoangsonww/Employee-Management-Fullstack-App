@@ -17,11 +17,11 @@ const DepartmentForm = () => {
     fetchData();
   }, [id]);
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     setDepartment({ ...department, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
     if (id) {
       await updateDepartment(id, department);

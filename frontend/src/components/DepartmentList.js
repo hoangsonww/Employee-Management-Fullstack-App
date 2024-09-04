@@ -17,12 +17,12 @@ const DepartmentList = () => {
     fetchData();
   }, []);
 
-  const handleDelete = async (id) => {
+  const handleDelete = async id => {
     await deleteDepartment(id);
-    setDepartments(departments.filter((department) => department.id !== id));
+    setDepartments(departments.filter(department => department.id !== id));
   };
 
-  const handleSearchChange = (event) => {
+  const handleSearchChange = event => {
     setSearchTerm(event.target.value);
   };
 
@@ -30,14 +30,12 @@ const DepartmentList = () => {
     setPage(newPage);
   };
 
-  const handleChangeRowsPerPage = (event) => {
+  const handleChangeRowsPerPage = event => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
 
-  const filteredDepartments = departments.filter((department) =>
-    department.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredDepartments = departments.filter(department => department.name.toLowerCase().includes(searchTerm.toLowerCase()));
 
   return (
     <Box>
@@ -45,13 +43,7 @@ const DepartmentList = () => {
       <Button variant="contained" component={Link} to="/add-department" sx={{ marginBottom: '1rem' }}>
         Add Department
       </Button>
-      <TextField
-        label="Search"
-        variant="outlined"
-        value={searchTerm}
-        onChange={handleSearchChange}
-        sx={{ marginBottom: '1rem', width: '100%' }}
-      />
+      <TextField label="Search" variant="outlined" value={searchTerm} onChange={handleSearchChange} sx={{ marginBottom: '1rem', width: '100%' }} />
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
@@ -61,7 +53,7 @@ const DepartmentList = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {filteredDepartments.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((department) => (
+            {filteredDepartments.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(department => (
               <TableRow key={department.id}>
                 <TableCell>{department.name}</TableCell>
                 <TableCell>

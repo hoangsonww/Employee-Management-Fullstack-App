@@ -6,7 +6,7 @@ const Navbar = () => {
   const location = useLocation();
   const currentPath = location.pathname;
 
-  const isActive = (path) => currentPath === path;
+  const isActive = path => currentPath === path;
 
   return (
     <AppBar position="static" sx={{ backgroundColor: '#3f51b5', padding: '0.5rem 0' }}>

@@ -9,7 +9,7 @@ const department = { id: 1, name: 'IT' };
 // Mocking the service
 jest.mock('../services/departmentService', () => ({
   getDepartmentById: jest.fn(() => Promise.resolve(department)),
-  saveDepartment: jest.fn(() => Promise.resolve(department))
+  saveDepartment: jest.fn(() => Promise.resolve(department)),
 }));
 
 test('renders department form for editing', async () => {

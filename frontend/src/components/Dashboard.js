@@ -33,7 +33,7 @@ const Dashboard = () => {
         '60+': 0,
       };
 
-      employees.forEach((emp) => {
+      employees.forEach(emp => {
         if (emp.age >= 20 && emp.age <= 29) ageRanges['20-29'] += 1;
         else if (emp.age >= 30 && emp.age <= 39) ageRanges['30-39'] += 1;
         else if (emp.age >= 40 && emp.age <= 49) ageRanges['40-49'] += 1;
@@ -94,32 +94,32 @@ const Dashboard = () => {
 
   const employeeGrowthData = employeeGrowth.length
     ? {
-      labels: employeeGrowth.map((d) => d.month),
-      datasets: [
-        {
-          label: 'Employee Growth Over Time',
-          data: employeeGrowth.map((d) => d.count),
-          backgroundColor: '#36A2EB',
-          borderColor: '#36A2EB',
-          borderWidth: 1,
-        },
-      ],
-    }
+        labels: employeeGrowth.map(d => d.month),
+        datasets: [
+          {
+            label: 'Employee Growth Over Time',
+            data: employeeGrowth.map(d => d.count),
+            backgroundColor: '#36A2EB',
+            borderColor: '#36A2EB',
+            borderWidth: 1,
+          },
+        ],
+      }
     : null;
 
   const lineChartData = employeeGrowth.length
     ? {
-      labels: employeeGrowth.map((d) => d.month),
-      datasets: [
-        {
-          label: 'Employee Growth Trend',
-          data: employeeGrowth.map((d) => d.count),
-          fill: false,
-          borderColor: '#FF6384',
-          tension: 0.1,
-        },
-      ],
-    }
+        labels: employeeGrowth.map(d => d.month),
+        datasets: [
+          {
+            label: 'Employee Growth Trend',
+            data: employeeGrowth.map(d => d.count),
+            fill: false,
+            borderColor: '#FF6384',
+            tension: 0.1,
+          },
+        ],
+      }
     : null;
 
   const pieChartData = {
@@ -148,7 +148,7 @@ const Dashboard = () => {
               <Typography variant="h6" component="div">
                 Total Overview
               </Typography>
-              <Bar data={totalOverviewData} options={{ scales: { y: { beginAtZero: true, suggestedMax: 30 } }}} />
+              <Bar data={totalOverviewData} options={{ scales: { y: { beginAtZero: true, suggestedMax: 30 } } }} />
             </CardContent>
           </Card>
         </Grid>

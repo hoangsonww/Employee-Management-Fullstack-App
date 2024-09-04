@@ -9,7 +9,7 @@ const employee = { id: 1, firstName: 'John', lastName: 'Doe', email: 'john.doe@e
 // Mocking the service
 jest.mock('../services/employeeService', () => ({
   getEmployeeById: jest.fn(() => Promise.resolve(employee)),
-  saveEmployee: jest.fn(() => Promise.resolve(employee))
+  saveEmployee: jest.fn(() => Promise.resolve(employee)),
 }));
 
 test('renders employee form for editing', async () => {

@@ -17,12 +17,12 @@ const EmployeeList = () => {
     fetchData();
   }, []);
 
-  const handleDelete = async (id) => {
+  const handleDelete = async id => {
     await deleteEmployee(id);
-    setEmployees(employees.filter((employee) => employee.id !== id));
+    setEmployees(employees.filter(employee => employee.id !== id));
   };
 
-  const handleSearchChange = (event) => {
+  const handleSearchChange = event => {
     setSearchTerm(event.target.value);
   };
 
@@ -30,13 +30,13 @@ const EmployeeList = () => {
     setPage(newPage);
   };
 
-  const handleChangeRowsPerPage = (event) => {
+  const handleChangeRowsPerPage = event => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
 
   const filteredEmployees = employees.filter(
-    (employee) =>
+    employee =>
       employee.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
       employee.lastName.toLowerCase().includes(searchTerm.toLowerCase()) ||
       employee.email.toLowerCase().includes(searchTerm.toLowerCase())
@@ -48,13 +48,7 @@ const EmployeeList = () => {
       <Button variant="contained" component={Link} to="/add-employee" sx={{ marginBottom: '1rem' }}>
         Add Employee
       </Button>
-      <TextField
-        label="Search"
-        variant="outlined"
-        value={searchTerm}
-        onChange={handleSearchChange}
-        sx={{ marginBottom: '1rem', width: '100%' }}
-      />
+      <TextField label="Search" variant="outlined" value={searchTerm} onChange={handleSearchChange} sx={{ marginBottom: '1rem', width: '100%' }} />
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
@@ -66,7 +60,7 @@ const EmployeeList = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {filteredEmployees.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((employee) => (
+            {filteredEmployees.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(employee => (
               <TableRow key={employee.id}>
                 <TableCell>{employee.firstName}</TableCell>
                 <TableCell>{employee.lastName}</TableCell>

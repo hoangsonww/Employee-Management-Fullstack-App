@@ -25,8 +25,8 @@ const EmployeeForm = () => {
               lastName: employeeData.lastName || '',
               email: employeeData.email || '',
               department: {
-                id: employeeData.department ? employeeData.department.id : ''
-              }
+                id: employeeData.department ? employeeData.department.id : '',
+              },
             });
           }
         }
@@ -37,7 +37,7 @@ const EmployeeForm = () => {
     fetchData();
   }, [id]);
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     const { name, value } = e.target;
 
     if (name === 'department.id') {
@@ -47,7 +47,7 @@ const EmployeeForm = () => {
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
     try {
       if (id) {
@@ -68,16 +68,9 @@ const EmployeeForm = () => {
       <TextField label="First Name" name="firstName" value={employee.firstName} onChange={handleChange} required />
       <TextField label="Last Name" name="lastName" value={employee.lastName} onChange={handleChange} required />
       <TextField label="Email" name="email" type="email" value={employee.email} onChange={handleChange} required />
-      <TextField
-        select
-        label="Department"
-        name="department.id"
-        value={employee.department.id || ''}
-        onChange={handleChange}
-        required
-      >
+      <TextField select label="Department" name="department.id" value={employee.department.id || ''} onChange={handleChange} required>
         <MenuItem value="">Select Department</MenuItem>
-        {departments.map((department) => (
+        {departments.map(department => (
           <MenuItem key={department.id} value={department.id}>
             {department.name}
           </MenuItem>

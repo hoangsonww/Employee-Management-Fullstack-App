@@ -6,12 +6,12 @@ import '@testing-library/jest-dom/extend-expect';
 // Mocking employee data
 const employees = [
   { id: 1, firstName: 'John', lastName: 'Doe', email: 'john.doe@example.com' },
-  { id: 2, firstName: 'Jane', lastName: 'Doe', email: 'jane.doe@example.com' }
+  { id: 2, firstName: 'Jane', lastName: 'Doe', email: 'jane.doe@example.com' },
 ];
 
 // Mocking the service
 jest.mock('../services/employeeService', () => ({
-  getEmployees: jest.fn(() => Promise.resolve(employees))
+  getEmployees: jest.fn(() => Promise.resolve(employees)),
 }));
 
 test('renders list of employees', async () => {
