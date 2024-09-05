@@ -16,10 +16,21 @@ public class DepartmentService {
   @Autowired
   private DepartmentRepository departmentRepository;
 
+  /**
+   * Get all departments.
+   *
+   * @return List of all departments
+   */
   public List<Department> getAllDepartments() {
     return departmentRepository.findAll();
   }
 
+  /**
+   * Get department by ID.
+   *
+   * @param id ID of the department to be retrieved
+   * @return Department with the specified ID
+   */
   public Optional<Department> getDepartmentById(Long id) {
     return departmentRepository.findById(id);
   }
