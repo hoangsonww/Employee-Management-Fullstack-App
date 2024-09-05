@@ -1,0 +1,616 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="392f4aef-37aa-47a3-a82b-22f4f510a7b8" name="Changes" comment="Fix: Addressed security vulnerabilities" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Dockerfile" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;hoangsonww&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/hoangsonww/Employee-Management-Fullstack-App.git",
+    "accountId": "bba80ae4-d2ba-42fc-be1e-53456000f3fc"
+  }
+}]]></component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="jdkForImporter" value="corretto-17" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2lLq01A8xScHdX72FX7PW86cnzS" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Jest.renders dashboard with metrics.executor": "Run",
+    "Notification.DisplayName-DoNotAsk-JDK Arch Check": "JDK and system architectures are different",
+    "Notification.DoNotAsk-JDK Arch Check": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.EmployeeManagementApplication.executor": "Run",
+    "git-widget-placeholder": "feature/add-swagger-docs",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/davidnguyen/IdeaProjects/Employee-Management/frontend",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs.jest.jest_package": "/Users/davidnguyen/IdeaProjects/Employee-Management/frontend/node_modules/react-scripts",
+    "nodejs_package_manager_path": "npm",
+    "npm.format.executor": "Run",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "swagger",
+    "ts.external.directory.path": "/Applications/WebStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
+  }
+}]]></component>
+  <component name="ReactDesignerToolWindowState">
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.intellij.reactbuddy.reactComponents" value="false" />
+        <entry key="com.intellij.reactbuddy.reactInspector" value="false" />
+        <entry key="com.intellij.reactbuddy.storybook" value="false" />
+      </map>
+    </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/img" />
+      <recent name="$PROJECT_DIR$/frontend/public" />
+      <recent name="$PROJECT_DIR$/backend" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Jest.renders dashboard with metrics">
+    <configuration name="EmployeeManagementApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="employee-management-app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.employeemanagement.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.employeemanagement" />
+      <option name="MAIN_CLASS_NAME" value="com.example.employeemanagement.EmployeeManagementApplicationTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="renders dashboard with metrics" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/frontend/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$/frontend" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/frontend/src/tests/Dashboard.test.js" />
+      <test-names>
+        <test-name value="renders dashboard with metrics" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="EmployeeManagementApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="/Library/Java/JavaVirtualMachines/temurin-11.jdk/Contents/Home" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="employee-management-app" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.employeemanagement.EmployeeManagementApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Jest.renders dashboard with metrics" />
+      <item itemvalue="JUnit.EmployeeManagementApplicationTests" />
+      <item itemvalue="Spring Boot.EmployeeManagementApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Jest.renders dashboard with metrics" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.21829.142" />
+        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-IU-242.21829.142" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SwiftWorkspaceSettings">
+    <option name="detectedToolchain" value="true" />
+    <option name="toolchainPathValue" value="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="392f4aef-37aa-47a3-a82b-22f4f510a7b8" name="Changes" comment="" />
+      <created>1724969478637</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1724969478637</updated>
+      <workItem from="1724969480001" duration="11957000" />
+      <workItem from="1724987723886" duration="798000" />
+      <workItem from="1725027090972" duration="28000" />
+      <workItem from="1725027209680" duration="123000" />
+      <workItem from="1725124516469" duration="28000" />
+      <workItem from="1725124560914" duration="29000" />
+      <workItem from="1725134749646" duration="2000" />
+      <workItem from="1725140719673" duration="85000" />
+      <workItem from="1725144966071" duration="339000" />
+      <workItem from="1725145370977" duration="697000" />
+      <workItem from="1725146120640" duration="1684000" />
+      <workItem from="1725148986541" duration="2907000" />
+      <workItem from="1725153777538" duration="238000" />
+      <workItem from="1725201358592" duration="123000" />
+      <workItem from="1725383372700" duration="3000" />
+      <workItem from="1725485866362" duration="806000" />
+      <workItem from="1725487842846" duration="408000" />
+      <workItem from="1725488467251" duration="161000" />
+      <workItem from="1725488910640" duration="96000" />
+      <workItem from="1725489045600" duration="228000" />
+      <workItem from="1725489280506" duration="354000" />
+      <workItem from="1725553692504" duration="381000" />
+      <workItem from="1725554591118" duration="1470000" />
+      <workItem from="1725564249567" duration="1271000" />
+      <workItem from="1725572341397" duration="648000" />
+    </task>
+    <task id="LOCAL-00156" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725150688179</created>
+      <option name="number" value="00156" />
+      <option name="presentableId" value="LOCAL-00156" />
+      <option name="project" value="LOCAL" />
+      <updated>1725150688179</updated>
+    </task>
+    <task id="LOCAL-00157" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725150693663</created>
+      <option name="number" value="00157" />
+      <option name="presentableId" value="LOCAL-00157" />
+      <option name="project" value="LOCAL" />
+      <updated>1725150693663</updated>
+    </task>
+    <task id="LOCAL-00158" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725150715825</created>
+      <option name="number" value="00158" />
+      <option name="presentableId" value="LOCAL-00158" />
+      <option name="project" value="LOCAL" />
+      <updated>1725150715825</updated>
+    </task>
+    <task id="LOCAL-00159" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725150731793</created>
+      <option name="number" value="00159" />
+      <option name="presentableId" value="LOCAL-00159" />
+      <option name="project" value="LOCAL" />
+      <updated>1725150731793</updated>
+    </task>
+    <task id="LOCAL-00160" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725150742184</created>
+      <option name="number" value="00160" />
+      <option name="presentableId" value="LOCAL-00160" />
+      <option name="project" value="LOCAL" />
+      <updated>1725150742184</updated>
+    </task>
+    <task id="LOCAL-00161" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725150766308</created>
+      <option name="number" value="00161" />
+      <option name="presentableId" value="LOCAL-00161" />
+      <option name="project" value="LOCAL" />
+      <updated>1725150766308</updated>
+    </task>
+    <task id="LOCAL-00162" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725150844381</created>
+      <option name="number" value="00162" />
+      <option name="presentableId" value="LOCAL-00162" />
+      <option name="project" value="LOCAL" />
+      <updated>1725150844381</updated>
+    </task>
+    <task id="LOCAL-00163" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725150868968</created>
+      <option name="number" value="00163" />
+      <option name="presentableId" value="LOCAL-00163" />
+      <option name="project" value="LOCAL" />
+      <updated>1725150868968</updated>
+    </task>
+    <task id="LOCAL-00164" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725150981768</created>
+      <option name="number" value="00164" />
+      <option name="presentableId" value="LOCAL-00164" />
+      <option name="project" value="LOCAL" />
+      <updated>1725150981768</updated>
+    </task>
+    <task id="LOCAL-00165" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725151032108</created>
+      <option name="number" value="00165" />
+      <option name="presentableId" value="LOCAL-00165" />
+      <option name="project" value="LOCAL" />
+      <updated>1725151032108</updated>
+    </task>
+    <task id="LOCAL-00166" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725151069616</created>
+      <option name="number" value="00166" />
+      <option name="presentableId" value="LOCAL-00166" />
+      <option name="project" value="LOCAL" />
+      <updated>1725151069616</updated>
+    </task>
+    <task id="LOCAL-00167" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725151090927</created>
+      <option name="number" value="00167" />
+      <option name="presentableId" value="LOCAL-00167" />
+      <option name="project" value="LOCAL" />
+      <updated>1725151090927</updated>
+    </task>
+    <task id="LOCAL-00168" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725151110004</created>
+      <option name="number" value="00168" />
+      <option name="presentableId" value="LOCAL-00168" />
+      <option name="project" value="LOCAL" />
+      <updated>1725151110005</updated>
+    </task>
+    <task id="LOCAL-00169" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725151125769</created>
+      <option name="number" value="00169" />
+      <option name="presentableId" value="LOCAL-00169" />
+      <option name="project" value="LOCAL" />
+      <updated>1725151125769</updated>
+    </task>
+    <task id="LOCAL-00170" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725151128691</created>
+      <option name="number" value="00170" />
+      <option name="presentableId" value="LOCAL-00170" />
+      <option name="project" value="LOCAL" />
+      <updated>1725151128691</updated>
+    </task>
+    <task id="LOCAL-00171" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725151131666</created>
+      <option name="number" value="00171" />
+      <option name="presentableId" value="LOCAL-00171" />
+      <option name="project" value="LOCAL" />
+      <updated>1725151131666</updated>
+    </task>
+    <task id="LOCAL-00172" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725151134581</created>
+      <option name="number" value="00172" />
+      <option name="presentableId" value="LOCAL-00172" />
+      <option name="project" value="LOCAL" />
+      <updated>1725151134581</updated>
+    </task>
+    <task id="LOCAL-00173" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725151137583</created>
+      <option name="number" value="00173" />
+      <option name="presentableId" value="LOCAL-00173" />
+      <option name="project" value="LOCAL" />
+      <updated>1725151137583</updated>
+    </task>
+    <task id="LOCAL-00174" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725151153223</created>
+      <option name="number" value="00174" />
+      <option name="presentableId" value="LOCAL-00174" />
+      <option name="project" value="LOCAL" />
+      <updated>1725151153223</updated>
+    </task>
+    <task id="LOCAL-00175" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725151248429</created>
+      <option name="number" value="00175" />
+      <option name="presentableId" value="LOCAL-00175" />
+      <option name="project" value="LOCAL" />
+      <updated>1725151248429</updated>
+    </task>
+    <task id="LOCAL-00176" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725151524106</created>
+      <option name="number" value="00176" />
+      <option name="presentableId" value="LOCAL-00176" />
+      <option name="project" value="LOCAL" />
+      <updated>1725151524106</updated>
+    </task>
+    <task id="LOCAL-00177" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725151532480</created>
+      <option name="number" value="00177" />
+      <option name="presentableId" value="LOCAL-00177" />
+      <option name="project" value="LOCAL" />
+      <updated>1725151532480</updated>
+    </task>
+    <task id="LOCAL-00178" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725151555611</created>
+      <option name="number" value="00178" />
+      <option name="presentableId" value="LOCAL-00178" />
+      <option name="project" value="LOCAL" />
+      <updated>1725151555611</updated>
+    </task>
+    <task id="LOCAL-00179" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725151584217</created>
+      <option name="number" value="00179" />
+      <option name="presentableId" value="LOCAL-00179" />
+      <option name="project" value="LOCAL" />
+      <updated>1725151584217</updated>
+    </task>
+    <task id="LOCAL-00180" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725151607962</created>
+      <option name="number" value="00180" />
+      <option name="presentableId" value="LOCAL-00180" />
+      <option name="project" value="LOCAL" />
+      <updated>1725151607962</updated>
+    </task>
+    <task id="LOCAL-00181" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725151634409</created>
+      <option name="number" value="00181" />
+      <option name="presentableId" value="LOCAL-00181" />
+      <option name="project" value="LOCAL" />
+      <updated>1725151634409</updated>
+    </task>
+    <task id="LOCAL-00182" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725151642938</created>
+      <option name="number" value="00182" />
+      <option name="presentableId" value="LOCAL-00182" />
+      <option name="project" value="LOCAL" />
+      <updated>1725151642938</updated>
+    </task>
+    <task id="LOCAL-00183" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725151727990</created>
+      <option name="number" value="00183" />
+      <option name="presentableId" value="LOCAL-00183" />
+      <option name="project" value="LOCAL" />
+      <updated>1725151727990</updated>
+    </task>
+    <task id="LOCAL-00184" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725151750009</created>
+      <option name="number" value="00184" />
+      <option name="presentableId" value="LOCAL-00184" />
+      <option name="project" value="LOCAL" />
+      <updated>1725151750009</updated>
+    </task>
+    <task id="LOCAL-00185" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725151849376</created>
+      <option name="number" value="00185" />
+      <option name="presentableId" value="LOCAL-00185" />
+      <option name="project" value="LOCAL" />
+      <updated>1725151849376</updated>
+    </task>
+    <task id="LOCAL-00186" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725151880830</created>
+      <option name="number" value="00186" />
+      <option name="presentableId" value="LOCAL-00186" />
+      <option name="project" value="LOCAL" />
+      <updated>1725151880830</updated>
+    </task>
+    <task id="LOCAL-00187" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725151889223</created>
+      <option name="number" value="00187" />
+      <option name="presentableId" value="LOCAL-00187" />
+      <option name="project" value="LOCAL" />
+      <updated>1725151889223</updated>
+    </task>
+    <task id="LOCAL-00188" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725201437248</created>
+      <option name="number" value="00188" />
+      <option name="presentableId" value="LOCAL-00188" />
+      <option name="project" value="LOCAL" />
+      <updated>1725201437249</updated>
+    </task>
+    <task id="LOCAL-00189" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725201445459</created>
+      <option name="number" value="00189" />
+      <option name="presentableId" value="LOCAL-00189" />
+      <option name="project" value="LOCAL" />
+      <updated>1725201445459</updated>
+    </task>
+    <task id="LOCAL-00190" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725201449623</created>
+      <option name="number" value="00190" />
+      <option name="presentableId" value="LOCAL-00190" />
+      <option name="project" value="LOCAL" />
+      <updated>1725201449623</updated>
+    </task>
+    <task id="LOCAL-00191" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725201463793</created>
+      <option name="number" value="00191" />
+      <option name="presentableId" value="LOCAL-00191" />
+      <option name="project" value="LOCAL" />
+      <updated>1725201463793</updated>
+    </task>
+    <task id="LOCAL-00192" summary="Fix: Added API documentations">
+      <option name="closed" value="true" />
+      <created>1725486145425</created>
+      <option name="number" value="00192" />
+      <option name="presentableId" value="LOCAL-00192" />
+      <option name="project" value="LOCAL" />
+      <updated>1725486145426</updated>
+    </task>
+    <task id="LOCAL-00193" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725488111033</created>
+      <option name="number" value="00193" />
+      <option name="presentableId" value="LOCAL-00193" />
+      <option name="project" value="LOCAL" />
+      <updated>1725488111033</updated>
+    </task>
+    <task id="LOCAL-00194" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725488243040</created>
+      <option name="number" value="00194" />
+      <option name="presentableId" value="LOCAL-00194" />
+      <option name="project" value="LOCAL" />
+      <updated>1725488243040</updated>
+    </task>
+    <task id="LOCAL-00195" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725488532846</created>
+      <option name="number" value="00195" />
+      <option name="presentableId" value="LOCAL-00195" />
+      <option name="project" value="LOCAL" />
+      <updated>1725488532848</updated>
+    </task>
+    <task id="LOCAL-00196" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725488556993</created>
+      <option name="number" value="00196" />
+      <option name="presentableId" value="LOCAL-00196" />
+      <option name="project" value="LOCAL" />
+      <updated>1725488556993</updated>
+    </task>
+    <task id="LOCAL-00197" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725488617162</created>
+      <option name="number" value="00197" />
+      <option name="presentableId" value="LOCAL-00197" />
+      <option name="project" value="LOCAL" />
+      <updated>1725488617162</updated>
+    </task>
+    <task id="LOCAL-00198" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725488962967</created>
+      <option name="number" value="00198" />
+      <option name="presentableId" value="LOCAL-00198" />
+      <option name="project" value="LOCAL" />
+      <updated>1725488962967</updated>
+    </task>
+    <task id="LOCAL-00199" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725488985381</created>
+      <option name="number" value="00199" />
+      <option name="presentableId" value="LOCAL-00199" />
+      <option name="project" value="LOCAL" />
+      <updated>1725488985381</updated>
+    </task>
+    <task id="LOCAL-00200" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725488994660</created>
+      <option name="number" value="00200" />
+      <option name="presentableId" value="LOCAL-00200" />
+      <option name="project" value="LOCAL" />
+      <updated>1725488994660</updated>
+    </task>
+    <task id="LOCAL-00201" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725489615362</created>
+      <option name="number" value="00201" />
+      <option name="presentableId" value="LOCAL-00201" />
+      <option name="project" value="LOCAL" />
+      <updated>1725489615362</updated>
+    </task>
+    <task id="LOCAL-00202" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725555410655</created>
+      <option name="number" value="00202" />
+      <option name="presentableId" value="LOCAL-00202" />
+      <option name="project" value="LOCAL" />
+      <updated>1725555410656</updated>
+    </task>
+    <task id="LOCAL-00203" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725555481793</created>
+      <option name="number" value="00203" />
+      <option name="presentableId" value="LOCAL-00203" />
+      <option name="project" value="LOCAL" />
+      <updated>1725555481794</updated>
+    </task>
+    <task id="LOCAL-00204" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725572656663</created>
+      <option name="number" value="00204" />
+      <option name="presentableId" value="LOCAL-00204" />
+      <option name="project" value="LOCAL" />
+      <updated>1725572656663</updated>
+    </task>
+    <option name="localTasksCounter" value="205" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Fix: Added API documentations" />
+    <MESSAGE value="Fix: Addressed security vulnerabilities" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix: Addressed security vulnerabilities" />
+  </component>
+</project>
