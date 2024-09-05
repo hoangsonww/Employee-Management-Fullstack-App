@@ -10,7 +10,7 @@ public class ResourceNotFoundException extends RuntimeException {
   /**
    * Constructor for the exception.
    *
-   * @param message The exception message
+   * @param message The exception's message
    */
   public ResourceNotFoundException(String message) {
     super(message);
