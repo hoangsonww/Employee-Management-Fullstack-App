@@ -35,6 +35,12 @@ public class DepartmentService {
     return departmentRepository.findById(id);
   }
 
+  /**
+   * Save a department.
+   *
+   * @param department Department to be saved
+   * @return Saved department
+   */
   public Department saveDepartment(Department department) {
     return departmentRepository.save(department);
   }
