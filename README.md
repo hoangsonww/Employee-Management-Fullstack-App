@@ -55,6 +55,9 @@ The Employee Management System is a dynamic full-stack application that seamless
 - **Docker**: A containerization platform for packaging applications and their dependencies.
 - **MySQL**: A reliable relational database for structured data storage.
 - **MongoDB**: A flexible NoSQL database for non-relational data.
+- **Style Guides**: This project follows the following popular style guides to ensure clean and consistent code.
+  - **Airbnb JavaScript Style Guide**: A popular style guide for writing clean and consistent JavaScript code.
+  - **Google Java Style Guide**: A style guide for writing Java code that is readable and maintainable.
 
 ## User Interface
 
