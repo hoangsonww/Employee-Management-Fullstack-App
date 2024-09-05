@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import javax.persistence.*;
 
+/** This class represents an employee entity. */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
