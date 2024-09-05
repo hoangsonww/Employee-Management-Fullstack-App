@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/hoangsonww/Employee-Management-Fullstack-App/static/css/main.cf445f91.css",
-    "main.js": "/hoangsonww/Employee-Management-Fullstack-App/static/js/main.f7ebb777.js",
-    "index.html": "/hoangsonww/Employee-Management-Fullstack-App/index.html",
-    "main.cf445f91.css.map": "/hoangsonww/Employee-Management-Fullstack-App/static/css/main.cf445f91.css.map",
-    "main.f7ebb777.js.map": "/hoangsonww/Employee-Management-Fullstack-App/static/js/main.f7ebb777.js.map"
+    "main.css": "/static/css/main.cf445f91.css",
+    "main.js": "/static/js/main.f7ebb777.js",
+    "index.html": "/index.html",
+    "main.cf445f91.css.map": "/static/css/main.cf445f91.css.map",
+    "main.f7ebb777.js.map": "/static/js/main.f7ebb777.js.map"
   },
   "entrypoints": [
     "static/css/main.cf445f91.css",
