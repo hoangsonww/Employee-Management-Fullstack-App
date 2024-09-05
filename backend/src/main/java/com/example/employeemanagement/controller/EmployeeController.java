@@ -3,6 +3,7 @@ package com.example.employeemanagement.controller;
 import com.example.employeemanagement.exception.ResourceNotFoundException;
 import com.example.employeemanagement.model.Employee;
 import com.example.employeemanagement.service.EmployeeService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import io.swagger.v3.oas.annotations.Operation;
@@ -16,6 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/employees")
 @CrossOrigin(origins = "http://localhost:3000")
+@Tag(name = "Employees APIs", description = "API Operations related to managing employees")
 public class EmployeeController {
 
   @Autowired private EmployeeService employeeService;
