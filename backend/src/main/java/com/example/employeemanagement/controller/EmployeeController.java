@@ -90,7 +90,12 @@ public class EmployeeController {
     return ResponseEntity.ok(updatedEmployee);
   }
 
-  // Delete an employee
+  /**
+   * Delete an employee API.
+   *
+   * @param id ID of the employee to be deleted
+   * @return No content
+   */
   @Operation(summary = "Delete an employee", description = "Delete an employee record by ID")
   @ApiResponses(value = {
       @ApiResponse(responseCode = "204", description = "Employee deleted"),
