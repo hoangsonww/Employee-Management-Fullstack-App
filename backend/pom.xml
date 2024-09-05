@@ -12,6 +12,7 @@
     <version>2.7.5</version>
     <relativePath/>
   </parent>
+  <!-- Using Java 11 -->
   <properties>
     <java.version>11</java.version>
   </properties>
@@ -62,13 +63,21 @@
       <artifactId>springdoc-openapi-ui</artifactId>
       <version>1.7.0</version>
     </dependency>
+    <!-- Spring Boot DevTools -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-devtools</artifactId>
+      <optional>true</optional>
+    </dependency>
   </dependencies>
   <build>
     <plugins>
+      <!-- Plugin: Spring Boot Maven Plugin -->
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
       </plugin>
+      <!-- Plugin: Maven Compiler Plugin -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>

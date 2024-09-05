@@ -7,6 +7,7 @@ import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.util.List;
 
+/** This class represents a department entity. */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

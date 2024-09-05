@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import javax.persistence.*;
 
+/** This class represents an employee entity. */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,7 +23,7 @@ public class Employee {
 
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "department_id", nullable = false)
-  @JsonBackReference // Prevent circular reference
+  @JsonBackReference
   private Department department;
 
   private int age;

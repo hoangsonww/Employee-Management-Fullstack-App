@@ -13,6 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * This class initializes fake data for the application when it starts.
+ */
 @Configuration
 public class DataInitializer implements CommandLineRunner {
 
@@ -25,6 +28,11 @@ public class DataInitializer implements CommandLineRunner {
   private final Faker faker = new Faker();
   private final Random random = new Random();
 
+  /**
+   * This method is called when the application starts.
+   *
+   * @param args Command line arguments
+   */
   @Override
   public void run(String... args) {
     // Always clear existing data before inserting new data

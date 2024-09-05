@@ -55,6 +55,9 @@ The Employee Management System is a dynamic full-stack application that seamless
 - **Docker**: A containerization platform for packaging applications and their dependencies.
 - **MySQL**: A reliable relational database for structured data storage.
 - **MongoDB**: A flexible NoSQL database for non-relational data.
+- **Style Guides**: This project follows the following popular style guides to ensure clean and consistent code.
+  - **Airbnb JavaScript Style Guide**: A popular style guide for writing clean and consistent JavaScript code.
+  - **Google Java Style Guide**: A style guide for writing Java code that is readable and maintainable.
 
 ## User Interface
 
@@ -444,6 +447,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 For any questions or issues, please contact [hoangson091104@gmail.com](mailto:hoangson091104@gmail.com).
 
 ---
+
 Thank you for checking out the **Employee Management Full-Stack Application!** Feel free to use this project for your own learning or development purposes. 
 
 Created with ❤️ by [Son Nguyen](https://github.com/hoangsonww) in 2024.
