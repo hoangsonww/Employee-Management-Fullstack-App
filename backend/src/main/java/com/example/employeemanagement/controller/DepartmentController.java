@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * This class represents the REST API controller for departments.
+ */
 @RestController
 @RequestMapping("/api/departments")
 @CrossOrigin(origins = "http://localhost:3000")
@@ -21,6 +24,11 @@ public class DepartmentController {
   @Autowired
   private DepartmentService departmentService;
 
+  /**
+   * Get all departments API.
+   *
+   * @return List of all departments
+   */
   @Operation(summary = "Get all departments", description = "Retrieve a list of all departments")
   @GetMapping
   public List<Department> getAllDepartments() {
