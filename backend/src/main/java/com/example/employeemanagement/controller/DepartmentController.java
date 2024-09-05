@@ -72,7 +72,7 @@ public class DepartmentController {
    *
    * @param id ID of the department to be updated
    * @param departmentDetails Updated department object
-   * @return
+   * @return Updated department object
    */
   @Operation(summary = "Update an existing department", description = "Update an existing department's details")
   @ApiResponses(value = {
