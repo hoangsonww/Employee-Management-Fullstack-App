@@ -1,0 +1,7 @@
+com.example.employeemanagement
+com.example.employeemanagement.config
+com.example.employeemanagement.controller
+com.example.employeemanagement.exception
+com.example.employeemanagement.model
+com.example.employeemanagement.repository
+com.example.employeemanagement.service
