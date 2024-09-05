@@ -12,6 +12,7 @@
     <version>2.7.5</version>
     <relativePath/>
   </parent>
+  <!-- Use Java 11 -->
   <properties>
     <java.version>11</java.version>
   </properties>
