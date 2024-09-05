@@ -12,63 +12,53 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 
-/**
- * This class implements unit tests for the EmployeeManagementApplication.
- */
+/** This class implements unit tests for the EmployeeManagementApplication. */
 @DataJpaTest
 @Transactional
 public class EmployeeManagementApplicationTests {
 
-    @Autowired
-    private EmployeeRepository employeeRepository;
+  @Autowired private EmployeeRepository employeeRepository;
 
-    @Autowired
-    private DepartmentRepository departmentRepository;
+  @Autowired private DepartmentRepository departmentRepository;
 
-    private Department department;
+  private Department department;
 
-    /**
-     * Set up the test environment.
-     */
-    @BeforeEach
-    void setUp() {
-        department = new Department();
-        department.setName("IT");
-        department = departmentRepository.save(department);
-    }
+  /** Set up the test environment. */
+  @BeforeEach
+  void setUp() {
+    department = new Department();
+    department.setName("IT");
+    department = departmentRepository.save(department);
+  }
 
-    /**
-     * Test the find all employees method.
-     */
-    @Test
-    void shouldFindEmployeeById() {
-        Employee employee = new Employee();
-        employee.setFirstName("John");
-        employee.setLastName("Doe");
-        employee.setEmail("john.doe@example.com");
-        employee.setDepartment(department);
-        employee = employeeRepository.save(employee);
+  /** Test the find all employees method. */
+  @Test
+  void shouldFindEmployeeById() {
+    Employee employee = new Employee();
+    employee.setFirstName("John");
+    employee.setLastName("Doe");
+    employee.setEmail("john.doe@example.com");
+    employee.setDepartment(department);
+    employee = employeeRepository.save(employee);
 
-        Optional<Employee> foundEmployee = employeeRepository.findById(employee.getId());
+    Optional<Employee> foundEmployee = employeeRepository.findById(employee.getId());
 
-        assertThat(foundEmployee).isPresent();
-        assertThat(foundEmployee.get().getFirstName()).isEqualTo("John");
-    }
+    assertThat(foundEmployee).isPresent();
+    assertThat(foundEmployee.get().getFirstName()).isEqualTo("John");
+  }
 
-    /**
-     * Test the save employee method.
-     */
-    @Test
-    void shouldSaveEmployee() {
-        Employee employee = new Employee();
-        employee.setFirstName("Jane");
-        employee.setLastName("Doe");
-        employee.setEmail("jane.doe@example.com");
-        employee.setDepartment(department);
+  /** Test the save employee method. */
+  @Test
+  void shouldSaveEmployee() {
+    Employee employee = new Employee();
+    employee.setFirstName("Jane");
+    employee.setLastName("Doe");
+    employee.setEmail("jane.doe@example.com");
+    employee.setDepartment(department);
 
-        Employee savedEmployee = employeeRepository.save(employee);
+    Employee savedEmployee = employeeRepository.save(employee);
 
-        assertThat(savedEmployee).isNotNull();
-        assertThat(savedEmployee.getId()).isNotNull();
-    }
+    assertThat(savedEmployee).isNotNull();
+    assertThat(savedEmployee.getId()).isNotNull();
+  }
 }
