@@ -23,7 +23,7 @@ public class Employee {
 
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "department_id", nullable = false)
-  @JsonBackReference // Prevent circular reference
+  @JsonBackReference
   private Department department;
 
   private int age;
