@@ -34,7 +34,12 @@ public class EmployeeController {
     return employeeService.getAllEmployees();
   }
 
-  // Get employee by ID
+  /**
+   * Get employee by ID API.
+   *
+   * @param id ID of the employee to be retrieved
+   * @return Employee with the specified ID
+   */
   @Operation(summary = "Get employee by ID", description = "Retrieve a specific employee by their ID")
   @ApiResponses(value = {
       @ApiResponse(responseCode = "200", description = "Employee found"),
