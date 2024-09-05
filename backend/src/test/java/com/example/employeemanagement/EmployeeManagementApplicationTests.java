@@ -55,6 +55,9 @@ public class EmployeeManagementApplicationTests {
         assertThat(foundEmployee.get().getFirstName()).isEqualTo("John");
     }
 
+    /**
+     * Test the save employee method.
+     */
     @Test
     void shouldSaveEmployee() {
         Employee employee = new Employee();
