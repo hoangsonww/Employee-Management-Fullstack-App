@@ -28,6 +28,11 @@ public class DataInitializer implements CommandLineRunner {
   private final Faker faker = new Faker();
   private final Random random = new Random();
 
+  /**
+   * This method is called when the application starts.
+   *
+   * @param args Command line arguments
+   */
   @Override
   public void run(String... args) {
     // Always clear existing data before inserting new data
