@@ -45,6 +45,11 @@ public class DepartmentService {
     return departmentRepository.save(department);
   }
 
+  /**
+   * Update a department.
+   *
+   * @param id ID of the department to be updated
+   */
   public void deleteDepartment(Long id) {
     departmentRepository.deleteById(id);
   }
