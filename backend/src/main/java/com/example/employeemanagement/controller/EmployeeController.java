@@ -23,7 +23,11 @@ public class EmployeeController {
   @Autowired
   private EmployeeService employeeService;
 
-  // Get all employees
+  /**
+   * Get all employees API.
+   *
+   * @return List of all employees
+   */
   @Operation(summary = "Get all employees", description = "Retrieve a list of all employees")
   @GetMapping
   public List<Employee> getAllEmployees() {
