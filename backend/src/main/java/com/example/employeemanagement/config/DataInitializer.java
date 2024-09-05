@@ -13,6 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * This class initializes fake data for the application when it starts.
+ */
 @Configuration
 public class DataInitializer implements CommandLineRunner {
 
