@@ -52,7 +52,12 @@ public class EmployeeController {
     return ResponseEntity.ok(employee);
   }
 
-  // Create a new employee
+  /**
+   * Create a new employee API.
+   *
+   * @param employee New employee details
+   * @return New employee record
+   */
   @Operation(summary = "Create a new employee", description = "Create a new employee record")
   @PostMapping
   public Employee createEmployee(@RequestBody Employee employee) {
