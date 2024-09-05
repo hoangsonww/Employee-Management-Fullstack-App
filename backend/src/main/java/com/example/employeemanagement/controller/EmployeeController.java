@@ -64,7 +64,13 @@ public class EmployeeController {
     return employeeService.saveEmployee(employee);
   }
 
-  // Update an existing employee
+  /**
+   * Update an existing employee API.
+   *
+   * @param id ID of the employee to be updated
+   * @param employeeDetails Updated employee details
+   * @return Updated employee record
+   */
   @Operation(summary = "Update an existing employee", description = "Update an existing employee's details")
   @ApiResponses(value = {
       @ApiResponse(responseCode = "200", description = "Employee updated"),
