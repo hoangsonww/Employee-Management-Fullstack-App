@@ -92,6 +92,12 @@ public class DepartmentController {
     return ResponseEntity.ok(updatedDepartment);
   }
 
+  /**
+   * Delete a department API.
+   *
+   * @param id ID of the department to be deleted
+   * @return Response entity with no content
+   */
   @Operation(summary = "Delete a department", description = "Delete a department record by ID")
   @ApiResponses(value = {
       @ApiResponse(responseCode = "204", description = "Department deleted"),
