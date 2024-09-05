@@ -8,11 +8,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+/** This class represents the service for employees. */
 @Service
 public class EmployeeService {
 
-  @Autowired
-  private EmployeeRepository employeeRepository;
+  @Autowired private EmployeeRepository employeeRepository;
 
   public List<Employee> getAllEmployees() {
     return employeeRepository.findAllWithDepartments();
