@@ -210,55 +210,7 @@
       <workItem from="1725553692504" duration="381000" />
       <workItem from="1725554591118" duration="1470000" />
       <workItem from="1725564249567" duration="1271000" />
-      <workItem from="1725572341397" duration="871000" />
-    </task>
-    <task id="LOCAL-00166" summary="Fix: Addressed security vulnerabilities">
-      <option name="closed" value="true" />
-      <created>1725151069616</created>
-      <option name="number" value="00166" />
-      <option name="presentableId" value="LOCAL-00166" />
-      <option name="project" value="LOCAL" />
-      <updated>1725151069616</updated>
-    </task>
-    <task id="LOCAL-00167" summary="Fix: Addressed security vulnerabilities">
-      <option name="closed" value="true" />
-      <created>1725151090927</created>
-      <option name="number" value="00167" />
-      <option name="presentableId" value="LOCAL-00167" />
-      <option name="project" value="LOCAL" />
-      <updated>1725151090927</updated>
-    </task>
-    <task id="LOCAL-00168" summary="Fix: Addressed security vulnerabilities">
-      <option name="closed" value="true" />
-      <created>1725151110004</created>
-      <option name="number" value="00168" />
-      <option name="presentableId" value="LOCAL-00168" />
-      <option name="project" value="LOCAL" />
-      <updated>1725151110005</updated>
-    </task>
-    <task id="LOCAL-00169" summary="Fix: Addressed security vulnerabilities">
-      <option name="closed" value="true" />
-      <created>1725151125769</created>
-      <option name="number" value="00169" />
-      <option name="presentableId" value="LOCAL-00169" />
-      <option name="project" value="LOCAL" />
-      <updated>1725151125769</updated>
-    </task>
-    <task id="LOCAL-00170" summary="Fix: Addressed security vulnerabilities">
-      <option name="closed" value="true" />
-      <created>1725151128691</created>
-      <option name="number" value="00170" />
-      <option name="presentableId" value="LOCAL-00170" />
-      <option name="project" value="LOCAL" />
-      <updated>1725151128691</updated>
-    </task>
-    <task id="LOCAL-00171" summary="Fix: Addressed security vulnerabilities">
-      <option name="closed" value="true" />
-      <created>1725151131666</created>
-      <option name="number" value="00171" />
-      <option name="presentableId" value="LOCAL-00171" />
-      <option name="project" value="LOCAL" />
-      <updated>1725151131666</updated>
+      <workItem from="1725572341397" duration="960000" />
     </task>
     <task id="LOCAL-00172" summary="Fix: Addressed security vulnerabilities">
       <option name="closed" value="true" />
@@ -604,7 +556,55 @@
       <option name="project" value="LOCAL" />
       <updated>1725573198038</updated>
     </task>
-    <option name="localTasksCounter" value="215" />
+    <task id="LOCAL-00215" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725573220076</created>
+      <option name="number" value="00215" />
+      <option name="presentableId" value="LOCAL-00215" />
+      <option name="project" value="LOCAL" />
+      <updated>1725573220076</updated>
+    </task>
+    <task id="LOCAL-00216" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725573223122</created>
+      <option name="number" value="00216" />
+      <option name="presentableId" value="LOCAL-00216" />
+      <option name="project" value="LOCAL" />
+      <updated>1725573223122</updated>
+    </task>
+    <task id="LOCAL-00217" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725573226095</created>
+      <option name="number" value="00217" />
+      <option name="presentableId" value="LOCAL-00217" />
+      <option name="project" value="LOCAL" />
+      <updated>1725573226095</updated>
+    </task>
+    <task id="LOCAL-00218" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725573266095</created>
+      <option name="number" value="00218" />
+      <option name="presentableId" value="LOCAL-00218" />
+      <option name="project" value="LOCAL" />
+      <updated>1725573266095</updated>
+    </task>
+    <task id="LOCAL-00219" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725573283465</created>
+      <option name="number" value="00219" />
+      <option name="presentableId" value="LOCAL-00219" />
+      <option name="project" value="LOCAL" />
+      <updated>1725573283465</updated>
+    </task>
+    <task id="LOCAL-00220" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1725573294832</created>
+      <option name="number" value="00220" />
+      <option name="presentableId" value="LOCAL-00220" />
+      <option name="project" value="LOCAL" />
+      <updated>1725573294832</updated>
+    </task>
+    <option name="localTasksCounter" value="221" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
