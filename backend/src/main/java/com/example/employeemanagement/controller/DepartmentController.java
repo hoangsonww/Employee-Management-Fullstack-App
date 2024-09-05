@@ -71,7 +71,7 @@ public class DepartmentController {
    * Update an existing department API.
    *
    * @param id ID of the department to be updated
-   * @param departmentDetails
+   * @param departmentDetails Updated department object
    * @return
    */
   @Operation(summary = "Update an existing department", description = "Update an existing department's details")
