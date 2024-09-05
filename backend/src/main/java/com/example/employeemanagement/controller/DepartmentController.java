@@ -67,6 +67,13 @@ public class DepartmentController {
     return departmentService.saveDepartment(department);
   }
 
+  /**
+   * Update an existing department API.
+   *
+   * @param id ID of the department to be updated
+   * @param departmentDetails
+   * @return
+   */
   @Operation(summary = "Update an existing department", description = "Update an existing department's details")
   @ApiResponses(value = {
       @ApiResponse(responseCode = "200", description = "Department updated"),
