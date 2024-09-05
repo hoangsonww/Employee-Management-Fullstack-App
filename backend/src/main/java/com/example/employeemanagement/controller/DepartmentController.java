@@ -17,7 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/departments")
 @CrossOrigin(origins = "http://localhost:3000")
-@Tag(name = "Department APIs", description = "Operations related to managing departments")
+@Tag(name = "Department APIs", description = "API Operations related to managing departments")
 public class DepartmentController {
 
   @Autowired private DepartmentService departmentService;
