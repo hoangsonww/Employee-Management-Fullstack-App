@@ -27,6 +27,9 @@ public class EmployeeManagementApplicationTests {
 
     private Department department;
 
+    /**
+     * Set up the test environment.
+     */
     @BeforeEach
     void setUp() {
         department = new Department();
@@ -34,6 +37,9 @@ public class EmployeeManagementApplicationTests {
         department = departmentRepository.save(department);
     }
 
+    /**
+     * Test the find all employees method.
+     */
     @Test
     void shouldFindEmployeeById() {
         Employee employee = new Employee();
