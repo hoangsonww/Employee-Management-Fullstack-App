@@ -54,6 +54,12 @@ public class DepartmentController {
     return ResponseEntity.ok(department);
   }
 
+  /**
+   * Create a new department API.
+   *
+   * @param department Department object to be created
+   * @return Created department object
+   */
   @Operation(summary = "Create a new department", description = "Create a new department record")
   @ApiResponse(responseCode = "201", description = "Department created successfully")
   @PostMapping
