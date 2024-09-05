@@ -35,6 +35,12 @@ public class DepartmentController {
     return departmentService.getAllDepartments();
   }
 
+  /**
+   * Get department by ID API.
+   *
+   * @param id ID of the department to be retrieved
+   * @return Department with the specified ID
+   */
   @Operation(summary = "Get department by ID", description = "Retrieve a specific department by its ID")
   @ApiResponses(value = {
       @ApiResponse(responseCode = "200", description = "Department found"),
