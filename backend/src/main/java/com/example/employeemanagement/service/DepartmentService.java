@@ -7,14 +7,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * This class represents the service for departments.
- */
+/** This class represents the service for departments. */
 @Service
 public class DepartmentService {
 
-  @Autowired
-  private DepartmentRepository departmentRepository;
+  @Autowired private DepartmentRepository departmentRepository;
 
   /**
    * Get all departments.
