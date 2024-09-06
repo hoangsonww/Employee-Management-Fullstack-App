@@ -442,7 +442,7 @@ If you'd like to contribute to the project, please fork the repository and submi
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the **MIT License.** See the [LICENSE](LICENSE) file for details.
 
 ## Contact
 
