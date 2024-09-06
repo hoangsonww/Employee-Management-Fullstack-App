@@ -1,4 +1,4 @@
-# The MovieVerse - Code of Conduct
+# Code of Conduct
 
 ## Introduction
 
