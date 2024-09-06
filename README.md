@@ -87,7 +87,7 @@ The frontend of the Employee Management System provides a user-friendly interfac
   <img src="img/edit-employee.png" alt="Edit Employee Form" style="border-radius: 10px" width="100%"/>
 </p>
 
-**And more...**
+**And, of course, many more pages...**
 
 ## File Structure
 
