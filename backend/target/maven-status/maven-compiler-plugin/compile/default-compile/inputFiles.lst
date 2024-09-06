@@ -1,0 +1,12 @@
+/Users/davidnguyen/IdeaProjects/Employee-Management/backend/src/main/java/com/example/employeemanagement/EmployeeManagementApplication.java
+/Users/davidnguyen/IdeaProjects/Employee-Management/backend/src/main/java/com/example/employeemanagement/repository/DepartmentRepository.java
+/Users/davidnguyen/IdeaProjects/Employee-Management/backend/src/main/java/com/example/employeemanagement/controller/DepartmentController.java
+/Users/davidnguyen/IdeaProjects/Employee-Management/backend/src/main/java/com/example/employeemanagement/service/DepartmentService.java
+/Users/davidnguyen/IdeaProjects/Employee-Management/backend/src/main/java/com/example/employeemanagement/exception/ResourceNotFoundException.java
+/Users/davidnguyen/IdeaProjects/Employee-Management/backend/src/main/java/com/example/employeemanagement/config/DataInitializer.java
+/Users/davidnguyen/IdeaProjects/Employee-Management/backend/src/main/java/com/example/employeemanagement/service/EmployeeService.java
+/Users/davidnguyen/IdeaProjects/Employee-Management/backend/src/main/java/com/example/employeemanagement/controller/EmployeeController.java
+/Users/davidnguyen/IdeaProjects/Employee-Management/backend/src/main/java/com/example/employeemanagement/model/Department.java
+/Users/davidnguyen/IdeaProjects/Employee-Management/backend/src/main/java/com/example/employeemanagement/model/Employee.java
+/Users/davidnguyen/IdeaProjects/Employee-Management/backend/src/main/java/com/example/employeemanagement/repository/EmployeeRepository.java
+/Users/davidnguyen/IdeaProjects/Employee-Management/backend/src/main/java/com/example/employeemanagement/config/CorsConfig.java
