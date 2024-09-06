@@ -1,4 +1,4 @@
-# The MovieVerse - Pull Request
+# Pull Request Template
 
 ## Overview
 Briefly describe the purpose of this pull request. What features or bug fixes are included?
