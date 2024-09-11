@@ -180,7 +180,7 @@ Ensure that you have Java 11 installed on your local machine. If not, follow the
     brew install openjdk@11
     export JAVA_HOME=/usr/local/opt/openjdk@11
     ```
-  
+
 - For Windows: Download OpenJDK 11 from [https://jdk.java.net/archive/](https://jdk.java.net/archive/) and follow the installation instructions.
 
 - Also, ensure that MongoDB and MySQL are installed and running on your local machine.
@@ -189,6 +189,7 @@ Ensure that you have Java 11 installed on your local machine. If not, follow the
 
 ```bash
 git clone https://github.com/hoangsonww/Employee-Management-Fullstack-App.git
+cd Employee-Management-Fullstack-App  # Fix the paths if necessary
 cd backend
 ```
 
@@ -262,7 +263,7 @@ The backend will be available at [http://localhost:8080](http://localhost:8080).
   ```bash
   curl -X GET http://localhost:8080/api/departments/1
   ```
-  
+
 - **Feel free to add more API endpoints as needed...**
 
 ### 7. API Documentation
@@ -290,10 +291,10 @@ This application also uses Swagger to provide an interactive API documentation i
    [http://localhost:8080/v3/api-docs](http://localhost:8080/v3/api-docs)
 
 4. **Explore the API Endpoints**:
-  - Use the sidebar or the search bar to navigate through the available API endpoints.
-  - Click on an endpoint to view its details, including the request method (GET, POST, PUT, DELETE), parameters, request body, and possible responses.
-  - You can also test the endpoints directly by clicking the **"Try it out"** button, providing the necessary input, and executing the request.
-  - If you have everything set up correctly, you should see the following Swagger UI interface:
+- Use the sidebar or the search bar to navigate through the available API endpoints.
+- Click on an endpoint to view its details, including the request method (GET, POST, PUT, DELETE), parameters, request body, and possible responses.
+- You can also test the endpoints directly by clicking the **"Try it out"** button, providing the necessary input, and executing the request.
+- If you have everything set up correctly, you should see the following Swagger UI interface:
 
 <p align="center" style="cursor: pointer">
   <img src="img/apis.png" alt="Swagger UI" style="border-radius: 10px" width="100%"/>
@@ -450,6 +451,8 @@ For any questions or issues, please contact [hoangson091104@gmail.com](mailto:ho
 
 ---
 
-Thank you for checking out the **Employee Management Full-Stack Application!** Feel free to use this project for your own learning or development purposes. 
+Thank you for checking out the **Employee Management Full-Stack Application!** Feel free to use this project for your own learning or development purposes.
 
 Created with ❤️ by [Son Nguyen](https://github.com/hoangsonww) in 2024.
+
+**[⬆ Back to Top](#employee-management-full-stack-application)**
