@@ -63,25 +63,25 @@ The Employee Management System is a dynamic full-stack application that seamless
 
 The frontend of the Employee Management System provides a user-friendly interface for managing employees and departments. It includes features for viewing, adding, editing, and deleting employees and departments. The app also includes visualizations for employee metrics such as growth over time and distribution by age range.
 
-**Dashboard Page:**
+### **Dashboard Page:**
 
 <p align="center" style="cursor: pointer">
   <img src="img/dashboard.png" alt="Dashboard Page" style="border-radius: 10px" width="100%"/>
 </p>
 
-**Employee List Page:**
+### **Employee List Page:**
 
 <p align="center" style="cursor: pointer">
   <img src="img/employees-page.png" alt="Employee List Page" style="border-radius: 10px" width="100%"/>
 </p>
 
-**Department List Page:**
+### **Department List Page:**
 
 <p align="center" style="cursor: pointer">
   <img src="img/departments-page.png" alt="Department List Page" style="border-radius: 10px" width="100%"/>
 </p>
 
-**Edit Employee Form:**
+### **Edit Employee Form:**
 
 <p align="center" style="cursor: pointer">
   <img src="img/edit-employee.png" alt="Edit Employee Form" style="border-radius: 10px" width="100%"/>
