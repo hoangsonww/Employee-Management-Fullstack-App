@@ -64,6 +64,8 @@ The Employee Management System is a dynamic full-stack application that seamless
 
 The frontend of the Employee Management System provides a user-friendly interface for managing employees and departments. It includes features for viewing, adding, editing, and deleting employees and departments. The app also includes visualizations for employee metrics such as growth over time and distribution by age range.
 
+The frontend is also live at [https://employee-management-fullstack-app.vercel.app](https://employee-management-fullstack-app.vercel.app) for you to explore and interact with the application. Note that the backend is not hosted, so the API calls will not work and the data will not be present.
+
 **Landing Page:**
 
 <p align="center" style="cursor: pointer">
