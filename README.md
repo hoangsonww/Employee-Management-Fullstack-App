@@ -5,10 +5,6 @@
 - [Overview](#overview)
 - [Key Technologies](#key-technologies)
 - [User Interface](#user-interface)
-  - [Dashboard Page](#dashboard-page)
-  - [Employee List Page](#employee-list-page)
-  - [Department List Page](#department-list-page)
-  - [Edit Employee Form](#edit-employee-form)
 - [File Structure](#file-structure)
 - [Backend Setup](#backend-setup)
   - [Prerequisites](#1-prerequisites)
@@ -51,7 +47,7 @@ The Employee Management System is a dynamic full-stack application that seamless
 - **Java Spring Boot (Backend)**: A powerful, established Java framework for building production-ready applications with Java, offering robust backend support and data management.
   - **Spring Data JPA**: A part of the Spring Data project that makes it easy to implement JPA-based repositories.
   - **Spring Boot Actuator**: A set of production-ready features that help monitor and manage the application.
-  - **Spring Boot DevTools**: Tools that improve the development experience with automatic restarts and live reload.
+  - **Spring Hibernate**: An object-relational mapping (ORM) library for Java that provides a framework for mapping an object-oriented domain model to a relational database.
   - **Spring Boot Starter Web**: A starter for building web applications, including RESTful, application, and WebSocket services.
   - **Spring Boot Starter Data JPA**: A starter for using Spring Data JPA with Hibernate.
   - **RESTful APIs**: Representational state transfer (REST) APIs for communication between the frontend and backend.
@@ -67,31 +63,47 @@ The Employee Management System is a dynamic full-stack application that seamless
 
 The frontend of the Employee Management System provides a user-friendly interface for managing employees and departments. It includes features for viewing, adding, editing, and deleting employees and departments. The app also includes visualizations for employee metrics such as growth over time and distribution by age range.
 
-### **Dashboard Page:**
+**Landing Page:**
+
+<p align="center" style="cursor: pointer">
+  <img src="img/landing.png" alt="Landing Page" style="border-radius: 10px" width="100%"/>
+</p>
+
+**Dashboard Page:**
 
 <p align="center" style="cursor: pointer">
   <img src="img/dashboard.png" alt="Dashboard Page" style="border-radius: 10px" width="100%"/>
 </p>
 
-### **Employee List Page:**
+**Employee List Page:**
 
 <p align="center" style="cursor: pointer">
   <img src="img/employees-page.png" alt="Employee List Page" style="border-radius: 10px" width="100%"/>
 </p>
 
-### **Department List Page:**
+**Department List Page:**
 
 <p align="center" style="cursor: pointer">
   <img src="img/departments-page.png" alt="Department List Page" style="border-radius: 10px" width="100%"/>
 </p>
 
-### **Edit Employee Form:**
+**Edit Employee Form:**
 
 <p align="center" style="cursor: pointer">
   <img src="img/edit-employee.png" alt="Edit Employee Form" style="border-radius: 10px" width="100%"/>
 </p>
 
-**And, of course, many more pages...**
+**Footer:**
+
+<p align="center" style="cursor: pointer">
+  <img src="img/footer.png" alt="Footer" style="border-radius: 10px" width="100%"/>
+</p>
+
+**Responsive Design Example - Dashboard Page:**
+
+<p align="center" style="cursor: pointer">
+  <img src="img/dashboard-responsive.png" alt="Responsive Design" style="border-radius: 10px" width="60%"/>
+</p>
 
 ## File Structure
 

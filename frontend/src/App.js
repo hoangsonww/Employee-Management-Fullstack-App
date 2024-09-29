@@ -7,6 +7,8 @@ import EmployeeForm from './components/EmployeeForm';
 import DepartmentList from './components/DepartmentList';
 import DepartmentForm from './components/DepartmentForm';
 import Navbar from './components/Navbar';
+import LandingPage from './components/LandingPage';
+import Footer from './components/Footer';
 
 const App = () => {
   return (
@@ -14,7 +16,8 @@ const App = () => {
       <Navbar />
       <Container maxWidth="lg" style={{ marginTop: '2rem' }}>
         <Routes>
-          <Route path="/" element={<Dashboard />} />
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/employees" element={<EmployeeList />} />
           <Route path="/add-employee" element={<EmployeeForm />} />
           <Route path="/edit-employee/:id" element={<EmployeeForm />} />
@@ -23,6 +26,7 @@ const App = () => {
           <Route path="/edit-department/:id" element={<DepartmentForm />} />
         </Routes>
       </Container>
+      <Footer />
     </Router>
   );
 };

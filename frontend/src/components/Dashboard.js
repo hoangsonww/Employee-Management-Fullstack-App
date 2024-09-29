@@ -2,7 +2,18 @@ import React, { useEffect, useState } from 'react';
 import { Bar, Pie, Line } from 'react-chartjs-2';
 import { getAllEmployees } from '../services/employeeService';
 import { getAllDepartments } from '../services/departmentService';
-import { Chart, CategoryScale, LinearScale, BarElement, LineElement, PointElement, Title, Tooltip, Legend, ArcElement } from 'chart.js';
+import {
+  Chart,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  LineElement,
+  PointElement,
+  Title,
+  Tooltip,
+  Legend,
+  ArcElement,
+} from 'chart.js';
 import { Card, CardContent, Grid, Typography, Box } from '@mui/material';
 
 Chart.register(CategoryScale, LinearScale, BarElement, LineElement, PointElement, Title, Tooltip, Legend, ArcElement);
@@ -33,7 +44,7 @@ const Dashboard = () => {
         '60+': 0,
       };
 
-      employees.forEach(emp => {
+      employees.forEach((emp) => {
         if (emp.age >= 20 && emp.age <= 29) ageRanges['20-29'] += 1;
         else if (emp.age >= 30 && emp.age <= 39) ageRanges['30-39'] += 1;
         else if (emp.age >= 40 && emp.age <= 49) ageRanges['40-49'] += 1;
@@ -94,32 +105,32 @@ const Dashboard = () => {
 
   const employeeGrowthData = employeeGrowth.length
     ? {
-        labels: employeeGrowth.map(d => d.month),
-        datasets: [
-          {
-            label: 'Employee Growth Over Time',
-            data: employeeGrowth.map(d => d.count),
-            backgroundColor: '#36A2EB',
-            borderColor: '#36A2EB',
-            borderWidth: 1,
-          },
-        ],
-      }
+      labels: employeeGrowth.map((d) => d.month),
+      datasets: [
+        {
+          label: 'Employee Growth Over Time',
+          data: employeeGrowth.map((d) => d.count),
+          backgroundColor: '#36A2EB',
+          borderColor: '#36A2EB',
+          borderWidth: 1,
+        },
+      ],
+    }
     : null;
 
   const lineChartData = employeeGrowth.length
     ? {
-        labels: employeeGrowth.map(d => d.month),
-        datasets: [
-          {
-            label: 'Employee Growth Trend',
-            data: employeeGrowth.map(d => d.count),
-            fill: false,
-            borderColor: '#FF6384',
-            tension: 0.1,
-          },
-        ],
-      }
+      labels: employeeGrowth.map((d) => d.month),
+      datasets: [
+        {
+          label: 'Employee Growth Trend',
+          data: employeeGrowth.map((d) => d.count),
+          fill: false,
+          borderColor: '#FF6384',
+          tension: 0.1,
+        },
+      ],
+    }
     : null;
 
   const pieChartData = {
@@ -140,74 +151,97 @@ const Dashboard = () => {
       <Typography variant="h4" component="h1" sx={{ marginBottom: '1rem', textAlign: 'center', fontWeight: 600 }}>
         Overview Dashboard
       </Typography>
-      <Grid container spacing={4}>
-        {/* Total Overview Chart */}
-        <Grid item xs={12} md={6}>
-          <Card sx={{ height: '100%' }}>
+      <Grid container spacing={3}>
+        {/* Metric Cards */}
+        <Grid item xs={12} sm={6} md={4}>
+          <Card sx={{ boxShadow: 3, borderRadius: 2, height: '100%', backgroundColor: '#fff' }}>
             <CardContent>
-              <Typography variant="h6" component="div">
-                Total Overview
+              <Typography variant="h6" textAlign="center">
+                Total Employees
               </Typography>
+              <Typography variant="h4" textAlign="center">
+                {employeeCount}
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+
+        <Grid item xs={12} sm={6} md={4}>
+          <Card sx={{ boxShadow: 3, borderRadius: 2, height: '100%', backgroundColor: '#fff' }}>
+            <CardContent>
+              <Typography variant="h6" textAlign="center">
+                Average Age
+              </Typography>
+              <Typography variant="h4" textAlign="center">
+                {averageAge}
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+
+        <Grid item xs={12} sm={6} md={4}>
+          <Card sx={{ boxShadow: 3, borderRadius: 2, height: '100%', backgroundColor: '#fff' }}>
+            <CardContent>
+              <Typography variant="h6" textAlign="center">
+                Departments Count
+              </Typography>
+              <Typography variant="h4" textAlign="center">
+                {departmentCount}
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+
+        {/* Chart Cards */}
+        <Grid item xs={12} sm={6} md={4}>
+          <Card sx={{ boxShadow: 3, borderRadius: 2, height: '100%', backgroundColor: '#fff' }}>
+            <CardContent>
+              <Typography variant="h6">Total Overview</Typography>
               <Bar data={totalOverviewData} options={{ scales: { y: { beginAtZero: true, suggestedMax: 30 } } }} />
             </CardContent>
           </Card>
         </Grid>
 
-        {/* Employee Count by Age Range Chart */}
-        <Grid item xs={12} md={6}>
-          <Card sx={{ height: '100%' }}>
+        <Grid item xs={12} sm={6} md={4}>
+          <Card sx={{ boxShadow: 3, borderRadius: 2, height: '100%', backgroundColor: '#fff' }}>
             <CardContent>
-              <Typography variant="h6" component="div">
-                Employee Count by Age Range
-              </Typography>
+              <Typography variant="h6">Employee Count by Age Range</Typography>
               <Bar data={ageRangeChartData} />
             </CardContent>
           </Card>
         </Grid>
 
-        {/* Employee Growth Over Time Chart */}
-        <Grid item xs={12} md={6}>
-          <Card sx={{ height: '100%' }}>
+        <Grid item xs={12} sm={6} md={4}>
+          <Card sx={{ boxShadow: 3, borderRadius: 2, height: '100%', backgroundColor: '#fff' }}>
             <CardContent>
-              <Typography variant="h6" component="div">
-                Employee Growth Over Time
-              </Typography>
+              <Typography variant="h6">Employee Growth Over Time</Typography>
               {employeeGrowthData ? <Bar data={employeeGrowthData} /> : <Typography>No data available</Typography>}
             </CardContent>
           </Card>
         </Grid>
 
-        {/* Average Age of Employees Chart */}
-        <Grid item xs={12} md={6}>
-          <Card sx={{ height: '100%' }}>
+        <Grid item xs={12} sm={6} md={4}>
+          <Card sx={{ boxShadow: 3, borderRadius: 2, height: '100%', backgroundColor: '#fff' }}>
             <CardContent>
-              <Typography variant="h6" component="div">
-                Average Age of Employees
-              </Typography>
+              <Typography variant="h6">Average Age of Employees</Typography>
               <Bar data={averageAgeChartData} options={{ scales: { y: { beginAtZero: true, suggestedMax: 100 } } }} />
             </CardContent>
           </Card>
         </Grid>
 
-        {/* Pie Chart for Age Range Distribution */}
-        <Grid item xs={12} md={6} mb={4}>
-          <Card sx={{ height: '100%' }}>
+        <Grid item xs={12} sm={6} md={4}>
+          <Card sx={{ boxShadow: 3, borderRadius: 2, height: '100%', backgroundColor: '#fff' }}>
             <CardContent>
-              <Typography variant="h6" component="div">
-                Age Range Distribution
-              </Typography>
+              <Typography variant="h6">Age Range Distribution</Typography>
               <Pie data={pieChartData} />
             </CardContent>
           </Card>
         </Grid>
 
-        {/* Line Chart for Employee Growth Trend */}
-        <Grid item xs={12} md={6} mb={4}>
-          <Card sx={{ height: '100%' }}>
+        <Grid item xs={12} sm={6} md={4}>
+          <Card sx={{ boxShadow: 3, borderRadius: 2, height: '100%', backgroundColor: '#fff' }}>
             <CardContent>
-              <Typography variant="h6" component="div">
-                Employee Growth Trend
-              </Typography>
+              <Typography variant="h6">Employee Growth Trend</Typography>
               {lineChartData ? <Line data={lineChartData} /> : <Typography>No data available</Typography>}
             </CardContent>
           </Card>
