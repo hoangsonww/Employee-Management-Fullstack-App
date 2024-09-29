@@ -42,12 +42,12 @@
     &quot;assignee&quot;: &quot;hoangsonww&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/hoangsonww/Employee-Management-Fullstack-App.git",
-    "accountId": "bba80ae4-d2ba-42fc-be1e-53456000f3fc"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/hoangsonww/Employee-Management-Fullstack-App.git&quot;,
+    &quot;accountId&quot;: &quot;bba80ae4-d2ba-42fc-be1e-53456000f3fc&quot;
   }
-}]]></component>
+}</component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
@@ -170,8 +170,6 @@
     </configuration>
     <list>
       <item itemvalue="Jest.renders dashboard with metrics" />
-      <item itemvalue="JUnit.EmployeeManagementApplicationTests" />
-      <item itemvalue="Spring Boot.EmployeeManagementApplication" />
     </list>
     <recent_temporary>
       <list>

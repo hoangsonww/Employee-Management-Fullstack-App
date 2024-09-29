@@ -105,6 +105,10 @@ The frontend of the Employee Management System provides a user-friendly interfac
   <img src="img/dashboard-responsive.png" alt="Responsive Design" style="border-radius: 10px" width="60%"/>
 </p>
 
+<p align="center">
+ And many more features & pages to explore! Feel free to navigate through the application and test the various functionalities.
+</p>
+
 ## File Structure
 
 ```
@@ -470,5 +474,7 @@ For any questions or issues, please contact [hoangson091104@gmail.com](mailto:ho
 Thank you for checking out the **Employee Management Full-Stack Application!** Feel free to use this project for your own learning or development purposes.
 
 Created with ❤️ by [Son Nguyen](https://github.com/hoangsonww) in 2024.
+
+---
 
 **[⬆ Back to Top](#employee-management-full-stack-application)**
