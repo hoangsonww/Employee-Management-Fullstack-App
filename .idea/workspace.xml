@@ -4,22 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="392f4aef-37aa-47a3-a82b-22f4f510a7b8" name="Changes" comment="Fix: Addressed security vulnerabilities">
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Footer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/LandingPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/dashboard-responsive.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/footer.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/landing.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Navbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/dashboard.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/dashboard.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/departments-page.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/departments-page.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/employees-page.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/employees-page.png" afterDir="false" />
-    </list>
+    <list default="true" id="392f4aef-37aa-47a3-a82b-22f4f510a7b8" name="Changes" comment="Fix: Addressed security vulnerabilities" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,6 +20,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -225,23 +211,7 @@
       <workItem from="1726077101570" duration="15000" />
       <workItem from="1726171571297" duration="7000" />
       <workItem from="1726199871171" duration="20000" />
-      <workItem from="1727622104567" duration="2221000" />
-    </task>
-    <task id="LOCAL-00242" summary="Fix: Addressed security vulnerabilities">
-      <option name="closed" value="true" />
-      <created>1725573539150</created>
-      <option name="number" value="00242" />
-      <option name="presentableId" value="LOCAL-00242" />
-      <option name="project" value="LOCAL" />
-      <updated>1725573539150</updated>
-    </task>
-    <task id="LOCAL-00243" summary="Fix: Addressed security vulnerabilities">
-      <option name="closed" value="true" />
-      <created>1725573559435</created>
-      <option name="number" value="00243" />
-      <option name="presentableId" value="LOCAL-00243" />
-      <option name="project" value="LOCAL" />
-      <updated>1725573559435</updated>
+      <workItem from="1727622104567" duration="2427000" />
     </task>
     <task id="LOCAL-00244" summary="Fix: Addressed security vulnerabilities">
       <option name="closed" value="true" />
@@ -619,7 +589,23 @@
       <option name="project" value="LOCAL" />
       <updated>1726062735818</updated>
     </task>
-    <option name="localTasksCounter" value="291" />
+    <task id="LOCAL-00291" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1727624337752</created>
+      <option name="number" value="00291" />
+      <option name="presentableId" value="LOCAL-00291" />
+      <option name="project" value="LOCAL" />
+      <updated>1727624337752</updated>
+    </task>
+    <task id="LOCAL-00292" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1727624528719</created>
+      <option name="number" value="00292" />
+      <option name="presentableId" value="LOCAL-00292" />
+      <option name="project" value="LOCAL" />
+      <updated>1727624528719</updated>
+    </task>
+    <option name="localTasksCounter" value="293" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
