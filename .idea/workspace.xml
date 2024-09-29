@@ -28,12 +28,12 @@
     &quot;assignee&quot;: &quot;hoangsonww&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/hoangsonww/Employee-Management-Fullstack-App.git&quot;,
-    &quot;accountId&quot;: &quot;bba80ae4-d2ba-42fc-be1e-53456000f3fc&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/hoangsonww/Employee-Management-Fullstack-App.git",
+    "accountId": "dc534c08-f559-4d45-8d7a-cf228ae94266"
   }
-}</component>
+}]]></component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
@@ -212,14 +212,7 @@
       <workItem from="1726171571297" duration="7000" />
       <workItem from="1726199871171" duration="20000" />
       <workItem from="1727622104567" duration="2427000" />
-    </task>
-    <task id="LOCAL-00244" summary="Fix: Addressed security vulnerabilities">
-      <option name="closed" value="true" />
-      <created>1725573568868</created>
-      <option name="number" value="00244" />
-      <option name="presentableId" value="LOCAL-00244" />
-      <option name="project" value="LOCAL" />
-      <updated>1725573568869</updated>
+      <workItem from="1727624660943" duration="167000" />
     </task>
     <task id="LOCAL-00245" summary="Fix: Addressed security vulnerabilities">
       <option name="closed" value="true" />
@@ -605,7 +598,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727624528719</updated>
     </task>
-    <option name="localTasksCounter" value="293" />
+    <task id="LOCAL-00293" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1727624717568</created>
+      <option name="number" value="00293" />
+      <option name="presentableId" value="LOCAL-00293" />
+      <option name="project" value="LOCAL" />
+      <updated>1727624717568</updated>
+    </task>
+    <option name="localTasksCounter" value="294" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
