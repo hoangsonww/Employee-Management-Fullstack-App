@@ -17,6 +17,8 @@ public class CorsConfig {
    */
   @Bean
   public WebMvcConfigurer corsConfigurer() {
+
+    // Add CORS mappings
     return new WebMvcConfigurer() {
 
       /**
