@@ -28,6 +28,8 @@
   - [Test the Application (Optional)](#6-test-the-application-optional)
 - [Detailed Component Instructions](#detailed-component-instructions)
 - [Containerization](#containerization)
+- [Kubernetes](#kubernetes)
+- [Jenkins](#jenkins)
 - [Troubleshooting](#troubleshooting)
 - [Contributing](#contributing)
 - [License](#license)
@@ -55,7 +57,10 @@ The Employee Management System is a dynamic full-stack application that seamless
   - **RESTful APIs**: Representational state transfer (REST) APIs for communication between the frontend and backend.
   - **Java 11**: The latest LTS version of Java, providing long-term support and stability.
   - **JUnit 5**: A popular testing framework for Java that provides annotations for writing tests.
+  - **Swagger**: A tool for documenting and testing RESTful APIs.
 - **Docker**: A containerization platform for packaging applications and their dependencies.
+- **Kubernetes**: An open-source container orchestration platform for automating deployment, scaling, and management of containerized applications.
+- **Jenkins**: An open-source automation server that helps automate the parts of software development related to building, testing, and delivering, facilitating continuous integration and continuous delivery (CI/CD).
 - **MySQL**: A reliable relational database for structured data storage.
 - **MongoDB**: A flexible NoSQL database for non-relational data.
 - **Style Guides**: This project follows the following popular style guides to ensure clean and consistent code.
@@ -142,6 +147,13 @@ employee-management-app
 ├── .mvn
 │   └── wrapper
 │       └── maven-wrapper.properties
+│
+├── kubernetes
+│   ├── configmap.yaml
+│   ├── backend-deployment.yaml
+│   ├── backend-service.yaml
+│   ├── frontend-deployment.yaml
+│   └── frontend-service.yaml
 │
 ├── backend
 │   ├── src
@@ -451,6 +463,22 @@ docker compose up --build
 ```
 
 This command will build the Docker images for the frontend and backend, create containers, and start the application. Feel free to view them in Docker Desktop.
+
+## Kubernetes
+
+The project also includes Kubernetes configuration files in the `kubernetes` directory for deploying the application to a Kubernetes cluster. You can deploy the application to a Kubernetes cluster using the following command:
+
+```bash
+kubectl apply -f kubernetes
+```
+
+This command will create the necessary deployments, services, and config maps for the frontend and backend. You can access the application using the NodePort or LoadBalancer service created.
+
+## Jenkins
+
+The project also includes a `Jenkinsfile` for automating the build and deployment process using Jenkins. You can create a Jenkins pipeline job and use the `Jenkinsfile` to build and deploy the application to a Kubernetes cluster.
+
+Feel free to customize the Jenkins pipeline to suit your specific requirements and deployment process.
 
 ## Troubleshooting
 
