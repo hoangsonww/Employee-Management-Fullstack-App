@@ -61,42 +61,42 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Jest.renders dashboard with metrics.executor&quot;: &quot;Run&quot;,
-    &quot;Notification.DisplayName-DoNotAsk-JDK Arch Check&quot;: &quot;JDK and system architectures are different&quot;,
-    &quot;Notification.DoNotAsk-JDK Arch Check&quot;: &quot;true&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Spring Boot.EmployeeManagementApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/davidnguyen/IdeaProjects/Employee-Management/frontend&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs.jest.jest_package&quot;: &quot;/Users/davidnguyen/IdeaProjects/Employee-Management/frontend/node_modules/react-scripts&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.format.executor&quot;: &quot;Run&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;swagger&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Applications/WebStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Jest.renders dashboard with metrics.executor": "Run",
+    "Notification.DisplayName-DoNotAsk-JDK Arch Check": "JDK and system architectures are different",
+    "Notification.DoNotAsk-JDK Arch Check": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.EmployeeManagementApplication.executor": "Run",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/davidnguyen/IdeaProjects/Employee-Management",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs.jest.jest_package": "/Users/davidnguyen/IdeaProjects/Employee-Management/frontend/node_modules/react-scripts",
+    "nodejs_package_manager_path": "npm",
+    "npm.format.executor": "Run",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "swagger",
+    "ts.external.directory.path": "/Applications/WebStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -108,6 +108,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/kubernetes" />
       <recent name="$PROJECT_DIR$/frontend" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -220,47 +222,7 @@
       <workItem from="1727625025841" duration="14000" />
       <workItem from="1727626258377" duration="113000" />
       <workItem from="1727907996416" duration="5000" />
-      <workItem from="1729010510811" duration="1069000" />
-    </task>
-    <task id="LOCAL-00256" summary="Fix: Addressed security vulnerabilities">
-      <option name="closed" value="true" />
-      <created>1725574118534</created>
-      <option name="number" value="00256" />
-      <option name="presentableId" value="LOCAL-00256" />
-      <option name="project" value="LOCAL" />
-      <updated>1725574118534</updated>
-    </task>
-    <task id="LOCAL-00257" summary="Fix: Addressed security vulnerabilities">
-      <option name="closed" value="true" />
-      <created>1725632287264</created>
-      <option name="number" value="00257" />
-      <option name="presentableId" value="LOCAL-00257" />
-      <option name="project" value="LOCAL" />
-      <updated>1725632287264</updated>
-    </task>
-    <task id="LOCAL-00258" summary="Fix: Addressed security vulnerabilities">
-      <option name="closed" value="true" />
-      <created>1725632311682</created>
-      <option name="number" value="00258" />
-      <option name="presentableId" value="LOCAL-00258" />
-      <option name="project" value="LOCAL" />
-      <updated>1725632311683</updated>
-    </task>
-    <task id="LOCAL-00259" summary="Fix: Addressed security vulnerabilities">
-      <option name="closed" value="true" />
-      <created>1725632323499</created>
-      <option name="number" value="00259" />
-      <option name="presentableId" value="LOCAL-00259" />
-      <option name="project" value="LOCAL" />
-      <updated>1725632323499</updated>
-    </task>
-    <task id="LOCAL-00260" summary="Fix: Addressed security vulnerabilities">
-      <option name="closed" value="true" />
-      <created>1725632366124</created>
-      <option name="number" value="00260" />
-      <option name="presentableId" value="LOCAL-00260" />
-      <option name="project" value="LOCAL" />
-      <updated>1725632366124</updated>
+      <workItem from="1729010510811" duration="1423000" />
     </task>
     <task id="LOCAL-00261" summary="Fix: Addressed security vulnerabilities">
       <option name="closed" value="true" />
@@ -614,11 +576,62 @@
       <option name="project" value="LOCAL" />
       <updated>1729011573970</updated>
     </task>
-    <option name="localTasksCounter" value="305" />
+    <task id="LOCAL-00305" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1729011617690</created>
+      <option name="number" value="00305" />
+      <option name="presentableId" value="LOCAL-00305" />
+      <option name="project" value="LOCAL" />
+      <updated>1729011617690</updated>
+    </task>
+    <task id="LOCAL-00306" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1729011660416</created>
+      <option name="number" value="00306" />
+      <option name="presentableId" value="LOCAL-00306" />
+      <option name="project" value="LOCAL" />
+      <updated>1729011660416</updated>
+    </task>
+    <task id="LOCAL-00307" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1729011674357</created>
+      <option name="number" value="00307" />
+      <option name="presentableId" value="LOCAL-00307" />
+      <option name="project" value="LOCAL" />
+      <updated>1729011674357</updated>
+    </task>
+    <task id="LOCAL-00308" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1729011685891</created>
+      <option name="number" value="00308" />
+      <option name="presentableId" value="LOCAL-00308" />
+      <option name="project" value="LOCAL" />
+      <updated>1729011685891</updated>
+    </task>
+    <task id="LOCAL-00309" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1729011928081</created>
+      <option name="number" value="00309" />
+      <option name="presentableId" value="LOCAL-00309" />
+      <option name="project" value="LOCAL" />
+      <updated>1729011928081</updated>
+    </task>
+    <option name="localTasksCounter" value="310" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Fix: Added API documentations" />
