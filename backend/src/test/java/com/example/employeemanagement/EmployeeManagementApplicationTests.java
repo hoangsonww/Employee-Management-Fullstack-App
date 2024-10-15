@@ -4,12 +4,14 @@ import com.example.employeemanagement.model.Department;
 import com.example.employeemanagement.model.Employee;
 import com.example.employeemanagement.repository.DepartmentRepository;
 import com.example.employeemanagement.repository.EmployeeRepository;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.setRemoveAssertJRelatedElementsFromStackTrace;
 
@@ -18,10 +20,13 @@ import static org.assertj.core.api.Assertions.setRemoveAssertJRelatedElementsFro
 @Transactional
 public class EmployeeManagementApplicationTests {
 
+  /** The employee repository. */
   @Autowired private EmployeeRepository employeeRepository;
 
+  /** The department repository. */
   @Autowired private DepartmentRepository departmentRepository;
 
+  /** The department. */
   private Department department;
 
   /** Set up the test environment. */
@@ -171,9 +176,33 @@ public class EmployeeManagementApplicationTests {
     employee2.setDepartment(department2);
     employeeRepository.save(employee2);
 
-    assertThat(employeeRepository.findById(employee1.getId()).get().getDepartment().getId()).isEqualTo(department1.getId());
-    assertThat(employeeRepository.findById(employee2.getId()).get().getDepartment().getId()).isEqualTo(department2.getId());
+    assertThat(employeeRepository.findById(employee1.getId()).get().getDepartment().getId())
+        .isEqualTo(department1.getId());
+    assertThat(employeeRepository.findById(employee2.getId()).get().getDepartment().getId())
+        .isEqualTo(department2.getId());
   }
 
+  /** Test the find employees by department name method. */
+  @Test
+  void shouldFindEmployeesByDepartmentName() {
+    Department department1 = new Department();
+    department1.setName("HR");
+    department1 = departmentRepository.save(department1);
 
+    Department department2 = new Department();
+    department2.setName("Finance");
+    department2 = departmentRepository.save(department2);
+
+    Employee employee1 = new Employee();
+    employee1.setFirstName("John");
+    employee1.setLastName("Doe");
+    employee1.setEmail("jane.doe@example.com");
+    employee1.setDepartment(department1);
+    employeeRepository.save(employee1);
+
+    assertThat(employeeRepository.findById(employee1.getId()).get().getDepartment().getName())
+        .isEqualTo("HR");
+    assertThat(employeeRepository.findById(employee1.getId()).get().getDepartment().getName())
+        .isNotEqualTo("Finance");
+  }
 }
