@@ -54,6 +54,7 @@ The Employee Management System is a dynamic full-stack application that seamless
   - **Spring Boot Starter Data JPA**: A starter for using Spring Data JPA with Hibernate.
   - **RESTful APIs**: Representational state transfer (REST) APIs for communication between the frontend and backend.
   - **Java 11**: The latest LTS version of Java, providing long-term support and stability.
+  - **JUnit 5**: A popular testing framework for Java that provides annotations for writing tests.
 - **Docker**: A containerization platform for packaging applications and their dependencies.
 - **MySQL**: A reliable relational database for structured data storage.
 - **MongoDB**: A flexible NoSQL database for non-relational data.
