@@ -20,6 +20,7 @@ import java.util.List;
 @Tag(name = "Department APIs", description = "API Operations related to managing departments")
 public class DepartmentController {
 
+  /** The department service. */
   @Autowired private DepartmentService departmentService;
 
   /**

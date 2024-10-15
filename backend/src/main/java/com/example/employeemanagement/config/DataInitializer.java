@@ -19,9 +19,15 @@ import java.util.Random;
 @Configuration
 public class DataInitializer implements CommandLineRunner {
 
+  /**
+   * The department repository.
+   */
   @Autowired
   private DepartmentRepository departmentRepository;
 
+  /**
+   * The employee repository.
+   */
   @Autowired
   private EmployeeRepository employeeRepository;
 

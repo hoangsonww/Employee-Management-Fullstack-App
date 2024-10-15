@@ -158,6 +158,8 @@
     </configuration>
     <list>
       <item itemvalue="Jest.renders dashboard with metrics" />
+      <item itemvalue="JUnit.EmployeeManagementApplicationTests" />
+      <item itemvalue="Spring Boot.EmployeeManagementApplication" />
     </list>
     <recent_temporary>
       <list>
@@ -217,14 +219,8 @@
       <workItem from="1727624660943" duration="167000" />
       <workItem from="1727624830710" duration="23000" />
       <workItem from="1727625025841" duration="14000" />
-    </task>
-    <task id="LOCAL-00246" summary="Fix: Addressed security vulnerabilities">
-      <option name="closed" value="true" />
-      <created>1725573589641</created>
-      <option name="number" value="00246" />
-      <option name="presentableId" value="LOCAL-00246" />
-      <option name="project" value="LOCAL" />
-      <updated>1725573589641</updated>
+      <workItem from="1727626258377" duration="113000" />
+      <workItem from="1727907996416" duration="5000" />
     </task>
     <task id="LOCAL-00247" summary="Fix: Addressed security vulnerabilities">
       <option name="closed" value="true" />
@@ -610,7 +606,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727624847303</updated>
     </task>
-    <option name="localTasksCounter" value="295" />
+    <task id="LOCAL-00295" summary="Fix: Addressed security vulnerabilities">
+      <option name="closed" value="true" />
+      <created>1727626364984</created>
+      <option name="number" value="00295" />
+      <option name="presentableId" value="LOCAL-00295" />
+      <option name="project" value="LOCAL" />
+      <updated>1727626364986</updated>
+    </task>
+    <option name="localTasksCounter" value="296" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
