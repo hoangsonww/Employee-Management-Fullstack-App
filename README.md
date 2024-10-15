@@ -347,6 +347,18 @@ This application also uses Swagger to provide an interactive API documentation i
 - **Quick Testing**: Test the API endpoints directly from the browser without needing a separate tool.
 - **Clear Communication**: Provides a standardized way of documenting your API, making it easier for others to understand and consume.
 
+### 8. Backend JUnit Testing
+
+To run the unit and integration tests, use:
+
+```bash
+mvn test
+```
+
+This will run the tests and provide you with the results. Ensure that all tests pass before making any changes to the application.
+
+Feel free to add more tests as needed to ensure the reliability and correctness of your application.
+
 ## Frontend Setup
 
 ### 1. Clone the Repository
