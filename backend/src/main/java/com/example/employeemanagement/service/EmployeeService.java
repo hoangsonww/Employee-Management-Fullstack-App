@@ -12,6 +12,7 @@ import java.util.Optional;
 @Service
 public class EmployeeService {
 
+  /** The employee repository. */
   @Autowired private EmployeeRepository employeeRepository;
 
   /**

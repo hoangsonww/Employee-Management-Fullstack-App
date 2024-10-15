@@ -20,6 +20,7 @@ import java.util.List;
 @Tag(name = "Employees APIs", description = "API Operations related to managing employees")
 public class EmployeeController {
 
+  /** The employee service. */
   @Autowired private EmployeeService employeeService;
 
   /**
