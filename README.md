@@ -18,6 +18,7 @@
     - [Overview](#overview-1)
     - [How to Access the API Documentation](#how-to-access-the-api-documentation)
     - [Benefits of Using Swagger UI](#benefits-of-using-swagger-ui)
+  - [Backend JUnit Testing](#8-backend-junit-testing)
 - [Frontend Setup](#frontend-setup)
   - [Clone the Repository](#1-clone-the-repository)
   - [Install Dependencies](#2-install-dependencies)
