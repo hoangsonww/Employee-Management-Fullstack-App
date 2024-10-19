@@ -1,7 +1,7 @@
 -------------------------------------------------------------------------------
-Test set: com.example.employeemanagement.EmployeeManagementApplicationTests
+Test set: com.example.employeemanagement.BackendAPITests
 -------------------------------------------------------------------------------
-Tests run: 10, Failures: 0, Errors: 10, Skipped: 0, Time elapsed: 0.887 s <<< FAILURE! - in com.example.employeemanagement.EmployeeManagementApplicationTests
+Tests run: 10, Failures: 0, Errors: 10, Skipped: 0, Time elapsed: 0.928 s <<< FAILURE! - in com.example.employeemanagement.BackendAPITests
 shouldSaveDepartment  Time elapsed: 0 s  <<< ERROR!
 java.lang.IllegalStateException: Failed to load ApplicationContext
 Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'dataSourceScriptDatabaseInitializer' defined in class path resource [org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class]: Unsatisfied dependency expressed through method 'dataSourceScriptDatabaseInitializer' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource': Invocation of init method failed; nested exception is java.lang.IllegalStateException: Failed to replace DataSource with an embedded database for tests. If you want an embedded database please put a supported one on the classpath or tune the replace attribute of @AutoConfigureTestDatabase.

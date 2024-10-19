@@ -133,8 +133,8 @@ const LandingPage = () => {
             Why Choose Our System?
           </Typography>
           <Typography variant="body1" sx={{ maxWidth: '800px', margin: '0 auto' }}>
-            Our Employee Management System is designed to simplify HR processes, streamline department management, and
-            provide valuable insights into your workforce. Start using it today and experience the difference!
+            Our Employee Management System is designed to simplify HR processes, streamline department management, and provide valuable insights into your
+            workforce. Start using it today and experience the difference!
           </Typography>
         </Box>
 
@@ -143,8 +143,7 @@ const LandingPage = () => {
             Learn More
           </Typography>
           <Typography variant="body1" sx={{ maxWidth: '800px', margin: '0 auto' }}>
-            Visit our documentation to learn more about the features, functionalities, and how to get started with our
-            Employee Management System.
+            Visit our documentation to learn more about the features, functionalities, and how to get started with our Employee Management System.
           </Typography>
           <Button
             href="https://github.com/hoangsonww/Employee-Management-Fullstack-App"

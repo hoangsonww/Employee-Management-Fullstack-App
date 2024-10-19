@@ -21,8 +21,8 @@ const Footer = () => {
               About Us
             </Typography>
             <Typography variant="body2">
-              We provide a comprehensive Employee Management System that helps you manage your employees and departments
-              with ease. Our mission is to make HR processes seamless and efficient.
+              We provide a comprehensive Employee Management System that helps you manage your employees and departments with ease. Our mission is to make HR
+              processes seamless and efficient.
             </Typography>
           </Grid>
 
@@ -56,10 +56,16 @@ const Footer = () => {
               Contact Us
             </Typography>
             <Typography variant="body2">
-              Project Maintainer: <Link href="https://github.com/hoangsonww" color="inherit">Son Nguyen</Link>
+              Project Maintainer:{' '}
+              <Link href="https://github.com/hoangsonww" color="inherit">
+                Son Nguyen
+              </Link>
             </Typography>
             <Typography variant="body2">
-              Email: <Link href="mailto:hoangson091104@gmail.com" color="inherit" underline="none">hoangson091104@gmail.com</Link>
+              Email:{' '}
+              <Link href="mailto:hoangson091104@gmail.com" color="inherit" underline="none">
+                hoangson091104@gmail.com
+              </Link>
             </Typography>
             <Typography variant="body2">Phone: +1 (123) 456-7890</Typography>
             <Typography variant="body2" sx={{ marginTop: '0.5rem' }}>
@@ -77,9 +83,7 @@ const Footer = () => {
             paddingTop: '1rem',
           }}
         >
-          <Typography variant="body2">
-            © {new Date().getFullYear()} Employee Management System. All rights reserved.
-          </Typography>
+          <Typography variant="body2">© {new Date().getFullYear()} Employee Management System. All rights reserved.</Typography>
         </Box>
       </Container>
     </Box>

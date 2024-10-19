@@ -2,18 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Bar, Pie, Line } from 'react-chartjs-2';
 import { getAllEmployees } from '../services/employeeService';
 import { getAllDepartments } from '../services/departmentService';
-import {
-  Chart,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  LineElement,
-  PointElement,
-  Title,
-  Tooltip,
-  Legend,
-  ArcElement,
-} from 'chart.js';
+import { Chart, CategoryScale, LinearScale, BarElement, LineElement, PointElement, Title, Tooltip, Legend, ArcElement } from 'chart.js';
 import { Card, CardContent, Grid, Typography, Box } from '@mui/material';
 
 Chart.register(CategoryScale, LinearScale, BarElement, LineElement, PointElement, Title, Tooltip, Legend, ArcElement);
@@ -44,7 +33,7 @@ const Dashboard = () => {
         '60+': 0,
       };
 
-      employees.forEach((emp) => {
+      employees.forEach(emp => {
         if (emp.age >= 20 && emp.age <= 29) ageRanges['20-29'] += 1;
         else if (emp.age >= 30 && emp.age <= 39) ageRanges['30-39'] += 1;
         else if (emp.age >= 40 && emp.age <= 49) ageRanges['40-49'] += 1;
@@ -105,32 +94,32 @@ const Dashboard = () => {
 
   const employeeGrowthData = employeeGrowth.length
     ? {
-      labels: employeeGrowth.map((d) => d.month),
-      datasets: [
-        {
-          label: 'Employee Growth Over Time',
-          data: employeeGrowth.map((d) => d.count),
-          backgroundColor: '#36A2EB',
-          borderColor: '#36A2EB',
-          borderWidth: 1,
-        },
-      ],
-    }
+        labels: employeeGrowth.map(d => d.month),
+        datasets: [
+          {
+            label: 'Employee Growth Over Time',
+            data: employeeGrowth.map(d => d.count),
+            backgroundColor: '#36A2EB',
+            borderColor: '#36A2EB',
+            borderWidth: 1,
+          },
+        ],
+      }
     : null;
 
   const lineChartData = employeeGrowth.length
     ? {
-      labels: employeeGrowth.map((d) => d.month),
-      datasets: [
-        {
-          label: 'Employee Growth Trend',
-          data: employeeGrowth.map((d) => d.count),
-          fill: false,
-          borderColor: '#FF6384',
-          tension: 0.1,
-        },
-      ],
-    }
+        labels: employeeGrowth.map(d => d.month),
+        datasets: [
+          {
+            label: 'Employee Growth Trend',
+            data: employeeGrowth.map(d => d.count),
+            fill: false,
+            borderColor: '#FF6384',
+            tension: 0.1,
+          },
+        ],
+      }
     : null;
 
   const pieChartData = {

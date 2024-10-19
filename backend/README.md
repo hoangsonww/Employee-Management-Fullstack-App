@@ -81,7 +81,7 @@ cd Employee-Management/backend
 Ensure you have [Maven](https://maven.apache.org/) and [Java JDK](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) installed. Run the following command to install the required dependencies:
 
 ```bash
-mvn install
+mvn install -DskipTests
 ```
 
 ### 3. Configure the Application

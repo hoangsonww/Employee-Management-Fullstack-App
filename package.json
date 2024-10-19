@@ -1,0 +1,58 @@
+{
+  "name": "employee-management-app",
+  "version": "1.0.0",
+  "description": "Employee Management App",
+  "dependencies": {
+    "chart.js": "^4.4.4",
+    "classnames": "^2.5.1",
+    "concurrently": "^9.0.1",
+    "csstype": "^3.1.3",
+    "dom-helpers": "^5.2.1",
+    "js-tokens": "^4.0.0",
+    "loose-envify": "^1.4.0",
+    "object-assign": "^4.1.1",
+    "prettier": "^3.3.3",
+    "prop-types": "^15.8.1",
+    "react": "^18.3.1",
+    "react-chartjs-2": "^5.2.0",
+    "react-dom": "^18.3.1",
+    "react-fast-compare": "^3.2.2",
+    "react-is": "^16.13.1",
+    "react-popper": "^2.3.0",
+    "react-transition-group": "^4.4.5",
+    "reactstrap": "^9.2.3",
+    "regenerator-runtime": "^0.14.1",
+    "scheduler": "^0.23.2",
+    "warning": "^4.0.3"
+  },
+  "scripts": {
+    "start": "cd frontend && npm start",
+    "server": "cd backend && mvn spring-boot:run",
+    "test": "cd frontend && npm start",
+    "build": "cd frontend && npm run build",
+    "frontend": "cd frontend && npm start",
+    "backend": "cd backend && mvn spring-boot:run",
+    "dev": "concurrently \"npm run server\" \"npm run frontend\"",
+    "install": "cd frontend && npm install && cd ../backend && mvn install -DskipTests",
+    "format": "prettier --write \"**/*.js\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hoangsonww/Employee-Management-Fullstack-App.git",
+    "directory": "Employee-Management-Fullstack-App"
+  },
+  "bugs": {
+    "url": "https://github.com/hoangsonww/Employee-Management-Fullstack-App/issues",
+    "email": "hoangson091104@gmail.com"
+  },
+  "keywords": [
+    "Employee",
+    "Java",
+    "React",
+    "Spring Boot",
+    "Management",
+    "App"
+  ],
+  "author": "Son Nguyen",
+  "license": "MIT"
+}
