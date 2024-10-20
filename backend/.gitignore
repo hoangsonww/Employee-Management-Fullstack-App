@@ -12,7 +12,7 @@
 .sts4-cache
 
 ### ENVIRONMENT ###
-.env
+config.properties
 
 ### IntelliJ IDEA ###
 .idea

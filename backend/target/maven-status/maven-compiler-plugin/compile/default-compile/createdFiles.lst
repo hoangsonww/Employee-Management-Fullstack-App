@@ -4,6 +4,7 @@ com/example/employeemanagement/controller/EmployeeController.class
 com/example/employeemanagement/exception/ResourceNotFoundException.class
 com/example/employeemanagement/config/CorsConfig$1.class
 com/example/employeemanagement/model/Department.class
+com/example/employeemanagement/controller/HomeController.class
 com/example/employeemanagement/config/DataInitializer.class
 com/example/employeemanagement/model/Employee.class
 com/example/employeemanagement/service/DepartmentService.class

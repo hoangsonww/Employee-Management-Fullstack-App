@@ -281,6 +281,18 @@ spring.data.mongodb.uri=mongodb://localhost:27017/employee_management
 
 Feel free to change the database name, username, and password, and even add more configurations as needed.
 
+Alternatively, create a `config.properties` file in the `backend` directory and keep the `application.properties` file as is. Add the following properties to the `config.properties` file:
+
+```properties
+MYSQL_HOST=<mysql_host>
+MYSQL_PORT=<mysql_port>
+MYSQL_DB=<mysql_db>
+MYSQL_USER=<mysql_user>
+MYSQL_PASSWORD=<mysql_password>
+MYSQL_SSL_MODE=<mysql_ssl_mode>
+MONGO_URI=<mongo_host>
+```
+
 ### 5. Start the Backend Server
 
 Before starting the server, ensure that MySQL and MongoDB are running and properly configured on your local machine!
