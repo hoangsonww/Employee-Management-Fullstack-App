@@ -476,6 +476,29 @@ docker compose up --build
 
 This command will build the Docker images for the frontend and backend, create containers, and start the application. Feel free to view them in Docker Desktop.
 
+Alternatively, you can navigate to the `backend` and `frontend` directories and build the Docker images separately using the following commands:
+
+```bash
+docker build -t <your_docker_username>/employee-management-app-backend .
+docker build -t <your_docker_username>/employee-management-app-frontend .
+```
+
+Then, you can run the containers using the following commands:
+
+```bash
+docker run -p 8080:8080 <your_docker_username>/employee-management-app-backend
+docker run -p 3000:3000 <your_docker_username>/employee-management-app-frontend
+```
+
+Also, you can push the Docker images to Docker Hub using the following commands:
+
+```bash
+docker push <your_docker_username>/employee-management-app-backend
+docker push <your_docker_username>/employee-management-app-frontend
+```
+
+Additionally, you can access the image on **Docker Hub** **[here](https://hub.docker.com/repository/docker/hoangsonw/employee-management-app/).**
+
 ## Kubernetes
 
 The project also includes Kubernetes configuration files in the `kubernetes` directory for deploying the application to a Kubernetes cluster. You can deploy the application to a Kubernetes cluster using the following command:

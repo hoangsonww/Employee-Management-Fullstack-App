@@ -237,6 +237,10 @@ If you'd like to contribute to the backend development, please fork the reposito
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
+## More Information
+
+For more information about this project, please refer to the comprehensive [documentation](../README.md).
+
 ## Contact
 
 For any questions or issues, please contact [hoangson091104@gmail.com](mailto:hoangson091104@gmail.com).
