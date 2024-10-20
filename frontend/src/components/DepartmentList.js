@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getAllDepartments, deleteDepartment } from '../services/departmentService';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button, TablePagination, TextField, Box } from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button, TablePagination, TextField, Box, CircularProgress } from '@mui/material';
 
 const DepartmentList = () => {
   const [departments, setDepartments] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [loading, setLoading] = useState(true); // State for loading
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true); // Start loading
       const data = await getAllDepartments();
       setDepartments(data);
+      setLoading(false); // Stop loading when data is fetched
     };
     fetchData();
   }, []);
@@ -36,6 +39,27 @@ const DepartmentList = () => {
   };
 
   const filteredDepartments = departments.filter(department => department.name.toLowerCase().includes(searchTerm.toLowerCase()));
+
+  if (loading) {
+    return (
+      <Box
+        sx={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          backgroundColor: 'rgba(255, 255, 255, 0.8)',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          zIndex: 1000,
+        }}
+      >
+        <CircularProgress />
+      </Box>
+    );
+  }
 
   return (
     <Box>

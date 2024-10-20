@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getAllEmployees, deleteEmployee } from '../services/employeeService';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button, TablePagination, TextField, Box } from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button, TablePagination, TextField, Box, CircularProgress } from '@mui/material';
 
 const EmployeeList = () => {
   const [employees, setEmployees] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [loading, setLoading] = useState(true); // State for loading
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true); // Set loading to true when fetching starts
       const data = await getAllEmployees();
       setEmployees(data);
+      setLoading(false); // Set loading to false when data is fetched
     };
     fetchData();
   }, []);
@@ -41,6 +44,27 @@ const EmployeeList = () => {
       employee.lastName.toLowerCase().includes(searchTerm.toLowerCase()) ||
       employee.email.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  if (loading) {
+    return (
+      <Box
+        sx={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          backgroundColor: 'rgba(255, 255, 255, 0.8)',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          zIndex: 1000,
+        }}
+      >
+        <CircularProgress />
+      </Box>
+    );
+  }
 
   return (
     <Box>

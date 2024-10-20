@@ -3,7 +3,7 @@ import { Bar, Pie, Line } from 'react-chartjs-2';
 import { getAllEmployees } from '../services/employeeService';
 import { getAllDepartments } from '../services/departmentService';
 import { Chart, CategoryScale, LinearScale, BarElement, LineElement, PointElement, Title, Tooltip, Legend, ArcElement } from 'chart.js';
-import { Card, CardContent, Grid, Typography, Box } from '@mui/material';
+import { Card, CardContent, Grid, Typography, Box, CircularProgress } from '@mui/material';
 
 Chart.register(CategoryScale, LinearScale, BarElement, LineElement, PointElement, Title, Tooltip, Legend, ArcElement);
 
@@ -13,9 +13,11 @@ const Dashboard = () => {
   const [averageAge, setAverageAge] = useState(0);
   const [employeeGrowth, setEmployeeGrowth] = useState([]);
   const [ageRangeData, setAgeRangeData] = useState([]);
+  const [loading, setLoading] = useState(true); // State to track loading
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true); // Set loading to true when fetching data
       const employees = await getAllEmployees();
       const departments = await getAllDepartments();
       setEmployeeCount(employees.length);
@@ -51,6 +53,8 @@ const Dashboard = () => {
         { month: 'May', count: 160 },
         { month: 'June', count: 200 },
       ]);
+
+      setLoading(false); // Set loading to false when data is fetched
     };
     fetchData();
   }, []);
@@ -94,32 +98,32 @@ const Dashboard = () => {
 
   const employeeGrowthData = employeeGrowth.length
     ? {
-        labels: employeeGrowth.map(d => d.month),
-        datasets: [
-          {
-            label: 'Employee Growth Over Time',
-            data: employeeGrowth.map(d => d.count),
-            backgroundColor: '#36A2EB',
-            borderColor: '#36A2EB',
-            borderWidth: 1,
-          },
-        ],
-      }
+      labels: employeeGrowth.map(d => d.month),
+      datasets: [
+        {
+          label: 'Employee Growth Over Time',
+          data: employeeGrowth.map(d => d.count),
+          backgroundColor: '#36A2EB',
+          borderColor: '#36A2EB',
+          borderWidth: 1,
+        },
+      ],
+    }
     : null;
 
   const lineChartData = employeeGrowth.length
     ? {
-        labels: employeeGrowth.map(d => d.month),
-        datasets: [
-          {
-            label: 'Employee Growth Trend',
-            data: employeeGrowth.map(d => d.count),
-            fill: false,
-            borderColor: '#FF6384',
-            tension: 0.1,
-          },
-        ],
-      }
+      labels: employeeGrowth.map(d => d.month),
+      datasets: [
+        {
+          label: 'Employee Growth Trend',
+          data: employeeGrowth.map(d => d.count),
+          fill: false,
+          borderColor: '#FF6384',
+          tension: 0.1,
+        },
+      ],
+    }
     : null;
 
   const pieChartData = {
@@ -134,6 +138,27 @@ const Dashboard = () => {
       },
     ],
   };
+
+  if (loading) {
+    return (
+      <Box
+        sx={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          backgroundColor: 'rgba(255, 255, 255, 0.8)',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          zIndex: 1000,
+        }}
+      >
+        <CircularProgress />
+      </Box>
+    );
+  }
 
   return (
     <Box sx={{ marginTop: '2rem' }}>

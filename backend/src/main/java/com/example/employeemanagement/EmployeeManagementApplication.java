@@ -12,7 +12,8 @@ import io.swagger.v3.oas.annotations.info.Info;
         @Info(
             title = "Employee Management System API",
             version = "1.0.0",
-            description = "API documentation for a system managing employees and departments"))
+            description = "API documentation for a system managing employees and departments")
+        )
 public class EmployeeManagementApplication {
 
   /**

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8080/api/employees';
+const API_URL = 'https://employee-management-app-gdm5.onrender.com/api/employees';
 
 // Get all employees
 export const getAllEmployees = async () => {

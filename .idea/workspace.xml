@@ -4,17 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="392f4aef-37aa-47a3-a82b-22f4f510a7b8" name="Changes" comment="Fix: Addressed security vulnerabilities">
-      <change afterPath="$PROJECT_DIR$/backend/example_config.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/employeemanagement/controller/HomeController.java" afterDir="false" />
+    <list default="true" id="392f4aef-37aa-47a3-a82b-22f4f510a7b8" name="Changes" comment="Fix: Deployed Backend with Docker &amp; Render">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/backend/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/test-classes/com/example/employeemanagement/EmployeeManagementApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/test-classes/com/example/employeemanagement/EmployeeManagementApplicationTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/employeemanagement/EmployeeManagementApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/employeemanagement/EmployeeManagementApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/employeemanagement/config/DataInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/employeemanagement/config/DataInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/asset-manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/icon-192x192.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/icon-512x512.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/robots.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/static/css/main.cf445f91.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/static/css/main.cf445f91.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/static/js/main.f7ebb777.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/static/js/main.f7ebb777.js.LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/build/static/js/main.f7ebb777.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/DepartmentList.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/DepartmentList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/services/departmentService.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/services/departmentService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/services/employeeService.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/services/employeeService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -252,15 +261,7 @@
       <workItem from="1729010510811" duration="1423000" />
       <workItem from="1729355542695" duration="918000" />
       <workItem from="1729374186781" duration="8000" />
-      <workItem from="1729436408139" duration="3962000" />
-    </task>
-    <task id="LOCAL-00262" summary="Fix: Addressed security vulnerabilities">
-      <option name="closed" value="true" />
-      <created>1725632407199</created>
-      <option name="number" value="00262" />
-      <option name="presentableId" value="LOCAL-00262" />
-      <option name="project" value="LOCAL" />
-      <updated>1725632407199</updated>
+      <workItem from="1729436408139" duration="5282000" />
     </task>
     <task id="LOCAL-00263" summary="Fix: Addressed security vulnerabilities">
       <option name="closed" value="true" />
@@ -646,7 +647,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729356448417</updated>
     </task>
-    <option name="localTasksCounter" value="311" />
+    <task id="LOCAL-00311" summary="Fix: Deployed Backend with Docker &amp; Render">
+      <option name="closed" value="true" />
+      <created>1729441220185</created>
+      <option name="number" value="00311" />
+      <option name="presentableId" value="LOCAL-00311" />
+      <option name="project" value="LOCAL" />
+      <updated>1729441220186</updated>
+    </task>
+    <option name="localTasksCounter" value="312" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -666,6 +675,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Fix: Added API documentations" />
     <MESSAGE value="Fix: Addressed security vulnerabilities" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix: Addressed security vulnerabilities" />
+    <MESSAGE value="Fix: Deployed Backend with Docker &amp; Render" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix: Deployed Backend with Docker &amp; Render" />
   </component>
 </project>
