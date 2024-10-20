@@ -3,6 +3,7 @@
 ## Table of Contents
 
 - [Overview](#overview)
+- [Live Deployment](#live-deployment)
 - [Key Technologies](#key-technologies)
 - [User Interface](#user-interface)
 - [File Structure](#file-structure)

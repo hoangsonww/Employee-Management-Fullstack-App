@@ -31,7 +31,7 @@
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
     "url": "https://github.com/hoangsonww/Employee-Management-Fullstack-App.git",
-    "accountId": "bba80ae4-d2ba-42fc-be1e-53456000f3fc"
+    "accountId": "dc534c08-f559-4d45-8d7a-cf228ae94266"
   }
 }]]></component>
   <component name="KubernetesApiPersistence">{}</component>
@@ -175,8 +175,6 @@
     <list>
       <item itemvalue="Docker.backend/Dockerfile" />
       <item itemvalue="Jest.renders dashboard with metrics" />
-      <item itemvalue="JUnit.EmployeeManagementApplicationTests" />
-      <item itemvalue="Spring Boot.EmployeeManagementApplication" />
     </list>
     <recent_temporary>
       <list>
@@ -188,8 +186,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23339.11" />
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23339.11" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-WS-242.23339.15" />
       </set>
     </attachedChunks>
   </component>
@@ -246,14 +243,7 @@
       <workItem from="1729436408139" duration="6953000" />
       <workItem from="1729444333743" duration="12000" />
       <workItem from="1729444354626" duration="199000" />
-    </task>
-    <task id="LOCAL-00267" summary="Fix: Addressed security vulnerabilities">
-      <option name="closed" value="true" />
-      <created>1725632426212</created>
-      <option name="number" value="00267" />
-      <option name="presentableId" value="LOCAL-00267" />
-      <option name="project" value="LOCAL" />
-      <updated>1725632426212</updated>
+      <workItem from="1729445134320" duration="213000" />
     </task>
     <task id="LOCAL-00268" summary="Fix: Addressed security vulnerabilities">
       <option name="closed" value="true" />
@@ -639,7 +629,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729444449638</updated>
     </task>
-    <option name="localTasksCounter" value="316" />
+    <task id="LOCAL-00316" summary="Fix: Deployed Backend with Docker &amp; Render">
+      <option name="closed" value="true" />
+      <created>1729445338868</created>
+      <option name="number" value="00316" />
+      <option name="presentableId" value="LOCAL-00316" />
+      <option name="project" value="LOCAL" />
+      <updated>1729445338868</updated>
+    </task>
+    <option name="localTasksCounter" value="317" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
