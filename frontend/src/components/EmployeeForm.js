@@ -2,23 +2,32 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { addEmployee, getEmployeeById, updateEmployee } from '../services/employeeService';
 import { getAllDepartments } from '../services/departmentService';
-import { TextField, Button, MenuItem, Box } from '@mui/material';
+import { TextField, Button, MenuItem, Box, CircularProgress } from '@mui/material'; // Import CircularProgress
+import { styled } from '@mui/system';
+
+const CenteredSpinner = styled('div')({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  height: '100vh',
+});
 
 const EmployeeForm = () => {
   const [employee, setEmployee] = useState({ firstName: '', lastName: '', email: '', department: { id: '' } });
   const [departments, setDepartments] = useState([]);
   const { id } = useParams();
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
       try {
         const departmentsData = await getAllDepartments();
         setDepartments(departmentsData);
 
         if (id) {
           const employeeData = await getEmployeeById(id);
-          // Check if employeeData is not null and contains the expected fields
           if (employeeData) {
             setEmployee({
               firstName: employeeData.firstName || '',
@@ -30,8 +39,10 @@ const EmployeeForm = () => {
             });
           }
         }
+        setIsLoading(false);
       } catch (error) {
         console.error('Error fetching data:', error);
+        setIsLoading(false);
       }
     };
     fetchData();
@@ -39,7 +50,6 @@ const EmployeeForm = () => {
 
   const handleChange = e => {
     const { name, value } = e.target;
-
     if (name === 'department.id') {
       setEmployee({ ...employee, department: { id: value } });
     } else {
@@ -58,9 +68,16 @@ const EmployeeForm = () => {
       navigate('/employees');
     } catch (error) {
       console.error('Error saving employee:', error);
-      // Handle error (e.g., show a message to the user)
     }
   };
+
+  if (isLoading) {
+    return (
+      <CenteredSpinner>
+        <CircularProgress />
+      </CenteredSpinner>
+    );
+  }
 
   return (
     <Box component="form" onSubmit={handleSubmit} sx={{ '& .MuiTextField-root': { marginBottom: '1rem', width: '100%' } }}>

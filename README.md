@@ -108,10 +108,40 @@ The frontend is also live at [https://employee-management-fullstack-app.vercel.a
   <img src="img/departments-page.png" alt="Department List Page" style="border-radius: 10px" width="100%"/>
 </p>
 
+**Add Employee Form:**
+
+<p align="center" style="cursor: pointer">
+  <img src="img/add-employee.png" alt="Add Employee Form" style="border-radius: 10px" width="100%"/>
+</p>
+
 **Edit Employee Form:**
 
 <p align="center" style="cursor: pointer">
   <img src="img/edit-employee.png" alt="Edit Employee Form" style="border-radius: 10px" width="100%"/>
+</p>
+
+**Edit Department Form:**
+
+<p align="center" style="cursor: pointer">
+  <img src="img/edit-department.png" alt="Edit Department Form" style="border-radius: 10px" width="100%"/>
+</p>
+
+**Login Page:**
+
+<p align="center" style="cursor: pointer">
+  <img src="img/login.png" alt="Login Page" style="border-radius: 10px" width="100%"/>
+</p>
+
+**Register Page:**
+
+<p align="center" style="cursor: pointer">
+  <img src="img/register.png" alt="Register Page" style="border-radius: 10px" width="100%"/>
+</p>
+
+**404 Page:**
+
+<p align="center" style="cursor: pointer">
+  <img src="img/404.png" alt="404 Page" style="border-radius: 10px" width="100%"/>
 </p>
 
 **Footer:**

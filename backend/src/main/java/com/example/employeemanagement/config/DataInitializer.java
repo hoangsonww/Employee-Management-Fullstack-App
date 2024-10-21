@@ -13,23 +13,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-/**
- * This class initializes fake data for the application when it starts.
- */
+/** This class initializes fake data for the application when it starts. */
 @Configuration
 public class DataInitializer implements CommandLineRunner {
 
-  /**
-   * The department repository.
-   */
-  @Autowired
-  private DepartmentRepository departmentRepository;
+  /** The department repository. */
+  @Autowired private DepartmentRepository departmentRepository;
 
-  /**
-   * The employee repository.
-   */
-  @Autowired
-  private EmployeeRepository employeeRepository;
+  /** The employee repository. */
+  @Autowired private EmployeeRepository employeeRepository;
 
   private final Faker faker = new Faker();
   private final Random random = new Random();

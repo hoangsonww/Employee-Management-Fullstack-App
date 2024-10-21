@@ -1,17 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { addDepartment, getDepartmentById, updateDepartment } from '../services/departmentService';
+import { TextField, Button, CircularProgress, Box } from '@mui/material'; // Import necessary MUI components
 
 const DepartmentForm = () => {
   const [department, setDepartment] = useState({ name: '' });
   const { id } = useParams();
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false); // State for loading
 
   useEffect(() => {
     const fetchData = async () => {
       if (id) {
-        const departmentData = await getDepartmentById(id);
-        setDepartment(departmentData);
+        setIsLoading(true); // Start loading
+        try {
+          const departmentData = await getDepartmentById(id);
+          setDepartment(departmentData);
+        } catch (error) {
+          console.error('Error fetching department data:', error);
+        } finally {
+          setIsLoading(false); // Stop loading
+        }
       }
     };
     fetchData();
@@ -23,22 +32,53 @@ const DepartmentForm = () => {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    if (id) {
-      await updateDepartment(id, department);
-    } else {
-      await addDepartment(department);
+    try {
+      if (id) {
+        await updateDepartment(id, department);
+      } else {
+        await addDepartment(department);
+      }
+      navigate('/departments');
+    } catch (error) {
+      console.error('Error saving department:', error);
     }
-    navigate('/departments');
   };
 
+  // If loading, show centered spinner
+  if (isLoading) {
+    return (
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '100vh',
+        }}
+      >
+        <CircularProgress />
+      </Box>
+    );
+  }
+
   return (
-    <div>
+    <Box
+      component="form"
+      onSubmit={handleSubmit}
+      sx={{ '& .MuiTextField-root': { marginBottom: '1rem', width: '100%' }, maxWidth: '400px', margin: '0 auto' }}
+    >
       <h2>{id ? 'Edit Department' : 'Add Department'}</h2>
-      <form onSubmit={handleSubmit}>
-        <input type="text" name="name" value={department.name} onChange={handleChange} placeholder="Department Name" />
-        <button type="submit">Save</button>
-      </form>
-    </div>
+      <TextField
+        label="Department Name"
+        name="name"
+        value={department.name}
+        onChange={handleChange}
+        required
+        fullWidth
+      />
+      <Button type="submit" variant="contained" color="primary" sx={{ marginTop: '1rem' }}>
+        Save
+      </Button>
+    </Box>
   );
 };
 

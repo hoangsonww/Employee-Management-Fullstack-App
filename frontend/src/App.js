@@ -13,6 +13,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import ResetPassword from './components/ResetPassword';
 import VerifyUsername from './components/VerifyUsername';
+import NotFoundPage from './components/NotFoundPage';
 
 const App = () => {
   return (
@@ -32,6 +33,7 @@ const App = () => {
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Container>
       <Footer />
