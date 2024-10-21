@@ -29,7 +29,8 @@ EXPOSE 8080
 # Run the application
 ENTRYPOINT ["java", "-jar", "app.jar"]
 
-# Commands:
+# Commands: (for me only)
+# cd IdeaProjects/Employee-Management/backend
 # docker build --platform linux/amd64 -t hoangsonw/employee-management-app .
 # This builds the Docker image ready for Render deployment.
 # docker run -p 8080:8080 \

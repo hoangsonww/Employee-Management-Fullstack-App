@@ -9,6 +9,10 @@ import DepartmentForm from './components/DepartmentForm';
 import Navbar from './components/Navbar';
 import LandingPage from './components/LandingPage';
 import Footer from './components/Footer';
+import Login from './components/Login';
+import Register from './components/Register';
+import ResetPassword from './components/ResetPassword';
+import VerifyUsername from './components/VerifyUsername';
 
 const App = () => {
   return (
@@ -24,6 +28,10 @@ const App = () => {
           <Route path="/departments" element={<DepartmentList />} />
           <Route path="/add-department" element={<DepartmentForm />} />
           <Route path="/edit-department/:id" element={<DepartmentForm />} />
+          <Route path="/verify-username" element={<VerifyUsername />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </Container>
       <Footer />

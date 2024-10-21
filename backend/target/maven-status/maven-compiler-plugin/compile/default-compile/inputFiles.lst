@@ -1,6 +1,14 @@
+/Users/davidnguyen/IdeaProjects/Employee-Management/backend/src/main/java/com/example/employeemanagement/controller/HomeController.java
+/Users/davidnguyen/IdeaProjects/Employee-Management/backend/src/main/java/com/example/employeemanagement/security/JwtTokenUtil.java
+/Users/davidnguyen/IdeaProjects/Employee-Management/backend/src/main/java/com/example/employeemanagement/repository/UserRepository.java
+/Users/davidnguyen/IdeaProjects/Employee-Management/backend/src/main/java/com/example/employeemanagement/security/SecurityConfig.java
+/Users/davidnguyen/IdeaProjects/Employee-Management/backend/src/main/java/com/example/employeemanagement/model/User.java
 /Users/davidnguyen/IdeaProjects/Employee-Management/backend/src/main/java/com/example/employeemanagement/EmployeeManagementApplication.java
 /Users/davidnguyen/IdeaProjects/Employee-Management/backend/src/main/java/com/example/employeemanagement/repository/DepartmentRepository.java
 /Users/davidnguyen/IdeaProjects/Employee-Management/backend/src/main/java/com/example/employeemanagement/controller/DepartmentController.java
+/Users/davidnguyen/IdeaProjects/Employee-Management/backend/src/main/java/com/example/employeemanagement/security/JwtRequestFilter.java
+/Users/davidnguyen/IdeaProjects/Employee-Management/backend/src/main/java/com/example/employeemanagement/security/CustomUserDetailsService.java
+/Users/davidnguyen/IdeaProjects/Employee-Management/backend/src/main/java/com/example/employeemanagement/controller/AuthController.java
 /Users/davidnguyen/IdeaProjects/Employee-Management/backend/src/main/java/com/example/employeemanagement/service/DepartmentService.java
 /Users/davidnguyen/IdeaProjects/Employee-Management/backend/src/main/java/com/example/employeemanagement/exception/ResourceNotFoundException.java
 /Users/davidnguyen/IdeaProjects/Employee-Management/backend/src/main/java/com/example/employeemanagement/config/DataInitializer.java

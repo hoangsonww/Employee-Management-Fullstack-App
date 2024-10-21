@@ -44,8 +44,8 @@ const Footer = () => {
               <Link href="/departments" color="inherit" underline="none" sx={{ display: 'block', marginBottom: '0.5rem' }}>
                 Departments
               </Link>
-              <Link href="/contact" color="inherit" underline="none" sx={{ display: 'block' }}>
-                Contact Us
+              <Link href="/register" color="inherit" underline="none" sx={{ display: 'block' }}>
+                Register
               </Link>
             </Box>
           </Grid>
