@@ -5,46 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="392f4aef-37aa-47a3-a82b-22f4f510a7b8" name="Changes" comment="Fix: Deployed Backend with Docker &amp; Render">
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/employeemanagement/controller/AuthController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/employeemanagement/model/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/employeemanagement/repository/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/employeemanagement/security/CustomUserDetailsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/employeemanagement/security/JwtRequestFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/employeemanagement/security/JwtTokenUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/employeemanagement/security/SecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/controller/AuthController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/model/User.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/repository/UserRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/security/CustomUserDetailsService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/security/JwtRequestFilter.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/security/JwtTokenUtil.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/security/SecurityConfig.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Login.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/Register.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/ResetPassword.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/VerifyUsername.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/25ceec43-ef74-4154-ab52-6eac49d4cc1b.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/25ceec43-ef74-4154-ab52-6eac49d4cc1b/storage_v2/_src_/schema/employee_management_db.Kd6-Bw.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/25ceec43-ef74-4154-ab52-6eac49d4cc1b/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/25ceec43-ef74-4154-ab52-6eac49d4cc1b/storage_v2/_src_/schema/mysql.osA4Bg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/25ceec43-ef74-4154-ab52-6eac49d4cc1b/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/25ceec43-ef74-4154-ab52-6eac49d4cc1b/storage_v2/_src_/schema/sys.zb4BAA.meta" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/public/sitemap.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/backend/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/employeemanagement/EmployeeManagementApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/employeemanagement/EmployeeManagementApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/employeemanagement/config/DataInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/employeemanagement/config/DataInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/EmployeeManagementApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/EmployeeManagementApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/config/CorsConfig$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/config/CorsConfig$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/config/DataInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/config/DataInitializer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Footer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Navbar.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -287,15 +250,7 @@
       <workItem from="1729445358489" duration="28000" />
       <workItem from="1729519539624" duration="8697000" />
       <workItem from="1729548905617" duration="22000" />
-      <workItem from="1729548946598" duration="826000" />
-    </task>
-    <task id="LOCAL-00271" summary="Fix: Addressed security vulnerabilities">
-      <option name="closed" value="true" />
-      <created>1725632438656</created>
-      <option name="number" value="00271" />
-      <option name="presentableId" value="LOCAL-00271" />
-      <option name="project" value="LOCAL" />
-      <updated>1725632438656</updated>
+      <workItem from="1729548946598" duration="1860000" />
     </task>
     <task id="LOCAL-00272" summary="Fix: Addressed security vulnerabilities">
       <option name="closed" value="true" />
@@ -681,7 +636,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729549634318</updated>
     </task>
-    <option name="localTasksCounter" value="320" />
+    <task id="LOCAL-00320" summary="Fix: Deployed Backend with Docker &amp; Render">
+      <option name="closed" value="true" />
+      <created>1729550068162</created>
+      <option name="number" value="00320" />
+      <option name="presentableId" value="LOCAL-00320" />
+      <option name="project" value="LOCAL" />
+      <updated>1729550068162</updated>
+    </task>
+    <option name="localTasksCounter" value="321" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
