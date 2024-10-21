@@ -4,27 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="392f4aef-37aa-47a3-a82b-22f4f510a7b8" name="Changes" comment="Fix: Deployed Backend with Docker &amp; Render">
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/NewDepartmentForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/NotFoundPage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/edit-department.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/login.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/register.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/reset-password.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/img/verify-username.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/employeemanagement/config/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/employeemanagement/config/CorsConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/employeemanagement/config/DataInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/employeemanagement/config/DataInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/DepartmentForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/DepartmentForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/EmployeeForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/EmployeeForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/add-employee.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/add-employee.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/dashboard.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/dashboard.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/departments-page.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/departments-page.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/employees-page.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/employees-page.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/footer.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/footer.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/landing.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/landing.png" afterDir="false" />
-    </list>
+    <list default="true" id="392f4aef-37aa-47a3-a82b-22f4f510a7b8" name="Changes" comment="Fix: Deployed Backend with Docker &amp; Render" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -197,8 +177,6 @@
     <list>
       <item itemvalue="Docker.backend/Dockerfile" />
       <item itemvalue="Jest.renders dashboard with metrics" />
-      <item itemvalue="JUnit.EmployeeManagementApplicationTests" />
-      <item itemvalue="Spring Boot.EmployeeManagementApplication" />
     </list>
   </component>
   <component name="SharedIndexes">
@@ -266,6 +244,7 @@
       <workItem from="1729519539624" duration="8697000" />
       <workItem from="1729548905617" duration="22000" />
       <workItem from="1729548946598" duration="4034000" />
+      <workItem from="1729553474129" duration="15000" />
     </task>
     <task id="LOCAL-00273" summary="Fix: Addressed security vulnerabilities">
       <option name="closed" value="true" />
