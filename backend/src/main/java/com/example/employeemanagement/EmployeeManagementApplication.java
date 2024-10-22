@@ -34,7 +34,7 @@ import org.springframework.context.annotation.Bean;
 )
 @SecurityScheme(
     name = "bearerAuth",
-    type = SecuritySchemeType.HTTP,  // Correct type
+    type = SecuritySchemeType.HTTP,
     scheme = "bearer",
     bearerFormat = "JWT",
     description = "JWT Authorization header using the Bearer scheme"
@@ -58,6 +58,7 @@ public class EmployeeManagementApplication {
   @Bean
   public OpenAPI customOpenAPI() {
     return new OpenAPI()
+        // Add security requirement globally
         .addSecurityItem(new SecurityRequirement().addList("bearerAuth"))
         .components(new Components()
             // Fully qualified name for SecurityScheme to avoid name conflict
