@@ -30,6 +30,7 @@
 - [Detailed Component Instructions](#detailed-component-instructions)
 - [Containerization](#containerization)
 - [Kubernetes](#kubernetes)
+- [LoadBalancer Service](#loadbalancer-service)
 - [Jenkins](#jenkins)
 - [Troubleshooting](#troubleshooting)
 - [Contributing](#contributing)
@@ -549,6 +550,14 @@ kubectl apply -f kubernetes
 ```
 
 This command will create the necessary deployments, services, and config maps for the frontend and backend. You can access the application using the NodePort or LoadBalancer service created.
+
+## LoadBalancer Service
+
+The project also features Nginx as a LoadBalancer service for routing traffic to the frontend and backend services. The Nginx configuration file is located in the `nginx` directory.
+
+There is also a `Dockerfile` for building the Nginx image. We are using this file to build the Nginx image and deploy it to the cloud with Render, which we are currently using to balance the traffic of the frontend and backend services.
+
+Feel free to customize the Nginx configuration to suit your specific requirements and deployment process.
 
 ## Jenkins
 
