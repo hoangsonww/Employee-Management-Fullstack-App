@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: employeee-management-backend:latest  # Build and push this to a container registry
+          image: employee-management-backend:latest
           ports:
             - containerPort: 3000
           env:
