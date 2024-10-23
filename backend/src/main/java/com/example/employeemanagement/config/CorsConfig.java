@@ -10,7 +10,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class CorsConfig {
 
   /**
-   * Configure CORS. This is done by adding a CORS mapping that allows requests from all origins.
+   * Configure CORS. This is done by adding a CORS mapping that allows requests from all origins
+   * using allowedOriginPatterns.
    *
    * @return WebMvcConfigurer
    */
@@ -29,7 +30,7 @@ public class CorsConfig {
       public void addCorsMappings(CorsRegistry registry) {
         registry
             .addMapping("/**")
-            .allowedOrigins("*") // Allows all origins
+            .allowedOriginPatterns("*") // Allows all origins with patterns
             .allowedMethods("GET", "POST", "PUT", "DELETE") // List all allowed HTTP methods
             .allowedHeaders("*") // Allows all headers
             .allowCredentials(true); // Allow credentials (cookies, etc.)
