@@ -197,6 +197,10 @@ employee-management-app
 │   ├── frontend-deployment.yaml
 │   └── frontend-service.yaml
 │
+├── nginx
+│   ├── Dockerfile
+│   └── nginx.conf 
+│
 ├── backend
 │   ├── src
 │   │   ├── main
