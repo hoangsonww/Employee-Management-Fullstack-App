@@ -7,6 +7,7 @@
     <list default="true" id="392f4aef-37aa-47a3-a82b-22f4f510a7b8" name="Changes" comment="Fix: Deployed Backend with Docker &amp; Render">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/employeemanagement/config/CorsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/employeemanagement/config/CorsConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,12 +33,12 @@
     &quot;assignee&quot;: &quot;hoangsonww&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/hoangsonww/Employee-Management-Fullstack-App.git&quot;,
-    &quot;accountId&quot;: &quot;dc534c08-f559-4d45-8d7a-cf228ae94266&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/hoangsonww/Employee-Management-Fullstack-App.git",
+    "accountId": "bba80ae4-d2ba-42fc-be1e-53456000f3fc"
   }
-}</component>
+}]]></component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
@@ -181,12 +182,15 @@
     <list>
       <item itemvalue="Docker.backend/Dockerfile" />
       <item itemvalue="Jest.renders dashboard with metrics" />
+      <item itemvalue="JUnit.EmployeeManagementApplicationTests" />
+      <item itemvalue="Spring Boot.EmployeeManagementApplication" />
     </list>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-WS-242.23339.15" />
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23339.11" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23339.11" />
       </set>
     </attachedChunks>
   </component>
@@ -254,14 +258,9 @@
       <workItem from="1729625597855" duration="3436000" />
       <workItem from="1729656575444" duration="358000" />
       <workItem from="1729656983650" duration="14000" />
-    </task>
-    <task id="LOCAL-00277" summary="Fix: Addressed security vulnerabilities">
-      <option name="closed" value="true" />
-      <created>1725632455678</created>
-      <option name="number" value="00277" />
-      <option name="presentableId" value="LOCAL-00277" />
-      <option name="project" value="LOCAL" />
-      <updated>1725632455678</updated>
+      <workItem from="1729657265565" duration="48000" />
+      <workItem from="1729696530570" duration="7000" />
+      <workItem from="1729696552761" duration="1886000" />
     </task>
     <task id="LOCAL-00278" summary="Fix: Addressed security vulnerabilities">
       <option name="closed" value="true" />
@@ -647,7 +646,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729656922304</updated>
     </task>
-    <option name="localTasksCounter" value="326" />
+    <task id="LOCAL-00326" summary="Fix: Deployed Backend with Docker &amp; Render">
+      <option name="closed" value="true" />
+      <created>1729657308240</created>
+      <option name="number" value="00326" />
+      <option name="presentableId" value="LOCAL-00326" />
+      <option name="project" value="LOCAL" />
+      <updated>1729657308240</updated>
+    </task>
+    <option name="localTasksCounter" value="327" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
