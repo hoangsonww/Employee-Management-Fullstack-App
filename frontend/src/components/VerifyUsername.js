@@ -40,7 +40,7 @@ const VerifyUsername = () => {
 
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-      <Card sx={{ width: '100%', maxWidth: 400, boxShadow: 3, borderRadius: 2, backgroundColor: '#fff' }}>
+      <Card sx={{ width: '100%', maxWidth: 400, boxShadow: 3, borderRadius: 4, padding: 2, backgroundColor: '#fff' }}>
         <CardContent>
           <Typography variant="h5" component="h2" textAlign="center" sx={{ marginBottom: '1rem' }}>
             Verify Username

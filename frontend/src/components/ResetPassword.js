@@ -1,11 +1,24 @@
-import React, { useState } from 'react';
-import { TextField, Button, Card, CardContent, Typography, Box, CircularProgress } from '@mui/material';
+import React, { useState, useEffect } from 'react';
+import {
+  TextField,
+  Button,
+  Card,
+  CardContent,
+  Typography,
+  Box,
+  CircularProgress,
+  IconButton,
+  InputAdornment
+} from '@mui/material';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 const ResetPassword = () => {
   const [username, setUsername] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [showNewPassword, setShowNewPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
@@ -13,7 +26,7 @@ const ResetPassword = () => {
   const location = useLocation();
 
   // Get the username from the query params if available
-  React.useEffect(() => {
+  useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
     const usernameFromQuery = queryParams.get('username');
     if (usernameFromQuery) {
@@ -57,9 +70,17 @@ const ResetPassword = () => {
     }
   };
 
+  const handleToggleNewPasswordVisibility = () => {
+    setShowNewPassword(!showNewPassword);
+  };
+
+  const handleToggleConfirmPasswordVisibility = () => {
+    setShowConfirmPassword(!showConfirmPassword);
+  };
+
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-      <Card sx={{ width: '100%', maxWidth: 400, boxShadow: 3, borderRadius: 2, backgroundColor: '#fff' }}>
+      <Card sx={{ width: '100%', maxWidth: 400, boxShadow: 3, borderRadius: 4, padding: 2, backgroundColor: '#fff' }}>
         <CardContent>
           <Typography variant="h5" component="h2" textAlign="center" sx={{ marginBottom: '1rem' }}>
             Reset Password
@@ -76,18 +97,44 @@ const ResetPassword = () => {
             <TextField
               fullWidth
               label="New Password"
-              type="password"
+              type={showNewPassword ? 'text' : 'password'}
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
               sx={{ marginBottom: '1rem' }}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleToggleNewPasswordVisibility}
+                      edge="end"
+                    >
+                      {showNewPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
             />
             <TextField
               fullWidth
               label="Confirm New Password"
-              type="password"
+              type={showConfirmPassword ? 'text' : 'password'}
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               sx={{ marginBottom: '1rem' }}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle confirm password visibility"
+                      onClick={handleToggleConfirmPasswordVisibility}
+                      edge="end"
+                    >
+                      {showConfirmPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
             />
             {loading ? (
               <Box sx={{ display: 'flex', justifyContent: 'center' }}>

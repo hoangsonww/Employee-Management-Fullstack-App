@@ -1,13 +1,25 @@
 import React, { useState } from 'react';
-import { TextField, Button, Card, CardContent, Typography, Box, CircularProgress } from '@mui/material';
-import { useNavigate } from 'react-router-dom'; // Correct useNavigate
+import {
+  TextField,
+  Button,
+  Card,
+  CardContent,
+  Typography,
+  Box,
+  CircularProgress,
+  IconButton,
+  InputAdornment
+} from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const navigate = useNavigate(); // Correct useNavigate
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,13 +44,17 @@ const Login = () => {
       }
     } catch (err) {
       setLoading(false);
-      setError('Something went wrong. Please try again later.');
+      setError('Invalid credentials or our server is not currently active. Please try again later.');
     }
+  };
+
+  const handleTogglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-      <Card sx={{ width: '100%', maxWidth: 400, boxShadow: 3, borderRadius: 2, backgroundColor: '#fff' }}>
+      <Card sx={{ width: '100%', maxWidth: 400, boxShadow: 3, borderRadius: 4, padding: 2, backgroundColor: '#fff' }}>
         <CardContent>
           <Typography variant="h5" component="h2" textAlign="center" sx={{ marginBottom: '1rem' }}>
             Login
@@ -50,14 +66,35 @@ const Login = () => {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               sx={{ marginBottom: '1rem' }}
+              InputProps={{
+                style: {
+                  fontFamily: "Poppins, sans-serif",
+                },
+              }}
             />
             <TextField
               fullWidth
               label="Password"
-              type="password"
+              type={showPassword ? 'text' : 'password'}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               sx={{ marginBottom: '1rem' }}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label="toggle password visibility"
+                      onClick={handleTogglePasswordVisibility}
+                      edge="end"
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+                style: {
+                  fontFamily: "Poppins, sans-serif",
+                },
+              }}
             />
             {loading ? (
               <Box sx={{ display: 'flex', justifyContent: 'center' }}>

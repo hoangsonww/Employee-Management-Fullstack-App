@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="392f4aef-37aa-47a3-a82b-22f4f510a7b8" name="Changes" comment="Fix: Deployed Backend with Docker &amp; Render">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/ResetPassword.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ResetPassword.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/VerifyUsername.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/VerifyUsername.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,12 +36,12 @@
     &quot;assignee&quot;: &quot;hoangsonww&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/hoangsonww/Employee-Management-Fullstack-App.git",
-    "accountId": "dc534c08-f559-4d45-8d7a-cf228ae94266"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/hoangsonww/Employee-Management-Fullstack-App.git&quot;,
+    &quot;accountId&quot;: &quot;dc534c08-f559-4d45-8d7a-cf228ae94266&quot;
   }
-}]]></component>
+}</component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
@@ -89,6 +94,7 @@
     &quot;nodejs.jest.jest_package&quot;: &quot;/Users/davidnguyen/IdeaProjects/Employee-Management/frontend/node_modules/react-scripts&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;npm.format.executor&quot;: &quot;Run&quot;,
+    &quot;npm.frontend.executor&quot;: &quot;Run&quot;,
     &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
@@ -124,7 +130,7 @@
       <recent name="$PROJECT_DIR$/backend" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.backend/Dockerfile">
+  <component name="RunManager" selected="npm.frontend">
     <configuration name="EmployeeManagementApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="employee-management-app" />
       <extension name="coverage">
@@ -177,15 +183,26 @@
       </deployment>
       <method v="2" />
     </configuration>
+    <configuration name="frontend" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="frontend" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Docker.backend/Dockerfile" />
       <item itemvalue="Jest.renders dashboard with metrics" />
+      <item itemvalue="npm.frontend" />
     </list>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-WS-242.23339.15" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-WS-242.23726.96" />
       </set>
     </attachedChunks>
   </component>
@@ -257,22 +274,13 @@
       <workItem from="1729696530570" duration="7000" />
       <workItem from="1729696552761" duration="2130000" />
       <workItem from="1729702002351" duration="6000" />
-    </task>
-    <task id="LOCAL-00279" summary="Fix: Addressed security vulnerabilities">
-      <option name="closed" value="true" />
-      <created>1725632461370</created>
-      <option name="number" value="00279" />
-      <option name="presentableId" value="LOCAL-00279" />
-      <option name="project" value="LOCAL" />
-      <updated>1725632461370</updated>
-    </task>
-    <task id="LOCAL-00280" summary="Fix: Addressed security vulnerabilities">
-      <option name="closed" value="true" />
-      <created>1725632464285</created>
-      <option name="number" value="00280" />
-      <option name="presentableId" value="LOCAL-00280" />
-      <option name="project" value="LOCAL" />
-      <updated>1725632464285</updated>
+      <workItem from="1729712515205" duration="946000" />
+      <workItem from="1729900307091" duration="4000" />
+      <workItem from="1729959931193" duration="2000" />
+      <workItem from="1729995586187" duration="3000" />
+      <workItem from="1729996518680" duration="14000" />
+      <workItem from="1730053982280" duration="572000" />
+      <workItem from="1730475279696" duration="7000" />
     </task>
     <task id="LOCAL-00281" summary="Fix: Addressed security vulnerabilities">
       <option name="closed" value="true" />
@@ -650,7 +658,23 @@
       <option name="project" value="LOCAL" />
       <updated>1729701865470</updated>
     </task>
-    <option name="localTasksCounter" value="328" />
+    <task id="LOCAL-00328" summary="Fix: Deployed Backend with Docker &amp; Render">
+      <option name="closed" value="true" />
+      <created>1729712661902</created>
+      <option name="number" value="00328" />
+      <option name="presentableId" value="LOCAL-00328" />
+      <option name="project" value="LOCAL" />
+      <updated>1729712661902</updated>
+    </task>
+    <task id="LOCAL-00329" summary="Fix: Deployed Backend with Docker &amp; Render">
+      <option name="closed" value="true" />
+      <created>1729713436616</created>
+      <option name="number" value="00329" />
+      <option name="presentableId" value="LOCAL-00329" />
+      <option name="project" value="LOCAL" />
+      <updated>1729713436616</updated>
+    </task>
+    <option name="localTasksCounter" value="330" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
