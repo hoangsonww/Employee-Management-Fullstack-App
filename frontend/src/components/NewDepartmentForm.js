@@ -20,7 +20,8 @@ const NewDepartmentForm = () => {
     setError(null);  // Reset any previous error
 
     const newDepartment = {
-      id: 0,  // Assuming the backend will assign the ID automatically
+      // generate random id from 0-9999
+      id: Math.floor(Math.random() * 10000),
       name: department.name,
       employees: [],  // Empty array for employees
     };

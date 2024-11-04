@@ -32,15 +32,18 @@ const DepartmentForm = () => {
 
   const handleSubmit = async e => {
     e.preventDefault();
+    setIsLoading(true); // Start loading
     try {
       if (id) {
         await updateDepartment(id, department);
       } else {
         await addDepartment(department);
       }
+      setIsLoading(false); // Stop loading
       navigate('/departments');
     } catch (error) {
       console.error('Error saving department:', error);
+      setIsLoading(false); // Stop loading
     }
   };
 

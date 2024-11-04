@@ -1,31 +1,51 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getAllDepartments, deleteDepartment } from '../services/departmentService';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button, TablePagination, TextField, Box, CircularProgress } from '@mui/material';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Button,
+  TablePagination,
+  TextField,
+  Box,
+  CircularProgress,
+} from '@mui/material';
 
 const DepartmentList = () => {
   const [departments, setDepartments] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
-  const [loading, setLoading] = useState(true); // State for loading
+  const [loading, setLoading] = useState(true); // General loading state for fetching data
+  const [deletingDepartmentId, setDeletingDepartmentId] = useState(null); // Track specific department being deleted
 
   useEffect(() => {
     const fetchData = async () => {
-      setLoading(true); // Start loading
+      setLoading(true);
       const data = await getAllDepartments();
       setDepartments(data);
-      setLoading(false); // Stop loading when data is fetched
+      setLoading(false);
     };
     fetchData();
   }, []);
 
-  const handleDelete = async id => {
-    await deleteDepartment(id);
-    setDepartments(departments.filter(department => department.id !== id));
+  const handleDelete = async (id) => {
+    setDeletingDepartmentId(id); // Set specific department being deleted
+    try {
+      await deleteDepartment(id);
+      setDepartments((prevDepartments) => prevDepartments.filter((department) => department.id !== id));
+    } catch (error) {
+      console.error('Error deleting department:', error);
+    }
+    setDeletingDepartmentId(null); // Reset after deletion
   };
 
-  const handleSearchChange = event => {
+  const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
 
@@ -33,12 +53,14 @@ const DepartmentList = () => {
     setPage(newPage);
   };
 
-  const handleChangeRowsPerPage = event => {
+  const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
 
-  const filteredDepartments = departments.filter(department => department.name.toLowerCase().includes(searchTerm.toLowerCase()));
+  const filteredDepartments = departments.filter((department) =>
+    department.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   if (loading) {
     return (
@@ -67,7 +89,13 @@ const DepartmentList = () => {
       <Button variant="contained" component={Link} to="/add-department" sx={{ marginBottom: '1rem' }}>
         Add Department
       </Button>
-      <TextField label="Search" variant="outlined" value={searchTerm} onChange={handleSearchChange} sx={{ marginBottom: '1rem', width: '100%' }} />
+      <TextField
+        label="Search for a department"
+        variant="outlined"
+        value={searchTerm}
+        onChange={handleSearchChange}
+        sx={{ marginBottom: '1rem', width: '100%' }}
+      />
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
@@ -77,15 +105,27 @@ const DepartmentList = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {filteredDepartments.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(department => (
+            {filteredDepartments.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((department) => (
               <TableRow key={department.id}>
                 <TableCell>{department.name}</TableCell>
                 <TableCell>
-                  <Button variant="contained" color="primary" component={Link} to={`/edit-department/${department.id}`} sx={{ marginRight: '0.5rem' }}>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    component={Link}
+                    to={`/edit-department/${department.id}`}
+                    sx={{ marginRight: '0.5rem' }}
+                  >
                     Edit
                   </Button>
-                  <Button variant="contained" color="secondary" onClick={() => handleDelete(department.id)}>
-                    Delete
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    onClick={() => handleDelete(department.id)}
+                    disabled={deletingDepartmentId === department.id}
+                    startIcon={deletingDepartmentId === department.id ? <CircularProgress size={20} /> : null}
+                  >
+                    {deletingDepartmentId === department.id ? 'Deleting...' : 'Delete'}
                   </Button>
                 </TableCell>
               </TableRow>

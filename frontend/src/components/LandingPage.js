@@ -1,8 +1,10 @@
 import React from 'react';
-import { Box, Typography, Button, Container, Grid, Card, CardContent } from '@mui/material';
+import { Box, Typography, Button, Container, Grid, Card, CardContent, useMediaQuery } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 const LandingPage = () => {
+  const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down('sm'));
+
   return (
     <Box sx={{ minHeight: '100vh', backgroundColor: '#f5f5f5', padding: '2rem 0' }}>
       {/* Main Content Container */}
@@ -16,12 +18,29 @@ const LandingPage = () => {
             color: 'white',
             borderRadius: 2,
             boxShadow: 3,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
           }}
         >
-          <Typography variant="h3" sx={{ fontWeight: 600, marginBottom: '1rem' }}>
+          <Typography
+            variant="h3"
+            sx={{
+              fontWeight: 600,
+              marginBottom: '1rem',
+              fontSize: isSmallScreen ? '2rem' : 'clamp(2rem, 5vw, 3rem)',
+            }}
+          >
             Welcome to Employee Management System
           </Typography>
-          <Typography variant="h6" sx={{ marginBottom: '2rem' }}>
+          <Typography
+            variant="h6"
+            sx={{
+              marginBottom: '2rem',
+              fontSize: isSmallScreen ? '1rem' : 'clamp(1rem, 3vw, 1.5rem)',
+            }}
+          >
             A centralized solution for managing all your employee data efficiently and effectively.
           </Typography>
           <Button

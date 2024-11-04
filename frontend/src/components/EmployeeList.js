@@ -1,31 +1,51 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getAllEmployees, deleteEmployee } from '../services/employeeService';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button, TablePagination, TextField, Box, CircularProgress } from '@mui/material';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Button,
+  TablePagination,
+  TextField,
+  Box,
+  CircularProgress,
+} from '@mui/material';
 
 const EmployeeList = () => {
   const [employees, setEmployees] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
-  const [loading, setLoading] = useState(true); // State for loading
+  const [loading, setLoading] = useState(true);
+  const [deletingEmployeeId, setDeletingEmployeeId] = useState(null); // State for tracking deletion
 
   useEffect(() => {
     const fetchData = async () => {
-      setLoading(true); // Set loading to true when fetching starts
+      setLoading(true);
       const data = await getAllEmployees();
       setEmployees(data);
-      setLoading(false); // Set loading to false when data is fetched
+      setLoading(false);
     };
     fetchData();
   }, []);
 
-  const handleDelete = async id => {
-    await deleteEmployee(id);
-    setEmployees(employees.filter(employee => employee.id !== id));
+  const handleDelete = async (id) => {
+    setDeletingEmployeeId(id); // Set the specific employee being deleted
+    try {
+      await deleteEmployee(id);
+      setEmployees((prevEmployees) => prevEmployees.filter((employee) => employee.id !== id));
+    } catch (error) {
+      console.error('Error deleting employee:', error);
+    }
+    setDeletingEmployeeId(null); // Reset deletingEmployeeId after deletion
   };
 
-  const handleSearchChange = event => {
+  const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
 
@@ -33,13 +53,13 @@ const EmployeeList = () => {
     setPage(newPage);
   };
 
-  const handleChangeRowsPerPage = event => {
+  const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
 
   const filteredEmployees = employees.filter(
-    employee =>
+    (employee) =>
       employee.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
       employee.lastName.toLowerCase().includes(searchTerm.toLowerCase()) ||
       employee.email.toLowerCase().includes(searchTerm.toLowerCase())
@@ -72,7 +92,13 @@ const EmployeeList = () => {
       <Button variant="contained" component={Link} to="/add-employee" sx={{ marginBottom: '1rem' }}>
         Add Employee
       </Button>
-      <TextField label="Search" variant="outlined" value={searchTerm} onChange={handleSearchChange} sx={{ marginBottom: '1rem', width: '100%' }} />
+      <TextField
+        label="Search for an employee..."
+        variant="outlined"
+        value={searchTerm}
+        onChange={handleSearchChange}
+        sx={{ marginBottom: '1rem', width: '100%' }}
+      />
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
@@ -84,17 +110,30 @@ const EmployeeList = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {filteredEmployees.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(employee => (
+            {filteredEmployees.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((employee) => (
               <TableRow key={employee.id}>
                 <TableCell>{employee.firstName}</TableCell>
                 <TableCell>{employee.lastName}</TableCell>
                 <TableCell>{employee.email}</TableCell>
                 <TableCell>
-                  <Button variant="contained" color="primary" component={Link} to={`/edit-employee/${employee.id}`} sx={{ marginRight: '0.5rem' }}>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    component={Link}
+                    to={`/edit-employee/${employee.id}`}
+                    sx={{ marginRight: '0.5rem', marginBottom: '0.25rem' }}
+                  >
                     Edit
                   </Button>
-                  <Button variant="contained" color="secondary" onClick={() => handleDelete(employee.id)}>
-                    Delete
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    onClick={() => handleDelete(employee.id)}
+                    disabled={deletingEmployeeId === employee.id}
+                    sx={{ marginBottom: '0.25rem'}}
+                    startIcon={deletingEmployeeId === employee.id ? <CircularProgress size={20} /> : null}
+                  >
+                    {deletingEmployeeId === employee.id ? 'Deleting...' : 'Delete'}
                   </Button>
                 </TableCell>
               </TableRow>
@@ -116,3 +155,4 @@ const EmployeeList = () => {
 };
 
 export default EmployeeList;
+

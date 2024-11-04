@@ -29,7 +29,8 @@ EXPOSE 8080
 # Run the application
 ENTRYPOINT ["java", "-jar", "app.jar"]
 
-# Commands:
+# Commands for building and running the Docker container:
+#
 # cd IdeaProjects/Employee-Management/backend
 # (Fix the path to your project directory)
 #

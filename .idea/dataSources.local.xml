@@ -15,7 +15,7 @@
       </schema-mapping>
     </data-source>
     <data-source name="@moodify-db.37ph0.mongodb.net" uuid="ee00ce6e-4310-459e-acc5-0a3098831727">
-      <database-info product="Mongo DB" version="7.0.14" jdbc-version="4.2" driver-name="MongoDB JDBC Driver" driver-version="1.18" dbms="MONGO" exact-version="7.0.14" exact-driver-version="1.18" />
+      <database-info product="Mongo DB" version="7.0.15" jdbc-version="4.2" driver-name="MongoDB JDBC Driver" driver-version="1.18" dbms="MONGO" exact-version="7.0.15" exact-driver-version="1.18" />
       <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
       <secret-storage>master_key</secret-storage>
       <user-name>hoangsonw</user-name>
