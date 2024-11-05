@@ -1,15 +1,5 @@
 import React, { useState } from 'react';
-import {
-  TextField,
-  Button,
-  Card,
-  CardContent,
-  Typography,
-  Box,
-  CircularProgress,
-  IconButton,
-  InputAdornment
-} from '@mui/material';
+import { TextField, Button, Card, CardContent, Typography, Box, CircularProgress, IconButton, InputAdornment } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 
@@ -23,7 +13,7 @@ const Register = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
     setError('');
 
@@ -75,11 +65,11 @@ const Register = () => {
               fullWidth
               label="Username"
               value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={e => setUsername(e.target.value)}
               sx={{ marginBottom: '1rem' }}
               InputProps={{
                 style: {
-                  fontFamily: "Poppins, sans-serif",
+                  fontFamily: 'Poppins, sans-serif',
                 },
               }}
             />
@@ -88,22 +78,18 @@ const Register = () => {
               label="Password"
               type={showPassword ? 'text' : 'password'}
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={e => setPassword(e.target.value)}
               sx={{ marginBottom: '1rem' }}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleTogglePasswordVisibility}
-                      edge="end"
-                    >
+                    <IconButton aria-label="toggle password visibility" onClick={handleTogglePasswordVisibility} edge="end">
                       {showPassword ? <VisibilityOff /> : <Visibility />}
                     </IconButton>
                   </InputAdornment>
                 ),
                 style: {
-                  fontFamily: "Poppins, sans-serif",
+                  fontFamily: 'Poppins, sans-serif',
                 },
               }}
             />
@@ -112,22 +98,18 @@ const Register = () => {
               label="Confirm Password"
               type={showConfirmPassword ? 'text' : 'password'}
               value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
+              onChange={e => setConfirmPassword(e.target.value)}
               sx={{ marginBottom: '1rem' }}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle confirm password visibility"
-                      onClick={handleToggleConfirmPasswordVisibility}
-                      edge="end"
-                    >
+                    <IconButton aria-label="toggle confirm password visibility" onClick={handleToggleConfirmPasswordVisibility} edge="end">
                       {showConfirmPassword ? <VisibilityOff /> : <Visibility />}
                     </IconButton>
                   </InputAdornment>
                 ),
                 style: {
-                  fontFamily: "Poppins, sans-serif",
+                  fontFamily: 'Poppins, sans-serif',
                 },
               }}
             />
@@ -146,7 +128,10 @@ const Register = () => {
               </Typography>
             )}
             <Typography textAlign="center" sx={{ marginTop: '1rem' }}>
-              Already have an account? <Button color="primary" component="a" href="/login">Login</Button>
+              Already have an account?{' '}
+              <Button color="primary" component="a" href="/login">
+                Login
+              </Button>
             </Typography>
           </form>
         </CardContent>

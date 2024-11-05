@@ -1,15 +1,5 @@
 import React, { useState } from 'react';
-import {
-  TextField,
-  Button,
-  Card,
-  CardContent,
-  Typography,
-  Box,
-  CircularProgress,
-  IconButton,
-  InputAdornment
-} from '@mui/material';
+import { TextField, Button, Card, CardContent, Typography, Box, CircularProgress, IconButton, InputAdornment } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 
@@ -21,7 +11,7 @@ const Login = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
     setLoading(true);
     setError('');
@@ -64,11 +54,11 @@ const Login = () => {
               fullWidth
               label="Username"
               value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={e => setUsername(e.target.value)}
               sx={{ marginBottom: '1rem' }}
               InputProps={{
                 style: {
-                  fontFamily: "Poppins, sans-serif",
+                  fontFamily: 'Poppins, sans-serif',
                 },
               }}
             />
@@ -77,22 +67,18 @@ const Login = () => {
               label="Password"
               type={showPassword ? 'text' : 'password'}
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={e => setPassword(e.target.value)}
               sx={{ marginBottom: '1rem' }}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleTogglePasswordVisibility}
-                      edge="end"
-                    >
+                    <IconButton aria-label="toggle password visibility" onClick={handleTogglePasswordVisibility} edge="end">
                       {showPassword ? <VisibilityOff /> : <Visibility />}
                     </IconButton>
                   </InputAdornment>
                 ),
                 style: {
-                  fontFamily: "Poppins, sans-serif",
+                  fontFamily: 'Poppins, sans-serif',
                 },
               }}
             />
@@ -111,10 +97,16 @@ const Login = () => {
               </Typography>
             )}
             <Typography textAlign="center" sx={{ marginTop: '1rem' }}>
-              Don't have an account? <Button color="primary" component="a" href="/register">Register</Button>
+              Don't have an account?{' '}
+              <Button color="primary" component="a" href="/register">
+                Register
+              </Button>
             </Typography>
             <Typography textAlign="center" sx={{ marginTop: '0.5rem' }}>
-              Forgot your password? <Button color="primary" component="a" href="/verify-username">Reset Password</Button>
+              Forgot your password?{' '}
+              <Button color="primary" component="a" href="/verify-username">
+                Reset Password
+              </Button>
             </Typography>
           </form>
         </CardContent>

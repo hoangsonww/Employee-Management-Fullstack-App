@@ -7,7 +7,7 @@ const NotFoundPage = () => {
 
   // Handle redirection back to home or relevant page
   const handleGoHome = () => {
-    navigate('/');  // Redirects to homepage, change the path if necessary
+    navigate('/'); // Redirects to homepage, change the path if necessary
   };
 
   return (

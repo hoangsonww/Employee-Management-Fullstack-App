@@ -55,7 +55,7 @@ const EmployeeForm = () => {
     fetchData();
   }, [id]);
 
-  const handleChange = (e) => {
+  const handleChange = e => {
     const { name, value } = e.target;
     if (name === 'department.id') {
       setEmployee({ ...employee, department: { id: value } });
@@ -67,7 +67,7 @@ const EmployeeForm = () => {
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
     setIsLoading(true);
     try {
@@ -93,34 +93,15 @@ const EmployeeForm = () => {
   }
 
   return (
-    <Box
-      component="form"
-      onSubmit={handleSubmit}
-      sx={{ '& .MuiTextField-root': { marginBottom: '1rem', width: '100%' } }}
-    >
+    <Box component="form" onSubmit={handleSubmit} sx={{ '& .MuiTextField-root': { marginBottom: '1rem', width: '100%' } }}>
       <h2>{id ? 'Edit Employee' : 'Add Employee'}</h2>
       <TextField label="First Name" name="firstName" value={employee.firstName} onChange={handleChange} required />
       <TextField label="Last Name" name="lastName" value={employee.lastName} onChange={handleChange} required />
       <TextField label="Email" name="email" type="email" value={employee.email} onChange={handleChange} required />
-      <TextField
-        label="Age"
-        name="age"
-        type="number"
-        value={employee.age}
-        onChange={handleChange}
-        required
-        inputProps={{ min: 1, max: 150 }}
-      />
-      <TextField
-        select
-        label="Department"
-        name="department.id"
-        value={employee.department.id || ''}
-        onChange={handleChange}
-        required
-      >
+      <TextField label="Age" name="age" type="number" value={employee.age} onChange={handleChange} required inputProps={{ min: 1, max: 150 }} />
+      <TextField select label="Department" name="department.id" value={employee.department.id || ''} onChange={handleChange} required>
         <MenuItem value="">Select Department</MenuItem>
-        {departments.map((department) => (
+        {departments.map(department => (
           <MenuItem key={department.id} value={department.id}>
             {department.name}
           </MenuItem>

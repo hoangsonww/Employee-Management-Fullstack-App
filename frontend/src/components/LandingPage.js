@@ -3,7 +3,7 @@ import { Box, Typography, Button, Container, Grid, Card, CardContent, useMediaQu
 import { Link } from 'react-router-dom';
 
 const LandingPage = () => {
-  const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down('sm'));
+  const isSmallScreen = useMediaQuery(theme => theme.breakpoints.down('sm'));
 
   // Animation styles for subtle drop-down effect
   const animationStyle = {

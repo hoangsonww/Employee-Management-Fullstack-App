@@ -9,7 +9,7 @@ const VerifyUsername = () => {
   const [success, setSuccess] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
     setLoading(true);
     setError('');
@@ -18,7 +18,7 @@ const VerifyUsername = () => {
     try {
       const response = await fetch(`https://employee-management-app-gdm5.onrender.com/verify-username/${username}`, {
         method: 'GET',
-        headers: { 'Content-Type': 'application/json' }
+        headers: { 'Content-Type': 'application/json' },
       });
 
       setLoading(false);
@@ -46,13 +46,7 @@ const VerifyUsername = () => {
             Verify Username
           </Typography>
           <form onSubmit={handleSubmit}>
-            <TextField
-              fullWidth
-              label="Username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              sx={{ marginBottom: '1rem' }}
-            />
+            <TextField fullWidth label="Username" value={username} onChange={e => setUsername(e.target.value)} sx={{ marginBottom: '1rem' }} />
             {loading ? (
               <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                 <CircularProgress />

@@ -14,9 +14,9 @@ const Dashboard = () => {
   const [employeeGrowth, setEmployeeGrowth] = useState([]);
   const [ageRangeData, setAgeRangeData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [genderData] = useState({ male: 295-120, female: 120 });
-  const [jobSatisfactionData] = useState({ satisfied: 295-50-30, neutral: 50, dissatisfied: 30 });
-  const [remoteWorkData] = useState({ onsite: 295-70-80, remote: 70, hybrid: 80 });
+  const [genderData] = useState({ male: 295 - 120, female: 120 });
+  const [jobSatisfactionData] = useState({ satisfied: 295 - 50 - 30, neutral: 50, dissatisfied: 30 });
+  const [remoteWorkData] = useState({ onsite: 295 - 70 - 80, remote: 70, hybrid: 80 });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -149,32 +149,32 @@ const Dashboard = () => {
 
   const employeeGrowthData = employeeGrowth.length
     ? {
-      labels: employeeGrowth.map(d => d.month),
-      datasets: [
-        {
-          label: 'Employee Growth Over Time',
-          data: employeeGrowth.map(d => d.count),
-          backgroundColor: '#36A2EB',
-          borderColor: '#36A2EB',
-          borderWidth: 1,
-        },
-      ],
-    }
+        labels: employeeGrowth.map(d => d.month),
+        datasets: [
+          {
+            label: 'Employee Growth Over Time',
+            data: employeeGrowth.map(d => d.count),
+            backgroundColor: '#36A2EB',
+            borderColor: '#36A2EB',
+            borderWidth: 1,
+          },
+        ],
+      }
     : null;
 
   const lineChartData = employeeGrowth.length
     ? {
-      labels: employeeGrowth.map(d => d.month),
-      datasets: [
-        {
-          label: 'Employee Growth Trend',
-          data: employeeGrowth.map(d => d.count),
-          fill: false,
-          borderColor: '#FF6384',
-          tension: 0.1,
-        },
-      ],
-    }
+        labels: employeeGrowth.map(d => d.month),
+        datasets: [
+          {
+            label: 'Employee Growth Trend',
+            data: employeeGrowth.map(d => d.count),
+            fill: false,
+            borderColor: '#FF6384',
+            tension: 0.1,
+          },
+        ],
+      }
     : null;
 
   const pieChartData = {

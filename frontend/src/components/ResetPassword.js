@@ -1,15 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {
-  TextField,
-  Button,
-  Card,
-  CardContent,
-  Typography,
-  Box,
-  CircularProgress,
-  IconButton,
-  InputAdornment
-} from '@mui/material';
+import { TextField, Button, Card, CardContent, Typography, Box, CircularProgress, IconButton, InputAdornment } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { useNavigate, useLocation } from 'react-router-dom';
 
@@ -34,7 +24,7 @@ const ResetPassword = () => {
     }
   }, [location]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
     setLoading(true);
     setError('');
@@ -86,29 +76,18 @@ const ResetPassword = () => {
             Reset Password
           </Typography>
           <form onSubmit={handleSubmit}>
-            <TextField
-              fullWidth
-              label="Username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              disabled
-              sx={{ marginBottom: '1rem' }}
-            />
+            <TextField fullWidth label="Username" value={username} onChange={e => setUsername(e.target.value)} disabled sx={{ marginBottom: '1rem' }} />
             <TextField
               fullWidth
               label="New Password"
               type={showNewPassword ? 'text' : 'password'}
               value={newPassword}
-              onChange={(e) => setNewPassword(e.target.value)}
+              onChange={e => setNewPassword(e.target.value)}
               sx={{ marginBottom: '1rem' }}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleToggleNewPasswordVisibility}
-                      edge="end"
-                    >
+                    <IconButton aria-label="toggle password visibility" onClick={handleToggleNewPasswordVisibility} edge="end">
                       {showNewPassword ? <VisibilityOff /> : <Visibility />}
                     </IconButton>
                   </InputAdornment>
@@ -120,16 +99,12 @@ const ResetPassword = () => {
               label="Confirm New Password"
               type={showConfirmPassword ? 'text' : 'password'}
               value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
+              onChange={e => setConfirmPassword(e.target.value)}
               sx={{ marginBottom: '1rem' }}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle confirm password visibility"
-                      onClick={handleToggleConfirmPasswordVisibility}
-                      edge="end"
-                    >
+                    <IconButton aria-label="toggle confirm password visibility" onClick={handleToggleConfirmPasswordVisibility} edge="end">
                       {showConfirmPassword ? <VisibilityOff /> : <Visibility />}
                     </IconButton>
                   </InputAdornment>

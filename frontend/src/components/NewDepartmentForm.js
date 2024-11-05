@@ -16,24 +16,24 @@ const NewDepartmentForm = () => {
   // Handle form submission to create a new department
   const handleSubmit = async e => {
     e.preventDefault();
-    setIsLoading(true);  // Start loading spinner
-    setError(null);  // Reset any previous error
+    setIsLoading(true); // Start loading spinner
+    setError(null); // Reset any previous error
 
     const newDepartment = {
       // generate random id from 0-9999
       id: Math.floor(Math.random() * 10000),
       name: department.name,
-      employees: [],  // Empty array for employees
+      employees: [], // Empty array for employees
     };
 
     try {
       const response = await fetch('https://employee-management-app-gdm5.onrender.com/api/departments', {
         method: 'POST',
         headers: {
-          'Accept': '*/*',
+          Accept: '*/*',
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(newDepartment),  // Send the new department data as JSON
+        body: JSON.stringify(newDepartment), // Send the new department data as JSON
       });
 
       if (!response.ok) {
@@ -46,25 +46,14 @@ const NewDepartmentForm = () => {
       console.error('Error:', error);
       setError('Failed to create department. Please try again.');
     } finally {
-      setIsLoading(false);  // Stop loading spinner
+      setIsLoading(false); // Stop loading spinner
     }
   };
 
   return (
-    <Box
-      component="form"
-      onSubmit={handleSubmit}
-      sx={{ '& .MuiTextField-root': { marginBottom: '1rem', width: '100%' }, maxWidth: '400px', margin: '0 auto' }}
-    >
+    <Box component="form" onSubmit={handleSubmit} sx={{ '& .MuiTextField-root': { marginBottom: '1rem', width: '100%' }, maxWidth: '400px', margin: '0 auto' }}>
       <h2>Create New Department</h2>
-      <TextField
-        label="Department Name"
-        name="name"
-        value={department.name}
-        onChange={handleChange}
-        required
-        fullWidth
-      />
+      <TextField label="Department Name" name="name" value={department.name} onChange={handleChange} required fullWidth />
       {error && <p style={{ color: 'red' }}>{error}</p>}
       <Button type="submit" variant="contained" color="primary" sx={{ marginTop: '1rem' }} disabled={isLoading}>
         {isLoading ? <CircularProgress size={24} /> : 'Save'}

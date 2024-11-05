@@ -34,18 +34,18 @@ const EmployeeList = () => {
     fetchData();
   }, []);
 
-  const handleDelete = async (id) => {
+  const handleDelete = async id => {
     setDeletingEmployeeId(id);
     try {
       await deleteEmployee(id);
-      setEmployees((prevEmployees) => prevEmployees.filter((employee) => employee.id !== id));
+      setEmployees(prevEmployees => prevEmployees.filter(employee => employee.id !== id));
     } catch (error) {
       console.error('Error deleting employee:', error);
     }
     setDeletingEmployeeId(null);
   };
 
-  const handleSearchChange = (event) => {
+  const handleSearchChange = event => {
     setSearchTerm(event.target.value);
     setPage(0); // Reset page to 0 whenever search term changes
   };
@@ -54,13 +54,13 @@ const EmployeeList = () => {
     setPage(newPage);
   };
 
-  const handleChangeRowsPerPage = (event) => {
+  const handleChangeRowsPerPage = event => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0); // Reset page to 0 when rows per page changes
   };
 
   const filteredEmployees = employees.filter(
-    (employee) =>
+    employee =>
       employee.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
       employee.lastName.toLowerCase().includes(searchTerm.toLowerCase()) ||
       employee.email.toLowerCase().includes(searchTerm.toLowerCase())
@@ -111,7 +111,7 @@ const EmployeeList = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {filteredEmployees.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((employee) => (
+            {filteredEmployees.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(employee => (
               <TableRow key={employee.id}>
                 <TableCell>{employee.firstName}</TableCell>
                 <TableCell>{employee.lastName}</TableCell>
@@ -131,7 +131,7 @@ const EmployeeList = () => {
                     color="secondary"
                     onClick={() => handleDelete(employee.id)}
                     disabled={deletingEmployeeId === employee.id}
-                    sx={{ marginBottom: '0.25rem'}}
+                    sx={{ marginBottom: '0.25rem' }}
                     startIcon={deletingEmployeeId === employee.id ? <CircularProgress size={20} /> : null}
                   >
                     {deletingEmployeeId === employee.id ? 'Deleting...' : 'Delete'}

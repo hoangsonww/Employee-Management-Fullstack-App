@@ -34,18 +34,18 @@ const DepartmentList = () => {
     fetchData();
   }, []);
 
-  const handleDelete = async (id) => {
+  const handleDelete = async id => {
     setDeletingDepartmentId(id);
     try {
       await deleteDepartment(id);
-      setDepartments((prevDepartments) => prevDepartments.filter((department) => department.id !== id));
+      setDepartments(prevDepartments => prevDepartments.filter(department => department.id !== id));
     } catch (error) {
       console.error('Error deleting department:', error);
     }
     setDeletingDepartmentId(null);
   };
 
-  const handleSearchChange = (event) => {
+  const handleSearchChange = event => {
     setSearchTerm(event.target.value);
     setPage(0); // Reset page to 0 whenever search term changes
   };
@@ -54,14 +54,12 @@ const DepartmentList = () => {
     setPage(newPage);
   };
 
-  const handleChangeRowsPerPage = (event) => {
+  const handleChangeRowsPerPage = event => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0); // Reset page to 0 when rows per page changes
   };
 
-  const filteredDepartments = departments.filter((department) =>
-    department.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredDepartments = departments.filter(department => department.name.toLowerCase().includes(searchTerm.toLowerCase()));
 
   if (loading) {
     return (
@@ -106,7 +104,7 @@ const DepartmentList = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {filteredDepartments.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((department) => (
+            {filteredDepartments.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(department => (
               <TableRow key={department.id}>
                 <TableCell>{department.name}</TableCell>
                 <TableCell>
