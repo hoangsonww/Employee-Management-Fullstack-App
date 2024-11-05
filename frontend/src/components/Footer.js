@@ -32,19 +32,19 @@ const Footer = () => {
               Quick Links
             </Typography>
             <Box>
-              <Link href="/" color="inherit" underline="none" sx={{ display: 'block', marginBottom: '0.5rem' }}>
+              <Link href="/" color="inherit" underline="none" sx={{ display: 'block', marginBottom: '0.5rem', '&:hover': { color: '#f57c00' } }}>
                 Home
               </Link>
-              <Link href="/dashboard" color="inherit" underline="none" sx={{ display: 'block', marginBottom: '0.5rem' }}>
+              <Link href="/dashboard" color="inherit" underline="none" sx={{ display: 'block', marginBottom: '0.5rem', '&:hover': { color: '#f57c00' } }}>
                 Dashboard
               </Link>
-              <Link href="/employees" color="inherit" underline="none" sx={{ display: 'block', marginBottom: '0.5rem' }}>
+              <Link href="/employees" color="inherit" underline="none" sx={{ display: 'block', marginBottom: '0.5rem', '&:hover': { color: '#f57c00' } }}>
                 Employees
               </Link>
-              <Link href="/departments" color="inherit" underline="none" sx={{ display: 'block', marginBottom: '0.5rem' }}>
+              <Link href="/departments" color="inherit" underline="none" sx={{ display: 'block', marginBottom: '0.5rem', '&:hover': { color: '#f57c00' } }}>
                 Departments
               </Link>
-              <Link href="/register" color="inherit" underline="none" sx={{ display: 'block' }}>
+              <Link href="/register" color="inherit" underline="none" sx={{ display: 'block', '&:hover': { color: '#f57c00' } }}>
                 Register
               </Link>
             </Box>
@@ -57,13 +57,13 @@ const Footer = () => {
             </Typography>
             <Typography variant="body2">
               Project Maintainer:{' '}
-              <Link href="https://github.com/hoangsonww" color="inherit">
+              <Link href="https://github.com/hoangsonww" color="inherit" sx={{ textDecoration: 'underline', '&:hover': { color: '#f57c00' } }}>
                 Son Nguyen
               </Link>
             </Typography>
             <Typography variant="body2">
               Email:{' '}
-              <Link href="mailto:hoangson091104@gmail.com" color="inherit" underline="none">
+              <Link href="mailto:hoangson091104@gmail.com" color="inherit" sx={{ textDecoration: 'underline', '&:hover': { color: '#f57c00' } }}>
                 hoangson091104@gmail.com
               </Link>
             </Typography>

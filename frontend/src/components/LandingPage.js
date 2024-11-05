@@ -5,12 +5,24 @@ import { Link } from 'react-router-dom';
 const LandingPage = () => {
   const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down('sm'));
 
+  // Animation styles for subtle drop-down effect
+  const animationStyle = {
+    animation: 'dropDown 0.8s ease forwards',
+    opacity: 0,
+    '@keyframes dropDown': {
+      '0%': { transform: 'translateY(-20px)', opacity: 0 },
+      '100%': { transform: 'translateY(0)', opacity: 1 },
+    },
+  };
+
   return (
     <Box sx={{ minHeight: '100vh', backgroundColor: '#f5f5f5', padding: '2rem 0' }}>
       {/* Main Content Container */}
       <Container maxWidth="lg">
+        {/* Welcome Box */}
         <Box
           sx={{
+            ...animationStyle,
             textAlign: 'center',
             marginBottom: '3rem',
             padding: '2rem',
@@ -65,7 +77,7 @@ const LandingPage = () => {
         {/* Features Section */}
         <Grid container spacing={4} sx={{ marginTop: '2rem' }}>
           <Grid item xs={12} md={4}>
-            <Card sx={{ boxShadow: 3, borderRadius: 2, height: '100%', backgroundColor: '#fff' }}>
+            <Card sx={{ ...animationStyle, boxShadow: 3, borderRadius: 2, height: '100%', backgroundColor: '#fff' }}>
               <CardContent>
                 <Typography variant="h5" sx={{ fontWeight: 600, marginBottom: '1rem', color: '#3f51b5' }}>
                   Manage Employees
@@ -92,7 +104,7 @@ const LandingPage = () => {
           </Grid>
 
           <Grid item xs={12} md={4}>
-            <Card sx={{ boxShadow: 3, borderRadius: 2, height: '100%', backgroundColor: '#fff' }}>
+            <Card sx={{ ...animationStyle, boxShadow: 3, borderRadius: 2, height: '100%', backgroundColor: '#fff' }}>
               <CardContent>
                 <Typography variant="h5" sx={{ fontWeight: 600, marginBottom: '1rem', color: '#3f51b5' }}>
                   Track Departments
@@ -119,7 +131,7 @@ const LandingPage = () => {
           </Grid>
 
           <Grid item xs={12} md={4}>
-            <Card sx={{ boxShadow: 3, borderRadius: 2, height: '100%', backgroundColor: '#fff' }}>
+            <Card sx={{ ...animationStyle, boxShadow: 3, borderRadius: 2, height: '100%', backgroundColor: '#fff' }}>
               <CardContent>
                 <Typography variant="h5" sx={{ fontWeight: 600, marginBottom: '1rem', color: '#3f51b5' }}>
                   Analyze Growth
@@ -147,7 +159,17 @@ const LandingPage = () => {
         </Grid>
 
         {/* Additional Information Section */}
-        <Box sx={{ marginTop: '4rem', padding: '2rem', textAlign: 'center', backgroundColor: '#fff', borderRadius: 2, boxShadow: 3 }}>
+        <Box
+          sx={{
+            ...animationStyle,
+            marginTop: '4rem',
+            padding: '2rem',
+            textAlign: 'center',
+            backgroundColor: '#fff',
+            borderRadius: 2,
+            boxShadow: 3,
+          }}
+        >
           <Typography variant="h5" sx={{ marginBottom: '1rem', fontWeight: 600, color: '#3f51b5' }}>
             Why Choose Our System?
           </Typography>
@@ -157,7 +179,17 @@ const LandingPage = () => {
           </Typography>
         </Box>
 
-        <Box sx={{ marginTop: '4rem', padding: '2rem', textAlign: 'center', backgroundColor: '#fff', borderRadius: 2, boxShadow: 3 }}>
+        <Box
+          sx={{
+            ...animationStyle,
+            marginTop: '4rem',
+            padding: '2rem',
+            textAlign: 'center',
+            backgroundColor: '#fff',
+            borderRadius: 2,
+            boxShadow: 3,
+          }}
+        >
           <Typography variant="h5" sx={{ marginBottom: '1rem', fontWeight: 600, color: '#3f51b5' }}>
             Learn More
           </Typography>

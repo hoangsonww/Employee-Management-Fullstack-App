@@ -22,7 +22,7 @@ const EmployeeList = () => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [loading, setLoading] = useState(true);
-  const [deletingEmployeeId, setDeletingEmployeeId] = useState(null); // State for tracking deletion
+  const [deletingEmployeeId, setDeletingEmployeeId] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,18 +35,19 @@ const EmployeeList = () => {
   }, []);
 
   const handleDelete = async (id) => {
-    setDeletingEmployeeId(id); // Set the specific employee being deleted
+    setDeletingEmployeeId(id);
     try {
       await deleteEmployee(id);
       setEmployees((prevEmployees) => prevEmployees.filter((employee) => employee.id !== id));
     } catch (error) {
       console.error('Error deleting employee:', error);
     }
-    setDeletingEmployeeId(null); // Reset deletingEmployeeId after deletion
+    setDeletingEmployeeId(null);
   };
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
+    setPage(0); // Reset page to 0 whenever search term changes
   };
 
   const handleChangePage = (event, newPage) => {
@@ -55,7 +56,7 @@ const EmployeeList = () => {
 
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
+    setPage(0); // Reset page to 0 when rows per page changes
   };
 
   const filteredEmployees = employees.filter(
@@ -155,4 +156,3 @@ const EmployeeList = () => {
 };
 
 export default EmployeeList;
-

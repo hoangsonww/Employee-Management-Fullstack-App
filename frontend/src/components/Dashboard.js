@@ -13,7 +13,10 @@ const Dashboard = () => {
   const [averageAge, setAverageAge] = useState(0);
   const [employeeGrowth, setEmployeeGrowth] = useState([]);
   const [ageRangeData, setAgeRangeData] = useState([]);
-  const [loading, setLoading] = useState(true); // State to track loading
+  const [loading, setLoading] = useState(true);
+  const [genderData] = useState({ male: 295-120, female: 120 });
+  const [jobSatisfactionData] = useState({ satisfied: 295-50-30, neutral: 50, dissatisfied: 30 });
+  const [remoteWorkData] = useState({ onsite: 295-70-80, remote: 70, hybrid: 80 });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -59,6 +62,15 @@ const Dashboard = () => {
     fetchData();
   }, []);
 
+  const animationStyle = {
+    animation: 'dropDown 0.8s ease forwards',
+    opacity: 0,
+    '@keyframes dropDown': {
+      '0%': { transform: 'translateY(-20px)', opacity: 0 },
+      '100%': { transform: 'translateY(0)', opacity: 1 },
+    },
+  };
+
   const totalOverviewData = {
     labels: ['Employees', 'Departments'],
     datasets: [
@@ -67,6 +79,45 @@ const Dashboard = () => {
         data: [employeeCount, departmentCount],
         backgroundColor: ['#3f51b5', '#ff9800'],
         borderColor: ['#3f51b5', '#ff9800'],
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  const genderChartData = {
+    labels: ['Male', 'Female'],
+    datasets: [
+      {
+        label: 'Gender Distribution',
+        data: [genderData.male, genderData.female],
+        backgroundColor: ['#42A5F5', '#FF7043'],
+        borderColor: ['#ffffff'],
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  const jobSatisfactionChartData = {
+    labels: ['Satisfied', 'Neutral', 'Dissatisfied'],
+    datasets: [
+      {
+        label: 'Job Satisfaction Levels',
+        data: [jobSatisfactionData.satisfied, jobSatisfactionData.neutral, jobSatisfactionData.dissatisfied],
+        backgroundColor: ['#81C784', '#FFEB3B', '#FF7043'],
+        borderColor: ['#ffffff'],
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  const remoteWorkChartData = {
+    labels: ['Onsite', 'Remote', 'Hybrid'],
+    datasets: [
+      {
+        label: 'Remote Work Preference',
+        data: [remoteWorkData.onsite, remoteWorkData.remote, remoteWorkData.hybrid],
+        backgroundColor: ['#4FC3F7', '#FFB74D', '#9575CD'],
+        borderColor: ['#ffffff'],
         borderWidth: 1,
       },
     ],
@@ -168,7 +219,7 @@ const Dashboard = () => {
       <Grid container spacing={3}>
         {/* Metric Cards */}
         <Grid item xs={12} sm={6} md={4}>
-          <Card sx={{ boxShadow: 3, borderRadius: 2, height: '100%', backgroundColor: '#fff' }}>
+          <Card sx={{ ...animationStyle, boxShadow: 3, borderRadius: 2, height: '100%', backgroundColor: '#fff' }}>
             <CardContent>
               <Typography variant="h6" textAlign="center">
                 Total Employees
@@ -181,7 +232,7 @@ const Dashboard = () => {
         </Grid>
 
         <Grid item xs={12} sm={6} md={4}>
-          <Card sx={{ boxShadow: 3, borderRadius: 2, height: '100%', backgroundColor: '#fff' }}>
+          <Card sx={{ ...animationStyle, boxShadow: 3, borderRadius: 2, height: '100%', backgroundColor: '#fff' }}>
             <CardContent>
               <Typography variant="h6" textAlign="center">
                 Average Age
@@ -194,10 +245,10 @@ const Dashboard = () => {
         </Grid>
 
         <Grid item xs={12} sm={6} md={4}>
-          <Card sx={{ boxShadow: 3, borderRadius: 2, height: '100%', backgroundColor: '#fff' }}>
+          <Card sx={{ ...animationStyle, boxShadow: 3, borderRadius: 2, height: '100%', backgroundColor: '#fff' }}>
             <CardContent>
               <Typography variant="h6" textAlign="center">
-                Departments Count
+                Total Departments
               </Typography>
               <Typography variant="h4" textAlign="center">
                 {departmentCount}
@@ -208,7 +259,7 @@ const Dashboard = () => {
 
         {/* Chart Cards */}
         <Grid item xs={12} sm={6} md={4}>
-          <Card sx={{ boxShadow: 3, borderRadius: 2, height: '100%', backgroundColor: '#fff' }}>
+          <Card sx={{ ...animationStyle, boxShadow: 3, borderRadius: 2, height: '100%', backgroundColor: '#fff' }}>
             <CardContent>
               <Typography variant="h6">Total Overview</Typography>
               <Bar data={totalOverviewData} options={{ scales: { y: { beginAtZero: true, suggestedMax: 30 } } }} />
@@ -217,7 +268,7 @@ const Dashboard = () => {
         </Grid>
 
         <Grid item xs={12} sm={6} md={4}>
-          <Card sx={{ boxShadow: 3, borderRadius: 2, height: '100%', backgroundColor: '#fff' }}>
+          <Card sx={{ ...animationStyle, boxShadow: 3, borderRadius: 2, height: '100%', backgroundColor: '#fff' }}>
             <CardContent>
               <Typography variant="h6">Employee Count by Age Range</Typography>
               <Bar data={ageRangeChartData} />
@@ -226,7 +277,7 @@ const Dashboard = () => {
         </Grid>
 
         <Grid item xs={12} sm={6} md={4}>
-          <Card sx={{ boxShadow: 3, borderRadius: 2, height: '100%', backgroundColor: '#fff' }}>
+          <Card sx={{ ...animationStyle, boxShadow: 3, borderRadius: 2, height: '100%', backgroundColor: '#fff' }}>
             <CardContent>
               <Typography variant="h6">Employee Growth Over Time</Typography>
               {employeeGrowthData ? <Bar data={employeeGrowthData} /> : <Typography>No data available</Typography>}
@@ -235,7 +286,7 @@ const Dashboard = () => {
         </Grid>
 
         <Grid item xs={12} sm={6} md={4}>
-          <Card sx={{ boxShadow: 3, borderRadius: 2, height: '100%', backgroundColor: '#fff' }}>
+          <Card sx={{ ...animationStyle, boxShadow: 3, borderRadius: 2, height: '100%', backgroundColor: '#fff' }}>
             <CardContent>
               <Typography variant="h6">Average Age of Employees</Typography>
               <Bar data={averageAgeChartData} options={{ scales: { y: { beginAtZero: true, suggestedMax: 100 } } }} />
@@ -244,7 +295,7 @@ const Dashboard = () => {
         </Grid>
 
         <Grid item xs={12} sm={6} md={4}>
-          <Card sx={{ boxShadow: 3, borderRadius: 2, height: '100%', backgroundColor: '#fff' }}>
+          <Card sx={{ ...animationStyle, boxShadow: 3, borderRadius: 2, height: '100%', backgroundColor: '#fff' }}>
             <CardContent>
               <Typography variant="h6">Age Range Distribution</Typography>
               <Pie data={pieChartData} />
@@ -253,10 +304,37 @@ const Dashboard = () => {
         </Grid>
 
         <Grid item xs={12} sm={6} md={4}>
-          <Card sx={{ boxShadow: 3, borderRadius: 2, height: '100%', backgroundColor: '#fff' }}>
+          <Card sx={{ ...animationStyle, boxShadow: 3, borderRadius: 2, height: '100%', backgroundColor: '#fff' }}>
             <CardContent>
               <Typography variant="h6">Employee Growth Trend</Typography>
               {lineChartData ? <Line data={lineChartData} /> : <Typography>No data available</Typography>}
+            </CardContent>
+          </Card>
+        </Grid>
+
+        <Grid item xs={12} sm={6} md={4}>
+          <Card sx={{ ...animationStyle, boxShadow: 3, borderRadius: 2, height: '100%', backgroundColor: '#fff' }}>
+            <CardContent>
+              <Typography variant="h6">Gender Distribution</Typography>
+              <Bar data={genderChartData} options={{ scales: { y: { beginAtZero: true } } }} />
+            </CardContent>
+          </Card>
+        </Grid>
+
+        <Grid item xs={12} sm={6} md={4}>
+          <Card sx={{ ...animationStyle, boxShadow: 3, borderRadius: 2, height: '100%', backgroundColor: '#fff' }}>
+            <CardContent>
+              <Typography variant="h6">Job Satisfaction Levels</Typography>
+              <Pie data={jobSatisfactionChartData} />
+            </CardContent>
+          </Card>
+        </Grid>
+
+        <Grid item xs={12} sm={6} md={4}>
+          <Card sx={{ ...animationStyle, boxShadow: 3, borderRadius: 2, height: '100%', backgroundColor: '#fff' }}>
+            <CardContent>
+              <Typography variant="h6">Remote Work Preference</Typography>
+              <Pie data={remoteWorkChartData} />
             </CardContent>
           </Card>
         </Grid>

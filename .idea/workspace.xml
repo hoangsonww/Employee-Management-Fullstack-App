@@ -5,45 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="392f4aef-37aa-47a3-a82b-22f4f510a7b8" name="Changes" comment="Fix: Deployed Backend with Docker &amp; Render">
-      <change afterPath="$PROJECT_DIR$/frontend/public/android-chrome-192x192.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/public/android-chrome-512x512.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/public/apple-touch-icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/public/favicon-16x16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/public/favicon-32x32.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/backend/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/example/employeemanagement/controller/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/example/employeemanagement/controller/EmployeeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/EmployeeManagementApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/EmployeeManagementApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/config/CorsConfig$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/config/CorsConfig$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/config/CorsConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/config/CorsConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/config/DataInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/config/DataInitializer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/controller/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/controller/AuthController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/controller/DepartmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/controller/DepartmentController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/controller/EmployeeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/controller/EmployeeController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/controller/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/controller/HomeController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/exception/ResourceNotFoundException.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/exception/ResourceNotFoundException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/model/Department.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/model/Department.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/model/Employee.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/model/Employee.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/model/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/repository/DepartmentRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/repository/DepartmentRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/repository/EmployeeRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/repository/EmployeeRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/repository/UserRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/security/CustomUserDetailsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/security/CustomUserDetailsService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/security/JwtRequestFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/security/JwtRequestFilter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/security/JwtTokenUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/security/JwtTokenUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/security/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/security/SecurityConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/service/DepartmentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/service/DepartmentService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/service/EmployeeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/service/EmployeeService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/favicon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/DepartmentForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/DepartmentForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/DepartmentList.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/DepartmentList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/EmployeeForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/EmployeeForm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/EmployeeList.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/EmployeeList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Footer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/LandingPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/LandingPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/NewDepartmentForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/NewDepartmentForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Navbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/dashboard-responsive.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/dashboard-responsive.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/dashboard.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/dashboard.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +42,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/hoangsonww/Employee-Management-Fullstack-App.git&quot;,
-    &quot;accountId&quot;: &quot;bba80ae4-d2ba-42fc-be1e-53456000f3fc&quot;
+    &quot;accountId&quot;: &quot;dc534c08-f559-4d45-8d7a-cf228ae94266&quot;
   }
 }</component>
   <component name="KubernetesApiPersistence">{}</component>
@@ -102,46 +72,46 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Docker.backend/Dockerfile.executor&quot;: &quot;Run&quot;,
-    &quot;Jest.renders dashboard with metrics.executor&quot;: &quot;Run&quot;,
-    &quot;Notification.DisplayName-DoNotAsk-JDK Arch Check&quot;: &quot;JDK and system architectures are different&quot;,
-    &quot;Notification.DoNotAsk-JDK Arch Check&quot;: &quot;true&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenDatabaseViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Spring Boot.EmployeeManagementApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;production/frontend-deployment&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/davidnguyen/IdeaProjects/Employee-Management&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs.jest.jest_package&quot;: &quot;/Users/davidnguyen/IdeaProjects/Employee-Management/frontend/node_modules/react-scripts&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.format.executor&quot;: &quot;Run&quot;,
-    &quot;npm.frontend.executor&quot;: &quot;Run&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;swagger&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Applications/WebStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Docker.backend/Dockerfile.executor": "Run",
+    "Jest.renders dashboard with metrics.executor": "Run",
+    "Notification.DisplayName-DoNotAsk-JDK Arch Check": "JDK and system architectures are different",
+    "Notification.DoNotAsk-JDK Arch Check": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenDatabaseViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.EmployeeManagementApplication.executor": "Run",
+    "git-widget-placeholder": "production/frontend-deployment",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/davidnguyen/IdeaProjects/Employee-Management",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs.jest.jest_package": "/Users/davidnguyen/IdeaProjects/Employee-Management/frontend/node_modules/react-scripts",
+    "nodejs_package_manager_path": "npm",
+    "npm.format.executor": "Run",
+    "npm.frontend.executor": "Run",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "swagger",
+    "ts.external.directory.path": "/Applications/WebStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;,
-      &quot;mongo&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql",
+      "mongo"
     ]
   }
-}</component>
+}]]></component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -158,12 +128,12 @@
       <recent name="$PROJECT_DIR$/frontend" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/frontend/public" />
       <recent name="$PROJECT_DIR$/img" />
+      <recent name="$PROJECT_DIR$/frontend/public" />
       <recent name="$PROJECT_DIR$/backend" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.backend/Dockerfile">
+  <component name="RunManager" selected="npm.frontend">
     <configuration name="EmployeeManagementApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="employee-management-app" />
       <extension name="coverage">
@@ -235,8 +205,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23726.103" />
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23726.103" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-WS-242.23726.96" />
       </set>
     </attachedChunks>
   </component>
@@ -320,6 +289,7 @@
       <workItem from="1730491114539" duration="1155000" />
       <workItem from="1730494544460" duration="2000" />
       <workItem from="1730689771387" duration="2003000" />
+      <workItem from="1730780443680" duration="2138000" />
     </task>
     <task id="LOCAL-00282" summary="Fix: Addressed security vulnerabilities">
       <option name="closed" value="true" />

@@ -51,26 +51,26 @@ const Navbar = () => {
   const drawerContent = (
     <Box sx={{ width: 250, backgroundColor: '#3f51b5', height: '100%', color: 'white' }} role="presentation">
       <List>
-        <ListItem button component={Link} to="/" selected={isActive('/')}>
+        <ListItem button component={Link} to="/" selected={isActive('/')} onClick={handleDrawerToggle}>
           <ListItemText primary="Home" sx={{ color: isActive('/') ? '#ff9800' : 'white' }} />
         </ListItem>
-        <ListItem button component={Link} to="/dashboard" selected={isActive('/dashboard')}>
+        <ListItem button component={Link} to="/dashboard" selected={isActive('/dashboard')} onClick={handleDrawerToggle}>
           <ListItemText primary="Dashboard" sx={{ color: isActive('/dashboard') ? '#ff9800' : 'white' }} />
         </ListItem>
-        <ListItem button component={Link} to="/employees" selected={isActive('/employees')}>
+        <ListItem button component={Link} to="/employees" selected={isActive('/employees')} onClick={handleDrawerToggle}>
           <ListItemText primary="Employees" sx={{ color: isActive('/employees') ? '#ff9800' : 'white' }} />
         </ListItem>
-        <ListItem button component={Link} to="/departments" selected={isActive('/departments')}>
+        <ListItem button component={Link} to="/departments" selected={isActive('/departments')} onClick={handleDrawerToggle}>
           <ListItemText primary="Departments" sx={{ color: isActive('/departments') ? '#ff9800' : 'white' }} />
         </ListItem>
-        <ListItem button component={Link} to="/login" selected={isActive('/login')}>
+        <ListItem button component={Link} to="/login" selected={isActive('/login')} onClick={handleDrawerToggle}>
           <ListItemText
             primary={isLoggedIn ? 'Logout' : 'Login'}
             sx={{ color: isLoggedIn ? 'red' : isActive('/login') ? '#ff9800' : 'white' }}
             onClick={isLoggedIn ? handleLogout : null}
           />
         </ListItem>
-        <ListItem button component={Link} to="/register" selected={isActive('/register')}>
+        <ListItem button component={Link} to="/register" selected={isActive('/register')} onClick={handleDrawerToggle}>
           <ListItemText primary="Register" sx={{ color: isActive('/register') ? '#ff9800' : 'white' }} />
         </ListItem>
       </List>

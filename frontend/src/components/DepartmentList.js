@@ -21,8 +21,8 @@ const DepartmentList = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
-  const [loading, setLoading] = useState(true); // General loading state for fetching data
-  const [deletingDepartmentId, setDeletingDepartmentId] = useState(null); // Track specific department being deleted
+  const [loading, setLoading] = useState(true);
+  const [deletingDepartmentId, setDeletingDepartmentId] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,18 +35,19 @@ const DepartmentList = () => {
   }, []);
 
   const handleDelete = async (id) => {
-    setDeletingDepartmentId(id); // Set specific department being deleted
+    setDeletingDepartmentId(id);
     try {
       await deleteDepartment(id);
       setDepartments((prevDepartments) => prevDepartments.filter((department) => department.id !== id));
     } catch (error) {
       console.error('Error deleting department:', error);
     }
-    setDeletingDepartmentId(null); // Reset after deletion
+    setDeletingDepartmentId(null);
   };
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
+    setPage(0); // Reset page to 0 whenever search term changes
   };
 
   const handleChangePage = (event, newPage) => {
@@ -55,7 +56,7 @@ const DepartmentList = () => {
 
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
+    setPage(0); // Reset page to 0 when rows per page changes
   };
 
   const filteredDepartments = departments.filter((department) =>
@@ -114,7 +115,7 @@ const DepartmentList = () => {
                     color="primary"
                     component={Link}
                     to={`/edit-department/${department.id}`}
-                    sx={{ marginRight: '0.5rem' }}
+                    sx={{ marginRight: '0.5rem', marginBottom: '0.25rem' }}
                   >
                     Edit
                   </Button>
@@ -122,6 +123,7 @@ const DepartmentList = () => {
                     variant="contained"
                     color="secondary"
                     onClick={() => handleDelete(department.id)}
+                    sx={{ marginBottom: '0.25rem' }}
                     disabled={deletingDepartmentId === department.id}
                     startIcon={deletingDepartmentId === department.id ? <CircularProgress size={20} /> : null}
                   >
