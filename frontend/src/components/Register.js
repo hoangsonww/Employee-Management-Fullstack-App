@@ -34,6 +34,7 @@ const Register = () => {
       setLoading(false);
 
       if (response.ok) {
+        alert('User registered successfully. Please login to continue.');
         navigate('/login'); // Redirect to login page after successful registration
       } else {
         const data = await response.json();

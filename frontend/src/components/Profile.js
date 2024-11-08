@@ -1,7 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
 import { Box, Typography, Button } from "@mui/material";
+import { useNavigate } from 'react-router-dom';
 
 const Profile = ({ theme }) => {
+  const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const checkLoginStatus = () => {
+      const token = localStorage.getItem('token');
+      if (token) {
+        setIsLoggedIn(true);
+      } else {
+        navigate('/login', { replace: true }); // Redirect immediately if not logged in
+      }
+    };
+
+    checkLoginStatus();
+  }, [navigate]);
+
+  if (!isLoggedIn) {
+    return null; // Prevent rendering the profile page if not logged in
+  }
+
   // Hardcoded profile data
   const profileData = {
     username: "John Doe",
@@ -12,7 +33,12 @@ const Profile = ({ theme }) => {
   };
 
   // Hardcoded avatar image URL
-  const avatarUrl = "/OIP.jpg"; // Replace with actual image path or URL
+  const avatarUrl = "/OIP.jpg";
+
+  const handleLogout = () => {
+    localStorage.removeItem('token'); // Remove token
+    navigate('/login'); // Redirect to login page
+  };
 
   return (
     <Box
@@ -53,7 +79,7 @@ const Profile = ({ theme }) => {
             borderRadius: "50%",
             overflow: "hidden",
             margin: "0 auto 16px",
-            border: "3px solid #f57c00",
+            border: "3px solid #3f51b5",
           }}
         >
           <img
@@ -69,28 +95,37 @@ const Profile = ({ theme }) => {
         </Typography>
 
         {/* Username */}
-        <Typography variant="h6" sx={{ mb: 1 }}>
+        <Typography variant="body1" sx={{ mb: 1, fontSize: '16px' }}>
           <strong>Username:</strong> {profileData.username}
         </Typography>
 
         {/* Total Employees */}
-        <Typography variant="h6" sx={{ mb: 1 }}>
+        <Typography variant="body1" sx={{ mb: 1 }}>
           <strong>Total Employees:</strong> {profileData.employeeCount}
         </Typography>
 
         {/* Total Departments */}
-        <Typography variant="h6" sx={{ mb: 1 }}>
+        <Typography variant="body1" sx={{ mb: 1 }}>
           <strong>Departments:</strong> {profileData.departmentCount}
         </Typography>
 
         {/* Average Age */}
-        <Typography variant="h6" sx={{ mb: 1 }}>
+        <Typography variant="body1" sx={{ mb: 1 }}>
           <strong>Average Age:</strong> {profileData.averageAge}
         </Typography>
 
         {/* Job Satisfaction */}
-        <Typography variant="h6" sx={{ mb: 1 }}>
+        <Typography variant="body1" sx={{ mb: 1 }}>
           <strong>Job Satisfaction:</strong> {profileData.averageJobSatisfaction}
+        </Typography>
+
+        <div style={{ height: 20, borderBottom: '1px solid #ccc' }}></div>
+
+        {/* Thank you message */}
+        <Typography variant="body1" sx={{ mt: 2 }}>
+          <strong>
+            Thank you for using our platform today! 🚀
+          </strong>
         </Typography>
 
         {/* Logout Button */}
@@ -98,10 +133,7 @@ const Profile = ({ theme }) => {
           variant="contained"
           color="secondary"
           sx={{ mt: 3 }}
-          onClick={() => {
-            localStorage.removeItem("userId");
-            window.location.reload();
-          }}
+          onClick={handleLogout}
         >
           Logout
         </Button>
