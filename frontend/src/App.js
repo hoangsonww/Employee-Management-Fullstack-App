@@ -8,6 +8,7 @@ import DepartmentList from './components/DepartmentList';
 import DepartmentForm from './components/DepartmentForm';
 import Navbar from './components/Navbar';
 import LandingPage from './components/LandingPage';
+import Profile from './components/Profile';
 import Footer from './components/Footer';
 import Login from './components/Login';
 import Register from './components/Register';
@@ -31,6 +32,7 @@ const App = () => {
           <Route path="/edit-department/:id" element={<DepartmentForm />} />
           <Route path="/verify-username" element={<VerifyUsername />} />
           <Route path="/reset-password" element={<ResetPassword />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="*" element={<NotFoundPage />} />
