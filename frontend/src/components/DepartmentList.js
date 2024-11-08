@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { getAllDepartments, deleteDepartment } from '../services/departmentService';
 import {
   Table,
@@ -14,38 +14,60 @@ import {
   TextField,
   Box,
   CircularProgress,
+  Snackbar,
+  Alert
 } from '@mui/material';
 
 const DepartmentList = () => {
+  const navigate = useNavigate();
   const [departments, setDepartments] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [deletingDepartmentId, setDeletingDepartmentId] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showSnackbar, setShowSnackbar] = useState(false);
 
+  // Check login status
   useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      const data = await getAllDepartments();
-      setDepartments(data);
-      setLoading(false);
-    };
-    fetchData();
-  }, []);
+    const token = localStorage.getItem('token');
+    if (token) {
+      setIsLoggedIn(true);
+    } else {
+      setShowSnackbar(true);
+    }
+  }, [navigate]);
 
-  const handleDelete = async id => {
+  // Fetch departments data if logged in
+  useEffect(() => {
+    if (isLoggedIn) {
+      const fetchData = async () => {
+        setLoading(true);
+        try {
+          const data = await getAllDepartments();
+          setDepartments(data);
+        } catch (error) {
+          console.error('Error fetching departments:', error);
+        }
+        setLoading(false);
+      };
+      fetchData();
+    }
+  }, [isLoggedIn]);
+
+  const handleDelete = async (id) => {
     setDeletingDepartmentId(id);
     try {
       await deleteDepartment(id);
-      setDepartments(prevDepartments => prevDepartments.filter(department => department.id !== id));
+      setDepartments((prevDepartments) => prevDepartments.filter((department) => department.id !== id));
     } catch (error) {
       console.error('Error deleting department:', error);
     }
     setDeletingDepartmentId(null);
   };
 
-  const handleSearchChange = event => {
+  const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
     setPage(0); // Reset page to 0 whenever search term changes
   };
@@ -54,12 +76,14 @@ const DepartmentList = () => {
     setPage(newPage);
   };
 
-  const handleChangeRowsPerPage = event => {
+  const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0); // Reset page to 0 when rows per page changes
   };
 
-  const filteredDepartments = departments.filter(department => department.name.toLowerCase().includes(searchTerm.toLowerCase()));
+  const filteredDepartments = departments.filter((department) =>
+    department.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   if (loading) {
     return (
@@ -82,8 +106,45 @@ const DepartmentList = () => {
     );
   }
 
+  const handleCloseSnackbar = () => {
+    setShowSnackbar(false);
+    navigate('/login', { replace: true });
+  };
+
+  const handleLoginRedirect = () => {
+    navigate('/login');
+  };
+
   return (
     <Box>
+      <Snackbar
+        open={showSnackbar}
+        onClose={handleCloseSnackbar}
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        sx={{ mt: 9 }}
+      >
+        <Alert
+          onClose={handleCloseSnackbar}
+          severity="warning"
+          sx={{ width: '100%' }}
+        >
+          You must be logged in to access the employee list.{' '}
+          <span
+            onClick={handleLoginRedirect}
+            style={{
+              color: '#3f51b5',
+              textDecoration: 'underline',
+              cursor: 'pointer',
+              transition: 'color 0.1s',
+            }}
+            onMouseEnter={(e) => (e.target.style.color = '#f57c00')}
+            onMouseLeave={(e) => (e.target.style.color = '#3f51b5')}
+          >
+            Login
+          </span>
+        </Alert>
+      </Snackbar>
+
       <h2>Departments</h2>
       <Button variant="contained" component={Link} to="/add-department" sx={{ marginBottom: '1rem' }}>
         Add Department
@@ -104,7 +165,7 @@ const DepartmentList = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {filteredDepartments.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(department => (
+            {filteredDepartments.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((department) => (
               <TableRow key={department.id}>
                 <TableCell>{department.name}</TableCell>
                 <TableCell>

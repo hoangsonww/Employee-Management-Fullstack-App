@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Typography, Button, CircularProgress } from "@mui/material";
+import { Box, Typography, Button, CircularProgress, Snackbar, Alert, Link } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { getAllEmployees } from '../services/employeeService';
 import { getAllDepartments } from '../services/departmentService';
@@ -11,6 +11,7 @@ const Profile = ({ theme }) => {
   const [departmentCount, setDepartmentCount] = useState(0);
   const [averageAge, setAverageAge] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [showSnackbar, setShowSnackbar] = useState(false);
 
   useEffect(() => {
     const checkLoginStatus = () => {
@@ -18,7 +19,7 @@ const Profile = ({ theme }) => {
       if (token) {
         setIsLoggedIn(true);
       } else {
-        navigate('/login', { replace: true });
+        setShowSnackbar(true); // Show the snackbar notification
       }
     };
 
@@ -46,8 +47,48 @@ const Profile = ({ theme }) => {
     fetchData();
   }, []);
 
+  const handleCloseSnackbar = () => {
+    setShowSnackbar(false);
+    navigate('/login', { replace: true });
+  };
+
+  const handleLoginRedirect = () => {
+    navigate('/login');
+  };
+
   if (!isLoggedIn) {
-    return null;
+    return (
+      <>
+        <Snackbar
+          open={showSnackbar}
+          onClose={handleCloseSnackbar}
+          anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+          sx={{ mt: 9 }}
+        >
+          <Alert
+            onClose={handleCloseSnackbar}
+            severity="warning"
+            sx={{ width: '100%' }}
+          >
+            You must be logged in to view your profile.{' '}
+            <span
+              onClick={handleLoginRedirect}
+              style={{
+                color: '#3f51b5',
+                textDecoration: 'underline',
+                cursor: 'pointer',
+                transition: 'color 0.1s',
+              }}
+              onMouseEnter={(e) => (e.target.style.color = '#f57c00')}
+              onMouseLeave={(e) => (e.target.style.color = '#3f51b5')}
+            >
+              Login
+            </span>
+          </Alert>
+        </Snackbar>
+        <div style={{ height: 20 }}></div>
+      </>
+    );
   }
 
   if (loading) {
