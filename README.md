@@ -43,7 +43,7 @@ The Employee Management System is a dynamic full-stack application that seamless
 
 ## Live Deployment
 
-The Employee Management System full-stack app is deployed with Vercel and is live at [https://employee-management-fullstack-app.vercel.app](https://employee-management-fullstack-app.vercel.app) for you to explore and interact with the application.
+The Employee Management System full-stack app is deployed with Vercel and is live at [https://employee-manage-app.vercel.app](https://employee-manage-app.vercel.app) for you to explore and interact with the application.
 
 The backend is also deployed with Render and is available at [https://employee-management-app.onrender.com](https://employee-management-app-gdm5.onrender.com/). You can access the API endpoints directly from the browser.
 
