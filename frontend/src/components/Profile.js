@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography, Button, CircularProgress } from "@mui/material";
 import { useNavigate } from 'react-router-dom';
+import { getAllEmployees } from '../services/employeeService';
+import { getAllDepartments } from '../services/departmentService';
 
 const Profile = ({ theme }) => {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [employeeCount, setEmployeeCount] = useState(0);
+  const [departmentCount, setDepartmentCount] = useState(0);
+  const [averageAge, setAverageAge] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const checkLoginStatus = () => {
@@ -12,32 +18,67 @@ const Profile = ({ theme }) => {
       if (token) {
         setIsLoggedIn(true);
       } else {
-        navigate('/login', { replace: true }); // Redirect immediately if not logged in
+        navigate('/login', { replace: true });
       }
     };
 
     checkLoginStatus();
   }, [navigate]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const employees = await getAllEmployees();
+        const departments = await getAllDepartments();
+        setEmployeeCount(employees.length);
+        setDepartmentCount(departments.length);
+
+        const totalAge = employees.reduce((sum, emp) => sum + emp.age, 0);
+        const avgAge = employees.length ? (totalAge / employees.length).toFixed(1) : 0;
+        setAverageAge(avgAge);
+      } catch (error) {
+        console.error("Failed to fetch data:", error);
+      }
+      setLoading(false);
+    };
+
+    fetchData();
+  }, []);
+
   if (!isLoggedIn) {
-    return null; // Prevent rendering the profile page if not logged in
+    return null;
   }
 
-  // Hardcoded profile data
+  if (loading) {
+    return (
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '100vh',
+          backgroundColor: theme === 'dark' ? '#222' : '#f4f4f4',
+        }}
+      >
+        <CircularProgress />
+      </Box>
+    );
+  }
+
   const profileData = {
-    username: "John Doe",
-    employeeCount: 150,
-    departmentCount: 5,
-    averageAge: 34.2,
-    averageJobSatisfaction: "High",
+    username: localStorage.getItem('EMSusername') || 'John Doe',
+    employeeCount,
+    departmentCount,
+    averageAge,
+    averageJobSatisfaction: 'High',
   };
 
-  // Hardcoded avatar image URL
   const avatarUrl = "/OIP.jpg";
 
   const handleLogout = () => {
-    localStorage.removeItem('token'); // Remove token
-    navigate('/login'); // Redirect to login page
+    localStorage.removeItem('token');
+    navigate('/login');
   };
 
   return (
@@ -53,12 +94,10 @@ const Profile = ({ theme }) => {
         transition: "background-color 0.3s ease",
       }}
     >
-      {/* Welcome Message */}
       <Typography variant="h4" sx={{ textAlign: "center", marginBottom: 4 }}>
         Welcome, {profileData.username}!
       </Typography>
 
-      {/* Profile Card */}
       <Box
         sx={{
           backgroundColor: theme === "dark" ? "#333" : "#fff",
@@ -71,7 +110,6 @@ const Profile = ({ theme }) => {
           transition: "background-color 0.3s ease",
         }}
       >
-        {/* Avatar Section */}
         <Box
           sx={{
             width: 150,
@@ -89,46 +127,36 @@ const Profile = ({ theme }) => {
           />
         </Box>
 
-        {/* Profile Title */}
         <Typography variant="h5" sx={{ mb: 2, fontWeight: "bold" }}>
           Profile Information
         </Typography>
 
-        {/* Username */}
         <Typography variant="body1" sx={{ mb: 1, fontSize: '16px' }}>
           <strong>Username:</strong> {profileData.username}
         </Typography>
 
-        {/* Total Employees */}
         <Typography variant="body1" sx={{ mb: 1 }}>
           <strong>Total Employees:</strong> {profileData.employeeCount}
         </Typography>
 
-        {/* Total Departments */}
         <Typography variant="body1" sx={{ mb: 1 }}>
           <strong>Departments:</strong> {profileData.departmentCount}
         </Typography>
 
-        {/* Average Age */}
         <Typography variant="body1" sx={{ mb: 1 }}>
           <strong>Average Age:</strong> {profileData.averageAge}
         </Typography>
 
-        {/* Job Satisfaction */}
         <Typography variant="body1" sx={{ mb: 1 }}>
           <strong>Job Satisfaction:</strong> {profileData.averageJobSatisfaction}
         </Typography>
 
         <div style={{ height: 20, borderBottom: '1px solid #ccc' }}></div>
 
-        {/* Thank you message */}
         <Typography variant="body1" sx={{ mt: 2 }}>
-          <strong>
-            Thank you for using our platform today! 🚀
-          </strong>
+          <strong>Thank you for using our platform today! 🚀</strong>
         </Typography>
 
-        {/* Logout Button */}
         <Button
           variant="contained"
           color="secondary"

@@ -127,6 +127,12 @@ The frontend is also live at [https://employee-management-fullstack-app.vercel.a
   <img src="img/edit-department.png" alt="Edit Department Form" style="border-radius: 10px" width="100%"/>
 </p>
 
+**Profile Page:**
+
+<p align="center" style="cursor: pointer">
+  <img src="img/profile.png" alt="Profile Page" style="border-radius: 10px" width="100%"/>
+</p>
+
 **Login Page:**
 
 <p align="center" style="cursor: pointer">

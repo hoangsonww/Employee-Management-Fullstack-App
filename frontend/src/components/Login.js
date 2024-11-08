@@ -28,6 +28,7 @@ const Login = () => {
 
       if (response.ok) {
         localStorage.setItem('token', data.token); // Store token in localStorage
+        localStorage.setItem('EMSusername', username); // Store username in localStorage
         alert('Login successful. Welcome!');
         navigate('/dashboard'); // Correct navigation after login success
       } else {
