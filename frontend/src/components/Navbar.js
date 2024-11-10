@@ -14,7 +14,7 @@ const Navbar = () => {
   // Check if screen width is below 1000px
   const isMobile = useMediaQuery('(max-width:1000px)');
 
-  const isActive = (path) => currentPath === path;
+  const isActive = path => currentPath === path;
 
   const handleDrawerToggle = () => {
     setDrawerOpen(!drawerOpen);

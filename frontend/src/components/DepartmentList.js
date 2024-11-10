@@ -15,7 +15,7 @@ import {
   Box,
   CircularProgress,
   Snackbar,
-  Alert
+  Alert,
 } from '@mui/material';
 
 const DepartmentList = () => {
@@ -56,18 +56,18 @@ const DepartmentList = () => {
     }
   }, [isLoggedIn]);
 
-  const handleDelete = async (id) => {
+  const handleDelete = async id => {
     setDeletingDepartmentId(id);
     try {
       await deleteDepartment(id);
-      setDepartments((prevDepartments) => prevDepartments.filter((department) => department.id !== id));
+      setDepartments(prevDepartments => prevDepartments.filter(department => department.id !== id));
     } catch (error) {
       console.error('Error deleting department:', error);
     }
     setDeletingDepartmentId(null);
   };
 
-  const handleSearchChange = (event) => {
+  const handleSearchChange = event => {
     setSearchTerm(event.target.value);
     setPage(0); // Reset page to 0 whenever search term changes
   };
@@ -76,14 +76,12 @@ const DepartmentList = () => {
     setPage(newPage);
   };
 
-  const handleChangeRowsPerPage = (event) => {
+  const handleChangeRowsPerPage = event => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0); // Reset page to 0 when rows per page changes
   };
 
-  const filteredDepartments = departments.filter((department) =>
-    department.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredDepartments = departments.filter(department => department.name.toLowerCase().includes(searchTerm.toLowerCase()));
 
   if (loading) {
     return (
@@ -117,17 +115,8 @@ const DepartmentList = () => {
 
   return (
     <Box>
-      <Snackbar
-        open={showSnackbar}
-        onClose={handleCloseSnackbar}
-        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-        sx={{ mt: 9 }}
-      >
-        <Alert
-          onClose={handleCloseSnackbar}
-          severity="warning"
-          sx={{ width: '100%' }}
-        >
+      <Snackbar open={showSnackbar} onClose={handleCloseSnackbar} anchorOrigin={{ vertical: 'top', horizontal: 'center' }} sx={{ mt: 9 }}>
+        <Alert onClose={handleCloseSnackbar} severity="warning" sx={{ width: '100%' }}>
           You must be logged in to access the employee list.{' '}
           <span
             onClick={handleLoginRedirect}
@@ -137,8 +126,8 @@ const DepartmentList = () => {
               cursor: 'pointer',
               transition: 'color 0.1s',
             }}
-            onMouseEnter={(e) => (e.target.style.color = '#f57c00')}
-            onMouseLeave={(e) => (e.target.style.color = '#3f51b5')}
+            onMouseEnter={e => (e.target.style.color = '#f57c00')}
+            onMouseLeave={e => (e.target.style.color = '#3f51b5')}
           >
             Login
           </span>
@@ -165,7 +154,7 @@ const DepartmentList = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {filteredDepartments.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((department) => (
+            {filteredDepartments.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(department => (
               <TableRow key={department.id}>
                 <TableCell>{department.name}</TableCell>
                 <TableCell>

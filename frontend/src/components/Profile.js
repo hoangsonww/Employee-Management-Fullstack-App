@@ -39,7 +39,7 @@ const Profile = ({ theme }) => {
         const avgAge = employees.length ? (totalAge / employees.length).toFixed(1) : 0;
         setAverageAge(avgAge);
       } catch (error) {
-        console.error("Failed to fetch data:", error);
+        console.error('Failed to fetch data:', error);
       }
       setLoading(false);
     };
@@ -59,17 +59,8 @@ const Profile = ({ theme }) => {
   if (!isLoggedIn) {
     return (
       <>
-        <Snackbar
-          open={showSnackbar}
-          onClose={handleCloseSnackbar}
-          anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-          sx={{ mt: 9 }}
-        >
-          <Alert
-            onClose={handleCloseSnackbar}
-            severity="warning"
-            sx={{ width: '100%' }}
-          >
+        <Snackbar open={showSnackbar} onClose={handleCloseSnackbar} anchorOrigin={{ vertical: 'top', horizontal: 'center' }} sx={{ mt: 9 }}>
+          <Alert onClose={handleCloseSnackbar} severity="warning" sx={{ width: '100%' }}>
             You must be logged in to view your profile.{' '}
             <span
               onClick={handleLoginRedirect}
@@ -79,8 +70,8 @@ const Profile = ({ theme }) => {
                 cursor: 'pointer',
                 transition: 'color 0.1s',
               }}
-              onMouseEnter={(e) => (e.target.style.color = '#f57c00')}
-              onMouseLeave={(e) => (e.target.style.color = '#3f51b5')}
+              onMouseEnter={e => (e.target.style.color = '#f57c00')}
+              onMouseLeave={e => (e.target.style.color = '#3f51b5')}
             >
               Login
             </span>
@@ -115,7 +106,7 @@ const Profile = ({ theme }) => {
     averageJobSatisfaction: 'High',
   };
 
-  const avatarUrl = "/OIP.jpg";
+  const avatarUrl = '/OIP.jpg';
 
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -125,50 +116,46 @@ const Profile = ({ theme }) => {
   return (
     <Box
       sx={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        height: "100vh",
-        backgroundColor: theme === "dark" ? "#222" : "#f4f4f4",
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        height: '100vh',
+        backgroundColor: theme === 'dark' ? '#222' : '#f4f4f4',
         paddingTop: 8,
         paddingBottom: 20,
-        transition: "background-color 0.3s ease",
+        transition: 'background-color 0.3s ease',
       }}
     >
-      <Typography variant="h4" sx={{ textAlign: "center", marginBottom: 4 }}>
+      <Typography variant="h4" sx={{ textAlign: 'center', marginBottom: 4 }}>
         Welcome, {profileData.username}!
       </Typography>
 
       <Box
         sx={{
-          backgroundColor: theme === "dark" ? "#333" : "#fff",
-          color: theme === "dark" ? "#fff" : "#000",
+          backgroundColor: theme === 'dark' ? '#333' : '#fff',
+          color: theme === 'dark' ? '#fff' : '#000',
           padding: 4,
           borderRadius: 2,
-          width: "400px",
-          textAlign: "center",
-          boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
-          transition: "background-color 0.3s ease",
+          width: '400px',
+          textAlign: 'center',
+          boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
+          transition: 'background-color 0.3s ease',
         }}
       >
         <Box
           sx={{
             width: 150,
             height: 150,
-            borderRadius: "50%",
-            overflow: "hidden",
-            margin: "0 auto 16px",
-            border: "3px solid #3f51b5",
+            borderRadius: '50%',
+            overflow: 'hidden',
+            margin: '0 auto 16px',
+            border: '3px solid #3f51b5',
           }}
         >
-          <img
-            src={avatarUrl}
-            alt="User Avatar"
-            style={{ width: "100%", height: "100%", objectFit: "cover" }}
-          />
+          <img src={avatarUrl} alt="User Avatar" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
         </Box>
 
-        <Typography variant="h5" sx={{ mb: 2, fontWeight: "bold" }}>
+        <Typography variant="h5" sx={{ mb: 2, fontWeight: 'bold' }}>
           Profile Information
         </Typography>
 
@@ -198,12 +185,7 @@ const Profile = ({ theme }) => {
           <strong>Thank you for using our platform today! 🚀</strong>
         </Typography>
 
-        <Button
-          variant="contained"
-          color="secondary"
-          sx={{ mt: 3 }}
-          onClick={handleLogout}
-        >
+        <Button variant="contained" color="secondary" sx={{ mt: 3 }} onClick={handleLogout}>
           Logout
         </Button>
       </Box>

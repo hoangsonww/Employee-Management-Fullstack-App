@@ -15,7 +15,7 @@ import {
   Box,
   CircularProgress,
   Snackbar,
-  Alert
+  Alert,
 } from '@mui/material';
 
 const EmployeeList = () => {
@@ -54,18 +54,18 @@ const EmployeeList = () => {
     }
   }, [isLoggedIn]);
 
-  const handleDelete = async (id) => {
+  const handleDelete = async id => {
     setDeletingEmployeeId(id);
     try {
       await deleteEmployee(id);
-      setEmployees((prevEmployees) => prevEmployees.filter((employee) => employee.id !== id));
+      setEmployees(prevEmployees => prevEmployees.filter(employee => employee.id !== id));
     } catch (error) {
       console.error('Error deleting employee:', error);
     }
     setDeletingEmployeeId(null);
   };
 
-  const handleSearchChange = (event) => {
+  const handleSearchChange = event => {
     setSearchTerm(event.target.value);
     setPage(0); // Reset page to 0 whenever search term changes
   };
@@ -74,13 +74,13 @@ const EmployeeList = () => {
     setPage(newPage);
   };
 
-  const handleChangeRowsPerPage = (event) => {
+  const handleChangeRowsPerPage = event => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0); // Reset page to 0 when rows per page changes
   };
 
   const filteredEmployees = employees.filter(
-    (employee) =>
+    employee =>
       employee.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
       employee.lastName.toLowerCase().includes(searchTerm.toLowerCase()) ||
       employee.email.toLowerCase().includes(searchTerm.toLowerCase())
@@ -118,17 +118,8 @@ const EmployeeList = () => {
 
   return (
     <Box>
-      <Snackbar
-        open={showSnackbar}
-        onClose={handleCloseSnackbar}
-        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-        sx={{ mt: 9 }}
-      >
-        <Alert
-          onClose={handleCloseSnackbar}
-          severity="warning"
-          sx={{ width: '100%' }}
-        >
+      <Snackbar open={showSnackbar} onClose={handleCloseSnackbar} anchorOrigin={{ vertical: 'top', horizontal: 'center' }} sx={{ mt: 9 }}>
+        <Alert onClose={handleCloseSnackbar} severity="warning" sx={{ width: '100%' }}>
           You must be logged in to access the employee list.{' '}
           <span
             onClick={handleLoginRedirect}
@@ -138,8 +129,8 @@ const EmployeeList = () => {
               cursor: 'pointer',
               transition: 'color 0.1s',
             }}
-            onMouseEnter={(e) => (e.target.style.color = '#f57c00')}
-            onMouseLeave={(e) => (e.target.style.color = '#3f51b5')}
+            onMouseEnter={e => (e.target.style.color = '#f57c00')}
+            onMouseLeave={e => (e.target.style.color = '#3f51b5')}
           >
             Login
           </span>
@@ -168,7 +159,7 @@ const EmployeeList = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {filteredEmployees.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((employee) => (
+            {filteredEmployees.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(employee => (
               <TableRow key={employee.id}>
                 <TableCell>{employee.firstName}</TableCell>
                 <TableCell>{employee.lastName}</TableCell>
