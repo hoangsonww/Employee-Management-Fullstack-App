@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="392f4aef-37aa-47a3-a82b-22f4f510a7b8" name="Changes" comment="Fix: Deployed Backend with Docker &amp; Render">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -31,12 +32,12 @@
     &quot;assignee&quot;: &quot;hoangsonww&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/hoangsonww/Employee-Management-Fullstack-App.git",
-    "accountId": "bba80ae4-d2ba-42fc-be1e-53456000f3fc"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/hoangsonww/Employee-Management-Fullstack-App.git&quot;,
+    &quot;accountId&quot;: &quot;dc534c08-f559-4d45-8d7a-cf228ae94266&quot;
   }
-}]]></component>
+}</component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
@@ -77,6 +78,7 @@
     &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
     &quot;RunOnceActivity.OpenDatabaseViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;Spring Boot.EmployeeManagementApplication.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
@@ -180,6 +182,16 @@
       </deployment>
       <method v="2" />
     </configuration>
+    <configuration name="format" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="format" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="frontend" type="js.build_tools.npm" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -193,16 +205,19 @@
     <list>
       <item itemvalue="Docker.backend/Dockerfile" />
       <item itemvalue="Jest.renders dashboard with metrics" />
-      <item itemvalue="JUnit.EmployeeManagementApplicationTests" />
       <item itemvalue="npm.frontend" />
-      <item itemvalue="Spring Boot.EmployeeManagementApplication" />
+      <item itemvalue="npm.format" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.format" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23726.103" />
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23726.103" />
+        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-WS-243.21565.180" />
       </set>
     </attachedChunks>
   </component>
@@ -293,14 +308,21 @@
       <workItem from="1731027664464" duration="3786000" />
       <workItem from="1731264566006" duration="4000" />
       <workItem from="1731268540709" duration="60000" />
-    </task>
-    <task id="LOCAL-00288" summary="Fix: Addressed security vulnerabilities">
-      <option name="closed" value="true" />
-      <created>1725632535275</created>
-      <option name="number" value="00288" />
-      <option name="presentableId" value="LOCAL-00288" />
-      <option name="project" value="LOCAL" />
-      <updated>1725632535275</updated>
+      <workItem from="1731268837779" duration="46000" />
+      <workItem from="1731268891369" duration="39000" />
+      <workItem from="1731282942660" duration="4000" />
+      <workItem from="1731302044502" duration="4000" />
+      <workItem from="1731643262849" duration="2000" />
+      <workItem from="1731734152510" duration="4000" />
+      <workItem from="1731806122648" duration="65000" />
+      <workItem from="1731826249426" duration="11000" />
+      <workItem from="1731954113012" duration="267000" />
+      <workItem from="1731959313272" duration="5000" />
+      <workItem from="1731978527251" duration="7000" />
+      <workItem from="1731978690735" duration="2000" />
+      <workItem from="1731979168889" duration="3000" />
+      <workItem from="1731993077244" duration="5000" />
+      <workItem from="1732396008087" duration="5000" />
     </task>
     <task id="LOCAL-00289" summary="Fix: Addressed security vulnerabilities">
       <option name="closed" value="true" />
@@ -686,7 +708,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731032581262</updated>
     </task>
-    <option name="localTasksCounter" value="337" />
+    <task id="LOCAL-00337" summary="Fix: Deployed Backend with Docker &amp; Render">
+      <option name="closed" value="true" />
+      <created>1731268868513</created>
+      <option name="number" value="00337" />
+      <option name="presentableId" value="LOCAL-00337" />
+      <option name="project" value="LOCAL" />
+      <updated>1731268868513</updated>
+    </task>
+    <option name="localTasksCounter" value="338" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
