@@ -47,9 +47,9 @@ The Employee Management System full-stack app is deployed with Vercel and is liv
 
 The backend is also deployed with Render and is available at [https://employee-management-app.onrender.com](https://employee-management-app-gdm5.onrender.com/). You can access the API endpoints directly from the browser.
 
-**Note:** The backend API may spin down due to inactivity, so you may need to wait for up to 2 minutes for the API to start up again. Feel free to test the API endpoints and explore the application. Or, you can run the backend locally and connect it to the frontend for a more seamless experience.
+> **Note:** The backend API may spin down due to inactivity, so you may need to wait for up to 2 minutes for the API to start up again. Feel free to test the API endpoints and explore the application. Or, you can run the backend locally and connect it to the frontend for a more seamless experience.
 
-Additionally, it may take a while to fetch all the data, as Render's free tier has limited resources (only 512MB RAM and 0.1 CPU). Please be patient while the data loads.
+> **Additional Note:** It may take a while to fetch the data and process your requests, as Render's free tier has VERY limited resources (only 512MB RAM and 0.1 CPU).
 
 ## Key Technologies
 
