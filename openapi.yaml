@@ -2,9 +2,9 @@ openapi: 3.0.0
 info:
   title: Employee Management System API
   version: 1.0.0
-  description: API documentation for managing employees and departments
+  description: API documentation for managing employees and departments - built with Java Spring Boot and MongoDB
   contact:
-    name: Employee Management System Team
+    name: Son Nguyen
     email: hoangson091104@gmail.com
   license:
     name: MIT License
