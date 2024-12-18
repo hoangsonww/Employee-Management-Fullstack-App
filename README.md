@@ -205,48 +205,47 @@ Employee-Management-Fullstack-App/
 │   ├── backend-service.yaml
 │   ├── frontend-deployment.yaml
 │   └── frontend-service.yaml
-├── nginx
+├── nginx/
 │   ├── Dockerfile
 │   └── nginx.conf 
-│
-├── backend
-│   ├── src
-│   │   ├── main
-│   │   │   ├── java
-│   │   │   │   └── com
-│   │   │   │       └── example
-│   │   │   │           └── employeemanagement
+├── backend/
+│   ├── src/
+│   │   ├── main/
+│   │   │   ├── java/
+│   │   │   │   └── com/
+│   │   │   │       └── example/
+│   │   │   │           └── employeemanagement/
 │   │   │   │               ├── EmployeeManagementApplication.java
-│   │   │   │               ├── config
+│   │   │   │               ├── config/
 │   │   │   │               │   └── CorsConfig.java
 │   │   │   │               │   └── DataInitializer.java
-│   │   │   │               ├── controller
+│   │   │   │               ├── controller/
 │   │   │   │               │   ├── DepartmentController.java
 │   │   │   │               │   └── EmployeeController.java
-│   │   │   │               ├── model
+│   │   │   │               ├── model/
 │   │   │   │               │   ├── Department.java
 │   │   │   │               │   └── Employee.java
-│   │   │   │               ├── repository
+│   │   │   │               ├── repository/
 │   │   │   │               │   ├── DepartmentRepository.java
 │   │   │   │               │   └── EmployeeRepository.java
-│   │   │   │               ├── service
+│   │   │   │               ├── service/
 │   │   │   │               │   └── DataInitializer.java
-│   │   │   │               └── exception
+│   │   │   │               └── exception/
 │   │   │   │                   └── ResourceNotFoundException.java
-│   │   │   └── resources
+│   │   │   └── resources/
 │   │   │       ├── application.properties
 │   │   │       └── data.sql
-│   │   └── test
-│   │       └── java
-│   │           └── com
-│   │               └── example
-│   │                   └── employeemanagement
+│   │   └── test/
+│   │       └── java/
+│   │           └── com/
+│   │               └── example/
+│   │                   └── employeemanagement/
 │   │                       └── EmployeeManagementApplicationTests.java
 │   ├── .gitignore
-│   └── pom.xml
+│   ├── pom.xml
 │   └── compose.yaml
 │
-└── frontend
+└── frontend/
     ├── build
     ├── public
     │   ├── index.html
