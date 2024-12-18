@@ -190,21 +190,21 @@ Here's a table listing all the RESTful API endpoints provided by this applicatio
 ## File Structure
 
 ```
-employee-management-app
-│
+Employee-Management-Fullstack-App/
 ├── docker-compose.yaml
-│
-├── .mvn
+├── Jenkinsfile
+├── openapi.yaml
+├── README.md
+├── package.json
+├── .mvn/
 │   └── wrapper
 │       └── maven-wrapper.properties
-│
-├── kubernetes
+├── kubernetes/
 │   ├── configmap.yaml
 │   ├── backend-deployment.yaml
 │   ├── backend-service.yaml
 │   ├── frontend-deployment.yaml
 │   └── frontend-service.yaml
-│
 ├── nginx
 │   ├── Dockerfile
 │   └── nginx.conf 
@@ -625,7 +625,7 @@ Feel free to customize the Jenkins pipeline to suit your specific requirements a
 - Use [Swagger Validator](https://validator.swagger.io/):
   - Upload `openapi.yaml` or paste its content to check for errors.
 
-This guide enables you to view, test, and utilize the API.
+This guide enables you to view, test, and utilize the API. Feel free to explore the OpenAPI Specification and integrate it into your development workflow.
 
 ## Troubleshooting
 
