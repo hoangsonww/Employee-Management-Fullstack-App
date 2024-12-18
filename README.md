@@ -246,30 +246,30 @@ Employee-Management-Fullstack-App/
 │   └── compose.yaml
 │
 └── frontend/
-    ├── build
-    ├── public
+    ├── build/
+    ├── public/
     │   ├── index.html
     │   └── favicon.ico
     │   └── manifest.json
     │   └── robots.txt
     │   └── icon-192x192.webp
     │   └── icon-512x512.webp
-    ├── src
-    │   ├── components
+    ├── src/
+    │   ├── components/
     │   │   ├── Dashboard.js
     │   │   ├── EmployeeList.js
     │   │   ├── EmployeeForm.js
     │   │   ├── DepartmentList.js
     │   │   ├── DepartmentForm.js
     │   │   └── Navbar.js
-    │   ├── services
+    │   ├── services/
     │   │   ├── employeeService.js
     │   │   └── departmentService.js
     │   ├── App.js
     │   ├── index.js
     │   ├── index.css
     │   ├── reportWebVitals.js
-    │   └── App.css
+    │   ├── App.css
     │   └── theme.js
     ├── Dockerfile
     ├── postcss.config.js
