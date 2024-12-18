@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="392f4aef-37aa-47a3-a82b-22f4f510a7b8" name="Changes" comment="Fix: Deployed Backend with Docker &amp; Render">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ee00ce6e-4310-459e-acc5-0a3098831727.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ee00ce6e-4310-459e-acc5-0a3098831727.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -19,6 +20,7 @@
         <option value="Dockerfile" />
         <option value="Class" />
         <option value="JavaScript File" />
+        <option value="OpenAPI" />
       </list>
     </option>
   </component>
@@ -129,7 +131,7 @@
       <recent name="$PROJECT_DIR$/backend" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.frontend">
+  <component name="RunManager" selected="Docker.backend/Dockerfile">
     <configuration name="EmployeeManagementApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="employee-management-app" />
       <extension name="coverage">
@@ -202,12 +204,6 @@
       <envs />
       <method v="2" />
     </configuration>
-    <list>
-      <item itemvalue="Docker.backend/Dockerfile" />
-      <item itemvalue="Jest.renders dashboard with metrics" />
-      <item itemvalue="npm.frontend" />
-      <item itemvalue="npm.format" />
-    </list>
     <recent_temporary>
       <list>
         <item itemvalue="npm.format" />
@@ -217,7 +213,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-WS-243.21565.180" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-WS-243.22562.112" />
       </set>
     </attachedChunks>
   </component>
@@ -323,54 +319,44 @@
       <workItem from="1731979168889" duration="3000" />
       <workItem from="1731993077244" duration="5000" />
       <workItem from="1732396008087" duration="5000" />
-    </task>
-    <task id="LOCAL-00289" summary="Fix: Addressed security vulnerabilities">
-      <option name="closed" value="true" />
-      <created>1725632542266</created>
-      <option name="number" value="00289" />
-      <option name="presentableId" value="LOCAL-00289" />
-      <option name="project" value="LOCAL" />
-      <updated>1725632542266</updated>
-    </task>
-    <task id="LOCAL-00290" summary="Fix: Addressed security vulnerabilities">
-      <option name="closed" value="true" />
-      <created>1726062735818</created>
-      <option name="number" value="00290" />
-      <option name="presentableId" value="LOCAL-00290" />
-      <option name="project" value="LOCAL" />
-      <updated>1726062735818</updated>
-    </task>
-    <task id="LOCAL-00291" summary="Fix: Addressed security vulnerabilities">
-      <option name="closed" value="true" />
-      <created>1727624337752</created>
-      <option name="number" value="00291" />
-      <option name="presentableId" value="LOCAL-00291" />
-      <option name="project" value="LOCAL" />
-      <updated>1727624337752</updated>
-    </task>
-    <task id="LOCAL-00292" summary="Fix: Addressed security vulnerabilities">
-      <option name="closed" value="true" />
-      <created>1727624528719</created>
-      <option name="number" value="00292" />
-      <option name="presentableId" value="LOCAL-00292" />
-      <option name="project" value="LOCAL" />
-      <updated>1727624528719</updated>
-    </task>
-    <task id="LOCAL-00293" summary="Fix: Addressed security vulnerabilities">
-      <option name="closed" value="true" />
-      <created>1727624717568</created>
-      <option name="number" value="00293" />
-      <option name="presentableId" value="LOCAL-00293" />
-      <option name="project" value="LOCAL" />
-      <updated>1727624717568</updated>
-    </task>
-    <task id="LOCAL-00294" summary="Fix: Addressed security vulnerabilities">
-      <option name="closed" value="true" />
-      <created>1727624847303</created>
-      <option name="number" value="00294" />
-      <option name="presentableId" value="LOCAL-00294" />
-      <option name="project" value="LOCAL" />
-      <updated>1727624847303</updated>
+      <workItem from="1732396053649" duration="273000" />
+      <workItem from="1732686473371" duration="26000" />
+      <workItem from="1732689534074" duration="6000" />
+      <workItem from="1732736950908" duration="1149000" />
+      <workItem from="1732740290617" duration="2000" />
+      <workItem from="1732748659275" duration="14000" />
+      <workItem from="1732943841660" duration="718000" />
+      <workItem from="1732947532570" duration="6000" />
+      <workItem from="1732949243817" duration="3000" />
+      <workItem from="1732949251865" duration="4000" />
+      <workItem from="1732991676084" duration="11000" />
+      <workItem from="1733002408245" duration="38000" />
+      <workItem from="1733080922868" duration="15000" />
+      <workItem from="1733080950096" duration="14000" />
+      <workItem from="1733081272579" duration="18000" />
+      <workItem from="1733081365279" duration="4000" />
+      <workItem from="1733090176326" duration="176000" />
+      <workItem from="1733104388907" duration="3000" />
+      <workItem from="1733265481757" duration="3000" />
+      <workItem from="1733283499491" duration="78000" />
+      <workItem from="1733283614695" duration="117000" />
+      <workItem from="1733286258610" duration="5000" />
+      <workItem from="1733465828147" duration="6000" />
+      <workItem from="1733551181658" duration="6000" />
+      <workItem from="1733551822925" duration="11000" />
+      <workItem from="1733551881784" duration="3000" />
+      <workItem from="1733591305069" duration="14000" />
+      <workItem from="1734124227748" duration="202000" />
+      <workItem from="1734125217172" duration="82000" />
+      <workItem from="1734151724746" duration="5000" />
+      <workItem from="1734209091457" duration="549000" />
+      <workItem from="1734209642793" duration="108000" />
+      <workItem from="1734210101445" duration="219000" />
+      <workItem from="1734210343423" duration="10000" />
+      <workItem from="1734322869592" duration="4000" />
+      <workItem from="1734394762051" duration="40000" />
+      <workItem from="1734396334863" duration="6000" />
+      <workItem from="1734448221943" duration="3000" />
     </task>
     <task id="LOCAL-00295" summary="Fix: Addressed security vulnerabilities">
       <option name="closed" value="true" />
@@ -716,7 +702,55 @@
       <option name="project" value="LOCAL" />
       <updated>1731268868513</updated>
     </task>
-    <option name="localTasksCounter" value="338" />
+    <task id="LOCAL-00338" summary="Fix: Deployed Backend with Docker &amp; Render">
+      <option name="closed" value="true" />
+      <created>1732396190381</created>
+      <option name="number" value="00338" />
+      <option name="presentableId" value="LOCAL-00338" />
+      <option name="project" value="LOCAL" />
+      <updated>1732396190381</updated>
+    </task>
+    <task id="LOCAL-00339" summary="Fix: Deployed Backend with Docker &amp; Render">
+      <option name="closed" value="true" />
+      <created>1733002442696</created>
+      <option name="number" value="00339" />
+      <option name="presentableId" value="LOCAL-00339" />
+      <option name="project" value="LOCAL" />
+      <updated>1733002442696</updated>
+    </task>
+    <task id="LOCAL-00340" summary="Fix: Deployed Backend with Docker &amp; Render">
+      <option name="closed" value="true" />
+      <created>1733283620240</created>
+      <option name="number" value="00340" />
+      <option name="presentableId" value="LOCAL-00340" />
+      <option name="project" value="LOCAL" />
+      <updated>1733283620240</updated>
+    </task>
+    <task id="LOCAL-00341" summary="Fix: Deployed Backend with Docker &amp; Render">
+      <option name="closed" value="true" />
+      <created>1734125286362</created>
+      <option name="number" value="00341" />
+      <option name="presentableId" value="LOCAL-00341" />
+      <option name="project" value="LOCAL" />
+      <updated>1734125286362</updated>
+    </task>
+    <task id="LOCAL-00342" summary="Fix: Deployed Backend with Docker &amp; Render">
+      <option name="closed" value="true" />
+      <created>1734209678063</created>
+      <option name="number" value="00342" />
+      <option name="presentableId" value="LOCAL-00342" />
+      <option name="project" value="LOCAL" />
+      <updated>1734209678064</updated>
+    </task>
+    <task id="LOCAL-00343" summary="Fix: Deployed Backend with Docker &amp; Render">
+      <option name="closed" value="true" />
+      <created>1734209716137</created>
+      <option name="number" value="00343" />
+      <option name="presentableId" value="LOCAL-00343" />
+      <option name="project" value="LOCAL" />
+      <updated>1734209716137</updated>
+    </task>
+    <option name="localTasksCounter" value="344" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
