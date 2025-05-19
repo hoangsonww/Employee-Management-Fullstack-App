@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="dataSourceStorageLocal" created-in="WS-243.22562.112">
+  <component name="dataSourceStorageLocal" created-in="IU-251.25410.129">
     <data-source name="MySQL" uuid="a4e18ce8-a22d-442d-9256-d25046a5be2f">
       <database-info product="MySQL" version="8.0.30" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-j-8.2.0 (Revision: 06a1f724497fd81c6a659131fda822c9e5085b6c)" dbms="MYSQL" exact-version="8.0.30" exact-driver-version="8.2">
         <extra-name-characters>#@</extra-name-characters>
@@ -22,6 +22,54 @@
       <schema-mapping>
         <introspection-scope>
           <node kind="schema" negative="1" />
+        </introspection-scope>
+      </schema-mapping>
+    </data-source>
+    <data-source name="employee-management-mongo@moodify-db.37ph0.mongodb.net" uuid="93c0a7db-f607-4f56-b107-fda39aa7aec1">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MONGO" />
+      <user-name>hoangsonw</user-name>
+      <schema-mapping />
+    </data-source>
+    <data-source name="defaultdb@postgresql-db-mysql-database-proj.d.aivencloud.com" uuid="76561b8f-2634-437e-aa29-31d63d39bffa">
+      <database-info product="PostgreSQL" version="16.8" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.7.3" dbms="POSTGRES" exact-version="16.8" exact-driver-version="42.7">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>avnadmin</user-name>
+      <schema-mapping>
+        <introspection-scope>
+          <node negative="1">
+            <node kind="database" negative="1" />
+            <node kind="database">
+              <name qname="_aiven" />
+              <name qname="defaultdb" />
+              <node kind="schema" negative="1" />
+            </node>
+          </node>
+        </introspection-scope>
+      </schema-mapping>
+    </data-source>
+    <data-source name="defaultdb@postgresql-db-mysql-database-proj.d.aivencloud.com [2]" uuid="b233353f-cb31-42dc-b661-3a52e8c6bd50">
+      <database-info product="PostgreSQL" version="16.8" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.7.3" dbms="POSTGRES" exact-version="16.8" exact-driver-version="42.7">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>avnadmin</user-name>
+      <schema-mapping>
+        <introspection-scope>
+          <node negative="1">
+            <node kind="database" negative="1" />
+            <node kind="database" qname="@">
+              <node kind="schema" qname="@" />
+            </node>
+            <node kind="database">
+              <name qname="defaultdb" />
+              <name qname="employee-management-db" />
+              <node kind="schema" negative="1" />
+            </node>
+          </node>
         </introspection-scope>
       </schema-mapping>
     </data-source>
