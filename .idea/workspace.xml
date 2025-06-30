@@ -5,33 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="392f4aef-37aa-47a3-a82b-22f4f510a7b8" name="Changes" comment="Fix: Deployed Backend with Docker &amp; Render">
-      <change afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/build-images.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/deploy-k8s.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/openapi-client.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/start-backend.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/start-frontend.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/test-backend.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/test-frontend.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/undeploy-k8s.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shell.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/logo.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/employee-management-app-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/employee-management-app-0.0.1-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/employee-management-app-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/employee-management-app-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/surefire-reports/TEST-com.example.employeemanagement.AdditionalAPITests.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/surefire-reports/TEST-com.example.employeemanagement.AuxAPITests.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/surefire-reports/TEST-com.example.employeemanagement.BackendAPITests.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/surefire-reports/TEST-com.example.employeemanagement.DepartmentManagementApplicationTests.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/surefire-reports/TEST-com.example.employeemanagement.EmployeeManagementApplicationTests.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/surefire-reports/com.example.employeemanagement.AdditionalAPITests.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/surefire-reports/com.example.employeemanagement.AuxAPITests.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/surefire-reports/com.example.employeemanagement.BackendAPITests.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/surefire-reports/com.example.employeemanagement.DepartmentManagementApplicationTests.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/surefire-reports/com.example.employeemanagement.EmployeeManagementApplicationTests.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,6 +82,7 @@
     &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
     &quot;RunOnceActivity.OpenDatabaseViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;Spring Boot.EmployeeManagementApplication.executor&quot;: &quot;Run&quot;,
@@ -237,8 +216,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.25410.129" />
-        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-IU-251.25410.129" />
+        <option value="bundled-js-predefined-d6986cc7102b-09060db00ec0-JavaScript-WS-251.26927.40" />
       </set>
     </attachedChunks>
   </component>
@@ -382,7 +360,12 @@
       <workItem from="1734394762051" duration="40000" />
       <workItem from="1734396334863" duration="6000" />
       <workItem from="1734448221943" duration="3000" />
-      <workItem from="1747669590090" duration="623000" />
+      <workItem from="1747669590090" duration="907000" />
+      <workItem from="1750105482239" duration="40000" />
+      <workItem from="1751223773968" duration="492000" />
+      <workItem from="1751288812633" duration="19000" />
+      <workItem from="1751288835633" duration="4744000" />
+      <workItem from="1751307798612" duration="393000" />
     </task>
     <task id="LOCAL-00295" summary="Fix: Addressed security vulnerabilities">
       <option name="closed" value="true" />
