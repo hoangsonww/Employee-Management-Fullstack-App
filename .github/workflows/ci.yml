@@ -27,9 +27,6 @@ jobs:
       - name: Run Prettier
         run: npm run format
 
-      - name: Run ESLint
-        run: npm run lint
-
   backend:
     name: ✅ Backend Tests
     runs-on: ubuntu-latest

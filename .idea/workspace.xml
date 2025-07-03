@@ -4,60 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="392f4aef-37aa-47a3-a82b-22f4f510a7b8" name="Changes" comment="Fix: Deployed Backend with Docker &amp; Render">
-      <change afterPath="$PROJECT_DIR$/frontend/__tests__/Dashboard.spec.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/__tests__/DepartmentList.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/__tests__/EmployeeList.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/__tests__/Login.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/__tests__/Profile.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/__tests__/Register.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/babel.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/jest.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/jest.setup.js" afterDir="false" />
+    <list default="true" id="392f4aef-37aa-47a3-a82b-22f4f510a7b8" name="Changes" comment="feat(ci/cd): add CI/CD pipeline and frontend Jest tests">
       <change beforePath="$PROJECT_DIR$/.github/workflows/ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/ci.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/EmployeeManagementApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/EmployeeManagementApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/config/CorsConfig$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/config/CorsConfig$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/config/CorsConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/config/CorsConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/config/DataInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/config/DataInitializer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/controller/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/controller/AuthController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/controller/DepartmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/controller/DepartmentController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/controller/EmployeeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/controller/EmployeeController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/controller/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/controller/HomeController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/exception/ResourceNotFoundException.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/exception/ResourceNotFoundException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/model/Department.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/model/Department.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/model/Employee.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/model/Employee.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/model/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/repository/DepartmentRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/repository/DepartmentRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/repository/EmployeeRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/repository/EmployeeRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/repository/UserRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/security/CustomUserDetailsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/security/CustomUserDetailsService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/security/JwtRequestFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/security/JwtRequestFilter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/security/JwtTokenUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/security/JwtTokenUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/security/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/security/SecurityConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/service/DepartmentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/service/DepartmentService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/service/EmployeeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/example/employeemanagement/service/EmployeeService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/test-classes/com/example/employeemanagement/APITestSuite.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/test-classes/com/example/employeemanagement/APITestSuite.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/test-classes/com/example/employeemanagement/APITests.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/test-classes/com/example/employeemanagement/APITests.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/test-classes/com/example/employeemanagement/AdditionalAPITests.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/test-classes/com/example/employeemanagement/AdditionalAPITests.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/test-classes/com/example/employeemanagement/AuxAPITests.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/test-classes/com/example/employeemanagement/AuxAPITests.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/test-classes/com/example/employeemanagement/BackendAPITests.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/test-classes/com/example/employeemanagement/BackendAPITests.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/test-classes/com/example/employeemanagement/DepartmentManagementApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/test-classes/com/example/employeemanagement/DepartmentManagementApplicationTests.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/test-classes/com/example/employeemanagement/EmployeeManagementApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/test-classes/com/example/employeemanagement/EmployeeManagementApplicationTests.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/test-classes/com/example/employeemanagement/FullAPITests.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/test-classes/com/example/employeemanagement/FullAPITests.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/test-classes/com/example/employeemanagement/JUnit.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/test-classes/com/example/employeemanagement/JUnit.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/test-classes/com/example/employeemanagement/UtilitiesTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/test-classes/com/example/employeemanagement/UtilitiesTests.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/DepartmentForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/DepartmentForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/tests/Dashboard.test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/tests/DepartmentForm.test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/tests/DepartmentList.test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/tests/EmployeeForm.test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/tests/EmployeeList.test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/tests/Navbar.test.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,7 +134,7 @@
       <recent name="$PROJECT_DIR$/backend" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.EmployeeManagementApplicationTests">
+  <component name="RunManager" selected="npm.format">
     <configuration name="EmployeeManagementApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="employee-management-app" />
       <extension name="coverage">
@@ -281,10 +230,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.format" />
         <item itemvalue="JUnit.EmployeeManagementApplicationTests" />
         <item itemvalue="npm.test" />
         <item itemvalue="npm.start" />
-        <item itemvalue="npm.format" />
       </list>
     </recent_temporary>
   </component>
@@ -442,15 +391,7 @@
       <workItem from="1751288812633" duration="19000" />
       <workItem from="1751288835633" duration="4744000" />
       <workItem from="1751307798612" duration="393000" />
-      <workItem from="1751581673485" duration="2943000" />
-    </task>
-    <task id="LOCAL-00295" summary="Fix: Addressed security vulnerabilities">
-      <option name="closed" value="true" />
-      <created>1727626364984</created>
-      <option name="number" value="00295" />
-      <option name="presentableId" value="LOCAL-00295" />
-      <option name="project" value="LOCAL" />
-      <updated>1727626364986</updated>
+      <workItem from="1751581673485" duration="3254000" />
     </task>
     <task id="LOCAL-00296" summary="Fix: Addressed security vulnerabilities">
       <option name="closed" value="true" />
@@ -836,7 +777,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734209716137</updated>
     </task>
-    <option name="localTasksCounter" value="344" />
+    <task id="LOCAL-00344" summary="feat(ci/cd): add CI/CD pipeline and frontend Jest tests">
+      <option name="closed" value="true" />
+      <created>1751584725283</created>
+      <option name="number" value="00344" />
+      <option name="presentableId" value="LOCAL-00344" />
+      <option name="project" value="LOCAL" />
+      <updated>1751584725283</updated>
+    </task>
+    <option name="localTasksCounter" value="345" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -857,6 +806,7 @@
     <MESSAGE value="Fix: Added API documentations" />
     <MESSAGE value="Fix: Addressed security vulnerabilities" />
     <MESSAGE value="Fix: Deployed Backend with Docker &amp; Render" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix: Deployed Backend with Docker &amp; Render" />
+    <MESSAGE value="feat(ci/cd): add CI/CD pipeline and frontend Jest tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(ci/cd): add CI/CD pipeline and frontend Jest tests" />
   </component>
 </project>
