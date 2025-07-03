@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { addDepartment, getDepartmentById, updateDepartment } from '../services/departmentService';
-import { TextField, Button, CircularProgress, Box } from '@mui/material'; // Import necessary MUI components
+import { TextField, Button, CircularProgress, Box } from '@mui/material';
 
 const DepartmentForm = () => {
   const [department, setDepartment] = useState({ name: '' });
