@@ -3,6 +3,8 @@ package com.example.employeemanagement.controller;
 import com.example.employeemanagement.model.User;
 import com.example.employeemanagement.repository.UserRepository;
 import com.example.employeemanagement.security.JwtTokenUtil;
+import com.example.employeemanagement.service.AuditService;
+import com.example.employeemanagement.service.RbacService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -21,6 +23,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.Parameter;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -50,10 +53,19 @@ public class AuthController {
   @Autowired
   private JwtTokenUtil jwtTokenUtil;
 
+  /** The RBAC service. */
+  @Autowired
+  private RbacService rbacService;
+
+  /** The audit service. */
+  @Autowired
+  private AuditService auditService;
+
   /**
    * Register user API.
    *
    * @param user The user to be registered
+   * @param request The HTTP request for audit logging
    * @return Success message
    */
   @Operation(summary = "Register user", description = "Register a new user")
@@ -64,10 +76,29 @@ public class AuthController {
           @ApiResponse(responseCode = "500", description = "Unable to register user")
       })
   @PostMapping("/register")
-  public ResponseEntity<?> registerUser(@RequestBody User user) {
+  public ResponseEntity<?> registerUser(@RequestBody User user, HttpServletRequest request) {
     try {
       user.setPassword(passwordEncoder.encode(user.getPassword()));
-      userRepository.save(user);
+      
+      // Assign default EMPLOYEE role to new users
+      Optional<com.example.employeemanagement.model.Role> employeeRole = rbacService.getRoleByName("EMPLOYEE");
+      if (employeeRole.isPresent()) {
+        user.addRole(employeeRole.get());
+      }
+      
+      User savedUser = userRepository.save(user);
+      
+      // Log audit event
+      auditService.logAuditEvent(
+          savedUser.getId(),
+          "USER_REGISTER",
+          "USER",
+          savedUser.getId().toString(),
+          String.format("{\"username\":\"%s\"}", savedUser.getUsername()),
+          request,
+          false
+      );
+      
       return ResponseEntity.ok("User registered successfully!");
     } catch (DataIntegrityViolationException e) {
       return ResponseEntity.status(HttpStatus.CONFLICT).body("Error: Username already exists");
@@ -80,10 +111,11 @@ public class AuthController {
    * Authenticate user API.
    *
    * @param user The user to be authenticated
-   * @return JWT token
+   * @param request The HTTP request for audit logging
+   * @return JWT token with user roles and permissions
    * @throws Exception If authentication fails
    */
-  @Operation(summary = "Authenticate user", description = "Authenticate a user and generate a JWT token")
+  @Operation(summary = "Authenticate user", description = "Authenticate a user and generate a JWT token with roles and permissions")
   @ApiResponses(
       value = {
           @ApiResponse(responseCode = "200", description = "User authenticated successfully"),
@@ -91,17 +123,38 @@ public class AuthController {
           @ApiResponse(responseCode = "500", description = "Unable to authenticate user")
       })
   @PostMapping("/authenticate")
-  public ResponseEntity<?> createAuthenticationToken(@RequestBody User user) {
+  public ResponseEntity<?> createAuthenticationToken(@RequestBody User user, HttpServletRequest request) {
     try {
       authenticationManager.authenticate(
           new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword())
       );
 
-      final UserDetails userDetails = userDetailsService.loadUserByUsername(user.getUsername());
-      final String jwt = jwtTokenUtil.generateToken(userDetails.getUsername());
+      // Get user with roles from database
+      Optional<User> dbUserOpt = rbacService.getUserByUsernameWithRoles(user.getUsername());
+      if (!dbUserOpt.isPresent()) {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Error: User not found");
+      }
 
-      Map<String, String> response = new HashMap<>();
+      User dbUser = dbUserOpt.get();
+      final String jwt = jwtTokenUtil.generateToken(dbUser);
+
+      // Log audit event
+      auditService.logAuditEvent(
+          dbUser.getId(),
+          "USER_LOGIN",
+          "AUTH",
+          null,
+          String.format("{\"username\":\"%s\"}", dbUser.getUsername()),
+          request,
+          false
+      );
+
+      Map<String, Object> response = new HashMap<>();
       response.put("token", jwt);
+      response.put("username", dbUser.getUsername());
+      response.put("userId", dbUser.getId());
+      response.put("roles", dbUser.getRoles().stream().map(role -> role.getName()).toArray());
+      
       return ResponseEntity.ok(response);
 
     } catch (BadCredentialsException e) {
