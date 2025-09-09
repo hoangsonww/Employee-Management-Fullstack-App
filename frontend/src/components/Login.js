@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { TextField, Button, Card, CardContent, Typography, Box, CircularProgress, IconButton, InputAdornment } from '@mui/material';
+import { TextField, Button, Card, CardContent, Typography, Box, CircularProgress, IconButton, InputAdornment, Alert } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { authService } from '../services/apiService';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -17,26 +18,26 @@ const Login = () => {
     setError('');
 
     try {
-      const response = await fetch('https://employee-management-app-gdm5.onrender.com/authenticate', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password }),
-      });
-
-      const data = await response.json();
+      const response = await authService.login({ username, password });
       setLoading(false);
 
-      if (response.ok) {
-        localStorage.setItem('token', data.token); // Store token in localStorage
-        localStorage.setItem('EMSusername', username); // Store username in localStorage
-        alert('Login successful. Welcome!');
-        navigate('/dashboard'); // Correct navigation after login success
+      if (response.token) {
+        alert(`Login successful. Welcome${response.username ? ', ' + response.username : ''}!`);
+        navigate('/dashboard');
       } else {
-        setError('Invalid credentials. Please try again.');
+        setError('Login failed. Please try again.');
       }
     } catch (err) {
       setLoading(false);
-      setError('Invalid credentials or our server is not currently active. Please try again later.');
+      console.error('Login error:', err);
+      
+      if (err.response?.status === 401) {
+        setError('Invalid credentials. Please try again.');
+      } else if (err.response?.status === 403) {
+        setError('Access denied. Your account may be disabled.');
+      } else {
+        setError('Login failed. Server may be unavailable. Please try again later.');
+      }
     }
   };
 
@@ -94,9 +95,10 @@ const Login = () => {
               </Button>
             )}
             {error && (
-              <Typography color="error" textAlign="center" sx={{ marginTop: '1rem' }}>
+              <Alert severity="error" sx={{ mt: 2 }}>
                 {error}
-              </Typography>
+              </Alert>
+            )}
             )}
             <Typography textAlign="center" sx={{ marginTop: '1rem' }}>
               Don't have an account?{' '}
