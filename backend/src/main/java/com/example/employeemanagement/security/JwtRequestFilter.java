@@ -14,6 +14,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 /** This class represents the JWT request filter. */
 @Component
@@ -46,20 +47,46 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
     if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
       jwt = authorizationHeader.substring(7);
-      username = jwtTokenUtil.extractUsername(jwt);
+      try {
+        username = jwtTokenUtil.extractUsername(jwt);
+      } catch (Exception e) {
+        // Invalid token, continue without authentication
+      }
     }
 
     if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+      try {
+        // Extract user details from JWT token
+        Long userId = jwtTokenUtil.extractUserId(jwt);
+        List<String> roles = jwtTokenUtil.extractRoles(jwt);
+        List<String> permissions = jwtTokenUtil.extractPermissions(jwt);
+        Boolean impersonated = jwtTokenUtil.extractImpersonated(jwt);
 
-      UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
+        // Validate token
+        if (jwtTokenUtil.validateToken(jwt, username)) {
+          // Create UserDetails with JWT information
+          JwtUserDetails userDetails = new JwtUserDetails(username, userId, roles, permissions, impersonated);
 
-      if (jwtTokenUtil.validateToken(jwt, userDetails.getUsername())) {
-
-        UsernamePasswordAuthenticationToken authenticationToken =
-            new UsernamePasswordAuthenticationToken(
-                userDetails, null, userDetails.getAuthorities());
-        authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-        SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+          UsernamePasswordAuthenticationToken authenticationToken =
+              new UsernamePasswordAuthenticationToken(
+                  userDetails, null, userDetails.getAuthorities());
+          authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+          SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+        }
+      } catch (Exception e) {
+        // Token parsing failed, try fallback to regular user details
+        try {
+          UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
+          if (jwtTokenUtil.validateToken(jwt, userDetails.getUsername())) {
+            UsernamePasswordAuthenticationToken authenticationToken =
+                new UsernamePasswordAuthenticationToken(
+                    userDetails, null, userDetails.getAuthorities());
+            authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+            SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+          }
+        } catch (Exception ex) {
+          // Both JWT and fallback failed, continue without authentication
+        }
       }
     }
     chain.doFilter(request, response);

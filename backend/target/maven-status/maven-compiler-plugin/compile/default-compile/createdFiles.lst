@@ -18,11 +18,13 @@ com/example/employeemanagement/service/EmployeeService.class
 com/example/employeemanagement/controller/DepartmentController.class
 com/example/employeemanagement/repository/EmployeeRepository.class
 com/example/employeemanagement/repository/DepartmentRepository.class
+com/example/employeemanagement/controller/AdminController.class
 com/example/employeemanagement/security/JwtRequestFilter.class
 com/example/employeemanagement/model/Role.class
 com/example/employeemanagement/exception/ResourceNotFoundException.class
 com/example/employeemanagement/security/CustomUserDetailsService.class
 com/example/employeemanagement/service/RbacDataInitializer.class
+com/example/employeemanagement/security/JwtUserDetails.class
 com/example/employeemanagement/model/AuditLog.class
 com/example/employeemanagement/service/AuditService.class
 com/example/employeemanagement/config/CorsConfig.class
