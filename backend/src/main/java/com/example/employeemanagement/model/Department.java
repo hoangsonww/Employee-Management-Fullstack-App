@@ -12,7 +12,9 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "departments")
+@Table(name = "departments", indexes = {  
+  @Index(name = "idx_departments_name", columnList = "name")  
+})
 public class Department {
 
   /** The ID of the department. It is unique and generated automatically. */

@@ -3,6 +3,9 @@ package com.example.employeemanagement.service;
 import com.example.employeemanagement.model.Department;
 import com.example.employeemanagement.repository.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
@@ -23,6 +26,12 @@ public class DepartmentService {
     return departmentRepository.findAll();
   }
 
+/**
+   * Get departments with specification and pagination.
+   */
+  public Page<Department> getDepartments(Specification<Department> specification, Pageable pageable) {
+    return departmentRepository.findAll(specification, pageable);
+  }
   /**
    * Get department by ID.
    *

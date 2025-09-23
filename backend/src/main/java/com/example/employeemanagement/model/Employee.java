@@ -14,7 +14,13 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "employees")
+@Table(name = "employees", indexes = {  
+  @Index(name = "idx_employees_first_name", columnList = "firstName"),  
+  @Index(name = "idx_employees_last_name", columnList = "lastName"),  
+  @Index(name = "idx_employees_email", columnList = "email"),  
+  @Index(name = "idx_employees_department_id", columnList = "department_id"),  
+  @Index(name = "idx_employees_age", columnList = "age")  
+})
 public class Employee {
 
   /** The ID of the employee. It is unique and generated automatically. */
