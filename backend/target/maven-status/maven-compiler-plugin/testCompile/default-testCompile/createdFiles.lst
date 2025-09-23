@@ -1,10 +1,10 @@
-com/example/employeemanagement/UtilitiesTests.class
 com/example/employeemanagement/JUnit.class
+com/example/employeemanagement/UtilitiesTests.class
 com/example/employeemanagement/APITests.class
 com/example/employeemanagement/DepartmentManagementApplicationTests.class
 com/example/employeemanagement/AuxAPITests.class
 com/example/employeemanagement/APITestSuite.class
 com/example/employeemanagement/EmployeeManagementApplicationTests.class
 com/example/employeemanagement/BackendAPITests.class
-com/example/employeemanagement/AdditionalAPITests.class
 com/example/employeemanagement/FullAPITests.class
+com/example/employeemanagement/AdditionalAPITests.class
