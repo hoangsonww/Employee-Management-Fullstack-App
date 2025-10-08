@@ -82,4 +82,4 @@ If you need a production-ready footprint with Secrets Manager, stronger security
 
 ---
 
-Always inspect the `terraform plan` output and adapt CIDRs, instance classes, and security rules to your organization’s standards before running this configuration against a real AWS environment.
+Always inspect the `terraform plan` output and adapt CIDRs, instance classes, and security rules to your organization’s standards before running this configuration against a real AWS environment. Our configuration/setup may not apply to your specific use case...

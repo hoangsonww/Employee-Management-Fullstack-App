@@ -145,6 +145,18 @@ sequenceDiagram
 - **Seed data**: `DataInitializer` recreates data on every application start (see §3.2). Remove or guard this behavior before deploying to persistent environments.
 - **OpenAPI contract**: `openapi.yaml` at the repo root enumerates the REST API and aligns with the annotated controllers.
 
+```mermaid
+graph TD
+    A[React Frontend] -->|HTTP| B[Spring Boot Backend]
+    B -->|JDBC| C[MySQL Database]
+    B -->|MongoDB Driver| D[MongoDB - optional]
+    A -->|Fetch API / Axios| B
+    B -->|Swagger UI| E[OpenAPI Documentation]
+    B -->|JWT Tokens| F[Authentication - not enforced]
+    F -->|User Credentials| B
+    B -->|Data Seeding| C
+```
+
 ---
 
 ## 5. DevOps, Delivery & Runtime Options
@@ -210,20 +222,34 @@ flowchart LR
 - **Data seeding**: Disable `DataInitializer` outside of sandbox environments.
 - **CORS**: Current configuration allows all origins and credentials. Introduce an allowlist when hosting in production.
 
+```mermaid
+flowchart TD
+    A[Public Internet] -->|HTTP| B[Load Balancer / Nginx]
+    B -->|HTTP| C[Spring Boot Backend]
+    C -->|JDBC| D[MySQL Database]
+    C -->|MongoDB Driver| E[MongoDB - optional]
+
+    subgraph Security Layers
+        F[WAF / Firewall]
+        G[Authentication & Authorization]
+        H[Secrets Management]
+        I[Database Migrations]
+        J[Data Seeding Controls]
+        K[CORS Policies]
+    end
+
+    A --> F
+    F --> B
+    B --> G
+    C --> H
+    C --> I
+    C --> J
+    C --> K
+```
+
 ---
 
-## 7. Known Gaps & Follow-up Work
-
-1. **Security enforcement**: Wire JWT validation into Spring Security and protect REST endpoints.
-2. **Kubernetes manifests**: Update ports, remove `hostPath` volumes, and parameterize images/environment variables.
-3. **Frontend service URLs**: Externalize the API base URL via environment variables or configuration rather than hardcoding Render endpoints.
-4. **CI/CD expansion**: Extend the Jenkins pipeline to execute tests, build Docker images, and publish to the registry defined by Terraform.
-5. **Observability**: Introduce structured logging, metrics, and health checks beyond the default `/actuator/health`.
-6. **MongoDB usage**: Either implement repositories for MongoDB-backed features or remove the dependency to simplify deployments.
-
----
-
-## 8. Reference Map
+## 7. Reference Map
 
 | Capability | Primary Location |
 |------------|------------------|

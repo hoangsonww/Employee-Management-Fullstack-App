@@ -368,6 +368,7 @@ Employee-Management/
 └── package.json
 ```
 
+> [!TIP]
 > Note: Generated directories such as `node_modules/`, `target/`, and `build/` are omitted for brevity.
 
 ## Architecture Reference
@@ -482,6 +483,15 @@ The backend will be available at [http://localhost:8080](http://localhost:8080).
   ```
 
 - **Feel free to add more API endpoints as needed...**
+
+```mermaid
+flowchart TB
+    A[Install Java 11 & Maven] --> B[Clone repository]
+    B --> C[Configure application.properties or config.properties]
+    C --> D[Start MySQL & MongoDB]
+    D --> E[mvn spring-boot:run]
+    E --> F[API reachable at http://localhost:8080]
+```
 
 ### 7. API Documentation
 
@@ -649,6 +659,18 @@ docker push <your_docker_username>/employee-management-app-frontend
 
 Additionally, you can access the image on **Docker Hub** **[here](https://hub.docker.com/repository/docker/hoangsonw/employee-management-app/).**
 
+```mermaid
+flowchart LR
+    CodeBackend[backend/Dockerfile] -->|docker build| ImgBackend[Backend Image]
+    CodeFrontend[frontend/Dockerfile] -->|docker build| ImgFrontend[Frontend Image]
+    ImgBackend -->|docker compose up| Compose[Docker Compose]
+    ImgFrontend -->|docker compose up| Compose
+    Compose --> BackendCtr[Container: backend]
+    Compose --> FrontendCtr[Container: frontend]
+    BackendCtr -->|REST 8080| DB[(MySQL Service)]
+    FrontendCtr -->|HTTP 3000→backend| BackendCtr
+```
+
 ## Kubernetes
 
 The project also includes Kubernetes configuration files in the `kubernetes` directory for deploying the application to a Kubernetes cluster. You can deploy the application to a Kubernetes cluster using the following command:
@@ -667,6 +689,32 @@ The `aws/` directory packages a Terraform stack that provisions production-grade
 - **Data**: Amazon RDS for MySQL with encryption, automated backups, Multi-AZ failover, and Secrets Manager integration.
 - **Registry**: Dedicated Amazon ECR repositories for the backend and frontend containers, including lifecycle policies and scanning.
 
+```mermaid
+flowchart LR
+    Dev[Git Changes]
+    Jenkins[Jenkins Pipeline\n`npm install` + `npm run build`]
+    Makefile[Makefile & scripts\nDocker/k8s helpers]
+    Images[Docker Images\nfrontend & backend]
+    Infra[Terraform AWS Stack\nEKS · RDS · ECR]
+    Cluster[EKS/Kubernetes Deployment]
+
+    Dev --> Jenkins
+    Jenkins -->|Build artifacts| Makefile
+    Makefile --> Images
+    Images --> Cluster
+    Infra --> Cluster
+    Infra -->|RDS creds| Secrets[Secrets Manager]
+    Secrets --> Cluster
+    Cluster -->|MySQL| RDS[(Amazon RDS)]
+    Cluster -->|Docker images| ECR[(Amazon ECR)]
+    Cluster -->|Kubernetes workloads| K8s[Kubernetes Manifests]
+    K8s -->|REST / JSON| API[Spring Boot REST API\nControllers & Services]
+    API -->|Spring Data JPA| MySQL[(MySQL Schema\n`departments`, `employees`, `users`)]
+    API -->|Optional Spring Data Mongo| Mongo[(MongoDB Cluster)]
+    User([End User]) -->|HTTPS| UI[React SPA\nTailwind + Material UI + Axios + Chart.js]
+    UI -->|REST / JSON| API
+```
+
 Follow the step-by-step instructions in [`aws/README.md`](aws/README.md) to apply the Terraform plan, push Docker images, surface database credentials as Kubernetes secrets, and roll out the workloads.
 
 ## LoadBalancer Service
@@ -677,11 +725,37 @@ There is also a `Dockerfile` for building the Nginx image. We are using this fil
 
 Feel free to customize the Nginx configuration to suit your specific requirements and deployment process.
 
+```mermaid
+flowchart LR
+    User[End User] -->|HTTP/HTTPS| Nginx[Nginx LoadBalancer]
+    Nginx -->|Route to Frontend| Frontend[React SPA]
+    Nginx -->|Route to Backend| Backend[Spring Boot REST API]
+    Backend -->|Spring Data JPA| MySQL[(MySQL Database)]
+    Backend -->|Optional Spring Data Mongo| Mongo[(MongoDB Cluster)]
+```
+
 ## Jenkins
 
 The project also includes a `Jenkinsfile` for automating the build and deployment process using Jenkins. You can create a Jenkins pipeline job and use the `Jenkinsfile` to build and deploy the application to a Kubernetes cluster.
 
 Feel free to customize the Jenkins pipeline to suit your specific requirements and deployment process.
+
+```mermaid
+flowchart LR
+    Commit[Git Commit] --> Jenkins[Jenkins Pipeline]
+    Jenkins --> Install[Stage: Install Dependencies
+`npm install`]
+    Install --> BuildStage[Stage: Build
+`npm run build`]
+    BuildStage --> Artifacts[React build artifacts]
+    Artifacts --> Docker[Stage: Build Docker Images
+`docker build`]
+    Docker --> Push[Stage: Push to Docker Hub
+`docker push`]
+    Push --> Deploy[Stage: Deploy to Kubernetes
+`kubectl apply`]
+    Deploy --> Cluster[Kubernetes Cluster]
+```
 
 ## OpenAPI Specification
 
