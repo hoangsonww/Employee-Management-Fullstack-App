@@ -4,12 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="392f4aef-37aa-47a3-a82b-22f4f510a7b8" name="Changes" comment="feat(ci/cd): add CI/CD pipeline and frontend Jest tests">
-      <change afterPath="$PROJECT_DIR$/.husky/commit-msg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.husky/pre-commit" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.husky/pre-push" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/ci.yml" afterDir="false" />
+    <list default="true" id="392f4aef-37aa-47a3-a82b-22f4f510a7b8" name="Changes" comment="Fix: Deployed Backend with Docker &amp; Render">
+      <change afterPath="$PROJECT_DIR$/.idea/copilot.data.migration.agent.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/copilot.data.migration.ask.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/copilot.data.migration.ask2agent.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/copilot.data.migration.edit.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ARCHITECTURE.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/aws/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/aws/terraform/ecr.tf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/aws/terraform/eks.tf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/aws/terraform/example.tfvars" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/aws/terraform/locals.tf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/aws/terraform/network.tf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/aws/terraform/outputs.tf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/aws/terraform/providers.tf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/aws/terraform/rds.tf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/aws/terraform/secrets.tf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/aws/terraform/variables.tf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/kubernetes/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/terraform/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/employee-management-app-0.0.1-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/sitemap.xml" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/sitemap.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +45,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="feat/add-ci-cd-tests" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
@@ -69,51 +92,52 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Docker.backend/Dockerfile.executor": "Run",
-    "JUnit.EmployeeManagementApplicationTests.executor": "Run",
-    "Jest.renders dashboard with metrics.executor": "Run",
-    "Notification.DisplayName-DoNotAsk-JDK Arch Check": "JDK and system architectures are different",
-    "Notification.DoNotAsk-JDK Arch Check": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenDatabaseViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.EmployeeManagementApplication.executor": "Run",
-    "git-widget-placeholder": "feat/add-ci-cd-tests",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/davidnguyen/IdeaProjects/Employee-Management/frontend/public",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs.jest.jest_package": "/Users/davidnguyen/IdeaProjects/Employee-Management/frontend/node_modules/react-scripts",
-    "nodejs_package_manager_path": "npm",
-    "npm.format.executor": "Run",
-    "npm.frontend.executor": "Run",
-    "npm.start.executor": "Run",
-    "npm.test.executor": "Run",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "swagger",
-    "ts.external.directory.path": "/Applications/WebStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Docker.backend/Dockerfile.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.EmployeeManagementApplicationTests.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.renders dashboard with metrics.executor&quot;: &quot;Run&quot;,
+    &quot;Notification.DisplayName-DoNotAsk-JDK Arch Check&quot;: &quot;JDK and system architectures are different&quot;,
+    &quot;Notification.DoNotAsk-JDK Arch Check&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenDatabaseViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.EmployeeManagementApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/davidnguyen/IdeaProjects/Employee-Management/frontend/public&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs.jest.jest_package&quot;: &quot;/Users/davidnguyen/IdeaProjects/Employee-Management/frontend/node_modules/react-scripts&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.format.executor&quot;: &quot;Run&quot;,
+    &quot;npm.frontend.executor&quot;: &quot;Run&quot;,
+    &quot;npm.start.executor&quot;: &quot;Run&quot;,
+    &quot;npm.test.executor&quot;: &quot;Run&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Applications/WebStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql",
-      "mongo"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;,
+      &quot;mongo&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -243,8 +267,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.26927.53" />
-        <option value="bundled-js-predefined-d6986cc7102b-09060db00ec0-JavaScript-IU-251.26927.53" />
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.26830.84" />
+        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-IU-252.26830.84" />
       </set>
     </attachedChunks>
   </component>
@@ -395,6 +419,8 @@
       <workItem from="1751288835633" duration="4744000" />
       <workItem from="1751307798612" duration="393000" />
       <workItem from="1751581673485" duration="3388000" />
+      <workItem from="1759711451485" duration="72000" />
+      <workItem from="1759931780532" duration="2097000" />
     </task>
     <task id="LOCAL-00297" summary="Fix: Addressed security vulnerabilities">
       <option name="closed" value="true" />
@@ -811,5 +837,9 @@
     <MESSAGE value="Fix: Deployed Backend with Docker &amp; Render" />
     <MESSAGE value="feat(ci/cd): add CI/CD pipeline and frontend Jest tests" />
     <option name="LAST_COMMIT_MESSAGE" value="feat(ci/cd): add CI/CD pipeline and frontend Jest tests" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

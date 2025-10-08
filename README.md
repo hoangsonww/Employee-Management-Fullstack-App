@@ -11,11 +11,16 @@ The **Employee Management Full-Stack Application** is a modern, feature-rich sys
 ## Table of Contents
 
 - [Overview](#overview)
+- [Architecture at a Glance](#architecture-at-a-glance)
+  - [System Context](#system-context)
+  - [Request Lifecycle](#request-lifecycle)
+  - [DevOps Toolchain](#devops-toolchain)
 - [Live Deployment](#live-deployment)
 - [Key Technologies](#key-technologies)
 - [User Interface](#user-interface)
-- [File Structure](#file-structure)
 - [API Endpoints](#api-endpoints)
+- [File Structure](#file-structure)
+- [Architecture Reference](#architecture-reference)
 - [Backend Setup](#backend-setup)
   - [Prerequisites](#1-prerequisites)
   - [Clone the Repository](#2-clone-the-repository)
@@ -38,6 +43,7 @@ The **Employee Management Full-Stack Application** is a modern, feature-rich sys
 - [Detailed Component Instructions](#detailed-component-instructions)
 - [Containerization](#containerization)
 - [Kubernetes](#kubernetes)
+- [AWS Production Deployment](#aws-production-deployment)
 - [LoadBalancer Service](#loadbalancer-service)
 - [Jenkins](#jenkins)
 - [OpenAPI Specification](#openapi-specification)
@@ -85,6 +91,69 @@ The Employee Management System is a dynamic full-stack application that seamless
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
 ![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
 
+## Architecture at a Glance
+
+- React SPA (Material UI, Tailwind CSS, Chart.js) consumes the Spring Boot REST API over HTTPS via Axios.
+- Spring Boot layers (controller → service → repository) persist to MySQL through Spring Data JPA and seed demo data with Faker-powered `DataInitializer`.
+- Operability tooling includes Docker Compose for local orchestration, Kubernetes manifests for cluster deployments, Terraform blueprints, and a Jenkins pipeline for frontend build verification.
+
+### System Context
+
+```mermaid
+flowchart LR
+    User([End User]) -->|HTTPS| UI[React SPA\nTailwind + Material UI + Axios + Chart.js]
+    UI -->|REST / JSON| API[Spring Boot REST API\nControllers & Services]
+    API -->|Spring Data JPA| MySQL[(MySQL Schema\n`departments`, `employees`, `users`)]
+    API -->|Optional Spring Data Mongo| Mongo[(MongoDB Cluster)]
+    API -->|OpenAPI 3.0| Swagger[Swagger UI]
+    subgraph Runtime Options
+        Compose[Docker Compose]
+        K8s[Kubernetes Manifests]
+    end
+    Compose --> UI
+    Compose --> API
+    K8s --> UI
+    K8s --> API
+```
+
+### Request Lifecycle
+
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant UI as React Component
+    participant C as EmployeeController
+    participant S as EmployeeService
+    participant R as EmployeeRepository
+    participant DB as MySQL
+    U->>UI: Trigger "Add Employee"
+    UI->>C: POST /api/employees
+    C->>S: saveEmployee(employee)
+    S->>R: save(employee)
+    R->>DB: INSERT row
+    DB-->>R: persisted entity
+    R-->>S: Employee
+    S-->>C: Employee
+    C-->>UI: 201 Created + payload
+```
+
+### DevOps Toolchain
+
+```mermaid
+flowchart LR
+    Dev[Git Changes]
+    Jenkins[Jenkins Pipeline\n`npm install` + `npm run build`]
+    Makefile[Makefile & scripts\nDocker/k8s helpers]
+    Images[Docker Images\nfrontend & backend]
+    Infra[Terraform AWS Stack\nEKS · RDS · ECR]
+    Cluster[EKS/Kubernetes Deployment]
+
+    Dev --> Jenkins
+    Jenkins -->|Build artifacts| Makefile
+    Makefile --> Images
+    Images --> Cluster
+    Infra --> Cluster
+```
 ## Live Deployment
 
 The Employee Management System full-stack app is deployed with Vercel and is live at [https://employee-manage-app.vercel.app](https://employee-manage-app.vercel.app) for you to explore and interact with the application.
@@ -234,92 +303,76 @@ Here's a table listing all the RESTful API endpoints provided by this applicatio
 ## File Structure
 
 ```
-Employee-Management-Fullstack-App/
-├── docker-compose.yaml
+Employee-Management/
+├── ARCHITECTURE.md
 ├── Jenkinsfile
-├── openapi.yaml
+├── Makefile
 ├── README.md
-├── package.json
-├── .mvn/
-│   └── wrapper
-│       └── maven-wrapper.properties
+├── docker-compose.yml
+├── openapi.yaml
+├── aws/
+│   ├── README.md
+│   └── terraform/
+│       ├── example.tfvars
+│       ├── providers.tf
+│       ├── locals.tf
+│       ├── network.tf
+│       ├── eks.tf
+│       ├── rds.tf
+│       ├── secrets.tf
+│       ├── ecr.tf
+│       ├── outputs.tf
+│       └── variables.tf
+├── backend/
+│   ├── Dockerfile
+│   ├── pom.xml
+│   ├── config.properties
+│   ├── example_config.properties
+│   └── src/
+│       ├── main/
+│       │   ├── java/com/example/employeemanagement/
+│       │   │   ├── controller/
+│       │   │   ├── service/
+│       │   │   ├── repository/
+│       │   │   ├── model/
+│       │   │   └── security/
+│       │   └── resources/application.properties
+│       └── test/java/com/example/employeemanagement/
+├── frontend/
+│   ├── Dockerfile
+│   ├── package.json
+│   ├── src/components/
+│   └── src/services/
 ├── kubernetes/
-│   ├── configmap.yaml
 │   ├── backend-deployment.yaml
 │   ├── backend-service.yaml
-│   ├── frontend-deployment.yaml
-│   └── frontend-service.yaml
+│   ├── configmap.yaml
+│   └── frontend-deployment.yaml
+├── terraform/
+│   ├── main.tf
+│   ├── modules/
+│   │   ├── network/
+│   │   ├── eks/
+│   │   ├── rds/
+│   │   └── ecr/
+│   └── variables.tf
+├── scripts/
+│   ├── build-images.sh
+│   ├── deploy-k8s.sh
+│   └── ...
 ├── nginx/
 │   ├── Dockerfile
-│   └── nginx.conf 
-├── backend/
-│   ├── src/
-│   │   ├── main/
-│   │   │   ├── java/
-│   │   │   │   └── com/
-│   │   │   │       └── example/
-│   │   │   │           └── employeemanagement/
-│   │   │   │               ├── EmployeeManagementApplication.java
-│   │   │   │               ├── config/
-│   │   │   │               │   └── CorsConfig.java
-│   │   │   │               │   └── DataInitializer.java
-│   │   │   │               ├── controller/
-│   │   │   │               │   ├── DepartmentController.java
-│   │   │   │               │   └── EmployeeController.java
-│   │   │   │               ├── model/
-│   │   │   │               │   ├── Department.java
-│   │   │   │               │   └── Employee.java
-│   │   │   │               ├── repository/
-│   │   │   │               │   ├── DepartmentRepository.java
-│   │   │   │               │   └── EmployeeRepository.java
-│   │   │   │               ├── service/
-│   │   │   │               │   └── DataInitializer.java
-│   │   │   │               └── exception/
-│   │   │   │                   └── ResourceNotFoundException.java
-│   │   │   └── resources/
-│   │   │       ├── application.properties
-│   │   │       └── data.sql
-│   │   └── test/
-│   │       └── java/
-│   │           └── com/
-│   │               └── example/
-│   │                   └── employeemanagement/
-│   │                       └── EmployeeManagementApplicationTests.java
-│   ├── .gitignore
-│   ├── pom.xml
-│   └── compose.yaml
-│
-└── frontend/
-    ├── build/
-    ├── public/
-    │   ├── index.html
-    │   └── favicon.ico
-    │   └── manifest.json
-    │   └── robots.txt
-    │   └── icon-192x192.webp
-    │   └── icon-512x512.webp
-    ├── src/
-    │   ├── components/
-    │   │   ├── Dashboard.js
-    │   │   ├── EmployeeList.js
-    │   │   ├── EmployeeForm.js
-    │   │   ├── DepartmentList.js
-    │   │   ├── DepartmentForm.js
-    │   │   └── Navbar.js
-    │   ├── services/
-    │   │   ├── employeeService.js
-    │   │   └── departmentService.js
-    │   ├── App.js
-    │   ├── index.js
-    │   ├── index.css
-    │   ├── reportWebVitals.js
-    │   ├── App.css
-    │   └── theme.js
-    ├── Dockerfile
-    ├── postcss.config.js
-    ├── tailwind.config.js
-    └── package.json
+│   └── nginx.conf
+├── img/
+│   └── *.png
+└── package.json
 ```
+
+> Note: Generated directories such as `node_modules/`, `target/`, and `build/` are omitted for brevity.
+
+## Architecture Reference
+
+For a deeper dive into components, data flow, security posture, and recommended follow-up tasks, see [ARCHITECTURE.md](ARCHITECTURE.md). It cross-references the exact source files (controllers, services, repositories, configuration, tests, and infrastructure) described in this README.
 
 ## Backend Setup
 
@@ -605,6 +658,16 @@ kubectl apply -f kubernetes
 ```
 
 This command will create the necessary deployments, services, and config maps for the frontend and backend. You can access the application using the NodePort or LoadBalancer service created.
+
+## AWS Production Deployment
+
+The `aws/` directory packages a Terraform stack that provisions production-grade AWS infrastructure:
+- **Networking**: Multi-AZ VPC with public/private subnets, managed NAT, and tagging conventions.
+- **Compute**: Amazon EKS cluster (managed node group) ready to run the Kubernetes manifests in `kubernetes/` once images are pushed to ECR.
+- **Data**: Amazon RDS for MySQL with encryption, automated backups, Multi-AZ failover, and Secrets Manager integration.
+- **Registry**: Dedicated Amazon ECR repositories for the backend and frontend containers, including lifecycle policies and scanning.
+
+Follow the step-by-step instructions in [`aws/README.md`](aws/README.md) to apply the Terraform plan, push Docker images, surface database credentials as Kubernetes secrets, and roll out the workloads.
 
 ## LoadBalancer Service
 
