@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="392f4aef-37aa-47a3-a82b-22f4f510a7b8" name="Changes" comment="feat(ci/cd): add CI/CD pipeline and frontend Jest tests">
-      <change afterPath="$PROJECT_DIR$/.husky/commit-msg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.husky/pre-commit" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.husky/pre-push" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/ci.yml" afterDir="false" />
+    <list default="true" id="392f4aef-37aa-47a3-a82b-22f4f510a7b8" name="Changes" comment="feat(terraform): add Terraform configurations for AWS infrastructure and Kubernetes deployment">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARCHITECTURE.md" beforeDir="false" afterPath="$PROJECT_DIR$/ARCHITECTURE.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/terraform/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/terraform/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +26,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="feat/add-ci-cd-tests" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
@@ -84,10 +88,11 @@
     "RunOnceActivity.OpenDatabaseViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Spring Boot.EmployeeManagementApplication.executor": "Run",
-    "git-widget-placeholder": "feat/add-ci-cd-tests",
+    "git-widget-placeholder": "feat/enhance-documentations",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/davidnguyen/IdeaProjects/Employee-Management/frontend/public",
     "node.js.detected.package.eslint": "true",
@@ -103,7 +108,7 @@
     "project.structure.last.edited": "SDKs",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "swagger",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "ts.external.directory.path": "/Applications/WebStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external",
     "vue.rearranger.settings.migration": "true"
   },
@@ -243,8 +248,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.26927.53" />
-        <option value="bundled-js-predefined-d6986cc7102b-09060db00ec0-JavaScript-IU-251.26927.53" />
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.26830.84" />
+        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-IU-252.26830.84" />
       </set>
     </attachedChunks>
   </component>
@@ -395,14 +400,9 @@
       <workItem from="1751288835633" duration="4744000" />
       <workItem from="1751307798612" duration="393000" />
       <workItem from="1751581673485" duration="3388000" />
-    </task>
-    <task id="LOCAL-00297" summary="Fix: Addressed security vulnerabilities">
-      <option name="closed" value="true" />
-      <created>1729010997050</created>
-      <option name="number" value="00297" />
-      <option name="presentableId" value="LOCAL-00297" />
-      <option name="project" value="LOCAL" />
-      <updated>1729010997050</updated>
+      <workItem from="1759711451485" duration="72000" />
+      <workItem from="1759931780532" duration="2097000" />
+      <workItem from="1759954158389" duration="445000" />
     </task>
     <task id="LOCAL-00298" summary="Fix: Addressed security vulnerabilities">
       <option name="closed" value="true" />
@@ -788,7 +788,15 @@
       <option name="project" value="LOCAL" />
       <updated>1751584942039</updated>
     </task>
-    <option name="localTasksCounter" value="346" />
+    <task id="LOCAL-00346" summary="feat(terraform): add Terraform configurations for AWS infrastructure and Kubernetes deployment">
+      <option name="closed" value="true" />
+      <created>1759954202510</created>
+      <option name="number" value="00346" />
+      <option name="presentableId" value="LOCAL-00346" />
+      <option name="project" value="LOCAL" />
+      <updated>1759954202510</updated>
+    </task>
+    <option name="localTasksCounter" value="347" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -810,6 +818,11 @@
     <MESSAGE value="Fix: Addressed security vulnerabilities" />
     <MESSAGE value="Fix: Deployed Backend with Docker &amp; Render" />
     <MESSAGE value="feat(ci/cd): add CI/CD pipeline and frontend Jest tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(ci/cd): add CI/CD pipeline and frontend Jest tests" />
+    <MESSAGE value="feat(terraform): add Terraform configurations for AWS infrastructure and Kubernetes deployment" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(terraform): add Terraform configurations for AWS infrastructure and Kubernetes deployment" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
