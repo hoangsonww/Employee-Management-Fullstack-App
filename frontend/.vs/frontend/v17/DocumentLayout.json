@@ -1,0 +1,224 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Owner\\workout\\Employee-Management-Fullstack-App\\frontend\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Owner\\workout\\Employee-Management-Fullstack-App\\frontend\\src\\services\\dashboardService.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\services\\dashboardService.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Owner\\workout\\Employee-Management-Fullstack-App\\frontend\\src\\components\\EmployeesByDepartmentChart.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\components\\EmployeesByDepartmentChart.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Owner\\workout\\Employee-Management-Fullstack-App\\frontend\\src\\components\\Dashboard.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\components\\Dashboard.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Owner\\workout\\Employee-Management-Fullstack-App\\frontend\\src\\components\\VerifyUsername.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\components\\VerifyUsername.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Owner\\workout\\Employee-Management-Fullstack-App\\frontend\\src\\services\\departmentService.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\services\\departmentService.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Owner\\workout\\Employee-Management-Fullstack-App\\frontend\\src\\services\\employeeService.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\services\\employeeService.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Owner\\workout\\Employee-Management-Fullstack-App\\frontend\\src\\components\\DepartmentForm.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\components\\DepartmentForm.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Owner\\workout\\Employee-Management-Fullstack-App\\frontend\\src\\components\\DepartmentList.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\components\\DepartmentList.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Owner\\workout\\Employee-Management-Fullstack-App\\frontend\\src\\components\\ResetPassword.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\components\\ResetPassword.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Owner\\workout\\Employee-Management-Fullstack-App\\frontend\\src\\components\\Profile.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\components\\Profile.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Owner\\workout\\Employee-Management-Fullstack-App\\frontend\\src\\components\\Navbar.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\components\\Navbar.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Owner\\workout\\Employee-Management-Fullstack-App\\frontend\\src\\components\\EmployeeList.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\components\\EmployeeList.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "DepartmentForm.js",
+              "DocumentMoniker": "C:\\Users\\Owner\\workout\\Employee-Management-Fullstack-App\\frontend\\src\\components\\DepartmentForm.js",
+              "RelativeDocumentMoniker": "src\\components\\DepartmentForm.js",
+              "ToolTip": "C:\\Users\\Owner\\workout\\Employee-Management-Fullstack-App\\frontend\\src\\components\\DepartmentForm.js",
+              "RelativeToolTip": "src\\components\\DepartmentForm.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-09-18T22:40:13.273Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "VerifyUsername.js",
+              "DocumentMoniker": "C:\\Users\\Owner\\workout\\Employee-Management-Fullstack-App\\frontend\\src\\components\\VerifyUsername.js",
+              "RelativeDocumentMoniker": "src\\components\\VerifyUsername.js",
+              "ToolTip": "C:\\Users\\Owner\\workout\\Employee-Management-Fullstack-App\\frontend\\src\\components\\VerifyUsername.js",
+              "RelativeToolTip": "src\\components\\VerifyUsername.js",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAAA8AAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-09-18T22:39:46.82Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ResetPassword.js",
+              "DocumentMoniker": "C:\\Users\\Owner\\workout\\Employee-Management-Fullstack-App\\frontend\\src\\components\\ResetPassword.js",
+              "RelativeDocumentMoniker": "src\\components\\ResetPassword.js",
+              "ToolTip": "C:\\Users\\Owner\\workout\\Employee-Management-Fullstack-App\\frontend\\src\\components\\ResetPassword.js",
+              "RelativeToolTip": "src\\components\\ResetPassword.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-09-18T22:39:39.838Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Profile.js",
+              "DocumentMoniker": "C:\\Users\\Owner\\workout\\Employee-Management-Fullstack-App\\frontend\\src\\components\\Profile.js",
+              "RelativeDocumentMoniker": "src\\components\\Profile.js",
+              "ToolTip": "C:\\Users\\Owner\\workout\\Employee-Management-Fullstack-App\\frontend\\src\\components\\Profile.js",
+              "RelativeToolTip": "src\\components\\Profile.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-09-18T22:23:46.609Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Navbar.js",
+              "DocumentMoniker": "C:\\Users\\Owner\\workout\\Employee-Management-Fullstack-App\\frontend\\src\\components\\Navbar.js",
+              "RelativeDocumentMoniker": "src\\components\\Navbar.js",
+              "ToolTip": "C:\\Users\\Owner\\workout\\Employee-Management-Fullstack-App\\frontend\\src\\components\\Navbar.js",
+              "RelativeToolTip": "src\\components\\Navbar.js",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-09-18T22:23:28.303Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "DepartmentList.js",
+              "DocumentMoniker": "C:\\Users\\Owner\\workout\\Employee-Management-Fullstack-App\\frontend\\src\\components\\DepartmentList.js",
+              "RelativeDocumentMoniker": "src\\components\\DepartmentList.js",
+              "ToolTip": "C:\\Users\\Owner\\workout\\Employee-Management-Fullstack-App\\frontend\\src\\components\\DepartmentList.js",
+              "RelativeToolTip": "src\\components\\DepartmentList.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAF0AAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-09-18T20:29:46.532Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "dashboardService.js",
+              "DocumentMoniker": "C:\\Users\\Owner\\workout\\Employee-Management-Fullstack-App\\frontend\\src\\services\\dashboardService.js",
+              "RelativeDocumentMoniker": "src\\services\\dashboardService.js",
+              "ToolTip": "C:\\Users\\Owner\\workout\\Employee-Management-Fullstack-App\\frontend\\src\\services\\dashboardService.js",
+              "RelativeToolTip": "src\\services\\dashboardService.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-09-18T20:24:36.485Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EmployeesByDepartmentChart.js",
+              "DocumentMoniker": "C:\\Users\\Owner\\workout\\Employee-Management-Fullstack-App\\frontend\\src\\components\\EmployeesByDepartmentChart.js",
+              "RelativeDocumentMoniker": "src\\components\\EmployeesByDepartmentChart.js",
+              "ToolTip": "C:\\Users\\Owner\\workout\\Employee-Management-Fullstack-App\\frontend\\src\\components\\EmployeesByDepartmentChart.js",
+              "RelativeToolTip": "src\\components\\EmployeesByDepartmentChart.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-09-18T15:52:13.497Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "EmployeeList.js",
+              "DocumentMoniker": "C:\\Users\\Owner\\workout\\Employee-Management-Fullstack-App\\frontend\\src\\components\\EmployeeList.js",
+              "RelativeDocumentMoniker": "src\\components\\EmployeeList.js",
+              "ToolTip": "C:\\Users\\Owner\\workout\\Employee-Management-Fullstack-App\\frontend\\src\\components\\EmployeeList.js",
+              "RelativeToolTip": "src\\components\\EmployeeList.js",
+              "ViewState": "AgIAAI4AAAAAAAAAAAArwKEAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-09-18T15:20:47.554Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "departmentService.js",
+              "DocumentMoniker": "C:\\Users\\Owner\\workout\\Employee-Management-Fullstack-App\\frontend\\src\\services\\departmentService.js",
+              "RelativeDocumentMoniker": "src\\services\\departmentService.js",
+              "ToolTip": "C:\\Users\\Owner\\workout\\Employee-Management-Fullstack-App\\frontend\\src\\services\\departmentService.js*",
+              "RelativeToolTip": "src\\services\\departmentService.js*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-09-18T15:20:01.799Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "employeeService.js",
+              "DocumentMoniker": "C:\\Users\\Owner\\workout\\Employee-Management-Fullstack-App\\frontend\\src\\services\\employeeService.js",
+              "RelativeDocumentMoniker": "src\\services\\employeeService.js",
+              "ToolTip": "C:\\Users\\Owner\\workout\\Employee-Management-Fullstack-App\\frontend\\src\\services\\employeeService.js",
+              "RelativeToolTip": "src\\services\\employeeService.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-09-18T15:15:05.942Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Dashboard.js",
+              "DocumentMoniker": "C:\\Users\\Owner\\workout\\Employee-Management-Fullstack-App\\frontend\\src\\components\\Dashboard.js",
+              "RelativeDocumentMoniker": "src\\components\\Dashboard.js",
+              "ToolTip": "C:\\Users\\Owner\\workout\\Employee-Management-Fullstack-App\\frontend\\src\\components\\Dashboard.js",
+              "RelativeToolTip": "src\\components\\Dashboard.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-09-18T15:13:52.812Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

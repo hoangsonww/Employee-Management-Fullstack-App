@@ -4,6 +4,8 @@ import { getAllEmployees } from '../services/employeeService';
 import { getAllDepartments } from '../services/departmentService';
 import { Chart, CategoryScale, LinearScale, BarElement, LineElement, PointElement, Title, Tooltip, Legend, ArcElement } from 'chart.js';
 import { Card, CardContent, Grid, Typography, Box, CircularProgress } from '@mui/material';
+import  EmployeesLineChart  from './EmployeesByDepartmentChart';
+
 
 Chart.register(CategoryScale, LinearScale, BarElement, LineElement, PointElement, Title, Tooltip, Legend, ArcElement);
 
@@ -303,14 +305,23 @@ const Dashboard = () => {
           </Card>
         </Grid>
 
-        <Grid item xs={12} sm={6} md={4}>
+       /* <Grid item xs={12} sm={6} md={4}>
           <Card sx={{ ...animationStyle, boxShadow: 3, borderRadius: 2, height: '100%', backgroundColor: '#fff' }}>
             <CardContent>
               <Typography variant="h6">Employee Growth Trend</Typography>
               {lineChartData ? <Line data={lineChartData} /> : <Typography>No data available</Typography>}
             </CardContent>
           </Card>
-        </Grid>
+              </Grid>*/
+
+              <Grid item xs={12} sm={6} md={4}>
+                  <Card sx={{ ...animationStyle, boxShadow: 3, borderRadius: 2, height: '100%', backgroundColor: '#fff' }}>
+                      <CardContent>
+                          <Typography variant="h6">Employee Growth Trend</Typography>
+                      <EmployeesLineChart/>
+                      </CardContent>
+                  </Card>
+              </Grid>*
 
         <Grid item xs={12} sm={6} md={4}>
           <Card sx={{ ...animationStyle, boxShadow: 3, borderRadius: 2, height: '100%', backgroundColor: '#fff' }}>
