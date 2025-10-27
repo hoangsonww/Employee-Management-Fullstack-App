@@ -20,3 +20,14 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Backend build artifacts
+backend/target/
+backend/.mvn/
+backend/mvnw
+backend/mvnw.cmd
+
+# Frontend build artifacts
+frontend/node_modules/
+frontend/build/
+frontend/.env

@@ -6,6 +6,8 @@ import EmployeeList from './components/EmployeeList';
 import EmployeeForm from './components/EmployeeForm';
 import DepartmentList from './components/DepartmentList';
 import DepartmentForm from './components/DepartmentForm';
+import AdminDashboard from './components/AdminDashboard';
+import AuditLogViewer from './components/AuditLogViewer';
 import Navbar from './components/Navbar';
 import LandingPage from './components/LandingPage';
 import Profile from './components/Profile';
@@ -30,6 +32,8 @@ const App = () => {
           <Route path="/departments" element={<DepartmentList />} />
           <Route path="/add-department" element={<DepartmentForm />} />
           <Route path="/edit-department/:id" element={<DepartmentForm />} />
+          <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/audit-logs" element={<AuditLogViewer />} />
           <Route path="/verify-username" element={<VerifyUsername />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/profile" element={<Profile />} />

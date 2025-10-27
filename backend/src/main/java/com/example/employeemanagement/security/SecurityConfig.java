@@ -4,19 +4,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 /** This class represents the security configuration. */
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
   /** The user details service. */
   @Autowired private UserDetailsService userDetailsService;
+
+  /** The JWT request filter. */
+  @Autowired private JwtRequestFilter jwtRequestFilter;
 
   /**
    * Configure authentication.
@@ -59,11 +66,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
    */
   @Override
   protected void configure(HttpSecurity http) throws Exception {
-    // Disable authentication for all routes
-    http.csrf()
-        .disable()
+    http.csrf().disable()
+        .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+        .and()
         .authorizeRequests()
-        .anyRequest()
-        .permitAll(); // Allow access to all routes without authentication (for now)
+            // Allow authentication endpoints without authorization
+            .antMatchers("/authenticate", "/register", "/verify-username/**", "/reset-password").permitAll()
+            // Allow Swagger documentation endpoints
+            .antMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html").permitAll()
+            // Allow home endpoint
+            .antMatchers("/").permitAll()
+            // Require authentication for API endpoints
+            .antMatchers("/api/**").authenticated()
+        .and()
+        .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
   }
 }
