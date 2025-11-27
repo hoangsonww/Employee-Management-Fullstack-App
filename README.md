@@ -1,6 +1,8 @@
 # Employee Management Full-Stack Application
 
-The **Employee Management Full-Stack Application** is a modern, feature-rich system for managing employee and department data, built to demonstrate the power of combining traditional enterprise technologies with modern web frameworks. It leverages a responsive React frontend alongside a robust Spring Boot backend, delivering a seamless user experience with features such as CRUD operations, data visualization, authentication, and secure REST APIs. Designed with scalability and maintainability in mind, this application is also fully containerized with Docker, orchestrated with Kubernetes, and supports CI/CD pipelines through Jenkins, making it an ideal blueprint for real-world enterprise applications.
+The **Employee Management Full-Stack Application** is a modern, feature-rich system for managing employee and department data, built to demonstrate the power of combining traditional enterprise technologies with modern web frameworks. It leverages a responsive React frontend alongside a robust Spring Boot backend, delivering a seamless user experience with features such as CRUD operations, data visualization, authentication, and secure REST APIs. 
+
+Designed with scalability and maintainability in mind, this application is also fully containerized with Docker, orchestrated with Kubernetes, and supports CI/CD pipelines & blue/green and canary deployment techniques through Jenkins, making it an ideal blueprint for real-world enterprise applications.
 
 <p align="center">
   <a href="https://employee-management-fullstack-app.vercel.app" target="_blank">
@@ -95,7 +97,7 @@ The Employee Management System is a dynamic full-stack application that seamless
 
 - React SPA (Material UI, Tailwind CSS, Chart.js) consumes the Spring Boot REST API over HTTPS via Axios.
 - Spring Boot layers (controller → service → repository) persist to MySQL through Spring Data JPA and seed demo data with Faker-powered `DataInitializer`.
-- Operability tooling includes Docker Compose for local orchestration, Kubernetes manifests for cluster deployments, Terraform blueprints, and a Jenkins pipeline for frontend build verification.
+- Production-ready deployment with Docker containers, Kubernetes orchestration (blue-green & canary strategies), Terraform infrastructure-as-code, and comprehensive Jenkins CI/CD pipeline with automated testing, security scanning, and multi-strategy deployments.
 
 ### System Context
 
@@ -302,70 +304,70 @@ Here's a table listing all the RESTful API endpoints provided by this applicatio
 
 ## File Structure
 
-```
-Employee-Management/
-├── ARCHITECTURE.md
-├── Jenkinsfile
-├── Makefile
-├── README.md
-├── docker-compose.yml
-├── openapi.yaml
-├── aws/
-│   ├── README.md
-│   └── terraform/
-│       ├── example.tfvars
-│       ├── providers.tf
-│       ├── locals.tf
-│       ├── network.tf
-│       ├── eks.tf
-│       ├── rds.tf
-│       ├── secrets.tf
-│       ├── ecr.tf
-│       ├── outputs.tf
-│       └── variables.tf
-├── backend/
-│   ├── Dockerfile
-│   ├── pom.xml
-│   ├── config.properties
-│   ├── example_config.properties
-│   └── src/
-│       ├── main/
-│       │   ├── java/com/example/employeemanagement/
-│       │   │   ├── controller/
-│       │   │   ├── service/
-│       │   │   ├── repository/
-│       │   │   ├── model/
-│       │   │   └── security/
-│       │   └── resources/application.properties
-│       └── test/java/com/example/employeemanagement/
-├── frontend/
-│   ├── Dockerfile
-│   ├── package.json
-│   ├── src/components/
-│   └── src/services/
-├── kubernetes/
-│   ├── backend-deployment.yaml
-│   ├── backend-service.yaml
-│   ├── configmap.yaml
-│   └── frontend-deployment.yaml
-├── terraform/
-│   ├── main.tf
-│   ├── modules/
-│   │   ├── network/
-│   │   ├── eks/
-│   │   ├── rds/
-│   │   └── ecr/
-│   └── variables.tf
-├── scripts/
-│   ├── build-images.sh
-│   ├── deploy-k8s.sh
-│   └── ...
-├── nginx/
-│   ├── Dockerfile
-│   └── nginx.conf
-├── img/
-│   └── *.png
-└── package.json
+```mermaid
+mindmap
+  root((Employee-Management))
+    ARCHITECTURE.md
+    Jenkinsfile
+    Makefile
+    README.md
+    docker-compose.yml
+    openapi.yaml
+    aws
+      README.md
+      terraform
+        example.tfvars
+        providers.tf
+        locals.tf
+        network.tf
+        eks.tf
+        rds.tf
+        secrets.tf
+        ecr.tf
+        outputs.tf
+        variables.tf
+    backend
+      Dockerfile
+      pom.xml
+      config.properties
+      example_config.properties
+      src
+        main
+          java/com/example/employeemanagement
+            controller
+            service
+            repository
+            model
+            security
+          resources/application.properties
+        test/java/com/example/employeemanagement
+    frontend
+      Dockerfile
+      package.json
+      src/components
+      src/services
+    kubernetes
+      backend-deployment.yaml
+      backend-service.yaml
+      configmap.yaml
+      frontend-deployment.yaml
+    terraform
+      main.tf
+      modules
+        network
+        eks
+        rds
+        ecr
+      variables.tf
+    scripts
+      build-images.sh
+      deploy-k8s.sh
+      ...
+    nginx
+      Dockerfile
+      nginx.conf
+    img/*.png
+    package.json
 ```
 
 > [!TIP]
@@ -673,21 +675,94 @@ flowchart LR
 
 ## Kubernetes
 
-The project also includes Kubernetes configuration files in the `kubernetes` directory for deploying the application to a Kubernetes cluster. You can deploy the application to a Kubernetes cluster using the following command:
+The project includes production-ready Kubernetes manifests with support for advanced deployment strategies:
+
+### Deployment Strategies
+
+- **Rolling Deployment**: Gradual zero-downtime updates with automatic rollback
+- **Blue-Green Deployment**: Complete environment switch for instant rollback capability
+- **Canary Deployment**: Gradual traffic shift to validate new versions (10% → 100%)
+
+### Production Features
+
+- **High Availability**: 3 replicas per deployment with pod anti-affinity
+- **Auto-Scaling**: Horizontal Pod Autoscaler based on CPU/memory metrics
+- **Security**: Network policies, RBAC, non-root containers, secrets encryption
+- **Observability**: Health probes, Prometheus metrics, CloudWatch integration
+- **Resilience**: Pod Disruption Budgets, graceful shutdown, automatic rollback
+
+### Quick Start
 
 ```bash
-kubectl apply -f kubernetes
+# Deploy using blue-green strategy
+cd kubernetes
+export ECR_REGISTRY=<your-ecr-url>
+export IMAGE_TAG=v1.0.0
+
+envsubst < backend-deployment-blue.yaml | kubectl apply -f -
+envsubst < frontend-deployment-blue.yaml | kubectl apply -f -
+
+# Or use deployment scripts
+./scripts/deploy-blue-green.sh green v1.2.3
+./scripts/switch-blue-green.sh green
+
+# Canary deployment
+./scripts/deploy-canary.sh v1.2.3
+./scripts/promote-canary.sh v1.2.3
 ```
 
-This command will create the necessary deployments, services, and config maps for the frontend and backend. You can access the application using the NodePort or LoadBalancer service created.
+For comprehensive deployment instructions, see **[kubernetes/DEPLOYMENT-GUIDE.md](kubernetes/DEPLOYMENT-GUIDE.md)**.
 
 ## AWS Production Deployment
 
-The `aws/` directory packages a Terraform stack that provisions production-grade AWS infrastructure:
-- **Networking**: Multi-AZ VPC with public/private subnets, managed NAT, and tagging conventions.
-- **Compute**: Amazon EKS cluster (managed node group) ready to run the Kubernetes manifests in `kubernetes/` once images are pushed to ECR.
-- **Data**: Amazon RDS for MySQL with encryption, automated backups, Multi-AZ failover, and Secrets Manager integration.
-- **Registry**: Dedicated Amazon ECR repositories for the backend and frontend containers, including lifecycle policies and scanning.
+The `aws/terraform/` directory contains a comprehensive Terraform stack for production-grade AWS infrastructure:
+
+### Infrastructure Components
+
+- **Networking**: Multi-AZ VPC with public/private subnets, NAT gateways, and security groups
+- **Compute**: Amazon EKS cluster with:
+  - Production node group (ON_DEMAND instances)
+  - Spot instance node group for cost optimization
+  - Cluster Autoscaler for dynamic scaling
+  - IMDSv2 enforcement for security
+  - Encrypted EBS volumes
+- **Data**: Amazon RDS MySQL with:
+  - Multi-AZ deployment for high availability
+  - Automated backups (14-day retention)
+  - Encryption at rest with KMS
+  - Secrets Manager integration
+- **Registry**: Amazon ECR repositories with:
+  - Image lifecycle policies
+  - Vulnerability scanning
+  - Immutable image tags
+- **IAM & Security**:
+  - IRSA (IAM Roles for Service Accounts) for pods
+  - AWS Load Balancer Controller IAM role
+  - Cluster Autoscaler IAM role
+  - KMS encryption for EKS secrets
+  - CloudWatch logging for control plane
+
+### Production Enhancements
+
+- **Cluster Encryption**: KMS-encrypted Kubernetes secrets
+- **Control Plane Logging**: API, audit, authenticator, controller, scheduler logs
+- **Service Accounts**: Pre-configured IAM roles for backend, load balancer controller, autoscaler
+- **Node Groups**: Separate production and spot node groups with proper taints/labels
+- **Monitoring**: CloudWatch Container Insights integration
+
+### Deployment
+
+As mentioned, we fully support blue/green and canary deployment strategies with the provided Kubernetes manifests and deployment scripts on top of the AWS infrastructure.
+
+```bash
+cd aws/terraform
+terraform init
+terraform plan
+terraform apply
+
+# Get cluster access
+aws eks update-kubeconfig --region us-east-1 --name employee-management-eks
+```
 
 ```mermaid
 flowchart LR
@@ -715,7 +790,7 @@ flowchart LR
     UI -->|REST / JSON| API
 ```
 
-Follow the step-by-step instructions in [`aws/README.md`](aws/README.md) to apply the Terraform plan, push Docker images, surface database credentials as Kubernetes secrets, and roll out the workloads.
+Follow the step-by-step instructions in [`aws/README.md`](aws/README.md) to apply the Terraform plan, push Docker images, surface database credentials as Kubernetes secrets, and roll out the workloads. For full deployment guide, refer to [kubernetes/DEPLOYMENT-GUIDE.md](kubernetes/DEPLOYMENT-GUIDE.md).
 
 ## LoadBalancer Service
 
@@ -736,9 +811,44 @@ flowchart LR
 
 ## Jenkins
 
-The project also includes a `Jenkinsfile` for automating the build and deployment process using Jenkins. You can create a Jenkins pipeline job and use the `Jenkinsfile` to build and deploy the application to a Kubernetes cluster.
+The project includes a comprehensive CI/CD pipeline with support for multiple deployment strategies:
 
-Feel free to customize the Jenkins pipeline to suit your specific requirements and deployment process.
+### Pipeline Features
+
+- **Multi-Strategy Support**: Choose between Rolling, Blue-Green, or Canary deployments
+- **Parallel Execution**: Backend and frontend builds run concurrently
+- **Security Scanning**: Trivy vulnerability scanning for Docker images
+- **Quality Checks**: Linting, testing, and code quality gates
+- **Auto-Rollback**: Automatically rolls back failed deployments
+- **Health Verification**: Post-deployment smoke tests and monitoring
+
+### Pipeline Parameters
+
+```groovy
+DEPLOYMENT_STRATEGY: 'rolling' | 'blue-green' | 'canary'
+ACTIVE_VERSION: 'blue' | 'green'
+CANARY_WEIGHT: '10' (percentage of traffic)
+AUTO_ROLLBACK: true | false
+SKIP_TESTS: true | false
+```
+
+### Pipeline Stages
+
+1. **Initialize**: Workspace setup and Git checkout
+2. **Install Dependencies**: Parallel backend and frontend dependency installation
+3. **Code Quality & Security**: Linting and security scans
+4. **Run Tests**: JUnit (backend) and Jest (frontend) tests
+5. **Build Applications**: Maven/npm build processes
+6. **Build & Push Images**: Docker image creation and ECR push
+7. **Image Security Scan**: Container vulnerability assessment
+8. **Configure kubectl**: EKS cluster authentication
+9. **Deploy**: Strategy-specific deployment (rolling/blue-green/canary)
+10. **Post-Deployment Tests**: Smoke tests and health checks
+11. **Monitor**: Deployment status verification
+
+### Usage
+
+Create a Jenkins pipeline job and point it to the `Jenkinsfile`. The pipeline will automatically detect deployment parameters and execute the appropriate strategy.
 
 ```mermaid
 flowchart LR

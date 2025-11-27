@@ -19,50 +19,42 @@ The backend of the Employee Management System is built using Spring Boot, a powe
 
 ## File Structure
 
-```
-employee-management-app
-│
-├── docker-compose.yaml
-│
-├── backend
-│   ├── src
-│   │   ├── main
-│   │   │   ├── java
-│   │   │   │   └── com
-│   │   │   │       └── example
-│   │   │   │           └── employeemanagement
-│   │   │   │               ├── EmployeeManagementApplication.java
-│   │   │   │               ├── config
-│   │   │   │               │   └── CorsConfig.java
-│   │   │   │               │   └── DataInitializer.java
-│   │   │   │               ├── controller
-│   │   │   │               │   ├── DepartmentController.java
-│   │   │   │               │   └── EmployeeController.java
-│   │   │   │               ├── model
-│   │   │   │               │   ├── Department.java
-│   │   │   │               │   └── Employee.java
-│   │   │   │               ├── repository
-│   │   │   │               │   ├── DepartmentRepository.java
-│   │   │   │               │   └── EmployeeRepository.java
-│   │   │   │               ├── service
-│   │   │   │               │   └── DataInitializer.java
-│   │   │   │               └── exception
-│   │   │   │                   └── ResourceNotFoundException.java
-│   │   │   └── resources
-│   │   │       ├── application.properties
-│   │   │       └── data.sql
-│   │   └── test
-│   │       └── java
-│   │           └── com
-│   │               └── example
-│   │                   └── employeemanagement
-│   │                       └── EmployeeManagementApplicationTests.java
-│   ├── .gitignore
-│   └── pom.xml
-│   └── compose.yaml
-│
-└── frontend
-    └── (frontend code)
+```mermaid
+mindmap
+  root((employee-management-app))
+    docker-compose.yaml
+    backend
+      src
+        main
+          java
+            com/example/employeemanagement
+              EmployeeManagementApplication.java
+              config
+                CorsConfig.java
+                DataInitializer.java
+              controller
+                DepartmentController.java
+                EmployeeController.java
+              model
+                Department.java
+                Employee.java
+              repository
+                DepartmentRepository.java
+                EmployeeRepository.java
+              service
+                DataInitializer.java
+              exception
+                ResourceNotFoundException.java
+          resources
+            application.properties
+            data.sql
+        test/java/com/example/employeemanagement
+          EmployeeManagementApplicationTests.java
+      .gitignore
+      pom.xml
+      compose.yaml
+    frontend
+      (frontend code)
 ```
 
 ## Setup Instructions
