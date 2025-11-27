@@ -8,44 +8,42 @@ The Employee Management System frontend is a **React-based** application that pr
 
 Here's a high-level overview of the file structure:
 
-```
-employee-management-app
-│
-├── docker-compose.yaml
-│
-├── backend
-│   └── (Backend code)
-│
-└── frontend
-    ├── build
-    ├── public
-    │   ├── index.html
-    │   └── favicon.ico
-    │   └── manifest.json
-    │   └── robots.txt
-    │   └── icon-192x192.webp
-    │   └── icon-512x512.webp
-    ├── src
-    │   ├── components
-    │   │   ├── Dashboard.js
-    │   │   ├── EmployeeList.js
-    │   │   ├── EmployeeForm.js
-    │   │   ├── DepartmentList.js
-    │   │   ├── DepartmentForm.js
-    │   │   └── Navbar.js
-    │   ├── services
-    │   │   ├── employeeService.js
-    │   │   └── departmentService.js
-    │   ├── App.js
-    │   ├── index.js
-    │   ├── index.css
-    │   ├── reportWebVitals.js
-    │   └── App.css
-    │   └── theme.js
-    ├── Dockerfile
-    ├── postcss.config.js
-    ├── tailwind.config.js
-    └── package.json
+```mermaid
+mindmap
+  root((employee-management-app))
+    docker-compose.yaml
+    backend
+      (Backend code)
+    frontend
+      build
+      public
+        index.html
+        favicon.ico
+        manifest.json
+        robots.txt
+        icon-192x192.webp
+        icon-512x512.webp
+      src
+        components
+          Dashboard.js
+          EmployeeList.js
+          EmployeeForm.js
+          DepartmentList.js
+          DepartmentForm.js
+          Navbar.js
+        services
+          employeeService.js
+          departmentService.js
+        App.js
+        index.js
+        index.css
+        reportWebVitals.js
+        App.css
+        theme.js
+      Dockerfile
+      postcss.config.js
+      tailwind.config.js
+      package.json
 ```
 
 ## Dependencies

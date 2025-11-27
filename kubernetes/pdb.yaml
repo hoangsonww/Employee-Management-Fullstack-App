@@ -1,0 +1,55 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: backend-pdb-blue
+  labels:
+    app: backend
+    version: blue
+spec:
+  minAvailable: 2
+  selector:
+    matchLabels:
+      app: backend
+      version: blue
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: backend-pdb-green
+  labels:
+    app: backend
+    version: green
+spec:
+  minAvailable: 2
+  selector:
+    matchLabels:
+      app: backend
+      version: green
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: frontend-pdb-blue
+  labels:
+    app: frontend
+    version: blue
+spec:
+  minAvailable: 2
+  selector:
+    matchLabels:
+      app: frontend
+      version: blue
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: frontend-pdb-green
+  labels:
+    app: frontend
+    version: green
+spec:
+  minAvailable: 2
+  selector:
+    matchLabels:
+      app: frontend
+      version: green

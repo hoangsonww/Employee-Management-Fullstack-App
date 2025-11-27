@@ -90,6 +90,30 @@ variable "eks_node_min" {
   default     = 2
 }
 
+variable "eks_spot_instance_types" {
+  description = "Instance types for the EKS spot node group"
+  type        = list(string)
+  default     = ["t3.medium", "t3a.medium", "t2.medium"]
+}
+
+variable "eks_spot_desired" {
+  description = "Desired spot node count"
+  type        = number
+  default     = 0
+}
+
+variable "eks_spot_max" {
+  description = "Maximum spot node count"
+  type        = number
+  default     = 3
+}
+
+variable "eks_spot_min" {
+  description = "Minimum spot node count"
+  type        = number
+  default     = 0
+}
+
 variable "db_identifier" {
   description = "Identifier for the MySQL instance"
   type        = string
