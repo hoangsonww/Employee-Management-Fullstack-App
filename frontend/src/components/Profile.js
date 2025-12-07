@@ -16,7 +16,7 @@ import {
   Paper,
   Tooltip,
 } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { getAllEmployees } from '../services/employeeService';
 import { getAllDepartments } from '../services/departmentService';
 import ShieldIcon from '@mui/icons-material/Shield';
@@ -139,6 +139,27 @@ const Profile = () => {
     navigate('/login');
   };
 
+  const handleExportSnapshot = () => {
+    const rows = [
+      ['Username', profileData.username],
+      ['Email', email],
+      ['Employees', employeeCount],
+      ['Departments', departmentCount],
+      ['Average Age', averageAge],
+      ['Generated At', new Date().toISOString()],
+    ];
+    const csv = ['Field,Value', ...rows.map(r => `"${r[0]}","${r[1]}"`)].join('\n');
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', 'profile-snapshot.csv');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
+
   return (
     <Box
       sx={{
@@ -190,7 +211,16 @@ const Profile = () => {
                 <Typography variant="h5" sx={{ fontWeight: 800 }}>
                   Your organization pulse
                 </Typography>
-                <Button variant="outlined" startIcon={<DownloadIcon />}>
+                <Button
+                  variant="outlined"
+                  startIcon={<DownloadIcon />}
+                  sx={{
+                    borderColor: '#1E3C72',
+                    color: '#1E3C72',
+                    '&:hover': { backgroundColor: '#1E3C72', color: '#fff', borderColor: '#1E3C72' },
+                  }}
+                  onClick={handleExportSnapshot}
+                >
                   Export snapshot
                 </Button>
               </Stack>
@@ -226,9 +256,9 @@ const Profile = () => {
                   What’s next
                 </Typography>
                 <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1} sx={{ flexWrap: 'wrap' }}>
-                  <Chip label="Add a new employee" variant="outlined" />
-                  <Chip label="Create a department" variant="outlined" />
-                  <Chip label="Visit dashboard" variant="outlined" />
+                  <Chip label="Add a new employee" variant="outlined" component={Link} to="/add-employee" clickable />
+                  <Chip label="Create a department" variant="outlined" component={Link} to="/add-department" clickable />
+                  <Chip label="Visit dashboard" variant="outlined" component={Link} to="/dashboard" clickable />
                 </Stack>
               </Box>
             </CardContent>
