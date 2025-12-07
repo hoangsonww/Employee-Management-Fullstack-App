@@ -34,6 +34,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('EMSusername');
     setIsLoggedIn(false);
     navigate('/login');
   };
@@ -72,7 +73,15 @@ const Navbar = () => {
 
   return (
     <>
-      <AppBar position="static" sx={{ backgroundColor: '#3f51b5', padding: '0.5rem 0' }}>
+      <AppBar
+        position="static"
+        sx={{
+          background: 'linear-gradient(135deg, #1E3C72 0%, #2A5298 100%)',
+          padding: '0.5rem 0',
+          boxShadow: '0 4px 20px rgba(0,0,0,0.15)',
+          borderRadius: 0,
+        }}
+      >
         <Toolbar>
           <Typography
             variant="h6"
@@ -96,7 +105,7 @@ const Navbar = () => {
             </IconButton>
           ) : (
             // Render full menu for desktop view
-            <Box sx={{ display: 'flex', gap: '1rem' }}>
+            <Box sx={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
               <Button
                 color={isActive('/') ? 'primary' : 'inherit'}
                 component={Link}

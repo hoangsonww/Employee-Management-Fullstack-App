@@ -1,10 +1,33 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Typography, Button, CircularProgress, Snackbar, Alert, Link } from '@mui/material';
-import { useNavigate } from 'react-router-dom';
+import {
+  Box,
+  Typography,
+  Button,
+  CircularProgress,
+  Snackbar,
+  Alert,
+  Grid,
+  Card,
+  CardContent,
+  Avatar,
+  Chip,
+  Stack,
+  Divider,
+  Paper,
+  Tooltip,
+} from '@mui/material';
+import { useNavigate, Link } from 'react-router-dom';
 import { getAllEmployees } from '../services/employeeService';
 import { getAllDepartments } from '../services/departmentService';
+import ShieldIcon from '@mui/icons-material/Shield';
+import TimelineIcon from '@mui/icons-material/Timeline';
+import LogoutIcon from '@mui/icons-material/Logout';
+import DownloadIcon from '@mui/icons-material/Download';
+import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
+import AssessmentIcon from '@mui/icons-material/Assessment';
+import EmailIcon from '@mui/icons-material/Email';
 
-const Profile = ({ theme }) => {
+const Profile = () => {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [employeeCount, setEmployeeCount] = useState(0);
@@ -90,7 +113,7 @@ const Profile = ({ theme }) => {
           justifyContent: 'center',
           alignItems: 'center',
           height: '100vh',
-          backgroundColor: theme === 'dark' ? '#222' : '#f4f4f4',
+          backgroundColor: 'background.default',
         }}
       >
         <CircularProgress />
@@ -107,88 +130,141 @@ const Profile = ({ theme }) => {
   };
 
   const avatarUrl = '/OIP.jpg';
+  const email = `${profileData.username}@example.com`;
+  const displayUsername = profileData.username.length > 22 ? `${profileData.username.slice(0, 20)}…` : profileData.username;
+  const displayEmail = email.length > 34 ? `${email.slice(0, 32)}…` : email;
 
   const handleLogout = () => {
     localStorage.removeItem('token');
     navigate('/login');
   };
 
+  const handleExportSnapshot = () => {
+    const rows = [
+      ['Username', profileData.username],
+      ['Email', email],
+      ['Employees', employeeCount],
+      ['Departments', departmentCount],
+      ['Average Age', averageAge],
+      ['Generated At', new Date().toISOString()],
+    ];
+    const csv = ['Field,Value', ...rows.map(r => `"${r[0]}","${r[1]}"`)].join('\n');
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', 'profile-snapshot.csv');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
+
   return (
     <Box
       sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        height: '100vh',
-        backgroundColor: theme === 'dark' ? '#222' : '#f4f4f4',
-        paddingTop: 8,
-        paddingBottom: 20,
-        transition: 'background-color 0.3s ease',
+        minHeight: '100vh',
+        backgroundColor: 'background.default',
+        paddingY: 6,
+        px: { xs: 2, md: 4 },
       }}
     >
-      <Typography variant="h4" sx={{ textAlign: 'center', marginBottom: 4 }}>
-        Welcome, {profileData.username}!
-      </Typography>
+      <Grid container spacing={3}>
+        <Grid item xs={12} md={4}>
+          <Card sx={{ borderRadius: 3, boxShadow: '0 20px 55px rgba(15,23,42,0.12)' }}>
+            <CardContent>
+              <Stack alignItems="center" spacing={2} sx={{ width: '100%' }}>
+                <Avatar src={avatarUrl} alt="User Avatar" sx={{ width: 120, height: 120, border: '4px solid #1E3C72' }} />
+                <Typography
+                  variant="h5"
+                  sx={{
+                    fontWeight: 800,
+                    maxWidth: '100%',
+                    wordBreak: 'break-word',
+                    textAlign: 'center',
+                  }}
+                >
+                  {displayUsername}
+                </Typography>
+                <Chip icon={<VerifiedUserIcon />} label="Authenticated" color="primary" variant="outlined" />
+                <Tooltip title={email}>
+                  <Chip
+                    icon={<EmailIcon />}
+                    label={displayEmail}
+                    variant="outlined"
+                    sx={{ maxWidth: '100%', '& .MuiChip-label': { overflow: 'hidden', textOverflow: 'ellipsis', maxWidth: 240 } }}
+                  />
+                </Tooltip>
+                <Divider flexItem sx={{ my: 1 }} />
+                <Button fullWidth variant="contained" startIcon={<LogoutIcon />} color="secondary" onClick={handleLogout}>
+                  Logout
+                </Button>
+              </Stack>
+            </CardContent>
+          </Card>
+        </Grid>
 
-      <Box
-        sx={{
-          backgroundColor: theme === 'dark' ? '#333' : '#fff',
-          color: theme === 'dark' ? '#fff' : '#000',
-          padding: 4,
-          borderRadius: 2,
-          width: '400px',
-          textAlign: 'center',
-          boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
-          transition: 'background-color 0.3s ease',
-        }}
-      >
-        <Box
-          sx={{
-            width: 150,
-            height: 150,
-            borderRadius: '50%',
-            overflow: 'hidden',
-            margin: '0 auto 16px',
-            border: '3px solid #3f51b5',
-          }}
-        >
-          <img src={avatarUrl} alt="User Avatar" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-        </Box>
-
-        <Typography variant="h5" sx={{ mb: 2, fontWeight: 'bold' }}>
-          Profile Information
-        </Typography>
-
-        <Typography variant="body1" sx={{ mb: 1, fontSize: '16px' }}>
-          <strong>Username:</strong> {profileData.username}
-        </Typography>
-
-        <Typography variant="body1" sx={{ mb: 1 }}>
-          <strong>Total Employees:</strong> {profileData.employeeCount}
-        </Typography>
-
-        <Typography variant="body1" sx={{ mb: 1 }}>
-          <strong>Departments:</strong> {profileData.departmentCount}
-        </Typography>
-
-        <Typography variant="body1" sx={{ mb: 1 }}>
-          <strong>Average Age:</strong> {profileData.averageAge}
-        </Typography>
-
-        <Typography variant="body1" sx={{ mb: 1 }}>
-          <strong>Job Satisfaction:</strong> {profileData.averageJobSatisfaction}
-        </Typography>
-
-        <div style={{ height: 20, borderBottom: '1px solid #ccc' }}></div>
-
-        <Typography variant="body1" sx={{ mt: 2 }}>
-          <strong>Thank you for using our platform today! 🚀</strong>
-        </Typography>
-
-        <Button variant="contained" color="secondary" sx={{ mt: 3 }} onClick={handleLogout}>
-          Logout
-        </Button>
-      </Box>
+        <Grid item xs={12} md={8}>
+          <Card sx={{ borderRadius: 3, boxShadow: '0 20px 55px rgba(15,23,42,0.12)' }}>
+            <CardContent>
+              <Stack direction={{ xs: 'column', sm: 'row' }} justifyContent="space-between" alignItems={{ xs: 'flex-start', sm: 'center' }} spacing={2}>
+                <Typography variant="h5" sx={{ fontWeight: 800 }}>
+                  Your organization pulse
+                </Typography>
+                <Button
+                  variant="outlined"
+                  startIcon={<DownloadIcon />}
+                  sx={{
+                    borderColor: '#1E3C72',
+                    color: '#1E3C72',
+                    '&:hover': { backgroundColor: '#1E3C72', color: '#fff', borderColor: '#1E3C72' },
+                  }}
+                  onClick={handleExportSnapshot}
+                >
+                  Export snapshot
+                </Button>
+              </Stack>
+              <Divider sx={{ my: 2 }} />
+              <Grid container spacing={2}>
+                {[
+                  { label: 'Employees', value: employeeCount, icon: <ShieldIcon color="primary" /> },
+                  { label: 'Departments', value: departmentCount, icon: <AssessmentIcon color="primary" /> },
+                  { label: 'Average age', value: averageAge, icon: <TimelineIcon color="primary" /> },
+                ].map(item => (
+                  <Grid item xs={12} sm={4} key={item.label}>
+                    <Paper
+                      sx={{
+                        padding: 2,
+                        borderRadius: 2,
+                        background: 'linear-gradient(135deg, #e0e7ff 0%, #f5f7ff 100%)',
+                        boxShadow: '0 12px 30px rgba(15,23,42,0.08)',
+                      }}
+                    >
+                      <Stack direction="row" spacing={1} alignItems="center">
+                        {item.icon}
+                        <Typography variant="h6" sx={{ fontWeight: 800 }}>
+                          {item.value}
+                        </Typography>
+                      </Stack>
+                      <Typography color="text.secondary">{item.label}</Typography>
+                    </Paper>
+                  </Grid>
+                ))}
+              </Grid>
+              <Box sx={{ mt: 3 }}>
+                <Typography variant="subtitle1" sx={{ fontWeight: 700, mb: 1 }}>
+                  What’s next
+                </Typography>
+                <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1} sx={{ flexWrap: 'wrap' }}>
+                  <Chip label="Add a new employee" variant="outlined" component={Link} to="/add-employee" clickable />
+                  <Chip label="Create a department" variant="outlined" component={Link} to="/add-department" clickable />
+                  <Chip label="Visit dashboard" variant="outlined" component={Link} to="/dashboard" clickable />
+                </Stack>
+              </Box>
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
     </Box>
   );
 };

@@ -226,24 +226,6 @@ The frontend is also live at [https://employee-management-fullstack-app.vercel.a
   <img src="img/departments-page.png" alt="Department List Page" style="border-radius: 10px" width="100%"/>
 </p>
 
-**Add Employee Form:**
-
-<p align="center" style="cursor: pointer">
-  <img src="img/add-employee.png" alt="Add Employee Form" style="border-radius: 10px" width="100%"/>
-</p>
-
-**Edit Employee Form:**
-
-<p align="center" style="cursor: pointer">
-  <img src="img/edit-employee.png" alt="Edit Employee Form" style="border-radius: 10px" width="100%"/>
-</p>
-
-**Edit Department Form:**
-
-<p align="center" style="cursor: pointer">
-  <img src="img/edit-department.png" alt="Edit Department Form" style="border-radius: 10px" width="100%"/>
-</p>
-
 **Profile Page:**
 
 <p align="center" style="cursor: pointer">
@@ -260,24 +242,6 @@ The frontend is also live at [https://employee-management-fullstack-app.vercel.a
 
 <p align="center" style="cursor: pointer">
   <img src="img/register.png" alt="Register Page" style="border-radius: 10px" width="100%"/>
-</p>
-
-**404 Page:**
-
-<p align="center" style="cursor: pointer">
-  <img src="img/404.png" alt="404 Page" style="border-radius: 10px" width="100%"/>
-</p>
-
-**Footer:**
-
-<p align="center" style="cursor: pointer">
-  <img src="img/footer.png" alt="Footer" style="border-radius: 10px" width="100%"/>
-</p>
-
-**Responsive Design Example - Dashboard Page:**
-
-<p align="center" style="cursor: pointer">
-  <img src="img/dashboard-responsive.png" alt="Responsive Design" style="border-radius: 10px" width="60%"/>
 </p>
 
 <p align="center">
@@ -305,6 +269,16 @@ Here's a table listing all the RESTful API endpoints provided by this applicatio
 ## File Structure
 
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {
+  'background': '#ffffff',
+  'primaryColor': '#f5f7ff',
+  'primaryBorderColor': '#1E3C72',
+  'primaryTextColor': '#0f172a',
+  'secondaryColor': '#e0e7ff',
+  'tertiaryColor': '#ffffff',
+  'textColor': '#0f172a',
+  'lineColor': '#1E3C72'
+}}}%%
 mindmap
   root((Employee-Management))
     ARCHITECTURE.md
