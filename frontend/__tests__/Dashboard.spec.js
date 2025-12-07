@@ -3,6 +3,7 @@ import { render, screen } from '@testing-library/react';
 import Dashboard from '../src/components/Dashboard';
 import { getAllEmployees } from '../src/services/employeeService';
 import { getAllDepartments } from '../src/services/departmentService';
+import { MemoryRouter } from 'react-router-dom';
 
 jest.mock('react-chartjs-2', () => ({
   Bar: () => <div data-testid="bar-chart" />,
@@ -12,6 +13,15 @@ jest.mock('react-chartjs-2', () => ({
 jest.mock('../src/services/employeeService');
 jest.mock('../src/services/departmentService');
 
+const mockNavigate = jest.fn();
+jest.mock('react-router-dom', () => {
+  const actual = jest.requireActual('react-router-dom');
+  return {
+    ...actual,
+    useNavigate: () => mockNavigate,
+  };
+});
+
 describe('<Dashboard />', () => {
   beforeEach(() => {
     getAllEmployees.mockResolvedValue([{ age: 30 }, { age: 40 }, { age: 50 }]);
@@ -19,7 +29,11 @@ describe('<Dashboard />', () => {
   });
 
   it('shows a loading spinner, then the overview and charts', async () => {
-    render(<Dashboard />);
+    render(
+      <MemoryRouter>
+        <Dashboard />
+      </MemoryRouter>
+    );
 
     expect(screen.getByRole('progressbar')).toBeInTheDocument();
 

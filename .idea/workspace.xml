@@ -5,8 +5,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="392f4aef-37aa-47a3-a82b-22f4f510a7b8" name="Changes" comment="feat: implement ProtectedRoute component and enhance UI with QuickActions and theme updates">
+      <change afterPath="$PROJECT_DIR$/packages/employeemanagement/EmployeeManagementApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/employeemanagement/config/CorsConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/employeemanagement/config/DataInitializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/employeemanagement/controller/AuthController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/employeemanagement/controller/DepartmentController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/employeemanagement/controller/EmployeeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/employeemanagement/controller/HomeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/employeemanagement/exception/ResourceNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/employeemanagement/model/Department.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/employeemanagement/model/Employee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/employeemanagement/model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/employeemanagement/repository/DepartmentRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/employeemanagement/repository/EmployeeRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/employeemanagement/repository/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/employeemanagement/security/CustomUserDetailsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/employeemanagement/security/JwtRequestFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/employeemanagement/security/JwtTokenUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/employeemanagement/security/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/employeemanagement/service/DepartmentService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/employeemanagement/service/EmployeeService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/employeemanagementtests/employeemanagement/APITestSuite.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/employeemanagementtests/employeemanagement/APITests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/employeemanagementtests/employeemanagement/AdditionalAPITests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/employeemanagementtests/employeemanagement/AuxAPITests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/employeemanagementtests/employeemanagement/BackendAPITests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/employeemanagementtests/employeemanagement/DepartmentManagementApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/employeemanagementtests/employeemanagement/EmployeeManagementApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/employeemanagementtests/employeemanagement/FullAPITests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/employeemanagementtests/employeemanagement/JUnit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/employeemanagementtests/employeemanagement/UtilitiesTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/__tests__/Dashboard.spec.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/__tests__/Dashboard.spec.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/__tests__/DepartmentList.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/__tests__/DepartmentList.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/__tests__/EmployeeList.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/__tests__/EmployeeList.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/__tests__/Login.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/__tests__/Login.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/__tests__/Profile.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/__tests__/Profile.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/__tests__/Register.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/__tests__/Register.test.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,9 +126,9 @@
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Spring Boot.EmployeeManagementApplication.executor": "Run",
-    "git-widget-placeholder": "feat/enhance-ux",
+    "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/davidnguyen/IdeaProjects/Employee-Management/frontend/public",
+    "last_opened_file_path": "/Users/davidnguyen/IdeaProjects/Employee-Management/packages/employeemanagementtests",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -128,11 +164,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/packages/employeemanagementtests" />
+      <recent name="$PROJECT_DIR$/packages" />
       <recent name="$PROJECT_DIR$/frontend/public" />
       <recent name="$PROJECT_DIR$/backend/src/test/java/com/example/employeemanagement" />
       <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/kubernetes" />
-      <recent name="$PROJECT_DIR$/frontend" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/img" />
@@ -407,6 +443,7 @@
       <workItem from="1764207690225" duration="342000" />
       <workItem from="1765070946596" duration="690000" />
       <workItem from="1765082004092" duration="14689000" />
+      <workItem from="1765138028973" duration="1284000" />
     </task>
     <task id="LOCAL-00301" summary="Fix: Addressed security vulnerabilities">
       <option name="closed" value="true" />

@@ -3,6 +3,7 @@ import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import Login from '../src/components/Login';
 import { useNavigate } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 
 // suppress act() warnings
 beforeAll(() => {
@@ -14,6 +15,7 @@ jest.mock('react-router-dom', () => {
   return {
     ...actual,
     useNavigate: jest.fn(),
+    useLocation: jest.fn(() => ({ state: null })),
   };
 });
 
@@ -28,7 +30,11 @@ describe('<Login />', () => {
   });
 
   it('toggles password visibility', () => {
-    render(<Login />);
+    render(
+      <MemoryRouter>
+        <Login />
+      </MemoryRouter>
+    );
 
     const passwordInput = screen.getByLabelText(/password/i, { selector: 'input' });
     expect(passwordInput).toHaveAttribute('type', 'password');
@@ -41,7 +47,11 @@ describe('<Login />', () => {
   });
 
   it('logs in successfully and navigates to /dashboard', async () => {
-    render(<Login />);
+    render(
+      <MemoryRouter>
+        <Login />
+      </MemoryRouter>
+    );
 
     global.fetch.mockResolvedValueOnce({
       ok: true,
@@ -54,15 +64,33 @@ describe('<Login />', () => {
 
     expect(screen.getByRole('progressbar')).toBeInTheDocument();
 
-    await waitFor(() => {
-      expect(localStorage.getItem('token')).toBe('tok123');
-      expect(localStorage.getItem('EMSusername')).toBe('user1');
-      expect(navigate).toHaveBeenCalledWith('/dashboard');
-    });
+    await waitFor(
+      () => {
+        expect(localStorage.getItem('token')).toBe('tok123');
+        expect(localStorage.getItem('EMSusername')).toBe('user1');
+      },
+      { timeout: 3000 }
+    );
+
+    // Wait for success dialog
+    await waitFor(
+      () => {
+        expect(screen.getByText(/Login successful/i)).toBeInTheDocument();
+      },
+      { timeout: 3000 }
+    );
+
+    // Click the continue button (it should have the destinationLabel text)
+    fireEvent.click(screen.getByRole('button', { name: /go to dashboard/i }));
+    expect(navigate).toHaveBeenCalledWith('/dashboard');
   });
 
   it('shows error message on invalid credentials', async () => {
-    render(<Login />);
+    render(
+      <MemoryRouter>
+        <Login />
+      </MemoryRouter>
+    );
 
     global.fetch.mockResolvedValueOnce({
       ok: false,

@@ -270,14 +270,7 @@ Here's a table listing all the RESTful API endpoints provided by this applicatio
 
 ```mermaid
 %%{init: {'theme': 'base', 'themeVariables': {
-  'background': '#ffffff',
-  'primaryColor': '#f5f7ff',
-  'primaryBorderColor': '#1E3C72',
-  'primaryTextColor': '#0f172a',
-  'secondaryColor': '#e0e7ff',
-  'tertiaryColor': '#ffffff',
-  'textColor': '#0f172a',
-  'lineColor': '#1E3C72'
+  'textColor': '#ffffff',
 }}}%%
 mindmap
   root((Employee-Management))
