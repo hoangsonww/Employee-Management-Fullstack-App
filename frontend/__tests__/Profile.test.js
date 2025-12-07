@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import Profile from '../src/components/Profile';
 import * as empService from '../src/services/employeeService';
 import * as deptService from '../src/services/departmentService';
+import { MemoryRouter } from 'react-router-dom';
 
 // Mock navigation
 jest.mock('react-router-dom', () => {
@@ -25,13 +26,25 @@ describe('<Profile />', () => {
     // Simulate a logged-in user
     localStorage.setItem('token', 'tok');
     localStorage.setItem('EMSusername', 'Bob');
-    jest.spyOn(empService, 'getAllEmployees').mockResolvedValue([]);
-    jest.spyOn(deptService, 'getAllDepartments').mockResolvedValue([]);
+    jest.spyOn(empService, 'getAllEmployees').mockResolvedValue([{ age: 30 }]);
+    jest.spyOn(deptService, 'getAllDepartments').mockResolvedValue([{}]);
 
-    render(<Profile theme="light" />);
+    render(
+      <MemoryRouter>
+        <Profile theme="light" />
+      </MemoryRouter>
+    );
 
     // Wait for loading spinner to disappear
-    await waitFor(() => expect(screen.queryByRole('progressbar')).toBeNull());
+    await waitFor(() => expect(screen.queryByRole('progressbar')).toBeNull(), { timeout: 5000 });
+
+    // Wait for Logout button to appear
+    await waitFor(
+      () => {
+        expect(screen.getByRole('button', { name: /logout/i })).toBeInTheDocument();
+      },
+      { timeout: 5000 }
+    );
 
     fireEvent.click(screen.getByRole('button', { name: /logout/i }));
     expect(localStorage.getItem('token')).toBeNull();

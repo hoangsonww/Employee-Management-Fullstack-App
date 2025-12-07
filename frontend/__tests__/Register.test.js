@@ -3,6 +3,7 @@ import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { useNavigate } from 'react-router-dom';
 import Register from '../src/components/Register';
+import { MemoryRouter } from 'react-router-dom';
 
 // suppress act() warnings
 beforeAll(() => {
@@ -25,11 +26,14 @@ describe('<Register />', () => {
     jest.clearAllMocks();
     useNavigate.mockReturnValue(navigate);
     global.fetch = jest.fn();
-    jest.spyOn(window, 'alert').mockImplementation(() => {});
   });
 
   it('toggles password and confirm-password visibility', () => {
-    render(<Register />);
+    render(
+      <MemoryRouter>
+        <Register />
+      </MemoryRouter>
+    );
 
     // grab both inputs by the same label text
     const [pwdInput, confirmInput] = screen.getAllByLabelText(/password/i, {
@@ -58,7 +62,11 @@ describe('<Register />', () => {
   });
 
   it('shows client-side error if passwords do not match', async () => {
-    render(<Register />);
+    render(
+      <MemoryRouter>
+        <Register />
+      </MemoryRouter>
+    );
 
     // fill username
     fireEvent.change(screen.getByLabelText(/username/i), {
@@ -81,7 +89,11 @@ describe('<Register />', () => {
   });
 
   it('registers successfully and navigates to /login', async () => {
-    render(<Register />);
+    render(
+      <MemoryRouter>
+        <Register />
+      </MemoryRouter>
+    );
 
     global.fetch.mockResolvedValueOnce({ ok: true });
 
@@ -97,14 +109,23 @@ describe('<Register />', () => {
     fireEvent.click(screen.getByRole('button', { name: /register/i }));
     expect(screen.getByRole('progressbar')).toBeInTheDocument();
 
-    await waitFor(() => {
-      expect(window.alert).toHaveBeenCalledWith('User registered successfully. Please login to continue.');
-      expect(navigate).toHaveBeenCalledWith('/login');
-    });
+    await waitFor(
+      () => {
+        expect(screen.getByText(/Your account is ready/i)).toBeInTheDocument();
+      },
+      { timeout: 3000 }
+    );
+
+    fireEvent.click(screen.getByRole('button', { name: /go to login/i }));
+    expect(navigate).toHaveBeenCalledWith('/login');
   });
 
   it('shows server-side error message on failed registration', async () => {
-    render(<Register />);
+    render(
+      <MemoryRouter>
+        <Register />
+      </MemoryRouter>
+    );
 
     global.fetch.mockResolvedValueOnce({
       ok: false,

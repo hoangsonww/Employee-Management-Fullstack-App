@@ -1,6 +1,6 @@
 {
   "name": "employee-management-app",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Employee Management App",
   "dependencies": {
     "chart.js": "^4.4.4",

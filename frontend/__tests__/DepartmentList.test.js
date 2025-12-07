@@ -36,7 +36,7 @@ describe('<DepartmentList />', () => {
     });
 
     // snackbar text and login link
-    expect(screen.getByText(/You must be logged in to access the employee list/i)).toBeInTheDocument();
+    expect(screen.getByText(/You must be logged in to access the department list/i)).toBeInTheDocument();
 
     fireEvent.click(screen.getByText(/^Login$/));
     expect(mockNavigate).toHaveBeenCalledWith('/login');

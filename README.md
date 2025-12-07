@@ -276,7 +276,7 @@ Here's a table listing all the RESTful API endpoints provided by this applicatio
   'primaryTextColor': '#0f172a',
   'secondaryColor': '#e0e7ff',
   'tertiaryColor': '#ffffff',
-  'textColor': '#0f172a',
+  'textColor': '#ffffff',
   'lineColor': '#1E3C72'
 }}}%%
 mindmap
