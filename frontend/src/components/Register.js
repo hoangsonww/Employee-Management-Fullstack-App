@@ -86,6 +86,7 @@ const Register = () => {
         minHeight: '100vh',
         background: 'linear-gradient(135deg, #1E3C72 0%, #2A5298 100%)',
         padding: 2,
+        borderRadius: 6,
       }}
     >
       <Card
