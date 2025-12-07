@@ -5,17 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="392f4aef-37aa-47a3-a82b-22f4f510a7b8" name="Changes" comment="feat(deployment): add canary and blue-green deployment scripts and configurations">
-      <change afterPath="$PROJECT_DIR$/DEPLOYMENT.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jenkinsfile" beforeDir="false" afterPath="$PROJECT_DIR$/Jenkinsfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aws/terraform/eks.tf" beforeDir="false" afterPath="$PROJECT_DIR$/aws/terraform/eks.tf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aws/terraform/outputs.tf" beforeDir="false" afterPath="$PROJECT_DIR$/aws/terraform/outputs.tf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aws/terraform/variables.tf" beforeDir="false" afterPath="$PROJECT_DIR$/aws/terraform/variables.tf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/backend/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/kubernetes/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/kubernetes/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/DepartmentList.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/DepartmentList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/EmployeeList.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/EmployeeList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Footer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/LandingPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/LandingPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Navbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/theme.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/theme.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/dashboard.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/dashboard.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/departments-page.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/departments-page.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/employees-page.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/employees-page.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/landing.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/landing.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/login.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/login.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/profile.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/profile.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/register.png" beforeDir="false" afterPath="$PROJECT_DIR$/img/register.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +109,7 @@
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;Spring Boot.EmployeeManagementApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;fix/fix-git-ci&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/davidnguyen/IdeaProjects/Employee-Management/frontend/public&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -414,14 +424,8 @@
       <workItem from="1761446490632" duration="325000" />
       <workItem from="1764097959599" duration="413000" />
       <workItem from="1764207690225" duration="342000" />
-    </task>
-    <task id="LOCAL-00299" summary="Fix: Addressed security vulnerabilities">
-      <option name="closed" value="true" />
-      <created>1729011229807</created>
-      <option name="number" value="00299" />
-      <option name="presentableId" value="LOCAL-00299" />
-      <option name="project" value="LOCAL" />
-      <updated>1729011229807</updated>
+      <workItem from="1765070946596" duration="690000" />
+      <workItem from="1765082004092" duration="14320000" />
     </task>
     <task id="LOCAL-00300" summary="Fix: Addressed security vulnerabilities">
       <option name="closed" value="true" />
@@ -807,7 +811,15 @@
       <option name="project" value="LOCAL" />
       <updated>1761446732879</updated>
     </task>
-    <option name="localTasksCounter" value="348" />
+    <task id="LOCAL-00348" summary="fix: update Dockerfile to use Eclipse Temurin JRE and adjust workspace configuration">
+      <option name="closed" value="true" />
+      <created>1765071025308</created>
+      <option name="number" value="00348" />
+      <option name="presentableId" value="LOCAL-00348" />
+      <option name="project" value="LOCAL" />
+      <updated>1765071025308</updated>
+    </task>
+    <option name="localTasksCounter" value="349" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

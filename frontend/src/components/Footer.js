@@ -6,13 +6,37 @@ const Footer = () => {
     <Box
       component="footer"
       sx={{
-        backgroundColor: '#3f51b5',
+        background: 'linear-gradient(135deg, #1E3C72 0%, #2A5298 100%)',
         color: 'white',
-        padding: '2rem 0',
+        padding: '2.5rem 0',
         marginTop: '2rem',
-        boxShadow: 3,
+        boxShadow: '0 -12px 35px rgba(15, 23, 42, 0.15)',
+        position: 'relative',
+        overflow: 'hidden',
       }}
     >
+      <Box
+        sx={{
+          position: 'absolute',
+          width: 220,
+          height: 220,
+          background: 'radial-gradient(circle, rgba(255, 255, 255, 0.18), transparent 55%)',
+          top: -60,
+          right: -40,
+          filter: 'blur(2px)',
+        }}
+      />
+      <Box
+        sx={{
+          position: 'absolute',
+          width: 180,
+          height: 180,
+          background: 'radial-gradient(circle, rgba(255, 255, 255, 0.12), transparent 55%)',
+          bottom: -40,
+          left: -30,
+          filter: 'blur(2px)',
+        }}
+      />
       <Container maxWidth="lg">
         <Grid container spacing={4}>
           {/* About Section */}
