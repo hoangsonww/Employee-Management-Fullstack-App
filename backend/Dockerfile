@@ -14,8 +14,8 @@ COPY src ./src
 # Package the application
 RUN mvn package -DskipTests
 
-# Use a lightweight OpenJDK runtime for the final image
-FROM openjdk:11-jre-slim
+# Use a lightweight Eclipse Temurin JRE for the final image
+FROM eclipse-temurin:11-jre-jammy
 
 # Set the working directory
 WORKDIR /app
