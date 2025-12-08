@@ -79,7 +79,9 @@ function initScrollProgress() {
 
   if (!progressBar) return;
 
-  window.addEventListener("scroll", () => {
+  let ticking = false;
+
+  function updateProgressBar() {
     const windowHeight = window.innerHeight;
     const documentHeight = document.documentElement.scrollHeight;
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -89,11 +91,20 @@ function initScrollProgress() {
       (scrollTop / (documentHeight - windowHeight)) * 100;
 
     // Update progress bar width
-    progressBar.style.width = scrollPercentage + "%";
+    progressBar.style.width = Math.min(100, Math.max(0, scrollPercentage)) + "%";
+    
+    ticking = false;
+  }
+
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      requestAnimationFrame(updateProgressBar);
+      ticking = true;
+    }
   });
 
   // Trigger once on load
-  window.dispatchEvent(new Event("scroll"));
+  updateProgressBar();
 }
 
 /**
@@ -428,7 +439,7 @@ function initCodeBlockCopy() {
       const copyButton = document.createElement("button");
       copyButton.className = "copy-button";
       copyButton.innerHTML = `
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                     <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                 </svg>
@@ -438,15 +449,6 @@ function initCodeBlockCopy() {
       // Add button to wrapper (not the scrolling block)
       wrapper.appendChild(copyButton);
 
-      // Show button on hover
-      wrapper.addEventListener("mouseenter", () => {
-        copyButton.style.opacity = "1";
-      });
-
-      wrapper.addEventListener("mouseleave", () => {
-        copyButton.style.opacity = "0";
-      });
-
       // Copy functionality
       copyButton.addEventListener("click", () => {
         const code = block.querySelector("code, pre").textContent;
@@ -455,7 +457,7 @@ function initCodeBlockCopy() {
           .writeText(code)
           .then(() => {
             copyButton.innerHTML = `
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polyline points="20 6 9 17 4 12"></polyline>
                         </svg>
                     `;
@@ -464,13 +466,13 @@ function initCodeBlockCopy() {
 
             setTimeout(() => {
               copyButton.innerHTML = `
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                                 <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                             </svg>
                         `;
-              copyButton.style.background = "rgba(255, 255, 255, 0.1)";
-              copyButton.style.borderColor = "rgba(255, 255, 255, 0.2)";
+              copyButton.style.background = "rgba(255, 255, 255, 0.15)";
+              copyButton.style.borderColor = "rgba(255, 255, 255, 0.3)";
             }, 2000);
           })
           .catch((err) => {
