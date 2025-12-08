@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="392f4aef-37aa-47a3-a82b-22f4f510a7b8" name="Changes" comment="feat: add border radius to Login and Register components for improved UI">
+    <list default="true" id="392f4aef-37aa-47a3-a82b-22f4f510a7b8" name="Changes" comment="feat: add comprehensive wiki documentation for Employee Management System">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/packages/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -408,6 +410,7 @@
       <workItem from="1765082004092" duration="14689000" />
       <workItem from="1765138028973" duration="1736000" />
       <workItem from="1765207826057" duration="2950000" />
+      <workItem from="1765222080687" duration="1023000" />
     </task>
     <task id="LOCAL-00303" summary="Fix: Addressed security vulnerabilities">
       <option name="closed" value="true" />
