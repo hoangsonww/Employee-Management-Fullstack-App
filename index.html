@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Employee Management Full-Stack Application - A modern, production-ready system built with React, Spring Boot, and advanced DevOps practices">
+    <meta name="author" content="Son Nguyen">
+    <meta name="keywords" content="Employee Management, Spring Boot, React, Kubernetes, Docker, CI/CD, Full-Stack">
+    <title>Employee Management System - Documentation</title>
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="img/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/logo.png">
+    <link rel="shortcut icon" href="img/logo.png">
+    
+    <link rel="stylesheet" href="packages/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <img src="img/logo.png" alt="Employee Management Logo" class="logo">
+                <div class="header-text">
+                    <h1 class="main-title">Employee Management System</h1>
+                    <p class="subtitle">Enterprise-Grade Full-Stack Application</p>
+                </div>
+            </div>
+            <!-- Hamburger Menu Button (Mobile) -->
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            
+            <nav class="nav" id="nav">
+                <a href="#overview" class="nav-link">Overview</a>
+                <a href="#architecture" class="nav-link">Architecture</a>
+                <a href="#technologies" class="nav-link">Technologies</a>
+                <a href="#deployment" class="nav-link">Deployment</a>
+                <a href="#getting-started" class="nav-link">Get Started</a>
+                <a href="https://employee-manage-app.vercel.app" class="nav-link btn-primary" target="_blank">Live Demo</a>
+            </nav>
+        </div>
+        <!-- Scroll Progress Bar -->
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2 class="hero-title">Modern Employee & Department Management</h2>
+                <p class="hero-description">
+                    A production-ready full-stack application demonstrating the seamless integration of cutting-edge 
+                    frontend technologies with robust backend architecture, comprehensive DevOps practices, and 
+                    enterprise-grade deployment strategies.
+                </p>
+                <div class="hero-buttons">
+                    <a href="https://github.com/hoangsonww/Employee-Management-Fullstack-App" class="btn btn-primary" target="_blank">
+                        <svg class="icon" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                        </svg>
+                        View on GitHub
+                    </a>
+                    <a href="https://employee-manage-app.vercel.app" class="btn btn-secondary" target="_blank">Live Demo</a>
+                </div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-value">50+</span>
+                        <span class="stat-label">API Endpoints</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">3</span>
+                        <span class="stat-label">Deployment Strategies</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">100%</span>
+                        <span class="stat-label">Production Ready</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">20+</span>
+                        <span class="stat-label">Technologies</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section id="overview" class="section">
+        <div class="container">
+            <h2 class="section-title">Project Overview</h2>
+            <div class="content-grid">
+                <div class="card">
+                    <div class="card-icon">🎯</div>
+                    <h3>Mission</h3>
+                    <p>Demonstrate the seamless integration of modern React frontend with robust Spring Boot backend, 
+                       showcasing best practices in full-stack development, testing, and deployment.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">⚡</div>
+                    <h3>Features</h3>
+                    <p>Complete CRUD operations, real-time dashboards, authentication & authorization, data visualization, 
+                       responsive UI, and comprehensive API documentation with Swagger.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🚀</div>
+                    <h3>DevOps</h3>
+                    <p>Docker containerization, Kubernetes orchestration with blue-green & canary deployments, 
+                       Jenkins CI/CD pipeline, and Terraform infrastructure as code for AWS.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section id="architecture" class="section section-dark">
+        <div class="container">
+            <h2 class="section-title">System Architecture</h2>
+            <p class="section-description">
+                Modern three-tier architecture with React SPA, Spring Boot REST API, and MySQL database, 
+                supporting multiple deployment strategies and cloud-native practices.
+            </p>
+            
+            <div class="architecture-diagram">
+                <h3 class="diagram-title">System Context</h3>
+                <div class="mermaid">
+flowchart LR
+    User([End User]) -->|HTTPS| UI[React SPA<br/>Tailwind + Material UI<br/>Chart.js + Axios]
+    UI -->|REST / JSON| API[Spring Boot REST API<br/>Controllers & Services]
+    API -->|Spring Data JPA| MySQL[(MySQL Schema<br/>departments<br/>employees<br/>users)]
+    API -->|Optional| Mongo[(MongoDB<br/>Cluster)]
+    API -->|OpenAPI 3.0| Swagger[Swagger UI]
+    
+    subgraph Runtime Options
+        Compose[Docker Compose]
+        K8s[Kubernetes<br/>Manifests]
+    end
+    
+    Compose --> UI
+    Compose --> API
+    K8s --> UI
+    K8s --> API
+    
+    style UI fill:#61DAFB,stroke:#333,stroke-width:2px,color:#000
+    style API fill:#6DB33F,stroke:#333,stroke-width:2px,color:#fff
+    style MySQL fill:#4479A1,stroke:#333,stroke-width:2px,color:#fff
+    style User fill:#FF6B6B,stroke:#333,stroke-width:2px,color:#fff
+                </div>
+            </div>
+
+            <div class="architecture-diagram">
+                <h3 class="diagram-title">Request Lifecycle</h3>
+                <div class="mermaid">
+sequenceDiagram
+    participant U as User
+    participant UI as React Component
+    participant C as EmployeeController
+    participant S as EmployeeService
+    participant R as EmployeeRepository
+    participant DB as MySQL
+    
+    U->>UI: Trigger "Add Employee"
+    UI->>C: POST /api/employees
+    C->>S: saveEmployee(employee)
+    S->>R: save(employee)
+    R->>DB: INSERT row
+    DB-->>R: persisted entity
+    R-->>S: Employee
+    S-->>C: Employee
+    C-->>UI: 201 Created + payload
+    UI-->>U: Success notification
+                </div>
+            </div>
+
+            <div class="architecture-diagram">
+                <h3 class="diagram-title">DevOps Toolchain</h3>
+                <div class="mermaid">
+flowchart LR
+    Dev[Git Changes] --> Jenkins[Jenkins Pipeline<br/>Build & Test]
+    Jenkins --> Makefile[Makefile & Scripts<br/>Docker/K8s Helpers]
+    Makefile --> Images[Docker Images<br/>Frontend & Backend]
+    Images --> Cluster[EKS/Kubernetes<br/>Deployment]
+    Infra[Terraform AWS<br/>EKS · RDS · ECR] --> Cluster
+    Cluster --> RDS[(Amazon RDS<br/>MySQL)]
+    Cluster --> ECR[(Amazon ECR<br/>Container Registry)]
+    
+    style Dev fill:#F05032,stroke:#333,stroke-width:2px,color:#fff
+    style Jenkins fill:#D24939,stroke:#333,stroke-width:2px,color:#fff
+    style Cluster fill:#326CE5,stroke:#333,stroke-width:2px,color:#fff
+    style Infra fill:#7B42BC,stroke:#333,stroke-width:2px,color:#fff
+                </div>
+            </div>
+
+            <div class="architecture-layers">
+                <h3>Application Layers</h3>
+                <div class="layers-grid">
+                    <div class="layer">
+                        <h4>Presentation Layer</h4>
+                        <ul>
+                            <li>React 18 with Hooks</li>
+                            <li>Material UI Components</li>
+                            <li>Tailwind CSS Styling</li>
+                            <li>Chart.js Visualizations</li>
+                            <li>Responsive Design</li>
+                        </ul>
+                    </div>
+                    <div class="layer">
+                        <h4>Business Logic Layer</h4>
+                        <ul>
+                            <li>Spring Boot Controllers</li>
+                            <li>Service Layer Pattern</li>
+                            <li>Data Validation</li>
+                            <li>Business Rules</li>
+                            <li>Transaction Management</li>
+                        </ul>
+                    </div>
+                    <div class="layer">
+                        <h4>Data Access Layer</h4>
+                        <ul>
+                            <li>Spring Data JPA</li>
+                            <li>Hibernate ORM</li>
+                            <li>Repository Pattern</li>
+                            <li>Query Optimization</li>
+                            <li>Connection Pooling</li>
+                        </ul>
+                    </div>
+                    <div class="layer">
+                        <h4>Infrastructure Layer</h4>
+                        <ul>
+                            <li>Docker Containers</li>
+                            <li>Kubernetes Orchestration</li>
+                            <li>AWS Cloud Services</li>
+                            <li>Load Balancing</li>
+                            <li>Auto-scaling</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technologies Section -->
+    <section id="technologies" class="section">
+        <div class="container">
+            <h2 class="section-title">Technology Stack</h2>
+            
+            <div class="tech-category">
+                <h3>Frontend Technologies</h3>
+                <div class="badges">
+                    <span class="badge badge-react">React 18</span>
+                    <span class="badge badge-js">JavaScript ES6+</span>
+                    <span class="badge badge-router">React Router</span>
+                    <span class="badge badge-redux">Redux</span>
+                    <span class="badge badge-axios">Axios</span>
+                    <span class="badge badge-tailwind">Tailwind CSS</span>
+                    <span class="badge badge-mui">Material UI</span>
+                    <span class="badge badge-chart">Chart.js</span>
+                    <span class="badge badge-jest">Jest</span>
+                    <span class="badge badge-rtl">React Testing Library</span>
+                </div>
+            </div>
+
+            <div class="tech-category">
+                <h3>Backend Technologies</h3>
+                <div class="badges">
+                    <span class="badge badge-java">Java 11</span>
+                    <span class="badge badge-spring">Spring Boot 2.7</span>
+                    <span class="badge badge-jpa">Spring Data JPA</span>
+                    <span class="badge badge-hibernate">Hibernate</span>
+                    <span class="badge badge-security">Spring Security</span>
+                    <span class="badge badge-junit">JUnit 5</span>
+                    <span class="badge badge-swagger">Swagger/OpenAPI</span>
+                    <span class="badge badge-maven">Maven</span>
+                </div>
+            </div>
+
+            <div class="tech-category">
+                <h3>Databases</h3>
+                <div class="badges">
+                    <span class="badge badge-mysql">MySQL</span>
+                    <span class="badge badge-mongodb">MongoDB</span>
+                </div>
+            </div>
+
+            <div class="tech-category">
+                <h3>DevOps & Cloud</h3>
+                <div class="badges">
+                    <span class="badge badge-docker">Docker</span>
+                    <span class="badge badge-k8s">Kubernetes</span>
+                    <span class="badge badge-jenkins">Jenkins</span>
+                    <span class="badge badge-terraform">Terraform</span>
+                    <span class="badge badge-aws">AWS (EKS, RDS, ECR)</span>
+                    <span class="badge badge-nginx">Nginx</span>
+                    <span class="badge badge-git">Git</span>
+                    <span class="badge badge-github">GitHub</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Deployment Strategies Section -->
+    <section id="deployment" class="section section-dark">
+        <div class="container">
+            <h2 class="section-title">Deployment Strategies</h2>
+            <p class="section-description">
+                Production-ready deployment with support for three advanced strategies: Rolling, Blue-Green, and Canary deployments.
+            </p>
+
+            <div class="deployment-grid">
+                <div class="deployment-card">
+                    <h3>🔄 Rolling Deployment</h3>
+                    <p><strong>Use Case:</strong> Regular updates, incremental rollouts</p>
+                    <ul>
+                        <li>Zero downtime updates</li>
+                        <li>Gradual pod replacement</li>
+                        <li>Automatic rollback on failure</li>
+                        <li>Resource efficient</li>
+                    </ul>
+                    <div class="code-block">
+                        <code>kubectl set image deployment/backend backend=new-image:v2.0</code>
+                    </div>
+                </div>
+
+                <div class="deployment-card">
+                    <h3>🔵🟢 Blue-Green Deployment</h3>
+                    <p><strong>Use Case:</strong> Major releases, database migrations</p>
+                    <ul>
+                        <li>Instant rollback capability</li>
+                        <li>Complete environment isolation</li>
+                        <li>Full testing before switch</li>
+                        <li>Zero downtime cutover</li>
+                    </ul>
+                    <div class="code-block">
+                        <code>./scripts/deploy-blue-green.sh green v2.0</code>
+                    </div>
+                </div>
+
+                <div class="deployment-card">
+                    <h3>🐤 Canary Deployment</h3>
+                    <p><strong>Use Case:</strong> High-risk changes, A/B testing</p>
+                    <ul>
+                        <li>Gradual traffic shift (10% → 100%)</li>
+                        <li>Real user validation</li>
+                        <li>Risk mitigation</li>
+                        <li>Performance monitoring</li>
+                    </ul>
+                    <div class="code-block">
+                        <code>./scripts/deploy-canary.sh v2.0 --weight=10</code>
+                    </div>
+                </div>
+            </div>
+
+            <div class="deployment-diagram-large">
+                <h3 class="diagram-title-centered">Kubernetes Deployment Architecture</h3>
+                <div class="mermaid mermaid-large">
+flowchart TB
+    Users((Users)) --> LB[Load Balancer]
+    
+    subgraph Blue[Blue Version v1.0]
+        BlueFE[Frontend x3]
+        BlueBE[Backend x3]
+        BlueFE --> BlueBE
+    end
+    
+    subgraph Green[Green Version v2.0]
+        GreenFE[Frontend x3]
+        GreenBE[Backend x3]
+        GreenFE --> GreenBE
+    end
+    
+    subgraph Canary[Canary Version v2.1 - 10% traffic]
+        CanaryFE[Frontend x1]
+        CanaryBE[Backend x1]
+        CanaryFE --> CanaryBE
+    end
+    
+    LB --> BlueFE
+    LB -.-> GreenFE
+    LB -.10%.-> CanaryFE
+    
+    BlueBE --> RDS[(RDS MySQL)]
+    GreenBE --> RDS
+    CanaryBE --> RDS
+    
+    style LB fill:#FF6B6B,stroke:#333,stroke-width:2px,color:#fff
+    style Blue fill:#4169E1,stroke:#333,stroke-width:2px,color:#fff
+    style Green fill:#00C851,stroke:#333,stroke-width:2px,color:#fff
+    style Canary fill:#FFD700,stroke:#333,stroke-width:2px,color:#000
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section">
+        <div class="container">
+            <h2 class="section-title">Key Features</h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Interactive Dashboard</h3>
+                    <p>Real-time metrics with Chart.js visualizations showing employee growth, age distribution, 
+                       department statistics, and performance indicators.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>Employee Management</h3>
+                    <p>Complete CRUD operations for employee records with advanced search, filtering, pagination, 
+                       and bulk operations support.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🏢</div>
+                    <h3>Department Organization</h3>
+                    <p>Hierarchical department structure with employee assignment, department metrics, and 
+                       organizational charts.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔐</div>
+                    <h3>Authentication & Security</h3>
+                    <p>JWT-based authentication, BCrypt password hashing, role-based access control, 
+                       and secure API endpoints.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Responsive Design</h3>
+                    <p>Mobile-first approach with Material UI and Tailwind CSS, ensuring seamless experience 
+                       across all devices and screen sizes.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📖</div>
+                    <h3>API Documentation</h3>
+                    <p>Interactive Swagger UI with comprehensive API documentation, request/response examples, 
+                       and live testing capabilities.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🧪</div>
+                    <h3>Comprehensive Testing</h3>
+                    <p>Unit tests with Jest and JUnit, integration tests, E2E testing, and 90%+ code coverage 
+                       for reliability.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Performance Optimization</h3>
+                    <p>Lazy loading, code splitting, database query optimization, caching strategies, 
+                       and CDN integration.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- API Section -->
+    <section id="api" class="section section-dark">
+        <div class="container">
+            <h2 class="section-title">REST API Endpoints</h2>
+            <p class="section-description">
+                RESTful API with comprehensive CRUD operations, following OpenAPI 3.0 specification
+            </p>
+
+            <div class="api-section">
+                <h3>👥 Employee Endpoints</h3>
+                <div class="api-endpoints">
+                    <div class="api-endpoint">
+                        <span class="method method-get">GET</span>
+                        <code>/api/employees</code>
+                        <span class="description">Get all employees with departments</span>
+                    </div>
+                    <div class="api-endpoint">
+                        <span class="method method-get">GET</span>
+                        <code>/api/employees/{id}</code>
+                        <span class="description">Get employee by ID</span>
+                    </div>
+                    <div class="api-endpoint">
+                        <span class="method method-post">POST</span>
+                        <code>/api/employees</code>
+                        <span class="description">Create new employee</span>
+                    </div>
+                    <div class="api-endpoint">
+                        <span class="method method-put">PUT</span>
+                        <code>/api/employees/{id}</code>
+                        <span class="description">Update employee by ID</span>
+                    </div>
+                    <div class="api-endpoint">
+                        <span class="method method-delete">DELETE</span>
+                        <code>/api/employees/{id}</code>
+                        <span class="description">Delete employee by ID</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-section">
+                <h3>🏢 Department Endpoints</h3>
+                <div class="api-endpoints">
+                    <div class="api-endpoint">
+                        <span class="method method-get">GET</span>
+                        <code>/api/departments</code>
+                        <span class="description">Get all departments</span>
+                    </div>
+                    <div class="api-endpoint">
+                        <span class="method method-get">GET</span>
+                        <code>/api/departments/{id}</code>
+                        <span class="description">Get department by ID</span>
+                    </div>
+                    <div class="api-endpoint">
+                        <span class="method method-post">POST</span>
+                        <code>/api/departments</code>
+                        <span class="description">Create new department</span>
+                    </div>
+                    <div class="api-endpoint">
+                        <span class="method method-put">PUT</span>
+                        <code>/api/departments/{id}</code>
+                        <span class="description">Update department by ID</span>
+                    </div>
+                    <div class="api-endpoint">
+                        <span class="method method-delete">DELETE</span>
+                        <code>/api/departments/{id}</code>
+                        <span class="description">Delete department by ID</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-section">
+                <h3>🔐 Authentication Endpoints</h3>
+                <div class="api-endpoints">
+                    <div class="api-endpoint">
+                        <span class="method method-post">POST</span>
+                        <code>/api/auth/register</code>
+                        <span class="description">Register new user</span>
+                    </div>
+                    <div class="api-endpoint">
+                        <span class="method method-post">POST</span>
+                        <code>/api/auth/login</code>
+                        <span class="description">Authenticate user and get JWT token</span>
+                    </div>
+                    <div class="api-endpoint">
+                        <span class="method method-post">POST</span>
+                        <code>/api/auth/verify-username</code>
+                        <span class="description">Verify username availability</span>
+                    </div>
+                    <div class="api-endpoint">
+                        <span class="method method-post">POST</span>
+                        <code>/api/auth/reset-password</code>
+                        <span class="description">Reset user password</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Getting Started Section -->
+    <section id="getting-started" class="section">
+        <div class="container">
+            <h2 class="section-title">Getting Started</h2>
+            
+            <div class="setup-tabs">
+                <div class="tab-buttons">
+                    <button class="tab-button active" onclick="showTab('local')">Local Development</button>
+                    <button class="tab-button" onclick="showTab('docker')">Docker Compose</button>
+                    <button class="tab-button" onclick="showTab('kubernetes')">Kubernetes</button>
+                </div>
+
+                <div id="local" class="tab-content active">
+                    <h3>🖥️ Local Development Setup</h3>
+                    
+                    <div class="setup-section">
+                        <h4>Prerequisites</h4>
+                        <ul>
+                            <li>Java 11 or higher</li>
+                            <li>Node.js 16+ and npm</li>
+                            <li>MySQL 8.0</li>
+                            <li>Maven 3.6+</li>
+                        </ul>
+                    </div>
+
+                    <div class="setup-section">
+                        <h4>Backend Setup</h4>
+                        <div class="code-block">
+                            <pre><code># Clone repository
+git clone https://github.com/hoangsonww/Employee-Management-Fullstack-App.git
+cd Employee-Management-Fullstack-App/backend
+
+# Install dependencies
+mvn clean install
+
+# Configure application.properties
+spring.datasource.url=jdbc:mysql://localhost:3306/employee_management
+spring.datasource.username=root
+spring.datasource.password=your_password
+
+# Run backend
+mvn spring-boot:run
+
+# Backend runs on http://localhost:8080</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="setup-section">
+                        <h4>Frontend Setup</h4>
+                        <div class="code-block">
+                            <pre><code># Navigate to frontend
+cd ../frontend
+
+# Install dependencies
+npm install
+
+# Configure .env
+REACT_APP_API_URL=http://localhost:8080/api
+
+# Run frontend
+npm start
+
+# Frontend runs on http://localhost:3000</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="docker" class="tab-content">
+                    <h3>🐳 Docker Compose Setup</h3>
+                    
+                    <div class="setup-section">
+                        <h4>Quick Start</h4>
+                        <div class="code-block">
+                            <pre><code># Start all services
+docker-compose up --build
+
+# Services:
+# - MySQL: localhost:3306
+# - MongoDB: localhost:27017
+# - Backend: localhost:8080
+# - Frontend: localhost:3000
+
+# Stop all services
+docker-compose down
+
+# Remove volumes
+docker-compose down -v</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="setup-section">
+                        <h4>Build Individual Images</h4>
+                        <div class="code-block">
+                            <pre><code># Build backend
+cd backend
+docker build -t employee-backend:latest .
+
+# Build frontend
+cd frontend
+docker build -t employee-frontend:latest .
+
+# Run backend
+docker run -p 8080:8080 employee-backend:latest
+
+# Run frontend
+docker run -p 3000:3000 employee-frontend:latest</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="kubernetes" class="tab-content">
+                    <h3>☸️ Kubernetes Deployment</h3>
+                    
+                    <div class="setup-section">
+                        <h4>Prerequisites</h4>
+                        <ul>
+                            <li>Kubernetes cluster (EKS, GKE, or local with minikube)</li>
+                            <li>kubectl CLI configured</li>
+                            <li>Docker images pushed to registry</li>
+                        </ul>
+                    </div>
+
+                    <div class="setup-section">
+                        <h4>Deploy to Kubernetes</h4>
+                        <div class="code-block">
+                            <pre><code># Create secrets
+kubectl create secret generic backend-secrets \
+  --from-literal=db-host=mysql-host \
+  --from-literal=db-password=your-password
+
+# Apply manifests
+kubectl apply -f kubernetes/
+
+# Check deployments
+kubectl get deployments
+kubectl get pods
+kubectl get services
+
+# Access application
+kubectl port-forward service/frontend-service 3000:80</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="setup-section">
+                        <h4>Blue-Green Deployment</h4>
+                        <div class="code-block">
+                            <pre><code># Deploy green version
+./scripts/deploy-blue-green.sh green v2.0
+
+# Switch traffic to green
+./scripts/switch-blue-green.sh green
+
+# Rollback if needed
+./scripts/switch-blue-green.sh blue</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots Section -->
+    <section id="screenshots" class="section section-dark">
+        <div class="container">
+            <h2 class="section-title">Application Screenshots</h2>
+            
+            <div class="screenshots-grid">
+                <div class="screenshot-item">
+                    <img src="img/landing.png" alt="Landing Page" loading="lazy">
+                    <p>Landing Page</p>
+                </div>
+                <div class="screenshot-item">
+                    <img src="img/dashboard.png" alt="Dashboard" loading="lazy">
+                    <p>Interactive Dashboard</p>
+                </div>
+                <div class="screenshot-item">
+                    <img src="img/employees-page.png" alt="Employees" loading="lazy">
+                    <p>Employee Management</p>
+                </div>
+                <div class="screenshot-item">
+                    <img src="img/departments-page.png" alt="Departments" loading="lazy">
+                    <p>Department Management</p>
+                </div>
+                <div class="screenshot-item">
+                    <img src="img/profile.png" alt="Profile" loading="lazy">
+                    <p>User Profile</p>
+                </div>
+                <div class="screenshot-item">
+                    <img src="img/apis.png" alt="API Documentation" loading="lazy">
+                    <p>Swagger API Documentation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CI/CD Section -->
+    <section id="cicd" class="section">
+        <div class="container">
+            <h2 class="section-title">CI/CD Pipeline</h2>
+            <p class="section-description">
+                Automated Jenkins pipeline with comprehensive testing, security scanning, and multi-strategy deployments
+            </p>
+
+            <div class="pipeline-diagram">
+                <div class="mermaid">
+flowchart LR
+    Commit[Git Commit] --> Jenkins[Jenkins Pipeline]
+    Jenkins --> Parallel{Parallel Build}
+    
+    Parallel --> BackendBuild[Backend Build<br/>Maven Install]
+    Parallel --> FrontendBuild[Frontend Build<br/>npm install]
+    
+    BackendBuild --> BackendTest[JUnit Tests]
+    FrontendBuild --> FrontendTest[Jest Tests]
+    
+    BackendTest --> BackendImage[Build Backend<br/>Docker Image]
+    FrontendTest --> FrontendImage[Build Frontend<br/>Docker Image]
+    
+    BackendImage --> Security[Trivy Security<br/>Scan]
+    FrontendImage --> Security
+    
+    Security --> Push[Push to ECR]
+    Push --> Deploy{Deployment<br/>Strategy}
+    
+    Deploy --> Rolling[Rolling Update]
+    Deploy --> BlueGreen[Blue-Green]
+    Deploy --> Canary[Canary]
+    
+    Rolling --> Monitor[Monitor & Verify]
+    BlueGreen --> Monitor
+    Canary --> Monitor
+    
+    Monitor --> Success{Success?}
+    Success -->|Yes| Complete[Deployment Complete]
+    Success -->|No| Rollback[Auto Rollback]
+    
+    style Commit fill:#F05032,stroke:#333,stroke-width:2px,color:#fff
+    style Jenkins fill:#D24939,stroke:#333,stroke-width:2px,color:#fff
+    style Security fill:#FF6B6B,stroke:#333,stroke-width:2px,color:#fff
+    style Complete fill:#00C851,stroke:#333,stroke-width:2px,color:#fff
+    style Rollback fill:#ff4444,stroke:#333,stroke-width:2px,color:#fff
+                </div>
+            </div>
+
+            <div class="pipeline-stages">
+                <h3>Pipeline Stages</h3>
+                <div class="stages-grid">
+                    <div class="stage-card">
+                        <span class="stage-number">1</span>
+                        <h4>Initialize</h4>
+                        <p>Workspace cleanup and Git checkout</p>
+                    </div>
+                    <div class="stage-card">
+                        <span class="stage-number">2</span>
+                        <h4>Install Dependencies</h4>
+                        <p>Parallel Maven and npm installation</p>
+                    </div>
+                    <div class="stage-card">
+                        <span class="stage-number">3</span>
+                        <h4>Code Quality</h4>
+                        <p>Linting and security scans</p>
+                    </div>
+                    <div class="stage-card">
+                        <span class="stage-number">4</span>
+                        <h4>Run Tests</h4>
+                        <p>JUnit and Jest test suites</p>
+                    </div>
+                    <div class="stage-card">
+                        <span class="stage-number">5</span>
+                        <h4>Build</h4>
+                        <p>Compile and package applications</p>
+                    </div>
+                    <div class="stage-card">
+                        <span class="stage-number">6</span>
+                        <h4>Docker Build</h4>
+                        <p>Create container images</p>
+                    </div>
+                    <div class="stage-card">
+                        <span class="stage-number">7</span>
+                        <h4>Security Scan</h4>
+                        <p>Trivy vulnerability scanning</p>
+                    </div>
+                    <div class="stage-card">
+                        <span class="stage-number">8</span>
+                        <h4>Deploy</h4>
+                        <p>Strategy-specific deployment</p>
+                    </div>
+                    <div class="stage-card">
+                        <span class="stage-number">9</span>
+                        <h4>Verify</h4>
+                        <p>Health checks and smoke tests</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Structure Section -->
+    <section id="structure" class="section section-dark">
+        <div class="container">
+            <h2 class="section-title">Project Structure</h2>
+            
+            <div class="structure-grid">
+                <div class="structure-card">
+                    <h3>📁 Frontend Structure</h3>
+                    <div class="code-block">
+                        <pre><code>frontend/
+├── public/
+│   └── index.html
+├── src/
+│   ├── components/      # React components
+│   │   ├── Dashboard.js
+│   │   ├── EmployeeList.js
+│   │   ├── EmployeeForm.js
+│   │   ├── DepartmentList.js
+│   │   └── DepartmentForm.js
+│   ├── services/        # API services
+│   │   ├── employeeService.js
+│   │   └── departmentService.js
+│   ├── App.js           # Main app component
+│   └── index.js         # Entry point
+├── __tests__/           # Jest tests
+├── package.json
+└── Dockerfile</code></pre>
+                    </div>
+                </div>
+
+                <div class="structure-card">
+                    <h3>📁 Backend Structure</h3>
+                    <div class="code-block">
+                        <pre><code>backend/
+├── src/
+│   ├── main/
+│   │   ├── java/com/example/employeemanagement/
+│   │   │   ├── controller/    # REST controllers
+│   │   │   ├── service/       # Business logic
+│   │   │   ├── repository/    # Data access
+│   │   │   ├── model/         # JPA entities
+│   │   │   ├── security/      # Security config
+│   │   │   └── config/        # Application config
+│   │   └── resources/
+│   │       └── application.properties
+│   └── test/                  # JUnit tests
+├── pom.xml
+└── Dockerfile</code></pre>
+                    </div>
+                </div>
+
+                <div class="structure-card">
+                    <h3>📁 Infrastructure</h3>
+                    <div class="code-block">
+                        <pre><code>infrastructure/
+├── kubernetes/          # K8s manifests
+│   ├── backend-deployment.yaml
+│   ├── frontend-deployment.yaml
+│   ├── hpa.yaml
+│   ├── pdb.yaml
+│   └── network-policy.yaml
+├── terraform/           # IaC for AWS
+│   ├── main.tf
+│   ├── modules/
+│   │   ├── eks/
+│   │   ├── rds/
+│   │   └── ecr/
+│   └── variables.tf
+├── scripts/             # Automation
+│   ├── deploy-blue-green.sh
+│   ├── deploy-canary.sh
+│   └── build-images.sh
+├── Jenkinsfile         # CI/CD pipeline
+├── docker-compose.yml
+└── Makefile</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contributing Section -->
+    <section id="contributing" class="section">
+        <div class="container">
+            <h2 class="section-title">Contributing</h2>
+            <p class="section-description">
+                We welcome contributions! Please follow these guidelines to contribute to the project.
+            </p>
+
+            <div class="contributing-steps">
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <h3>Fork the Repository</h3>
+                    <p>Create your own fork of the project on GitHub</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <h3>Create a Branch</h3>
+                    <p>Create a feature branch: <code>git checkout -b feature/amazing-feature</code></p>
+                </div>
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <h3>Make Changes</h3>
+                    <p>Follow the coding standards and write tests for your changes</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">4</span>
+                    <h3>Commit</h3>
+                    <p>Commit with descriptive messages: <code>git commit -m 'Add amazing feature'</code></p>
+                </div>
+                <div class="step">
+                    <span class="step-number">5</span>
+                    <h3>Push & PR</h3>
+                    <p>Push to your fork and create a Pull Request with detailed description</p>
+                </div>
+            </div>
+
+            <div class="code-standards">
+                <h3>Code Standards</h3>
+                <div class="standards-grid">
+                    <div class="standard-card">
+                        <h4>JavaScript</h4>
+                        <p>Follows <strong>Airbnb JavaScript Style Guide</strong></p>
+                        <div class="code-block">
+                            <code>npm run format</code>
+                        </div>
+                    </div>
+                    <div class="standard-card">
+                        <h4>Java</h4>
+                        <p>Follows <strong>Google Java Style Guide</strong></p>
+                        <div class="code-block">
+                            <code>mvn formatter:format</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Employee Management System</h3>
+                    <p>A modern, production-ready full-stack application demonstrating best practices in 
+                       web development, DevOps, and cloud architecture.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://github.com/hoangsonww/Employee-Management-Fullstack-App" target="_blank">GitHub Repository</a></li>
+                        <li><a href="https://employee-manage-app.vercel.app" target="_blank">Live Demo</a></li>
+                        <li><a href="https://employee-management-app-gdm5.onrender.com/swagger-ui.html" target="_blank">API Documentation</a></li>
+                        <li><a href="README.md">Documentation</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Technologies</h3>
+                    <ul class="footer-links">
+                        <li>React 18 & Spring Boot</li>
+                        <li>Docker & Kubernetes</li>
+                        <li>Jenkins & Terraform</li>
+                        <li>AWS Cloud Services</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://github.com/hoangsonww" target="_blank">GitHub</a></li>
+                        <li><a href="mailto:hoangson091104@gmail.com">Email</a></li>
+                        <li>License: MIT</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>Created with ❤️ by <a href="https://github.com/hoangsonww" target="_blank">Son Nguyen</a> in 2024</p>
+                <p>© 2024 Employee Management System. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="packages/script.js"></script>
+</body>
+</html>
