@@ -91,8 +91,9 @@ function initScrollProgress() {
       (scrollTop / (documentHeight - windowHeight)) * 100;
 
     // Update progress bar width
-    progressBar.style.width = Math.min(100, Math.max(0, scrollPercentage)) + "%";
-    
+    progressBar.style.width =
+      Math.min(100, Math.max(0, scrollPercentage)) + "%";
+
     ticking = false;
   }
 
