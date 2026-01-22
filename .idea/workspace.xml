@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="392f4aef-37aa-47a3-a82b-22f4f510a7b8" name="Changes" comment="feat: add comprehensive wiki documentation for Employee Management System">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/packages/styles.css" afterDir="false" />
-    </list>
+    <list default="true" id="392f4aef-37aa-47a3-a82b-22f4f510a7b8" name="Changes" comment="feat: enhance UI responsiveness and improve layout for various components" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,7 +23,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feat/add-ci-cd-tests" />
+        <entry key="$PROJECT_DIR$" value="fix/fix-ui" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -410,14 +407,6 @@
       <workItem from="1765138028973" duration="1736000" />
       <workItem from="1765207826057" duration="2950000" />
       <workItem from="1765222080687" duration="1023000" />
-    </task>
-    <task id="LOCAL-00303" summary="Fix: Addressed security vulnerabilities">
-      <option name="closed" value="true" />
-      <created>1729011549166</created>
-      <option name="number" value="00303" />
-      <option name="presentableId" value="LOCAL-00303" />
-      <option name="project" value="LOCAL" />
-      <updated>1729011549167</updated>
     </task>
     <task id="LOCAL-00304" summary="Fix: Addressed security vulnerabilities">
       <option name="closed" value="true" />
@@ -803,7 +792,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765139800869</updated>
     </task>
-    <option name="localTasksCounter" value="352" />
+    <task id="LOCAL-00352" summary="feat: enhance UI responsiveness and improve layout for various components">
+      <option name="closed" value="true" />
+      <created>1765331628265</created>
+      <option name="number" value="00352" />
+      <option name="presentableId" value="LOCAL-00352" />
+      <option name="project" value="LOCAL" />
+      <updated>1765331628265</updated>
+    </task>
+    <option name="localTasksCounter" value="353" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -829,7 +826,8 @@
     <MESSAGE value="feat(deployment): add canary and blue-green deployment scripts and configurations" />
     <MESSAGE value="feat: implement ProtectedRoute component and enhance UI with QuickActions and theme updates" />
     <MESSAGE value="feat: add border radius to Login and Register components for improved UI" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add border radius to Login and Register components for improved UI" />
+    <MESSAGE value="feat: enhance UI responsiveness and improve layout for various components" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: enhance UI responsiveness and improve layout for various components" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
