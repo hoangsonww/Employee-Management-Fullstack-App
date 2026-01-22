@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="@moodify-db.37ph0.mongodb.net">
-  <database-model serializer="dbm" dbms="MONGO" family-id="MONGO" format-version="4.53">
+  <database-model serializer="dbm" dbms="MONGO" family-id="MONGO" format-version="4.54">
     <root id="1">
       <ServerVersion>8.0.3</ServerVersion>
     </root>
