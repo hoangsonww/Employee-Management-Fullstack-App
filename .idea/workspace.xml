@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="392f4aef-37aa-47a3-a82b-22f4f510a7b8" name="Changes" comment="fix: update database model format version to 4.54 across multiple data sources">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/LandingPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/LandingPage.js" afterDir="false" />
-    </list>
+    <list default="true" id="392f4aef-37aa-47a3-a82b-22f4f510a7b8" name="Changes" comment="feat: refactor App component for improved structure and landing page handling" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,7 +28,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="fix/fix-ui" />
+        <entry key="$PROJECT_DIR$" value="feat/enhance-landing" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -839,7 +834,8 @@
     <MESSAGE value="feat: implement ProtectedRoute component and enhance UI with QuickActions and theme updates" />
     <MESSAGE value="feat: add border radius to Login and Register components for improved UI" />
     <MESSAGE value="feat: enhance UI responsiveness and improve layout for various components" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: enhance UI responsiveness and improve layout for various components" />
+    <MESSAGE value="feat: refactor App component for improved structure and landing page handling" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: refactor App component for improved structure and landing page handling" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
