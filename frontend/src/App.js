@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Container, CssBaseline, ThemeProvider } from '@mui/material';
 import theme from './theme';
 import Dashboard from './components/Dashboard';
@@ -19,88 +19,107 @@ import NotFoundPage from './components/NotFoundPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import QuickActions from './components/QuickActions';
 
+const AppContent = () => {
+  const location = useLocation();
+  const isLanding = location.pathname === '/';
+
+  return (
+    <>
+      <Navbar />
+      <Container
+        maxWidth={isLanding ? false : 'lg'}
+        disableGutters={isLanding}
+        sx={{
+          mt: isLanding ? 0 : { xs: 2, md: 4 },
+          mb: isLanding ? 0 : { xs: 3, md: 4 },
+          px: isLanding ? 0 : { xs: 2, sm: 3 },
+        }}
+      >
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/employees"
+            element={
+              <ProtectedRoute>
+                <EmployeeList />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/add-employee"
+            element={
+              <ProtectedRoute>
+                <EmployeeForm />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/edit-employee/:id"
+            element={
+              <ProtectedRoute>
+                <EmployeeForm />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/departments"
+            element={
+              <ProtectedRoute>
+                <DepartmentList />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/add-department"
+            element={
+              <ProtectedRoute>
+                <DepartmentForm />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/edit-department/:id"
+            element={
+              <ProtectedRoute>
+                <DepartmentForm />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/verify-username" element={<VerifyUsername />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Container>
+      <QuickActions />
+      <Footer />
+    </>
+  );
+};
+
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Router>
-        <Navbar />
-        <Container maxWidth="lg" style={{ marginTop: '2rem', marginBottom: '2.5rem' }}>
-          <Routes>
-            <Route path="/" element={<LandingPage />} />
-            <Route
-              path="/dashboard"
-              element={
-                <ProtectedRoute>
-                  <Dashboard />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/employees"
-              element={
-                <ProtectedRoute>
-                  <EmployeeList />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/add-employee"
-              element={
-                <ProtectedRoute>
-                  <EmployeeForm />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/edit-employee/:id"
-              element={
-                <ProtectedRoute>
-                  <EmployeeForm />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/departments"
-              element={
-                <ProtectedRoute>
-                  <DepartmentList />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/add-department"
-              element={
-                <ProtectedRoute>
-                  <DepartmentForm />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/edit-department/:id"
-              element={
-                <ProtectedRoute>
-                  <DepartmentForm />
-                </ProtectedRoute>
-              }
-            />
-            <Route path="/verify-username" element={<VerifyUsername />} />
-            <Route path="/reset-password" element={<ResetPassword />} />
-            <Route
-              path="/profile"
-              element={
-                <ProtectedRoute>
-                  <Profile />
-                </ProtectedRoute>
-              }
-            />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
-        </Container>
-        <QuickActions />
-        <Footer />
+        <AppContent />
       </Router>
     </ThemeProvider>
   );
