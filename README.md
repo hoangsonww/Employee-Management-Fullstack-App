@@ -393,36 +393,42 @@ mvn install
 
 ### 4. Configure the Application
 
-Update `src/main/resources/application.properties` with your MySQL and MongoDB configuration:
+The backend reads MySQL and MongoDB settings from variables loaded through `backend/config.properties`. Use values that match your local database:
 
 ```properties
-# MySQL Configuration
-spring.datasource.url=jdbc:mysql://localhost:3306/employee_management
-spring.datasource.username=root
-spring.datasource.password=password
-spring.jpa.hibernate.ddl-auto=update
-
-# MongoDB Configuration
-spring.data.mongodb.uri=mongodb://localhost:27017/employee_management
+MYSQL_HOST=localhost
+MYSQL_PORT=3306
+MYSQL_DB=employee_management
+MYSQL_USER=root
+MYSQL_PASSWORD=password
+MYSQL_SSL_MODE=DISABLED
+MONGO_URI=mongodb://localhost:27017/employee_management
 ```
 
-Feel free to change the database name, username, and password, and even add more configurations as needed.
+For MySQL bootstrap, you have two supported options:
 
-Alternatively, create a `config.properties` file in the `backend` directory and keep the `application.properties` file as is. Add the following properties to the `config.properties` file:
+1. Run the root [data.sql](data.sql) file for the all-in-one setup.
+2. Run the split backend SQL scripts in order:
+   `backend/sql/01_create_database.mysql.sql`,
+   `backend/sql/02_create_tables.mysql.sql`,
+   and optionally `backend/sql/03_performance_optimizations.mysql.sql`.
 
-```properties
-MYSQL_HOST=<mysql_host>
-MYSQL_PORT=<mysql_port>
-MYSQL_DB=<mysql_db>
-MYSQL_USER=<mysql_user>
-MYSQL_PASSWORD=<mysql_password>
-MYSQL_SSL_MODE=<mysql_ssl_mode>
-MONGO_URI=<mongo_host>
-```
+The split SQL workflow is documented in [backend/sql/README.md](backend/sql/README.md).
+
+Important:
+
+- The backend can auto-create missing tables in an existing blank database because `spring.jpa.hibernate.ddl-auto=update` is enabled.
+- The backend does not auto-create the database itself if `MYSQL_DB` points to a database that does not exist yet.
+- On backend startup, `DataInitializer` automatically re-seeds `departments` and `employees`.
+- The `users` table is created by the schema, but user accounts are not auto-seeded.
 
 ### 5. Start the Backend Server
 
-Before starting the server, ensure that MySQL and MongoDB are running and properly configured on your local machine!
+Before starting the server, ensure that:
+
+- MySQL is running and `MYSQL_DB` points to an existing database
+- MongoDB is running and `MONGO_URI` is valid
+- you have either run the SQL bootstrap files or allowed Hibernate to create the tables in a blank existing MySQL database
 
 Then, run the following command to start the Spring Boot application:
 
@@ -463,10 +469,11 @@ The backend will be available at [http://localhost:8080](http://localhost:8080).
 ```mermaid
 flowchart TB
     A[Install Java 11 & Maven] --> B[Clone repository]
-    B --> C[Configure application.properties or config.properties]
-    C --> D[Start MySQL & MongoDB]
-    D --> E[mvn spring-boot:run]
-    E --> F[API reachable at http://localhost:8080]
+    B --> C[Configure backend/config.properties]
+    C --> D[Create DB via data.sql or backend/sql scripts]
+    D --> E[Start MySQL & MongoDB]
+    E --> F[mvn spring-boot:run]
+    F --> G[API reachable at http://localhost:8080]
 ```
 
 ### 7. API Documentation
@@ -527,6 +534,7 @@ Feel free to add more tests as needed to ensure the reliability and correctness 
 
 ```bash
 git clone https://github.com/hoangsonww/Employee-Management-Fullstack-App.git
+cd Employee-Management-Fullstack-App  # Fix the paths if necessary
 cd frontend
 ```
 

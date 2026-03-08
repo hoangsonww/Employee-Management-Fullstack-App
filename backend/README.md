@@ -78,20 +78,30 @@ mvn install -DskipTests
 
 ### 3. Configure the Application
 
-Update `src/main/resources/application.properties` with your database configuration:
+The backend reads MySQL and MongoDB settings from environment variables loaded through `config.properties`:
 
 ```properties
-# MySQL Configuration
-spring.datasource.url=jdbc:mysql://localhost:3306/employee_management
-spring.datasource.username=root
-spring.datasource.password=password
-spring.jpa.hibernate.ddl-auto=update
-
-# MongoDB Configuration
-spring.data.mongodb.uri=mongodb://localhost:27017/employee_management
+MYSQL_HOST=localhost
+MYSQL_PORT=3306
+MYSQL_DB=employee_management
+MYSQL_USER=root
+MYSQL_PASSWORD=password
+MYSQL_SSL_MODE=DISABLED
+MONGO_URI=mongodb://localhost:27017/employee_management
 ```
 
-Ensure the databases are set up as expected and the URLs, usernames, and passwords match your local or remote database setup.
+The active datasource config lives in `src/main/resources/application.properties` and expects those variables to exist.
+
+For a new MySQL setup, use one of these two paths:
+
+1. Recommended: run `backend/sql/01_create_database.mysql.sql`, then start the backend and let Hibernate create/update the tables automatically because `spring.jpa.hibernate.ddl-auto=update` is enabled.
+2. Manual: run `backend/sql/01_create_database.mysql.sql`, `backend/sql/02_create_tables.mysql.sql`, and optionally `backend/sql/03_performance_optimizations.mysql.sql` before starting the backend.
+
+Important:
+
+- The backend can auto-create missing tables in an existing empty database.
+- The backend does not auto-create the database itself if `MYSQL_DB` points to a database that does not exist yet.
+- The canonical schema files are documented in `backend/sql/README.md`.
 
 ### 4. Start the Backend Server
 
@@ -151,7 +161,16 @@ Here are some example API endpoints you can use to interact with the backend:
 
 ### 6. Data Initialization
 
-The `DataInitializer.java` class is used to preload sample data into the database. This is particularly useful for development and testing.
+`config/DataInitializer.java` automatically runs on backend startup.
+
+It does the following every time the backend starts:
+
+- deletes all existing `employees`
+- deletes all existing `departments`
+- inserts 50 fake departments
+- inserts 295 fake employees
+
+It does not seed the `users` table. Login accounts must be created through the UI or the auth endpoints.
 
 ### 7. Running Tests
 
