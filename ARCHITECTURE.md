@@ -141,9 +141,16 @@ sequenceDiagram
 ## 4. Data & Integrations
 
 - **Primary datastore**: MySQL (`employees`, `departments`, `users`). Hibernate `ddl-auto=update` evolves the schema at runtime, which is convenient for demos but risky for production.
+- **Schema artifacts**: The repo now includes a root [data.sql](data.sql) all-in-one bootstrap plus split MySQL setup scripts under [backend/sql](backend/sql/README.md) for database creation, table DDL, and optional performance indexing.
 - **Secondary datastore**: MongoDB connection string is configurable (`spring.data.mongodb.uri`) but no repository currently consumes it. Future Mongo use would require additional Spring Data Mongo repositories.
 - **Seed data**: `DataInitializer` recreates data on every application start (see §3.2). Remove or guard this behavior before deploying to persistent environments.
 - **OpenAPI contract**: `openapi.yaml` at the repo root enumerates the REST API and aligns with the annotated controllers.
+
+Bootstrap behavior:
+
+- If `MYSQL_DB` points to an existing blank database, Hibernate can create the missing tables on startup.
+- If `MYSQL_DB` points to a nonexistent database, the backend will not create that database automatically.
+- The schema creates `users`, but application startup only seeds `departments` and `employees`.
 
 ```mermaid
 graph TD
@@ -260,6 +267,8 @@ flowchart TD
 | Entities | `backend/src/main/java/com/example/employeemanagement/model` |
 | Security configuration | `backend/src/main/java/com/example/employeemanagement/security` |
 | Data seeding | `backend/src/main/java/com/example/employeemanagement/config/DataInitializer.java` |
+| Root SQL bootstrap | `data.sql` |
+| Split SQL bootstrap | `backend/sql/` |
 | Docker Compose | `docker-compose.yml` |
 | Kubernetes manifests | `kubernetes/` |
 | Terraform AWS stack | `terraform/` |
