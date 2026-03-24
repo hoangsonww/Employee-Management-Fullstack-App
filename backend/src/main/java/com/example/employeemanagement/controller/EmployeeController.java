@@ -1,18 +1,31 @@
 package com.example.employeemanagement.controller;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.employeemanagement.dto.EmployeeResponseDto;
 import com.example.employeemanagement.exception.ResourceNotFoundException;
 import com.example.employeemanagement.model.Employee;
 import com.example.employeemanagement.service.EmployeeService;
-import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import org.springframework.web.bind.annotation.*;
-import javax.validation.Valid;
-import java.util.List;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 /** This class represents the REST API controller for employees. */
 @RestController
@@ -32,8 +45,9 @@ public class EmployeeController {
    */
   @Operation(summary = "Get all employees", description = "Retrieve a list of all employees")
   @GetMapping
-  public List<Employee> getAllEmployees() {
-    return employeeService.getAllEmployees();
+  public List<EmployeeResponseDto> getAllEmployees() {
+    return employeeService.getAllEmployees().stream().map(employee -> convertToDto(employee))
+        .collect(Collectors.toList());
   }
 
   /**
@@ -48,11 +62,20 @@ public class EmployeeController {
       @ApiResponse(responseCode = "404", description = "Employee not found")
   })
   @GetMapping("/{id}")
-  public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id) {
+  public ResponseEntity<EmployeeResponseDto> getEmployeeById(@PathVariable Long id) {
     Employee employee = employeeService
         .getEmployeeById(id)
         .orElseThrow(() -> new ResourceNotFoundException("Employee not found with id: " + id));
-    return ResponseEntity.ok(employee);
+
+    EmployeeResponseDto employeeResponseDto = new EmployeeResponseDto();
+    employeeResponseDto.setId(employee.getId());
+    employeeResponseDto.setFirstName(employee.getFirstName());
+    employeeResponseDto.setLastName(employee.getLastName());
+    employeeResponseDto.setEmail(employee.getEmail());
+    employeeResponseDto.setDepartmentName(employee.getDepartment().getName());
+    employeeResponseDto.setAge(employee.getAge());
+
+    return ResponseEntity.ok(employeeResponseDto);
   }
 
   /**
@@ -63,8 +86,9 @@ public class EmployeeController {
    */
   @Operation(summary = "Create a new employee", description = "Create a new employee record")
   @PostMapping
-  public Employee createEmployee(@Valid @RequestBody Employee employee) {
-    return employeeService.saveEmployee(employee);
+  public ResponseEntity<EmployeeResponseDto> createEmployee(@Valid @RequestBody Employee employee) {
+    Employee savedEmployee = employeeService.saveEmployee(employee);
+    return ResponseEntity.ok(convertToDto(savedEmployee));
   }
 
   /**
@@ -80,7 +104,7 @@ public class EmployeeController {
       @ApiResponse(responseCode = "404", description = "Employee not found")
   })
   @PutMapping("/{id}")
-  public ResponseEntity<Employee> updateEmployee(
+  public ResponseEntity<EmployeeResponseDto> updateEmployee(
       @PathVariable Long id, @Valid @RequestBody Employee employeeDetails) {
     Employee employee = employeeService
         .getEmployeeById(id)
@@ -93,7 +117,7 @@ public class EmployeeController {
     employee.setAge(employeeDetails.getAge());
 
     Employee updatedEmployee = employeeService.saveEmployee(employee);
-    return ResponseEntity.ok(updatedEmployee);
+    return ResponseEntity.ok(convertToDto(updatedEmployee));
   }
 
   /**
@@ -115,5 +139,16 @@ public class EmployeeController {
 
     employeeService.deleteEmployee(id);
     return ResponseEntity.noContent().build();
+  }
+
+  private EmployeeResponseDto convertToDto(Employee employee) {
+    EmployeeResponseDto dto = new EmployeeResponseDto();
+    dto.setId(employee.getId());
+    dto.setFirstName(employee.getFirstName());
+    dto.setLastName(employee.getLastName());
+    dto.setEmail(employee.getEmail());
+    dto.setAge(employee.getAge());
+    dto.setDepartmentName(employee.getDepartment().getName());
+    return dto;
   }
 }
