@@ -4,10 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.util.List;
 
-/** This class represents a Department entity. Each department has an ID and a name. */
+/**
+ * This class represents a Department entity. Each department has an ID and a
+ * name.
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,6 +25,7 @@ public class Department {
   private Long id;
 
   /** The name of the department. */
+  @NotBlank(message = "Department name is required")
   private String name;
 
   /** The list of employees in the department. */

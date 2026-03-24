@@ -64,6 +64,12 @@
       <artifactId>spring-boot-starter-security</artifactId>
     </dependency>
 
+    <!-- Spring Boot Starter Validation -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-validation</artifactId>
+    </dependency>
+
     <!-- JWT Dependencies -->
     <dependency>
       <groupId>io.jsonwebtoken</groupId>

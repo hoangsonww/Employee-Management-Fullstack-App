@@ -11,6 +11,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import javax.validation.Valid;
 import java.util.List;
 
 /** This class represents the REST API controller for departments. */
@@ -21,7 +22,8 @@ import java.util.List;
 public class DepartmentController {
 
   /** The department service. */
-  @Autowired private DepartmentService departmentService;
+  @Autowired
+  private DepartmentService departmentService;
 
   /**
    * Get all departments API.
@@ -40,22 +42,18 @@ public class DepartmentController {
    * @param id ID of the department to be retrieved
    * @return Department with the specified ID
    */
-  @Operation(
-      summary = "Get department by ID",
-      description = "Retrieve a specific department by its ID")
-  @ApiResponses(
-      value = {
-        @ApiResponse(responseCode = "200", description = "Department found"),
-        @ApiResponse(responseCode = "404", description = "Department not found")
-      })
+  @Operation(summary = "Get department by ID", description = "Retrieve a specific department by its ID")
+  @ApiResponses(value = {
+      @ApiResponse(responseCode = "200", description = "Department found"),
+      @ApiResponse(responseCode = "404", description = "Department not found")
+  })
   @GetMapping("/{id}")
   public ResponseEntity<Department> getDepartmentById(
       @Parameter(description = "ID of the department to be retrieved") @PathVariable Long id) {
-    Department department =
-        departmentService
-            .getDepartmentById(id)
-            .orElseThrow(
-                () -> new ResourceNotFoundException("Department not found with id: " + id));
+    Department department = departmentService
+        .getDepartmentById(id)
+        .orElseThrow(
+            () -> new ResourceNotFoundException("Department not found with id: " + id));
     return ResponseEntity.ok(department);
   }
 
@@ -68,34 +66,30 @@ public class DepartmentController {
   @Operation(summary = "Create a new department", description = "Create a new department record")
   @ApiResponse(responseCode = "201", description = "Department created successfully")
   @PostMapping
-  public Department createDepartment(@RequestBody Department department) {
+  public Department createDepartment(@Valid @RequestBody Department department) {
     return departmentService.saveDepartment(department);
   }
 
   /**
    * Update an existing department API.
    *
-   * @param id ID of the department to be updated
+   * @param id                ID of the department to be updated
    * @param departmentDetails Updated department object
    * @return Updated department object
    */
-  @Operation(
-      summary = "Update an existing department",
-      description = "Update an existing department's details")
-  @ApiResponses(
-      value = {
-        @ApiResponse(responseCode = "200", description = "Department updated"),
-        @ApiResponse(responseCode = "404", description = "Department not found")
-      })
+  @Operation(summary = "Update an existing department", description = "Update an existing department's details")
+  @ApiResponses(value = {
+      @ApiResponse(responseCode = "200", description = "Department updated"),
+      @ApiResponse(responseCode = "404", description = "Department not found")
+  })
   @PutMapping("/{id}")
   public ResponseEntity<Department> updateDepartment(
       @Parameter(description = "ID of the department to be updated") @PathVariable Long id,
-      @RequestBody Department departmentDetails) {
-    Department department =
-        departmentService
-            .getDepartmentById(id)
-            .orElseThrow(
-                () -> new ResourceNotFoundException("Department not found with id: " + id));
+      @Valid @RequestBody Department departmentDetails) {
+    Department department = departmentService
+        .getDepartmentById(id)
+        .orElseThrow(
+            () -> new ResourceNotFoundException("Department not found with id: " + id));
 
     department.setName(departmentDetails.getName());
 
@@ -110,19 +104,17 @@ public class DepartmentController {
    * @return Response entity with no content
    */
   @Operation(summary = "Delete a department", description = "Delete a department record by ID")
-  @ApiResponses(
-      value = {
-        @ApiResponse(responseCode = "204", description = "Department deleted"),
-        @ApiResponse(responseCode = "404", description = "Department not found")
-      })
+  @ApiResponses(value = {
+      @ApiResponse(responseCode = "204", description = "Department deleted"),
+      @ApiResponse(responseCode = "404", description = "Department not found")
+  })
   @DeleteMapping("/{id}")
   public ResponseEntity<Void> deleteDepartment(
       @Parameter(description = "ID of the department to be deleted") @PathVariable Long id) {
-    Department department =
-        departmentService
-            .getDepartmentById(id)
-            .orElseThrow(
-                () -> new ResourceNotFoundException("Department not found with id: " + id));
+    Department department = departmentService
+        .getDepartmentById(id)
+        .orElseThrow(
+            () -> new ResourceNotFoundException("Department not found with id: " + id));
 
     departmentService.deleteDepartment(id);
     return ResponseEntity.noContent().build();

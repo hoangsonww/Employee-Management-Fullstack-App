@@ -11,6 +11,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.web.bind.annotation.*;
+import javax.validation.Valid;
 import java.util.List;
 
 /** This class represents the REST API controller for employees. */
@@ -21,7 +22,8 @@ import java.util.List;
 public class EmployeeController {
 
   /** The employee service. */
-  @Autowired private EmployeeService employeeService;
+  @Autowired
+  private EmployeeService employeeService;
 
   /**
    * Get all employees API.
@@ -40,20 +42,16 @@ public class EmployeeController {
    * @param id ID of the employee to be retrieved
    * @return Employee with the specified ID
    */
-  @Operation(
-      summary = "Get employee by ID",
-      description = "Retrieve a specific employee by their ID")
-  @ApiResponses(
-      value = {
-        @ApiResponse(responseCode = "200", description = "Employee found"),
-        @ApiResponse(responseCode = "404", description = "Employee not found")
-      })
+  @Operation(summary = "Get employee by ID", description = "Retrieve a specific employee by their ID")
+  @ApiResponses(value = {
+      @ApiResponse(responseCode = "200", description = "Employee found"),
+      @ApiResponse(responseCode = "404", description = "Employee not found")
+  })
   @GetMapping("/{id}")
   public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id) {
-    Employee employee =
-        employeeService
-            .getEmployeeById(id)
-            .orElseThrow(() -> new ResourceNotFoundException("Employee not found with id: " + id));
+    Employee employee = employeeService
+        .getEmployeeById(id)
+        .orElseThrow(() -> new ResourceNotFoundException("Employee not found with id: " + id));
     return ResponseEntity.ok(employee);
   }
 
@@ -65,32 +63,28 @@ public class EmployeeController {
    */
   @Operation(summary = "Create a new employee", description = "Create a new employee record")
   @PostMapping
-  public Employee createEmployee(@RequestBody Employee employee) {
+  public Employee createEmployee(@Valid @RequestBody Employee employee) {
     return employeeService.saveEmployee(employee);
   }
 
   /**
    * Update an existing employee API.
    *
-   * @param id ID of the employee to be updated
+   * @param id              ID of the employee to be updated
    * @param employeeDetails Updated employee details
    * @return Updated employee record
    */
-  @Operation(
-      summary = "Update an existing employee",
-      description = "Update an existing employee's details")
-  @ApiResponses(
-      value = {
-        @ApiResponse(responseCode = "200", description = "Employee updated"),
-        @ApiResponse(responseCode = "404", description = "Employee not found")
-      })
+  @Operation(summary = "Update an existing employee", description = "Update an existing employee's details")
+  @ApiResponses(value = {
+      @ApiResponse(responseCode = "200", description = "Employee updated"),
+      @ApiResponse(responseCode = "404", description = "Employee not found")
+  })
   @PutMapping("/{id}")
   public ResponseEntity<Employee> updateEmployee(
-      @PathVariable Long id, @RequestBody Employee employeeDetails) {
-    Employee employee =
-        employeeService
-            .getEmployeeById(id)
-            .orElseThrow(() -> new ResourceNotFoundException("Employee not found with id: " + id));
+      @PathVariable Long id, @Valid @RequestBody Employee employeeDetails) {
+    Employee employee = employeeService
+        .getEmployeeById(id)
+        .orElseThrow(() -> new ResourceNotFoundException("Employee not found with id: " + id));
 
     employee.setFirstName(employeeDetails.getFirstName());
     employee.setLastName(employeeDetails.getLastName());
@@ -109,17 +103,15 @@ public class EmployeeController {
    * @return No content
    */
   @Operation(summary = "Delete an employee", description = "Delete an employee record by ID")
-  @ApiResponses(
-      value = {
-        @ApiResponse(responseCode = "204", description = "Employee deleted"),
-        @ApiResponse(responseCode = "404", description = "Employee not found")
-      })
+  @ApiResponses(value = {
+      @ApiResponse(responseCode = "204", description = "Employee deleted"),
+      @ApiResponse(responseCode = "404", description = "Employee not found")
+  })
   @DeleteMapping("/{id}")
   public ResponseEntity<Void> deleteEmployee(@PathVariable Long id) {
-    Employee employee =
-        employeeService
-            .getEmployeeById(id)
-            .orElseThrow(() -> new ResourceNotFoundException("Employee not found with id: " + id));
+    Employee employee = employeeService
+        .getEmployeeById(id)
+        .orElseThrow(() -> new ResourceNotFoundException("Employee not found with id: " + id));
 
     employeeService.deleteEmployee(id);
     return ResponseEntity.noContent().build();
