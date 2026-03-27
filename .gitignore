@@ -48,3 +48,6 @@ yarn-error.log*
 
 # Claude workspace
 .claude/
+/.idea/dataSources.xml
+/.idea/db-forest-config.xml
+/.idea/dataSources/data_sources_history.xml
