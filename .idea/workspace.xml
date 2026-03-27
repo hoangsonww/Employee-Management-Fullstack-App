@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="392f4aef-37aa-47a3-a82b-22f4f510a7b8" name="Changes" comment="feat: introduce DTOs for employee, department, and auth; enhance repository queries and service logic&#10;&#10;- Add DTO classes for employee, department, authentication, and password reset requests/responses&#10;- Refactor EmployeeRepository and DepartmentRepository to support eager fetching and employee counting&#10;- Update service layers to use new repository methods and improve transactional consistency&#10;- Inject JWT secret via application properties and update JwtTokenUtil accordingly&#10;- Improve JWT request filter to handle invalid tokens gracefully&#10;- Refactor Employee and Department models for better JPA mapping and validation&#10;- Update test classes to include employee age and align with model changes&#10;- Add local configuration and settings files for development environment">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="392f4aef-37aa-47a3-a82b-22f4f510a7b8" name="Changes" comment="chore: update .gitignore to exclude IDE database config files and clean up workspace.xml" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -104,7 +101,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Spring Boot.EmployeeManagementApplication.executor": "Run",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "BedirAvsar-master",
+    "git-widget-placeholder": "feat/enhance-idea",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/davidnguyen/IdeaProjects/Employee-Management",
     "node.js.detected.package.eslint": "true",
@@ -427,15 +424,7 @@
       <workItem from="1770265403803" duration="1563000" />
       <workItem from="1770267192106" duration="219000" />
       <workItem from="1772943363446" duration="1847000" />
-      <workItem from="1774636971999" duration="8885000" />
-    </task>
-    <task id="LOCAL-00305" summary="Fix: Addressed security vulnerabilities">
-      <option name="closed" value="true" />
-      <created>1729011617690</created>
-      <option name="number" value="00305" />
-      <option name="presentableId" value="LOCAL-00305" />
-      <option name="project" value="LOCAL" />
-      <updated>1729011617690</updated>
+      <workItem from="1774636971999" duration="9432000" />
     </task>
     <task id="LOCAL-00306" summary="Fix: Addressed security vulnerabilities">
       <option name="closed" value="true" />
@@ -821,7 +810,15 @@
       <option name="project" value="LOCAL" />
       <updated>1770267330712</updated>
     </task>
-    <option name="localTasksCounter" value="354" />
+    <task id="LOCAL-00354" summary="chore: update .gitignore to exclude IDE database config files and clean up workspace.xml">
+      <option name="closed" value="true" />
+      <created>1774645955329</created>
+      <option name="number" value="00354" />
+      <option name="presentableId" value="LOCAL-00354" />
+      <option name="project" value="LOCAL" />
+      <updated>1774645955330</updated>
+    </task>
+    <option name="localTasksCounter" value="355" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -850,7 +847,8 @@
     <MESSAGE value="feat: enhance UI responsiveness and improve layout for various components" />
     <MESSAGE value="feat: refactor App component for improved structure and landing page handling" />
     <MESSAGE value="feat: introduce DTOs for employee, department, and auth; enhance repository queries and service logic&#10;&#10;- Add DTO classes for employee, department, authentication, and password reset requests/responses&#10;- Refactor EmployeeRepository and DepartmentRepository to support eager fetching and employee counting&#10;- Update service layers to use new repository methods and improve transactional consistency&#10;- Inject JWT secret via application properties and update JwtTokenUtil accordingly&#10;- Improve JWT request filter to handle invalid tokens gracefully&#10;- Refactor Employee and Department models for better JPA mapping and validation&#10;- Update test classes to include employee age and align with model changes&#10;- Add local configuration and settings files for development environment" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: introduce DTOs for employee, department, and auth; enhance repository queries and service logic&#10;&#10;- Add DTO classes for employee, department, authentication, and password reset requests/responses&#10;- Refactor EmployeeRepository and DepartmentRepository to support eager fetching and employee counting&#10;- Update service layers to use new repository methods and improve transactional consistency&#10;- Inject JWT secret via application properties and update JwtTokenUtil accordingly&#10;- Improve JWT request filter to handle invalid tokens gracefully&#10;- Refactor Employee and Department models for better JPA mapping and validation&#10;- Update test classes to include employee age and align with model changes&#10;- Add local configuration and settings files for development environment" />
+    <MESSAGE value="chore: update .gitignore to exclude IDE database config files and clean up workspace.xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore: update .gitignore to exclude IDE database config files and clean up workspace.xml" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
