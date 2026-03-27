@@ -5,13 +5,12 @@ import com.example.employeemanagement.model.Employee;
 import com.example.employeemanagement.repository.DepartmentRepository;
 import com.example.employeemanagement.repository.EmployeeRepository;
 import com.github.javafaker.Faker;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Configuration;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Configuration;
 
 /** This class initializes fake data for the application when it starts. */
 @Configuration
@@ -23,7 +22,10 @@ public class DataInitializer implements CommandLineRunner {
   /** The employee repository. */
   @Autowired private EmployeeRepository employeeRepository;
 
+  /** The Faker instance used to generate realistic-looking test data. */
   private final Faker faker = new Faker();
+
+  /** Random number generator for assigning random ages and departments to employees. */
   private final Random random = new Random();
 
   /**
@@ -33,9 +35,11 @@ public class DataInitializer implements CommandLineRunner {
    */
   @Override
   public void run(String... args) {
-    // Always clear existing data before inserting new data
-    employeeRepository.deleteAll();
-    departmentRepository.deleteAll();
+    // Only seed data if the database is empty
+    if (departmentRepository.count() > 0) {
+      System.out.println("Data already exists, skipping initialization.");
+      return;
+    }
 
     // Create fake departments
     List<Department> departments = new ArrayList<>();

@@ -2,10 +2,11 @@ package com.example.employeemanagement.service;
 
 import com.example.employeemanagement.model.Department;
 import com.example.employeemanagement.repository.DepartmentRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.example.employeemanagement.repository.EmployeeRepository;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /** This class represents the service for departments. */
 @Service
@@ -14,13 +15,16 @@ public class DepartmentService {
   /** The department repository. */
   @Autowired private DepartmentRepository departmentRepository;
 
+  /** The employee repository, used to count employees per department. */
+  @Autowired private EmployeeRepository employeeRepository;
+
   /**
    * Get all departments.
    *
    * @return List of all departments
    */
   public List<Department> getAllDepartments() {
-    return departmentRepository.findAll();
+    return departmentRepository.findAllWithEmployees();
   }
 
   /**
@@ -30,7 +34,7 @@ public class DepartmentService {
    * @return Department with the specified ID
    */
   public Optional<Department> getDepartmentById(Long id) {
-    return departmentRepository.findById(id);
+    return departmentRepository.findByIdWithEmployees(id);
   }
 
   /**
@@ -44,9 +48,19 @@ public class DepartmentService {
   }
 
   /**
-   * Update a department.
+   * Counts the number of employees assigned to a given department.
    *
-   * @param id ID of the department to be updated
+   * @param departmentId the ID of the department
+   * @return the number of employees in the department
+   */
+  public long countEmployeesInDepartment(Long departmentId) {
+    return employeeRepository.countByDepartmentId(departmentId);
+  }
+
+  /**
+   * Deletes a department by its ID.
+   *
+   * @param id the ID of the department to delete
    */
   public void deleteDepartment(Long id) {
     departmentRepository.deleteById(id);

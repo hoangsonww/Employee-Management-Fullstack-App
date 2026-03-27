@@ -43,6 +43,7 @@ public class DepartmentManagementApplicationTests {
     employee.setLastName("Doe");
     employee.setEmail("john.doe@example.com");
     employee.setDepartment(department);
+    employee.setAge(25);
     employee = employeeRepository.save(employee);
 
     Optional<Employee> foundEmployee = employeeRepository.findById(employee.getId());
@@ -59,6 +60,7 @@ public class DepartmentManagementApplicationTests {
     employee.setLastName("Doe");
     employee.setEmail("jane.doe@example.com");
     employee.setDepartment(department);
+    employee.setAge(25);
 
     Employee savedEmployee = employeeRepository.save(employee);
 
@@ -74,6 +76,7 @@ public class DepartmentManagementApplicationTests {
     employee.setLastName("Doe");
     employee.setEmail("jane.doe@example.com");
     employee.setDepartment(department);
+    employee.setAge(25);
 
     employee = employeeRepository.save(employee);
     employeeRepository.deleteById(employee.getId());
@@ -165,6 +168,7 @@ public class DepartmentManagementApplicationTests {
     employee1.setLastName("Doe");
     employee1.setEmail("jane.doe@example.com");
     employee1.setDepartment(department1);
+    employee1.setAge(25);
     employeeRepository.save(employee1);
 
     Employee employee2 = new Employee();
@@ -172,6 +176,7 @@ public class DepartmentManagementApplicationTests {
     employee2.setLastName("Doe");
     employee2.setEmail("jane.doe2@example.com");
     employee2.setDepartment(department2);
+    employee2.setAge(30);
     employeeRepository.save(employee2);
 
     assertThat(employeeRepository.findById(employee1.getId()).get().getDepartment().getId())
@@ -196,6 +201,7 @@ public class DepartmentManagementApplicationTests {
     employee1.setLastName("Doe");
     employee1.setEmail("jane.doe@example.com");
     employee1.setDepartment(department1);
+    employee1.setAge(25);
     employeeRepository.save(employee1);
 
     assertThat(employeeRepository.findById(employee1.getId()).get().getDepartment().getName())
@@ -221,6 +227,7 @@ public class DepartmentManagementApplicationTests {
     employee1.setEmail("jane.doe@example.com");
 
     employee1.setDepartment(department1);
+    employee1.setAge(25);
     employeeRepository.save(employee1);
 
     assertThat(employeeRepository.findById(employee1.getId()).get().getDepartment().getName())

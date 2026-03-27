@@ -1,8 +1,18 @@
 package com.example.employeemanagement.controller;
 
+import com.example.employeemanagement.dto.AuthRequestDto;
+import com.example.employeemanagement.dto.ResetPasswordRequestDto;
 import com.example.employeemanagement.model.User;
 import com.example.employeemanagement.repository.UserRepository;
 import com.example.employeemanagement.security.JwtTokenUtil;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -15,88 +25,77 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import io.swagger.v3.oas.annotations.tags.Tag;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-
 /** This class represents the REST API controller for user authentication. */
 @RestController
 @Tag(name = "Authentication APIs", description = "API Operations related to user authentication")
 public class AuthController {
 
-  /** The authentication manager. */
-  @Autowired
-  private AuthenticationManager authenticationManager;
+  /** The Spring Security authentication manager used to verify credentials. */
+  @Autowired private AuthenticationManager authenticationManager;
 
-  /** The user details service. */
-  @Autowired
-  private UserDetailsService userDetailsService;
+  /** The service that loads user-specific data for authentication. */
+  @Autowired private UserDetailsService userDetailsService;
 
-  /** The user repository. */
-  @Autowired
-  private UserRepository userRepository;
+  /** The repository for persisting and querying {@link User} entities. */
+  @Autowired private UserRepository userRepository;
 
-  /** The password encoder. */
-  @Autowired
-  private PasswordEncoder passwordEncoder;
+  /** The encoder used to hash and verify passwords. */
+  @Autowired private PasswordEncoder passwordEncoder;
 
-  /** The JWT token util. */
-  @Autowired
-  private JwtTokenUtil jwtTokenUtil;
+  /** Utility for generating and validating JWT tokens. */
+  @Autowired private JwtTokenUtil jwtTokenUtil;
 
   /**
    * Register user API.
    *
-   * @param user The user to be registered
+   * @param request The registration details
    * @return Success message
    */
   @Operation(summary = "Register user", description = "Register a new user")
   @ApiResponses(
       value = {
-          @ApiResponse(responseCode = "200", description = "User registered successfully"),
-          @ApiResponse(responseCode = "409", description = "Username already exists"),
-          @ApiResponse(responseCode = "500", description = "Unable to register user")
+        @ApiResponse(responseCode = "200", description = "User registered successfully"),
+        @ApiResponse(responseCode = "409", description = "Username already exists"),
+        @ApiResponse(responseCode = "500", description = "Unable to register user")
       })
   @PostMapping("/register")
-  public ResponseEntity<?> registerUser(@RequestBody User user) {
+  public ResponseEntity<?> registerUser(@Valid @RequestBody AuthRequestDto request) {
     try {
-      user.setPassword(passwordEncoder.encode(user.getPassword()));
+      User user = new User();
+      user.setUsername(request.getUsername());
+      user.setPassword(passwordEncoder.encode(request.getPassword()));
       userRepository.save(user);
       return ResponseEntity.ok("User registered successfully!");
     } catch (DataIntegrityViolationException e) {
       return ResponseEntity.status(HttpStatus.CONFLICT).body("Error: Username already exists");
     } catch (Exception e) {
-      return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error: Unable to register user");
+      return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+          .body("Error: Unable to register user");
     }
   }
 
   /**
    * Authenticate user API.
    *
-   * @param user The user to be authenticated
+   * @param request The login credentials
    * @return JWT token
-   * @throws Exception If authentication fails
    */
-  @Operation(summary = "Authenticate user", description = "Authenticate a user and generate a JWT token")
+  @Operation(
+      summary = "Authenticate user",
+      description = "Authenticate a user and generate a JWT token")
   @ApiResponses(
       value = {
-          @ApiResponse(responseCode = "200", description = "User authenticated successfully"),
-          @ApiResponse(responseCode = "401", description = "Invalid username or password"),
-          @ApiResponse(responseCode = "500", description = "Unable to authenticate user")
+        @ApiResponse(responseCode = "200", description = "User authenticated successfully"),
+        @ApiResponse(responseCode = "401", description = "Invalid username or password"),
+        @ApiResponse(responseCode = "500", description = "Unable to authenticate user")
       })
   @PostMapping("/authenticate")
-  public ResponseEntity<?> createAuthenticationToken(@RequestBody User user) {
+  public ResponseEntity<?> createAuthenticationToken(@Valid @RequestBody AuthRequestDto request) {
     try {
       authenticationManager.authenticate(
-          new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword())
-      );
+          new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
 
-      final UserDetails userDetails = userDetailsService.loadUserByUsername(user.getUsername());
+      final UserDetails userDetails = userDetailsService.loadUserByUsername(request.getUsername());
       final String jwt = jwtTokenUtil.generateToken(userDetails.getUsername());
 
       Map<String, String> response = new HashMap<>();
@@ -104,9 +103,11 @@ public class AuthController {
       return ResponseEntity.ok(response);
 
     } catch (BadCredentialsException e) {
-      return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Error: Invalid username or password");
+      return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+          .body("Error: Invalid username or password");
     } catch (Exception e) {
-      return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error: Unable to authenticate");
+      return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+          .body("Error: Unable to authenticate");
     }
   }
 
@@ -119,8 +120,8 @@ public class AuthController {
   @Operation(summary = "Verify username", description = "Verify if a username exists in the system")
   @ApiResponses(
       value = {
-          @ApiResponse(responseCode = "200", description = "Username exists"),
-          @ApiResponse(responseCode = "404", description = "Username not found")
+        @ApiResponse(responseCode = "200", description = "Username exists"),
+        @ApiResponse(responseCode = "404", description = "Username not found")
       })
   @GetMapping("/verify-username/{username}")
   public ResponseEntity<?> verifyUsername(@PathVariable String username) {
@@ -135,26 +136,22 @@ public class AuthController {
   /**
    * Reset password for a given username.
    *
-   * @param request Map containing the username and new password
-   * @return Response message indicating success or failure of the operation
+   * @param request The reset password details
+   * @return Response message indicating success or failure
    */
   @Operation(summary = "Reset password", description = "Reset the password for the given username")
   @ApiResponses(
       value = {
-          @ApiResponse(responseCode = "200", description = "Password reset successfully"),
-          @ApiResponse(responseCode = "404", description = "Username not found"),
-          @ApiResponse(responseCode = "500", description = "Unable to reset password")
+        @ApiResponse(responseCode = "200", description = "Password reset successfully"),
+        @ApiResponse(responseCode = "404", description = "Username not found")
       })
   @PostMapping("/reset-password")
-  public ResponseEntity<?> resetPassword(@RequestBody Map<String, String> request) {
-    String username = request.get("username");
-    String newPassword = request.get("newPassword");
-
-    Optional<User> user = userRepository.findByUsername(username);
+  public ResponseEntity<?> resetPassword(@Valid @RequestBody ResetPasswordRequestDto request) {
+    Optional<User> user = userRepository.findByUsername(request.getUsername());
 
     if (user.isPresent()) {
       User existingUser = user.get();
-      existingUser.setPassword(passwordEncoder.encode(newPassword));
+      existingUser.setPassword(passwordEncoder.encode(request.getNewPassword()));
       userRepository.save(existingUser);
       return ResponseEntity.ok("Password reset successfully");
     } else {

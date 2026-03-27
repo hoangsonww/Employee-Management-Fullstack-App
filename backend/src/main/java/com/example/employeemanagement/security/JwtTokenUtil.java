@@ -3,17 +3,18 @@ package com.example.employeemanagement.security;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import org.springframework.stereotype.Component;
-
 import java.util.Date;
 import java.util.function.Function;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 /** This class represents the JWT token utility. */
 @Component
 public class JwtTokenUtil {
 
   /** The secret key. */
-  private String secret = "secretKey";
+  @Value("${jwt.secret}")
+  private String secret;
 
   /**
    * Extract username.
@@ -78,7 +79,8 @@ public class JwtTokenUtil {
     return Jwts.builder()
         .setSubject(username)
         .setIssuedAt(new Date())
-        .setExpiration(new Date(System.currentTimeMillis() + 1000L * 60 * 60 * 24 * 7)) // 1 week validity
+        .setExpiration(
+            new Date(System.currentTimeMillis() + 1000L * 60 * 60 * 24 * 7)) // 1 week validity
         .signWith(SignatureAlgorithm.HS256, secret)
         .compact();
   }

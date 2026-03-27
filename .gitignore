@@ -1,22 +1,50 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# dependencies
+# Dependencies
 /node_modules
+**/node_modules
 /.pnp
 .pnp.js
-.idea/dataSources.xml
 
-# testing
+# Build outputs
+**/target/
+**/build/
+*.class
+*.jar
+*.jar.original
+*.war
+*.ear
+
+# IDE (keep .idea and .vscode tracked for shared project settings)
+*.iws
+*.ipr
+.project
+.classpath
+.settings/
+
+# Testing & coverage
 /coverage
+**/coverage/
 
-# misc
-.env
+# OS files
 .DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+Thumbs.db
 
+# Environment & secrets
+.env
+.env.*
+*.env
+config.properties
+
+# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+*.log
+
+# Maven
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# Claude workspace
+.claude/

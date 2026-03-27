@@ -2,21 +2,19 @@ package com.example.employeemanagement.security;
 
 import com.example.employeemanagement.model.User;
 import com.example.employeemanagement.repository.UserRepository;
+import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-
 /** This class represents the custom user details service. */
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 
   /** The user repository. */
-  @Autowired
-  private UserRepository userRepository;
+  @Autowired private UserRepository userRepository;
 
   /**
    * Load user by username.
@@ -27,9 +25,13 @@ public class CustomUserDetailsService implements UserDetailsService {
    */
   @Override
   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    User user = userRepository.findByUsername(username)
-        .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
+    User user =
+        userRepository
+            .findByUsername(username)
+            .orElseThrow(
+                () -> new UsernameNotFoundException("User not found with username: " + username));
 
-    return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), new ArrayList<>());
+    return new org.springframework.security.core.userdetails.User(
+        user.getUsername(), user.getPassword(), new ArrayList<>());
   }
 }

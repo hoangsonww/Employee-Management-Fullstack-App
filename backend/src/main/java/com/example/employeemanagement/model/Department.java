@@ -1,17 +1,14 @@
 package com.example.employeemanagement.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import java.util.List;
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import java.util.List;
 
-/**
- * This class represents a Department entity. Each department has an ID and a
- * name.
- */
+/** This class represents a Department entity. Each department has an ID and a name. */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -29,7 +26,9 @@ public class Department {
   private String name;
 
   /** The list of employees in the department. */
-  @OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
+  @OneToMany(
+      mappedBy = "department",
+      cascade = {CascadeType.PERSIST, CascadeType.MERGE})
   @JsonManagedReference
   private List<Employee> employees;
 }

@@ -76,26 +76,45 @@ flowchart LR
 ### 3.2 Domain model & persistence
 
 - Entities (`model/`):
-  - `Employee` links to `Department` via `@ManyToOne` with eager fetch.
-  - `Department` maintains a `@OneToMany` collection of `Employee` instances with cascading deletes.
+  - `Employee` links to `Department` via `@ManyToOne` with eager fetch. Fields are validated with Bean Validation annotations (`@NotBlank`, `@Email`, `@Min`, `@Max`, `@NotNull`).
+  - `Department` maintains a `@OneToMany` collection of `Employee` instances with `CascadeType.PERSIST` and `CascadeType.MERGE` (no cascade delete — departments with employees cannot be deleted).
   - `User` represents authentication principals stored in a `users` table.
 - Repositories (`repository/`):
-  - `EmployeeRepository` extends `JpaRepository` and exposes `findAllWithDepartments()` using a `JOIN FETCH` query to avoid N+1 problems.
+  - `EmployeeRepository` extends `JpaRepository` and exposes `findAllWithDepartments()` and `findByIdWithDepartment()` using `LEFT JOIN FETCH` queries to avoid N+1 problems and ensure department data is always available. Also provides `countByDepartmentId()` for safe pre-delete checks.
   - `DepartmentRepository` offers standard CRUD.
   - `UserRepository` enables lookup by username for authentication flows.
-- Data initialization (`config/DataInitializer.java`) seeds 50 fake departments and 295 employees on startup using Java Faker. The initializer clears existing tables before inserting fresh demo data, which makes the demo deterministic but unsuitable for production without guards.
+- Data initialization (`config/DataInitializer.java`) seeds 50 fake departments and 295 employees on first startup using Java Faker. The initializer checks `departmentRepository.count()` and skips seeding if data already exists, making it safe for production restarts.
 
-### 3.3 Service layer
+### 3.3 DTO layer (`dto/`)
 
-- `EmployeeService` and `DepartmentService` wrap repository interactions to encapsulate CRUD logic. Both expose `getAll`, `getById`, `save`, and `delete` style methods.
+The API uses a dedicated DTO (Data Transfer Object) layer to decouple internal JPA entities from the API contract:
 
-### 3.4 API layer
+- **Request DTOs** — define the shape and validation rules for incoming requests:
+  - `EmployeeRequestDto`: validated fields (`firstName`, `lastName`, `email`, `age`, `department.id`)
+  - `DepartmentRequestDto`: validated `name` field
+  - `AuthRequestDto`: validated `username` and `password` for login/register
+  - `ResetPasswordRequestDto`: validated `username` and `newPassword`
+- **Response DTOs** — define the shape of API responses, preventing entity internals from leaking:
+  - `EmployeeResponseDto`: includes a nested `department` object with `id` and `name` (avoids circular serialization issues between Employee and Department entities)
+  - `DepartmentResponseDto`: returns `id`, `name`, and `employeeCount` (integer) instead of serializing the full employee list
+
+Controllers convert between entities and DTOs using private `convertToDto()` and `convertToEntity()` methods.
+
+### 3.4 Service layer
+
+- `EmployeeService` wraps repository interactions and uses `@Transactional` with `EntityManager.flush()` and `EntityManager.refresh()` on save operations to ensure the returned entity has fully-loaded associations (e.g., department name after save).
+- `DepartmentService` wraps repository CRUD and exposes `countEmployeesInDepartment()` for safe pre-delete validation.
+
+### 3.5 API layer
 
 - Controllers (`controller/`):
-  - `EmployeeController` and `DepartmentController` expose RESTful CRUD endpoints under `/api/employees` and `/api/departments`. They apply `@CrossOrigin(origins = "http://localhost:3000")` and annotate operations with Swagger metadata (`@Operation`, `@ApiResponses`).
-  - `AuthController` implements user registration, authentication (JWT issuance), username verification, and password reset endpoints. Responses return simple status messages or a `token` JSON payload.
+  - `EmployeeController` accepts `EmployeeRequestDto` for create/update and returns `EmployeeResponseDto`. It validates input via `@Valid`, resolves the department reference from the request DTO, and converts entities to DTOs before responding.
+  - `DepartmentController` accepts `DepartmentRequestDto` for create/update and returns `DepartmentResponseDto` (with `employeeCount`). Department deletion is rejected with 409 Conflict if the department still has employees.
+  - `AuthController` accepts `AuthRequestDto` for registration and authentication, `ResetPasswordRequestDto` for password resets. All inputs are validated with Bean Validation. The controller never exposes the `User` entity directly.
   - `HomeController` serves a default view (used for Swagger UI landing).
-- Exception handling uses `ResourceNotFoundException` annotated with `@ResponseStatus(HttpStatus.NOT_FOUND)`.
+- Exception handling (`exception/`):
+  - `GlobalExceptionHandler` (`@RestControllerAdvice`) handles `MethodArgumentNotValidException` (400), `ResourceNotFoundException` (404), `DataIntegrityViolationException` (400), `HttpMessageNotReadableException` (400), `AccessDeniedException` (403), `AuthenticationException` (401), and a generic `Exception` fallback (500). No stack traces are leaked to clients.
+  - `ResourceNotFoundException` is a custom runtime exception.
 - Documentation: the project depends on `springdoc-openapi-ui` and exposes Swagger UI at `/swagger-ui.html`.
 
 ```mermaid
@@ -113,7 +132,8 @@ sequenceDiagram
     DB-->>Repo: Row set
     Repo-->>Svc: List<Employee>
     Svc-->>Ctrl: List<Employee>
-    Ctrl-->>UI: 200 OK (JSON)
+    Ctrl->>Ctrl: convertToDto()
+    Ctrl-->>UI: 200 OK (List<EmployeeResponseDto>)
 ```
 
 ### 3.5 Configuration & environment
@@ -125,8 +145,9 @@ sequenceDiagram
 ### 3.6 Security posture
 
 - `SecurityConfig` extends `WebSecurityConfigurerAdapter`, wires `CustomUserDetailsService` with BCrypt password encoding, but ultimately disables CSRF and permits all requests (`http.csrf().disable().authorizeRequests().anyRequest().permitAll()`).
-- JWT helpers (`JwtTokenUtil`, `JwtRequestFilter`) and `CustomUserDetailsService` are present; however `JwtRequestFilter` is not registered with the HTTP security chain, and no request paths are currently protected. The authentication endpoints can issue tokens, but downstream controllers do not enforce them yet.
+- JWT helpers (`JwtTokenUtil`, `JwtRequestFilter`) and `CustomUserDetailsService` are present. `JwtTokenUtil` reads the signing secret from `${JWT_SECRET}` (environment variable, no hardcoded fallback). `JwtRequestFilter` gracefully handles invalid/expired tokens (catches `JwtException` and continues the filter chain unauthenticated). Authentication endpoints can issue tokens, but downstream controllers do not enforce them yet.
 - Password hashing uses Spring Security's BCrypt encoder before persisting to the `users` table.
+- Input validation: all request DTOs use Bean Validation (`@NotBlank`, `@Email`, `@Min`, `@Max`, `@NotNull`) enforced at the controller layer via `@Valid`.
 
 ### 3.7 Testing
 
@@ -224,9 +245,9 @@ flowchart LR
 ## 6. Security & Compliance Considerations
 
 - **Authentication & authorization**: Although JWT utilities exist, all endpoints are effectively public. Hardening requires registering `JwtRequestFilter`, protecting controller methods with `@PreAuthorize` or request matchers, and storing secrets securely.
-- **Secrets management**: Replace the checked-in credentials in `backend/config.properties` with environment-specific secrets (AWS Secrets Manager, SSM Parameter Store, or Kubernetes Secrets) before production deployment.
+- **Secrets management**: Replace the checked-in credentials in `backend/config.properties` with environment-specific secrets (AWS Secrets Manager, SSM Parameter Store, or Kubernetes Secrets) before production deployment. The JWT signing secret must be provided via the `JWT_SECRET` environment variable — the application will fail to start without it.
 - **Database migrations**: Switching from Hibernate `ddl-auto=update` to an explicit migration tool (Flyway/Liquibase) is recommended to control schema evolution.
-- **Data seeding**: Disable `DataInitializer` outside of sandbox environments.
+- **Data seeding**: `DataInitializer` is now idempotent — it only seeds when the database is empty. Safe for production restarts.
 - **CORS**: Current configuration allows all origins and credentials. Introduce an allowlist when hosting in production.
 
 ```mermaid
@@ -262,9 +283,11 @@ flowchart TD
 |------------|------------------|
 | React SPA | `frontend/src` |
 | API controllers | `backend/src/main/java/com/example/employeemanagement/controller` |
+| DTOs (request/response) | `backend/src/main/java/com/example/employeemanagement/dto` |
 | Services | `backend/src/main/java/com/example/employeemanagement/service` |
 | Repositories | `backend/src/main/java/com/example/employeemanagement/repository` |
 | Entities | `backend/src/main/java/com/example/employeemanagement/model` |
+| Exception handling | `backend/src/main/java/com/example/employeemanagement/exception` |
 | Security configuration | `backend/src/main/java/com/example/employeemanagement/security` |
 | Data seeding | `backend/src/main/java/com/example/employeemanagement/config/DataInitializer.java` |
 | Root SQL bootstrap | `data.sql` |
@@ -276,6 +299,6 @@ flowchart TD
 
 ---
 
-**Document version**: 2024-06-10
+**Document version**: 2026-03-27
 **Author**: Son Nguyen
-**Version**: 1.0.0
+**Version**: 2.0.0

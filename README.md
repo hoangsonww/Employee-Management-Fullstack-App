@@ -129,14 +129,16 @@ sequenceDiagram
     participant R as EmployeeRepository
     participant DB as MySQL
     U->>UI: Trigger "Add Employee"
-    UI->>C: POST /api/employees
-    C->>S: saveEmployee(employee)
+    UI->>C: POST /api/employees (EmployeeRequestDto)
+    C->>C: Validate @Valid + resolve Department
+    C->>S: saveEmployee(entity)
     S->>R: save(employee)
     R->>DB: INSERT row
     DB-->>R: persisted entity
-    R-->>S: Employee
-    S-->>C: Employee
-    C-->>UI: 201 Created + payload
+    S->>S: flush + refresh (load department)
+    S-->>C: Employee (with department)
+    C->>C: convertToDto(employee)
+    C-->>UI: 200 OK (EmployeeResponseDto)
 ```
 
 ### DevOps Toolchain
@@ -252,19 +254,45 @@ The frontend is also live at [https://employee-management-fullstack-app.vercel.a
 
 Here's a table listing all the RESTful API endpoints provided by this application:
 
-| Endpoint                | Method | Description                         |
-|-------------------------|--------|-------------------------------------|
-| `/api/employees`        | GET    | Get all employees                   |
-| `/api/employees/{id}`   | GET    | Get an employee by ID               |
-| `/api/employees`        | POST   | Add a new employee                  |
-| `/api/employees/{id}`   | PUT    | Update an employee by ID            |
-| `/api/employees/{id}`   | DELETE | Delete an employee by ID            |
-| `/api/departments`      | GET    | Get all departments                 |
-| `/api/departments/{id}` | GET    | Get a department by ID              |
-| `/api/departments`      | POST   | Add a new department                |
-| `/api/departments/{id}` | PUT    | Update a department by ID           |
-| `/api/departments/{id}` | DELETE | Delete a department by ID           |
-| `/swagger-ui.html`      | GET    | Access the Swagger UI documentation |
+| Endpoint                       | Method | Description                         | Request DTO              | Response DTO              |
+|--------------------------------|--------|-------------------------------------|--------------------------|---------------------------|
+| `/api/employees`               | GET    | Get all employees                   | -                        | `EmployeeResponseDto[]`   |
+| `/api/employees/{id}`          | GET    | Get an employee by ID               | -                        | `EmployeeResponseDto`     |
+| `/api/employees`               | POST   | Add a new employee                  | `EmployeeRequestDto`     | `EmployeeResponseDto`     |
+| `/api/employees/{id}`          | PUT    | Update an employee by ID            | `EmployeeRequestDto`     | `EmployeeResponseDto`     |
+| `/api/employees/{id}`          | DELETE | Delete an employee by ID            | -                        | 204 No Content            |
+| `/api/departments`             | GET    | Get all departments                 | -                        | `DepartmentResponseDto[]` |
+| `/api/departments/{id}`        | GET    | Get a department by ID              | -                        | `DepartmentResponseDto`   |
+| `/api/departments`             | POST   | Add a new department                | `DepartmentRequestDto`   | `DepartmentResponseDto`   |
+| `/api/departments/{id}`        | PUT    | Update a department by ID           | `DepartmentRequestDto`   | `DepartmentResponseDto`   |
+| `/api/departments/{id}`        | DELETE | Delete a department by ID           | -                        | 204 / 409 Conflict        |
+| `/register`                    | POST   | Register a new user                 | `AuthRequestDto`         | Success message           |
+| `/authenticate`                | POST   | Authenticate and get JWT token      | `AuthRequestDto`         | `{ token }`               |
+| `/verify-username/{username}`  | GET    | Check if a username exists          | -                        | Status message            |
+| `/reset-password`              | POST   | Reset a user's password             | `ResetPasswordRequestDto`| Status message            |
+| `/swagger-ui.html`             | GET    | Access the Swagger UI documentation | -                        | -                         |
+
+### DTO Reference
+
+**`EmployeeRequestDto`** (create/update input):
+```json
+{ "firstName": "John", "lastName": "Doe", "email": "john@example.com", "age": 30, "department": { "id": 1 } }
+```
+
+**`EmployeeResponseDto`** (API output):
+```json
+{ "id": 1, "firstName": "John", "lastName": "Doe", "email": "john@example.com", "age": 30, "department": { "id": 1, "name": "Engineering" } }
+```
+
+**`DepartmentRequestDto`** (create/update input):
+```json
+{ "name": "Engineering" }
+```
+
+**`DepartmentResponseDto`** (API output):
+```json
+{ "id": 1, "name": "Engineering", "employeeCount": 12 }
+```
 
 ## File Structure
 
@@ -403,6 +431,9 @@ MYSQL_USER=root
 MYSQL_PASSWORD=password
 MYSQL_SSL_MODE=DISABLED
 MONGO_URI=mongodb://localhost:27017/employee_management
+
+# JWT Secret (required - generate with: openssl rand -base64 32)
+JWT_SECRET=your-secret-key-here
 ```
 
 For MySQL bootstrap, you have two supported options:
@@ -419,7 +450,7 @@ Important:
 
 - The backend can auto-create missing tables in an existing blank database because `spring.jpa.hibernate.ddl-auto=update` is enabled.
 - The backend does not auto-create the database itself if `MYSQL_DB` points to a database that does not exist yet.
-- On backend startup, `DataInitializer` automatically re-seeds `departments` and `employees`.
+- On first startup, `DataInitializer` seeds `departments` and `employees` if the tables are empty. It does not re-seed on subsequent startups.
 - The `users` table is created by the schema, but user accounts are not auto-seeded.
 
 ### 5. Start the Backend Server

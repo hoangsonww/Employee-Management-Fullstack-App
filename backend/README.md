@@ -7,9 +7,12 @@ The backend of the Employee Management System is built using Spring Boot, a powe
 ## Features
 
 - **RESTful API**: Provides endpoints for CRUD operations on employees and departments.
-- **Data Initialization**: Includes sample data for departments and employees.
+- **DTO Pattern**: Request and response DTOs decouple the API contract from JPA entities, preventing circular serialization and data leakage.
+- **Bean Validation**: All request inputs are validated with `@NotBlank`, `@Email`, `@Min`, `@Max`, `@NotNull` annotations.
+- **Global Exception Handling**: Centralized `@RestControllerAdvice` handles validation errors (400), not found (404), data integrity violations (400), malformed JSON (400), auth errors (401/403), and generic exceptions (500). No stack traces are leaked.
+- **Data Initialization**: Seeds sample data on first startup only (idempotent — skips if data exists).
 - **Integration**: Connects to both MySQL and MongoDB databases.
-- **Exception Handling**: Custom error handling for not found resources.
+- **JWT Authentication**: Token-based auth with externalized secret (`JWT_SECRET` env var). Invalid/expired tokens are handled gracefully.
 
 ## Technologies
 
@@ -33,26 +36,42 @@ mindmap
                 CorsConfig.java
                 DataInitializer.java
               controller
+                AuthController.java
                 DepartmentController.java
                 EmployeeController.java
+                HomeController.java
+              dto
+                AuthRequestDto.java
+                DepartmentRequestDto.java
+                DepartmentResponseDto.java
+                EmployeeRequestDto.java
+                EmployeeResponseDto.java
+                ResetPasswordRequestDto.java
+              exception
+                GlobalExceptionHandler.java
+                ResourceNotFoundException.java
               model
                 Department.java
                 Employee.java
+                User.java
               repository
                 DepartmentRepository.java
                 EmployeeRepository.java
+                UserRepository.java
+              security
+                CustomUserDetailsService.java
+                JwtRequestFilter.java
+                JwtTokenUtil.java
+                SecurityConfig.java
               service
-                DataInitializer.java
-              exception
-                ResourceNotFoundException.java
+                DepartmentService.java
+                EmployeeService.java
           resources
             application.properties
-            data.sql
         test/java/com/example/employeemanagement
-          EmployeeManagementApplicationTests.java
-      .gitignore
       pom.xml
-      compose.yaml
+      config.properties
+      Dockerfile
     frontend
       (frontend code)
 ```
@@ -88,6 +107,9 @@ MYSQL_USER=root
 MYSQL_PASSWORD=password
 MYSQL_SSL_MODE=DISABLED
 MONGO_URI=mongodb://localhost:27017/employee_management
+
+# JWT Secret (required - generate with: openssl rand -base64 32)
+JWT_SECRET=your-secret-key-here
 ```
 
 The active datasource config lives in `src/main/resources/application.properties` and expects those variables to exist.
@@ -132,13 +154,15 @@ Here are some example API endpoints you can use to interact with the backend:
 - **Create a New Employee:**
 
   ```bash
-  curl -X POST http://localhost:8080/api/employees -H "Content-Type: application/json" -d '{"firstName": "John", "lastName": "Doe", "email": "john.doe@example.com", "departmentId": 1}'
+  curl -X POST http://localhost:8080/api/employees -H "Content-Type: application/json" \
+    -d '{"firstName": "John", "lastName": "Doe", "email": "john.doe@example.com", "age": 30, "department": {"id": 1}}'
   ```
 
 - **Update an Employee:**
 
   ```bash
-  curl -X PUT http://localhost:8080/api/employees/1 -H "Content-Type: application/json" -d '{"firstName": "John", "lastName": "Doe", "email": "john.doe@example.com", "departmentId": 1}'
+  curl -X PUT http://localhost:8080/api/employees/1 -H "Content-Type: application/json" \
+    -d '{"firstName": "John", "lastName": "Doe", "email": "john.updated@example.com", "age": 31, "department": {"id": 1}}'
   ```
 
 - **Delete an Employee:**
@@ -163,14 +187,11 @@ Here are some example API endpoints you can use to interact with the backend:
 
 `config/DataInitializer.java` automatically runs on backend startup.
 
-It does the following every time the backend starts:
+It is **idempotent** — it only seeds data if the database is empty:
 
-- deletes all existing `employees`
-- deletes all existing `departments`
-- inserts 50 fake departments
-- inserts 295 fake employees
-
-It does not seed the `users` table. Login accounts must be created through the UI or the auth endpoints.
+- If `departments` table has data, seeding is skipped entirely
+- On a fresh database, it inserts 50 fake departments and 295 fake employees
+- It does not seed the `users` table. Login accounts must be created through the UI or the auth endpoints
 
 ### 7. Running Tests
 
@@ -186,33 +207,44 @@ mvn test
 
 The main class that serves as the entry point for the Spring Boot application.
 
-### `DepartmentController.java` and `EmployeeController.java`
+### Controllers (`controller/`)
 
-REST controllers for handling HTTP requests related to departments and employees, respectively.
+- `EmployeeController.java` — REST endpoints for employee CRUD. Accepts `EmployeeRequestDto`, returns `EmployeeResponseDto`.
+- `DepartmentController.java` — REST endpoints for department CRUD. Accepts `DepartmentRequestDto`, returns `DepartmentResponseDto`. Rejects deleting departments that still have employees (409 Conflict).
+- `AuthController.java` — User registration, authentication (JWT), username verification, and password reset. Accepts `AuthRequestDto` / `ResetPasswordRequestDto`.
+- `HomeController.java` — Default landing redirect to Swagger UI.
 
-### `Department.java` and `Employee.java`
+### DTOs (`dto/`)
 
-Entity classes representing the `departments` and `employees` tables in the MySQL database.
+- `EmployeeRequestDto.java` — Input validation for employee create/update (firstName, lastName, email, age, department.id)
+- `EmployeeResponseDto.java` — API response with nested `department: {id, name}`
+- `DepartmentRequestDto.java` — Input validation for department create/update (name)
+- `DepartmentResponseDto.java` — API response with `id`, `name`, `employeeCount`
+- `AuthRequestDto.java` — Input validation for login/register (username, password)
+- `ResetPasswordRequestDto.java` — Input validation for password reset (username, newPassword)
 
-### `DepartmentRepository.java` and `EmployeeRepository.java`
+### Entities (`model/`)
 
-Repository interfaces for performing CRUD operations on the `departments` and `employees` entities.
+- `Department.java` and `Employee.java` — JPA entities with Bean Validation annotations.
+- `User.java` — Authentication principal entity.
 
-### `DataInitializer.java`
+### Exception Handling (`exception/`)
 
-A service class that initializes the database with sample data upon application startup.
+- `GlobalExceptionHandler.java` — Centralized `@RestControllerAdvice` that handles validation errors, not found, data integrity violations, malformed JSON, auth errors, and a generic fallback. No stack traces leak to clients.
+- `ResourceNotFoundException.java` — Custom runtime exception for missing resources.
 
-### `ResourceNotFoundException.java`
+### Repositories, Services, Security, Config
 
-A custom exception class used for handling cases where requested resources are not found.
+- `EmployeeRepository.java` — `LEFT JOIN FETCH` queries for eager department loading + `countByDepartmentId()`
+- `EmployeeService.java` — `@Transactional` save with `flush` + `refresh` for complete entity state
+- `DepartmentService.java` — CRUD + `countEmployeesInDepartment()` for safe deletion checks
+- `JwtTokenUtil.java` — JWT signing/verification with externalized `${JWT_SECRET}`
+- `JwtRequestFilter.java` — Graceful handling of invalid/expired tokens
+- `DataInitializer.java` — Idempotent seeding (skips if data exists)
 
 ### `application.properties`
 
-Configuration file for Spring Boot, including database connection settings.
-
-### `data.sql`
-
-SQL script for preloading sample data into the MySQL database.
+Configuration file for Spring Boot, including database connection settings and `jwt.secret` (requires `JWT_SECRET` env var).
 
 ## Swagger API Documentation
 

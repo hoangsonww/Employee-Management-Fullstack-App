@@ -1,47 +1,51 @@
 package com.example.employeemanagement.dto;
 
-public class EmployeeResponseDto {
-    private Long id;
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String departmentName;
-    private int age;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-    public Long getId() {
-        return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
-    }
-    public String getFirstName() {
-        return firstName;
-    }
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-    public String getLastName() {
-        return lastName;
-    }
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-    public String getEmail() {
-        return email;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    public String getDepartmentName() {
-        return departmentName;
-    }
-    public void setDepartmentName(String departmentName) {
-        this.departmentName = departmentName;
-    }
-    public int getAge() {
-        return age;
-    }
-    public void setAge(int age) {
-        this.age = age;
-    }
+/**
+ * Data Transfer Object for employee responses.
+ *
+ * <p>Returned by the API when employee information is requested. Contains the employee's personal
+ * details and a nested representation of their department.
+ */
+@Data
+@NoArgsConstructor
+public class EmployeeResponseDto {
+
+  /** The unique identifier of the employee. */
+  private Long id;
+
+  /** The first name of the employee. */
+  private String firstName;
+
+  /** The last name of the employee. */
+  private String lastName;
+
+  /** The email address of the employee. */
+  private String email;
+
+  /** The age of the employee. */
+  private int age;
+
+  /** The department the employee belongs to. */
+  private DepartmentDto department;
+
+  /**
+   * Nested DTO representing department information within an employee response.
+   *
+   * <p>Provides a lightweight view of the department containing only its ID and name, avoiding
+   * circular references with the full {@link com.example.employeemanagement.model.Department}
+   * entity.
+   */
+  @Data
+  @NoArgsConstructor
+  public static class DepartmentDto {
+
+    /** The unique identifier of the department. */
+    private Long id;
+
+    /** The name of the department. */
+    private String name;
+  }
 }
