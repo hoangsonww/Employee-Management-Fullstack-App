@@ -239,8 +239,8 @@
     </configuration>
     <list>
       <item itemvalue="Jest.renders dashboard with metrics" />
-      <item itemvalue="npm.format" />
       <item itemvalue="npm.frontend" />
+      <item itemvalue="npm.format" />
       <item itemvalue="npm.start" />
       <item itemvalue="npm.test" />
     </list>
