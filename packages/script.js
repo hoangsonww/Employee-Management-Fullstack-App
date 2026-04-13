@@ -64,6 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initSmoothScrolling();
   initTabSwitching();
   initAnimations();
+  initMarqueeHoverPause();
   initLazyLoading();
   initNavbarScroll();
   initStatCounters();
@@ -305,14 +306,13 @@ function initAnimations() {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        entry.target.style.opacity = "1";
-        entry.target.style.transform = "translateY(0)";
+        entry.target.classList.add("revealed");
         observer.unobserve(entry.target);
       }
     });
   }, observerOptions);
 
-  // Animate cards and sections
+  // All elements to animate on scroll reveal
   const animatedElements = document.querySelectorAll(`
         .card,
         .feature-card,
@@ -320,14 +320,68 @@ function initAnimations() {
         .stage-card,
         .step,
         .api-section,
-        .tech-category
+        .tech-category,
+        .section-title,
+        .section-description,
+        .architecture-diagram,
+        .architecture-layers,
+        .layer,
+        .screenshot-item,
+        .pipeline-diagram,
+        .pipeline-stages h3,
+        .structure-card,
+        .standard-card,
+        .code-standards h3,
+        .deployment-diagram-large,
+        .setup-tabs,
+        .footer-section,
+        .diagram-title-centered,
+        .setup-section
     `);
 
   animatedElements.forEach((el) => {
-    el.style.opacity = "0";
-    el.style.transform = "translateY(30px)";
-    el.style.transition = "all 0.6s ease-out";
+    el.classList.add("reveal");
     observer.observe(el);
+  });
+
+  // Add staggered delays to grid/flex children
+  const staggerContainers = document.querySelectorAll(
+    ".content-grid, .features-grid, .deployment-grid, .stages-grid, .layers-grid, .structure-grid, .standards-grid, .contributing-steps, .screenshots-grid, .footer-content",
+  );
+
+  staggerContainers.forEach((container) => {
+    Array.from(container.children).forEach((child, index) => {
+      child.style.transitionDelay = `${index * 0.1}s`;
+    });
+  });
+}
+
+/**
+ * Pause marquee animation when any chip is hovered
+ */
+function initMarqueeHoverPause() {
+  const marquee = document.querySelector(".hero-marquee");
+  const track = marquee?.querySelector(".marquee-track");
+  const chips = marquee?.querySelectorAll(".marquee-chip");
+
+  if (!track || !chips || chips.length === 0) return;
+
+  const hoveredChips = new Set();
+
+  const syncPauseState = () => {
+    track.classList.toggle("paused", hoveredChips.size > 0);
+  };
+
+  chips.forEach((chip) => {
+    chip.addEventListener("pointerenter", () => {
+      hoveredChips.add(chip);
+      syncPauseState();
+    });
+
+    chip.addEventListener("pointerleave", () => {
+      hoveredChips.delete(chip);
+      requestAnimationFrame(syncPauseState);
+    });
   });
 }
 
@@ -379,7 +433,7 @@ function initNavbarScroll() {
  */
 function initStatCounters() {
   const stats = document.querySelectorAll(".stat-value");
-  const speed = 200; // Animation speed
+  const duration = 2000;
 
   const observerOptions = {
     threshold: 0.5,
@@ -392,7 +446,8 @@ function initStatCounters() {
         const target = stat.textContent.replace(/\D/g, "");
 
         if (target) {
-          animateCounter(stat, 0, parseInt(target), speed);
+          stat.classList.add("counting");
+          animateCounter(stat, 0, parseInt(target), duration);
           observer.unobserve(stat);
         }
       }
@@ -403,23 +458,34 @@ function initStatCounters() {
 }
 
 /**
- * Animate number counter
+ * Animate number counter with easing
  */
 function animateCounter(element, start, end, duration) {
   const range = end - start;
-  const increment = range / (duration / 16);
-  let current = start;
   const suffix = element.textContent.replace(/[0-9]/g, "");
+  const startTime = performance.now();
 
-  const timer = setInterval(() => {
-    current += increment;
-    if (current >= end) {
-      element.textContent = end + suffix;
-      clearInterval(timer);
+  function easeOutQuart(t) {
+    return 1 - Math.pow(1 - t, 4);
+  }
+
+  function update(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const easedProgress = easeOutQuart(progress);
+    const current = Math.floor(start + range * easedProgress);
+
+    element.textContent = current + suffix;
+
+    if (progress < 1) {
+      requestAnimationFrame(update);
     } else {
-      element.textContent = Math.floor(current) + suffix;
+      element.textContent = end + suffix;
+      element.classList.remove("counting");
     }
-  }, 16);
+  }
+
+  requestAnimationFrame(update);
 }
 
 /**
@@ -429,58 +495,63 @@ function initCodeBlockCopy() {
   const codeBlocks = document.querySelectorAll(".code-block");
 
   codeBlocks.forEach((block) => {
-    // Wrap the block if not already wrapped
-    if (!block.parentElement.classList.contains("code-block-wrapper")) {
-      const wrapper = document.createElement("div");
-      wrapper.className = "code-block-wrapper";
-      block.parentNode.insertBefore(wrapper, block);
-      wrapper.appendChild(block);
+    if (block.parentElement.classList.contains("code-block-wrapper")) return;
 
-      // Create copy button
-      const copyButton = document.createElement("button");
-      copyButton.className = "copy-button";
-      copyButton.innerHTML = `
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                </svg>
-            `;
-      copyButton.title = "Copy to clipboard";
+    const wrapper = document.createElement("div");
+    wrapper.className = "code-block-wrapper";
+    block.parentNode.insertBefore(wrapper, block);
 
-      // Add button to wrapper (not the scrolling block)
-      wrapper.appendChild(copyButton);
+    // Create macOS-style header bar
+    const header = document.createElement("div");
+    header.className = "code-block-header";
 
-      // Copy functionality
-      copyButton.addEventListener("click", () => {
-        const code = block.querySelector("code, pre").textContent;
+    const dots = document.createElement("div");
+    dots.className = "code-block-dots";
+    dots.innerHTML = "<span></span><span></span><span></span>";
 
-        navigator.clipboard
-          .writeText(code)
-          .then(() => {
+    const copyButton = document.createElement("button");
+    copyButton.className = "copy-button";
+    copyButton.innerHTML = `
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+      </svg>
+      <span>Copy</span>`;
+    copyButton.title = "Copy to clipboard";
+
+    header.appendChild(dots);
+    header.appendChild(copyButton);
+    wrapper.appendChild(header);
+    wrapper.appendChild(block);
+
+    copyButton.addEventListener("click", () => {
+      const codeEl = block.querySelector("code, pre");
+      const code = codeEl ? codeEl.textContent : block.textContent;
+
+      navigator.clipboard
+        .writeText(code)
+        .then(() => {
+          copyButton.innerHTML = `
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+            <span>Copied!</span>`;
+          copyButton.classList.add("copied");
+
+          setTimeout(() => {
             copyButton.innerHTML = `
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
-                    `;
-            copyButton.style.background = "rgba(16, 185, 129, 0.2)";
-            copyButton.style.borderColor = "rgba(16, 185, 129, 0.4)";
-
-            setTimeout(() => {
-              copyButton.innerHTML = `
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                            </svg>
-                        `;
-              copyButton.style.background = "rgba(255, 255, 255, 0.15)";
-              copyButton.style.borderColor = "rgba(255, 255, 255, 0.3)";
-            }, 2000);
-          })
-          .catch((err) => {
-            console.error("Failed to copy:", err);
-          });
-      });
-    }
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              <span>Copy</span>`;
+            copyButton.classList.remove("copied");
+          }, 2000);
+        })
+        .catch((err) => {
+          console.error("Failed to copy:", err);
+        });
+    });
   });
 }
 

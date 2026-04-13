@@ -29,28 +29,28 @@ db.createCollection("departments", {
       properties: {
         _id: {
           bsonType: "objectId",
-          description: "Auto-generated unique identifier"
+          description: "Auto-generated unique identifier",
         },
         name: {
           bsonType: "string",
           minLength: 1,
           maxLength: 255,
-          description: "Department name — required, non-empty"
+          description: "Department name — required, non-empty",
         },
         createdAt: {
           bsonType: "date",
-          description: "Timestamp of creation"
+          description: "Timestamp of creation",
         },
         updatedAt: {
           bsonType: "date",
-          description: "Timestamp of last update"
-        }
+          description: "Timestamp of last update",
+        },
       },
-      additionalProperties: false
-    }
+      additionalProperties: false,
+    },
   },
   validationLevel: "strict",
-  validationAction: "error"
+  validationAction: "error",
 });
 print("  ✓ Created collection: departments");
 
@@ -71,53 +71,53 @@ db.createCollection("employees", {
       properties: {
         _id: {
           bsonType: "objectId",
-          description: "Auto-generated unique identifier"
+          description: "Auto-generated unique identifier",
         },
         firstName: {
           bsonType: "string",
           minLength: 1,
           maxLength: 255,
-          description: "Employee first name — required"
+          description: "Employee first name — required",
         },
         lastName: {
           bsonType: "string",
           minLength: 1,
           maxLength: 255,
-          description: "Employee last name — required"
+          description: "Employee last name — required",
         },
         email: {
           bsonType: "string",
           maxLength: 255,
-          description: "Employee email address — required"
+          description: "Employee email address — required",
         },
         age: {
           bsonType: "int",
           minimum: 18,
           maximum: 65,
-          description: "Employee age — must be between 18 and 65"
+          description: "Employee age — must be between 18 and 65",
         },
         departmentId: {
           bsonType: "objectId",
-          description: "Reference to the department this employee belongs to"
+          description: "Reference to the department this employee belongs to",
         },
         departmentName: {
           bsonType: "string",
-          description: "Denormalized department name for read performance"
+          description: "Denormalized department name for read performance",
         },
         createdAt: {
           bsonType: "date",
-          description: "Timestamp of creation"
+          description: "Timestamp of creation",
         },
         updatedAt: {
           bsonType: "date",
-          description: "Timestamp of last update"
-        }
+          description: "Timestamp of last update",
+        },
       },
-      additionalProperties: false
-    }
+      additionalProperties: false,
+    },
   },
   validationLevel: "strict",
-  validationAction: "error"
+  validationAction: "error",
 });
 print("  ✓ Created collection: employees");
 
@@ -137,33 +137,33 @@ db.createCollection("users", {
       properties: {
         _id: {
           bsonType: "objectId",
-          description: "Auto-generated unique identifier"
+          description: "Auto-generated unique identifier",
         },
         username: {
           bsonType: "string",
           minLength: 1,
           maxLength: 255,
-          description: "Unique login username — required"
+          description: "Unique login username — required",
         },
         password: {
           bsonType: "string",
           minLength: 1,
-          description: "BCrypt-hashed password — required"
+          description: "BCrypt-hashed password — required",
         },
         createdAt: {
           bsonType: "date",
-          description: "Timestamp of account creation"
+          description: "Timestamp of account creation",
         },
         updatedAt: {
           bsonType: "date",
-          description: "Timestamp of last update"
-        }
+          description: "Timestamp of last update",
+        },
       },
-      additionalProperties: false
-    }
+      additionalProperties: false,
+    },
   },
   validationLevel: "strict",
-  validationAction: "error"
+  validationAction: "error",
 });
 print("  ✓ Created collection: users");
 

@@ -19,10 +19,7 @@ print(`\n=== Creating indexes for: ${DB_NAME} ===\n`);
 // departments indexes
 // ---------------------------------------------------------------------------
 // Supports department name lookup and filtering
-db.departments.createIndex(
-  { name: 1 },
-  { name: "idx_departments_name" }
-);
+db.departments.createIndex({ name: 1 }, { name: "idx_departments_name" });
 print("  ✓ departments.idx_departments_name");
 
 // ---------------------------------------------------------------------------
@@ -31,35 +28,29 @@ print("  ✓ departments.idx_departments_name");
 // Supports: lookup by department (equivalent to FK index in MySQL)
 db.employees.createIndex(
   { departmentId: 1 },
-  { name: "idx_employees_department_id" }
+  { name: "idx_employees_department_id" },
 );
 print("  ✓ employees.idx_employees_department_id");
 
 // Supports: employee lookup by email
-db.employees.createIndex(
-  { email: 1 },
-  { name: "idx_employees_email" }
-);
+db.employees.createIndex({ email: 1 }, { name: "idx_employees_email" });
 print("  ✓ employees.idx_employees_email");
 
 // Supports: name-based sorting and filtering (compound index)
 db.employees.createIndex(
   { lastName: 1, firstName: 1 },
-  { name: "idx_employees_last_first" }
+  { name: "idx_employees_last_first" },
 );
 print("  ✓ employees.idx_employees_last_first");
 
 // Supports: age range queries
-db.employees.createIndex(
-  { age: 1 },
-  { name: "idx_employees_age" }
-);
+db.employees.createIndex({ age: 1 }, { name: "idx_employees_age" });
 print("  ✓ employees.idx_employees_age");
 
 // Supports: department-scoped queries with name sorting
 db.employees.createIndex(
   { departmentId: 1, lastName: 1, firstName: 1 },
-  { name: "idx_employees_dept_name" }
+  { name: "idx_employees_dept_name" },
 );
 print("  ✓ employees.idx_employees_dept_name");
 
@@ -69,7 +60,7 @@ print("  ✓ employees.idx_employees_dept_name");
 // Unique index on username — equivalent to UNIQUE constraint in MySQL
 db.users.createIndex(
   { username: 1 },
-  { unique: true, name: "idx_users_username_unique" }
+  { unique: true, name: "idx_users_username_unique" },
 );
 print("  ✓ users.idx_users_username_unique");
 

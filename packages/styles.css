@@ -333,19 +333,26 @@ a:hover {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(-45deg, #0f172a, #1e3c72, #2a5298, #667eea, #764ba2, #4338ca);
+    background-size: 400% 400%;
+    animation: heroGradient 20s ease infinite;
     color: var(--white);
     padding: var(--spacing-3xl) 0;
     text-align: center;
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
+    overflow: hidden;
 }
 
 .hero-content {
     max-width: 900px;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
 }
 
 .hero-title {
@@ -359,7 +366,7 @@ a:hover {
 .hero-description {
     font-size: 1.25rem;
     line-height: 1.8;
-    margin-bottom: var(--spacing-2xl);
+    margin-bottom: var(--spacing-lg);
     opacity: 0.95;
     animation: fadeInUp 1s ease-out 0.2s both;
 }
@@ -369,6 +376,7 @@ a:hover {
     gap: var(--spacing-lg);
     justify-content: center;
     flex-wrap: wrap;
+    margin-top: var(--spacing-lg);
     margin-bottom: var(--spacing-3xl);
     animation: fadeInUp 1s ease-out 0.4s both;
 }
@@ -943,47 +951,58 @@ a:hover {
     color: var(--primary-dark);
 }
 
-/* Code Blocks */
+/* Code Blocks - macOS Window Style */
 .code-block-wrapper {
     position: relative;
     margin: var(--spacing-md) 0;
     max-width: 100%;
+    border-radius: var(--radius-lg);
     overflow: hidden;
+    background: #1e1e1e;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25), 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .code-block {
-    background: var(--gray-900);
+    background: #1e1e1e;
     padding: var(--spacing-lg);
-    border-radius: var(--radius-lg);
+    border-radius: 0;
     overflow-x: auto;
-    box-shadow: var(--shadow-lg);
+    box-shadow: none;
     max-width: 100%;
 }
 
 .copy-button {
-    position: absolute !important;
-    top: 8px !important;
-    right: 8px !important;
-    background: rgba(255, 255, 255, 0.15) !important;
-    border: 1px solid rgba(255, 255, 255, 0.3) !important;
-    border-radius: 3px !important;
-    color: #e5e7eb !important;
-    cursor: pointer !important;
-    padding: 4px !important;
-    transition: all 0.3s ease !important;
-    opacity: 0.7 !important;
-    z-index: 10 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 24px !important;
-    height: 24px !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+    color: #9ca3af;
+    cursor: pointer;
+    padding: 4px 10px;
+    transition: all 0.25s ease;
+    font-size: 0.72rem;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
 }
 
 .copy-button:hover {
-    background: rgba(255, 255, 255, 0.25) !important;
-    opacity: 1 !important;
-    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.15);
+    color: #e5e7eb;
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.copy-button.copied {
+    background: rgba(16, 185, 129, 0.15);
+    border-color: rgba(16, 185, 129, 0.4);
+    color: #34d399;
+}
+
+.copy-button svg {
+    flex-shrink: 0;
 }
 
 .code-block code,
@@ -1268,6 +1287,10 @@ a:hover {
     margin-top: var(--spacing-3xl);
 }
 
+.footer a:hover {
+    text-decoration: underline;
+}
+
 .footer-content {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -1303,6 +1326,7 @@ a:hover {
 
 .footer-links a:hover {
     color: var(--primary-light);
+    text-decoration: underline;
     transform: translateX(5px);
 }
 
@@ -1613,6 +1637,241 @@ a:hover {
     
     .structure-card .code-block {
         padding: var(--spacing-sm);
+    }
+}
+
+/* ==========================================
+   Hero Background Shapes
+   ========================================== */
+@keyframes heroGradient {
+    0% { background-position: 0% 50%; }
+    25% { background-position: 50% 100%; }
+    50% { background-position: 100% 50%; }
+    75% { background-position: 50% 0%; }
+    100% { background-position: 0% 50%; }
+}
+
+.hero-bg-shapes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.hero-bg-shapes .shape {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.03);
+    animation: shapeFloat linear infinite;
+}
+
+.shape-1 {
+    width: 400px;
+    height: 400px;
+    top: -100px;
+    left: -100px;
+    animation-duration: 25s !important;
+    background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%) !important;
+}
+
+.shape-2 {
+    width: 300px;
+    height: 300px;
+    top: 50%;
+    right: -80px;
+    animation-duration: 20s !important;
+    animation-delay: -5s;
+    background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%) !important;
+}
+
+.shape-3 {
+    width: 200px;
+    height: 200px;
+    bottom: -50px;
+    left: 20%;
+    animation-duration: 18s !important;
+    animation-delay: -3s;
+    background: radial-gradient(circle, rgba(139,92,246,0.12) 0%, transparent 70%) !important;
+}
+
+.shape-4 {
+    width: 150px;
+    height: 150px;
+    top: 30%;
+    left: 60%;
+    animation-duration: 22s !important;
+    animation-delay: -8s;
+    background: radial-gradient(circle, rgba(59,130,246,0.1) 0%, transparent 70%) !important;
+}
+
+.shape-5 {
+    width: 250px;
+    height: 250px;
+    bottom: 10%;
+    right: 15%;
+    animation-duration: 28s !important;
+    animation-delay: -12s;
+    background: radial-gradient(circle, rgba(168,85,247,0.1) 0%, transparent 70%) !important;
+}
+
+.shape-6 {
+    width: 180px;
+    height: 180px;
+    top: 15%;
+    left: 35%;
+    animation-duration: 24s !important;
+    animation-delay: -7s;
+    background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%) !important;
+}
+
+@keyframes shapeFloat {
+    0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+    25% { transform: translate(30px, -40px) rotate(90deg) scale(1.1); }
+    50% { transform: translate(-20px, 20px) rotate(180deg) scale(0.95); }
+    75% { transform: translate(40px, 30px) rotate(270deg) scale(1.05); }
+    100% { transform: translate(0, 0) rotate(360deg) scale(1); }
+}
+
+/* ==========================================
+   Hero Marquee
+   ========================================== */
+.hero-marquee {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    overflow: hidden;
+    padding: 1rem 0 1.5rem;
+    position: relative;
+    z-index: 1;
+    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+.marquee-track {
+    display: flex;
+    gap: 0.75rem;
+    animation: marqueeScroll 40s linear infinite;
+    width: max-content;
+}
+
+.marquee-track.paused {
+    animation-play-state: paused;
+}
+
+.marquee-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1.1rem;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 0.82rem;
+    font-weight: 600;
+    white-space: nowrap;
+    flex-shrink: 0;
+    letter-spacing: 0.02em;
+    transition: all 0.3s ease;
+}
+
+.marquee-chip:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.35);
+    transform: translateY(-2px);
+}
+
+@keyframes marqueeScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* ==========================================
+   macOS Code Block Header
+   ========================================== */
+.code-block-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    background: #2d2d30;
+    border-bottom: 1px solid #404045;
+}
+
+.code-block-dots {
+    display: flex;
+    gap: 7px;
+    align-items: center;
+}
+
+.code-block-dots span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: block;
+}
+
+.code-block-dots span:nth-child(1) { background: #ff5f57; }
+.code-block-dots span:nth-child(2) { background: #febc2e; }
+.code-block-dots span:nth-child(3) { background: #28c840; }
+
+/* ==========================================
+   Scroll Reveal Animations
+   ========================================== */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Count-up glow */
+.stat-value.counting {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    transition: text-shadow 0.3s ease;
+}
+
+/* ==========================================
+   Enhanced Responsive for New Features
+   ========================================== */
+@media (max-width: 768px) {
+    .hero-marquee {
+        padding: 1rem 0 0;
+    }
+
+    .marquee-chip {
+        padding: 0.4rem 0.85rem;
+        font-size: 0.75rem;
+    }
+
+    .code-block-header {
+        padding: 8px 12px;
+    }
+
+    .code-block-dots span {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-bg-shapes .shape {
+        opacity: 0.5;
+        transform: scale(0.5);
+    }
+
+    .marquee-chip {
+        padding: 0.35rem 0.75rem;
+        font-size: 0.7rem;
     }
 }
 

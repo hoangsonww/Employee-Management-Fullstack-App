@@ -14,7 +14,12 @@ db = db.getSiblingDB(DB_NAME);
 print(`\n=== Dropping all collections in: ${DB_NAME} ===\n`);
 
 // Drop views first (they depend on collections)
-const views = ["v_employees_with_department", "v_department_summary", "v_department_age_stats", "v_empty_departments"];
+const views = [
+  "v_employees_with_department",
+  "v_department_summary",
+  "v_department_age_stats",
+  "v_empty_departments",
+];
 views.forEach((v) => {
   try {
     db[v].drop();
