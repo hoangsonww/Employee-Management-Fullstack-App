@@ -16,6 +16,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,140 +34,132 @@ import org.springframework.web.bind.annotation.RestController;
 @Tag(name = "Department APIs", description = "API Operations related to managing departments")
 public class DepartmentController {
 
-  /** Service layer for department business logic. */
-  @Autowired private DepartmentService departmentService;
+    @Autowired
+    private DepartmentService departmentService;
 
-  /**
-   * Get all departments API.
-   *
-   * @return List of all departments
-   */
-  @Operation(summary = "Get all departments", description = "Retrieve a list of all departments")
-  @GetMapping
-  public List<DepartmentResponseDto> getAllDepartments() {
-    return departmentService.getAllDepartments().stream()
-        .map(this::convertToDto)
-        .collect(Collectors.toList());
-  }
-
-  /**
-   * Get department by ID API.
-   *
-   * @param id ID of the department to be retrieved
-   * @return Department with the specified ID
-   */
-  @Operation(
-      summary = "Get department by ID",
-      description = "Retrieve a specific department by its ID")
-  @ApiResponses(
-      value = {
-        @ApiResponse(responseCode = "200", description = "Department found"),
-        @ApiResponse(responseCode = "404", description = "Department not found")
-      })
-  @GetMapping("/{id}")
-  public ResponseEntity<DepartmentResponseDto> getDepartmentById(
-      @Parameter(description = "ID of the department to be retrieved") @PathVariable Long id) {
-    Department department =
-        departmentService
-            .getDepartmentById(id)
-            .orElseThrow(
-                () -> new ResourceNotFoundException("Department not found with id: " + id));
-    return ResponseEntity.ok(convertToDto(department));
-  }
-
-  /**
-   * Create a new department API.
-   *
-   * @param request Department details
-   * @return Created department object
-   */
-  @Operation(summary = "Create a new department", description = "Create a new department record")
-  @ApiResponse(responseCode = "201", description = "Department created successfully")
-  @PostMapping
-  public ResponseEntity<DepartmentResponseDto> createDepartment(
-      @Valid @RequestBody DepartmentRequestDto request) {
-    Department department = new Department();
-    department.setName(request.getName());
-    Department created = departmentService.saveDepartment(department);
-    return ResponseEntity.status(HttpStatus.CREATED).body(convertToDto(created));
-  }
-
-  /**
-   * Update an existing department API.
-   *
-   * @param id ID of the department to be updated
-   * @param request Updated department details
-   * @return Updated department object
-   */
-  @Operation(
-      summary = "Update an existing department",
-      description = "Update an existing department's details")
-  @ApiResponses(
-      value = {
-        @ApiResponse(responseCode = "200", description = "Department updated"),
-        @ApiResponse(responseCode = "404", description = "Department not found")
-      })
-  @PutMapping("/{id}")
-  public ResponseEntity<DepartmentResponseDto> updateDepartment(
-      @Parameter(description = "ID of the department to be updated") @PathVariable Long id,
-      @Valid @RequestBody DepartmentRequestDto request) {
-    Department department =
-        departmentService
-            .getDepartmentById(id)
-            .orElseThrow(
-                () -> new ResourceNotFoundException("Department not found with id: " + id));
-
-    department.setName(request.getName());
-
-    Department updatedDepartment = departmentService.saveDepartment(department);
-    return ResponseEntity.ok(convertToDto(updatedDepartment));
-  }
-
-  /**
-   * Delete a department API.
-   *
-   * @param id ID of the department to be deleted
-   * @return Response entity with no content
-   */
-  @Operation(summary = "Delete a department", description = "Delete a department record by ID")
-  @ApiResponses(
-      value = {
-        @ApiResponse(responseCode = "204", description = "Department deleted"),
-        @ApiResponse(responseCode = "404", description = "Department not found")
-      })
-  @DeleteMapping("/{id}")
-  public ResponseEntity<?> deleteDepartment(
-      @Parameter(description = "ID of the department to be deleted") @PathVariable Long id) {
-    departmentService
-        .getDepartmentById(id)
-        .orElseThrow(() -> new ResourceNotFoundException("Department not found with id: " + id));
-
-    long employeeCount = departmentService.countEmployeesInDepartment(id);
-    if (employeeCount > 0) {
-      java.util.Map<String, String> error = new java.util.HashMap<>();
-      error.put(
-          "message",
-          "Cannot delete department with "
-              + employeeCount
-              + " employees. Reassign or remove employees first.");
-      return ResponseEntity.status(HttpStatus.CONFLICT).body(error);
+    /**
+     * Get all departments API.
+     *
+     * @return list of all departments
+     */
+    @Operation(
+            summary = "Get all departments",
+            description = "Retrieve a list of all departments along with employee count"
+    )
+    @ApiResponse(responseCode = "200", description = "Departments retrieved successfully")
+    @GetMapping
+    @PreAuthorize("isAuthenticated()")
+    public List<DepartmentResponseDto> getAllDepartments() {
+        return departmentService.getAllDepartments().stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
     }
 
-    departmentService.deleteDepartment(id);
-    return ResponseEntity.noContent().build();
-  }
+    /**
+     * Get department by ID API.
+     *
+     * @param id ID of the department
+     * @return department details
+     */
+    @Operation(
+            summary = "Get department by ID",
+            description = "Retrieve a specific department by its ID"
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Department found"),
+            @ApiResponse(responseCode = "404", description = "Department not found")
+    })
+    @GetMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
+    public ResponseEntity<DepartmentResponseDto> getDepartmentById(@PathVariable Long id) {
+        Department department = departmentService.getDepartmentOrThrow(id);
+        return ResponseEntity.ok(convertToDto(department));
+    }
 
-  /**
-   * Converts a {@link Department} entity to a {@link DepartmentResponseDto}.
-   *
-   * @param department the department entity to convert
-   * @return the corresponding response DTO
-   */
-  private DepartmentResponseDto convertToDto(Department department) {
-    DepartmentResponseDto dto = new DepartmentResponseDto();
-    dto.setId(department.getId());
-    dto.setName(department.getName());
-    dto.setEmployeeCount(department.getEmployees() != null ? department.getEmployees().size() : 0);
-    return dto;
-  }
+    /**
+     * Create department API.
+     *
+     * @param request department details
+     * @return created department
+     */
+    @Operation(
+            summary = "Create a new department",
+            description = "Create a new department with the given name"
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201", description = "Department created successfully"),
+            @ApiResponse(responseCode = "400", description = "Invalid input data")
+    })
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PostMapping
+    public ResponseEntity<DepartmentResponseDto> createDepartment(
+            @Valid @RequestBody DepartmentRequestDto request) {
+
+        Department created = departmentService.createDepartment(request.getName());
+        return ResponseEntity.status(HttpStatus.CREATED).body(convertToDto(created));
+    }
+
+    /**
+     * Update department API.
+     *
+     * @param id ID of the department
+     * @param request updated department details
+     * @return updated department
+     */
+    @Operation(
+            summary = "Update department",
+            description = "Update an existing department's name by its ID"
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Department updated successfully"),
+            @ApiResponse(responseCode = "404", description = "Department not found"),
+            @ApiResponse(responseCode = "400", description = "Invalid input data")
+    })
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PutMapping("/{id}")
+    public ResponseEntity<DepartmentResponseDto> updateDepartment(
+            @PathVariable Long id,
+            @Valid @RequestBody DepartmentRequestDto request) {
+
+        Department updated = departmentService.updateDepartment(id, request.getName());
+        return ResponseEntity.ok(convertToDto(updated));
+    }
+
+    /**
+     * Delete department API.
+     *
+     * @param id ID of the department
+     * @return no content response
+     */
+    @Operation(
+            summary = "Delete department",
+            description = "Delete a department by ID. Fails if department has employees assigned"
+    )
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "204", description = "Department deleted successfully"),
+            @ApiResponse(responseCode = "404", description = "Department not found"),
+            @ApiResponse(responseCode = "409", description = "Department has employees assigned")
+    })
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteDepartment(@PathVariable Long id) {
+        departmentService.deleteDepartment(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    /**
+     * Convert Department entity to response DTO.
+     *
+     * @param department department entity
+     * @return department response DTO
+     */
+    private DepartmentResponseDto convertToDto(Department department) {
+        DepartmentResponseDto dto = new DepartmentResponseDto();
+        dto.setId(department.getId());
+        dto.setName(department.getName());
+        dto.setEmployeeCount(
+                department.getEmployees() != null ? department.getEmployees().size() : 0
+        );
+        return dto;
+    }
 }
