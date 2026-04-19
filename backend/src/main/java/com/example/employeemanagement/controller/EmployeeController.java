@@ -28,7 +28,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-/** This class represents the REST API controller for employees. */
 @RestController
 @RequestMapping("/api/employees")
 @CrossOrigin(origins = "http://localhost:3000")
@@ -39,7 +38,7 @@ public class EmployeeController {
     private EmployeeService employeeService;
 
     /**
-     * Get all employees API.
+     * Get all employees.
      *
      * @return list of all employees
      */
@@ -57,7 +56,7 @@ public class EmployeeController {
     }
 
     /**
-     * Get employee by ID API.
+     * Get employee by ID.
      *
      * @param id ID of the employee
      * @return employee details
@@ -73,12 +72,13 @@ public class EmployeeController {
     @GetMapping("/{id}")
     @PreAuthorize("isAuthenticated()")
     public ResponseEntity<EmployeeResponseDto> getEmployeeById(@PathVariable Long id) {
+
         Employee employee = employeeService.getEmployeeOrThrow(id);
         return ResponseEntity.ok(convertToDto(employee));
     }
 
     /**
-     * Create employee API.
+     * Create a new employee.
      *
      * @param request employee details
      * @return created employee
@@ -92,8 +92,8 @@ public class EmployeeController {
             @ApiResponse(responseCode = "400", description = "Invalid input data"),
             @ApiResponse(responseCode = "404", description = "Department not found")
     })
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PostMapping
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public ResponseEntity<EmployeeResponseDto> createEmployee(
             @Valid @RequestBody EmployeeRequestDto request) {
 
@@ -103,7 +103,7 @@ public class EmployeeController {
     }
 
     /**
-     * Update employee API.
+     * Update an existing employee.
      *
      * @param id ID of the employee
      * @param request updated employee details
@@ -118,8 +118,8 @@ public class EmployeeController {
             @ApiResponse(responseCode = "404", description = "Employee or Department not found"),
             @ApiResponse(responseCode = "400", description = "Invalid input data")
     })
-    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_MANAGER')")
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_MANAGER')")
     public ResponseEntity<EmployeeResponseDto> updateEmployee(
             @PathVariable Long id,
             @Valid @RequestBody EmployeeRequestDto request) {
@@ -129,7 +129,7 @@ public class EmployeeController {
     }
 
     /**
-     * Delete employee API.
+     * Delete an employee.
      *
      * @param id ID of the employee
      * @return no content response
@@ -142,10 +142,13 @@ public class EmployeeController {
             @ApiResponse(responseCode = "204", description = "Employee deleted successfully"),
             @ApiResponse(responseCode = "404", description = "Employee not found")
     })
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public ResponseEntity<Void> deleteEmployee(@PathVariable Long id) {
+
+        employeeService.getEmployeeOrThrow(id); // ensures 404 if not found
         employeeService.deleteEmployee(id);
+
         return ResponseEntity.noContent().build();
     }
 

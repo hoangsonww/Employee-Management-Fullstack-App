@@ -69,4 +69,8 @@ public class DepartmentService {
 
         departmentRepository.delete(department);
     }
+
+    public long countEmployeesInDepartment(Long id) {
+        return employeeRepository.countByDepartmentId(id);
+    }
 }

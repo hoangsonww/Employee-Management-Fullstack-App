@@ -2,15 +2,16 @@ package com.example.employeemanagement.controller;
 
 import com.example.employeemanagement.dto.DepartmentRequestDto;
 import com.example.employeemanagement.dto.DepartmentResponseDto;
-import com.example.employeemanagement.exception.ResourceNotFoundException;
 import com.example.employeemanagement.model.Department;
 import com.example.employeemanagement.service.DepartmentService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-/** This class represents the REST API controller for departments. */
 @RestController
 @RequestMapping("/api/departments")
 @CrossOrigin(origins = "http://localhost:3000")
@@ -38,9 +38,9 @@ public class DepartmentController {
     private DepartmentService departmentService;
 
     /**
-     * Get all departments API.
+     * Get all departments.
      *
-     * @return list of all departments
+     * @return list of departments
      */
     @Operation(
             summary = "Get all departments",
@@ -56,9 +56,9 @@ public class DepartmentController {
     }
 
     /**
-     * Get department by ID API.
+     * Get department by ID.
      *
-     * @param id ID of the department
+     * @param id the department ID
      * @return department details
      */
     @Operation(
@@ -72,26 +72,24 @@ public class DepartmentController {
     @GetMapping("/{id}")
     @PreAuthorize("isAuthenticated()")
     public ResponseEntity<DepartmentResponseDto> getDepartmentById(@PathVariable Long id) {
+
         Department department = departmentService.getDepartmentOrThrow(id);
         return ResponseEntity.ok(convertToDto(department));
     }
 
     /**
-     * Create department API.
+     * Create a new department.
      *
-     * @param request department details
+     * @param request department creation request
      * @return created department
      */
     @Operation(
             summary = "Create a new department",
-            description = "Create a new department with the given name"
+            description = "Create a new department record"
     )
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "Department created successfully"),
-            @ApiResponse(responseCode = "400", description = "Invalid input data")
-    })
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @ApiResponse(responseCode = "201", description = "Department created successfully")
     @PostMapping
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public ResponseEntity<DepartmentResponseDto> createDepartment(
             @Valid @RequestBody DepartmentRequestDto request) {
 
@@ -100,23 +98,22 @@ public class DepartmentController {
     }
 
     /**
-     * Update department API.
+     * Update an existing department.
      *
-     * @param id ID of the department
+     * @param id the department ID
      * @param request updated department details
      * @return updated department
      */
     @Operation(
-            summary = "Update department",
-            description = "Update an existing department's name by its ID"
+            summary = "Update an existing department",
+            description = "Update an existing department's details"
     )
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Department updated successfully"),
-            @ApiResponse(responseCode = "404", description = "Department not found"),
-            @ApiResponse(responseCode = "400", description = "Invalid input data")
+            @ApiResponse(responseCode = "200", description = "Department updated"),
+            @ApiResponse(responseCode = "404", description = "Department not found")
     })
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @PutMapping("/{id}")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public ResponseEntity<DepartmentResponseDto> updateDepartment(
             @PathVariable Long id,
             @Valid @RequestBody DepartmentRequestDto request) {
@@ -126,31 +123,43 @@ public class DepartmentController {
     }
 
     /**
-     * Delete department API.
+     * Delete a department.
      *
-     * @param id ID of the department
-     * @return no content response
+     * @param id the department ID
+     * @return response entity with no content
      */
     @Operation(
-            summary = "Delete department",
-            description = "Delete a department by ID. Fails if department has employees assigned"
+            summary = "Delete a department",
+            description = "Delete a department record by ID"
     )
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "204", description = "Department deleted successfully"),
+            @ApiResponse(responseCode = "204", description = "Department deleted"),
             @ApiResponse(responseCode = "404", description = "Department not found"),
             @ApiResponse(responseCode = "409", description = "Department has employees assigned")
     })
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public ResponseEntity<?> deleteDepartment(@PathVariable Long id) {
-        departmentService.deleteDepartment(id);
+
+        Department department = departmentService.getDepartmentOrThrow(id);
+
+        long employeeCount = departmentService.countEmployeesInDepartment(id);
+        if (employeeCount > 0) {
+            Map<String, String> error = new HashMap<>();
+            error.put("message",
+                    "Cannot delete department with " + employeeCount +
+                            " employees. Reassign or remove employees first.");
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(error);
+        }
+
+        departmentService.deleteDepartment(department.getId());
         return ResponseEntity.noContent().build();
     }
 
     /**
      * Convert Department entity to response DTO.
      *
-     * @param department department entity
+     * @param department the department entity
      * @return department response DTO
      */
     private DepartmentResponseDto convertToDto(Department department) {

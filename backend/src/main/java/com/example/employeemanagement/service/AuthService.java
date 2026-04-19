@@ -14,6 +14,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AuthService {
 
@@ -84,5 +86,30 @@ public class AuthService {
 
         user.setPassword(passwordEncoder.encode(request.getNewPassword()));
         userRepository.save(user);
+    }
+
+    // Assign role to users. From default EMPLOYEE to a certain role
+    public void assignRole(Long userId, String role) {
+
+        List<String> validRoles = List.of("ADMIN", "MANAGER", "EMPLOYEE", "HR");
+
+        String normalizedRole = role.toUpperCase();
+
+        if (!validRoles.contains(normalizedRole)) {
+            throw new IllegalArgumentException("Invalid role: " + role);
+        }
+
+        User user = userRepository.findById(userId)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("User not found with id: " + userId)
+                );
+
+        user.setRole(normalizedRole);
+        userRepository.save(user);
+    }
+
+    // Get all the users
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
     }
 }
