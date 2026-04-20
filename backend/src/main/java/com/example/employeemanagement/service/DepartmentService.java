@@ -1,5 +1,6 @@
 package com.example.employeemanagement.service;
 
+import com.example.employeemanagement.exception.ResourceNotFoundException;
 import com.example.employeemanagement.model.Department;
 import com.example.employeemanagement.repository.DepartmentRepository;
 import com.example.employeemanagement.repository.EmployeeRepository;
@@ -12,57 +13,64 @@ import org.springframework.stereotype.Service;
 @Service
 public class DepartmentService {
 
-  /** The department repository. */
-  @Autowired private DepartmentRepository departmentRepository;
+    @Autowired
+    private DepartmentRepository departmentRepository;
 
-  /** The employee repository, used to count employees per department. */
-  @Autowired private EmployeeRepository employeeRepository;
+    @Autowired
+    private EmployeeRepository employeeRepository;
 
-  /**
-   * Get all departments.
-   *
-   * @return List of all departments
-   */
-  public List<Department> getAllDepartments() {
-    return departmentRepository.findAllWithEmployees();
-  }
+    /**
+     * Get all departments with employees.
+     */
+    public List<Department> getAllDepartments() {
+        return departmentRepository.findAllWithEmployees();
+    }
 
-  /**
-   * Get department by ID.
-   *
-   * @param id ID of the department to be retrieved
-   * @return Department with the specified ID
-   */
-  public Optional<Department> getDepartmentById(Long id) {
-    return departmentRepository.findByIdWithEmployees(id);
-  }
+    /**
+     * Get department by ID or throw exception.
+     */
+    public Department getDepartmentOrThrow(Long id) {
+        return departmentRepository.findByIdWithEmployees(id)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Department not found with id: " + id));
+    }
 
-  /**
-   * Save a department.
-   *
-   * @param department Department to be saved
-   * @return Saved department
-   */
-  public Department saveDepartment(Department department) {
-    return departmentRepository.save(department);
-  }
+    /**
+     * Create a new department.
+     */
+    public Department createDepartment(String name) {
+        Department department = new Department();
+        department.setName(name);
+        return departmentRepository.save(department);
+    }
 
-  /**
-   * Counts the number of employees assigned to a given department.
-   *
-   * @param departmentId the ID of the department
-   * @return the number of employees in the department
-   */
-  public long countEmployeesInDepartment(Long departmentId) {
-    return employeeRepository.countByDepartmentId(departmentId);
-  }
+    /**
+     * Update existing department.
+     */
+    public Department updateDepartment(Long id, String name) {
+        Department department = getDepartmentOrThrow(id);
+        department.setName(name);
+        return departmentRepository.save(department);
+    }
 
-  /**
-   * Deletes a department by its ID.
-   *
-   * @param id the ID of the department to delete
-   */
-  public void deleteDepartment(Long id) {
-    departmentRepository.deleteById(id);
-  }
+    /**
+     * Delete department with validation.
+     */
+    public void deleteDepartment(Long id) {
+        Department department = getDepartmentOrThrow(id);
+
+        long employeeCount = employeeRepository.countByDepartmentId(id);
+        if (employeeCount > 0) {
+            throw new IllegalStateException(
+                    "Cannot delete department with " + employeeCount + " employees. " +
+                            "Reassign or remove employees first."
+            );
+        }
+
+        departmentRepository.delete(department);
+    }
+
+    public long countEmployeesInDepartment(Long id) {
+        return employeeRepository.countByDepartmentId(id);
+    }
 }

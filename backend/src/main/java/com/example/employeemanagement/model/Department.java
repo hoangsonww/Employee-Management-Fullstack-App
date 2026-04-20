@@ -1,34 +1,47 @@
 package com.example.employeemanagement.model;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import java.util.List;
-import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/** This class represents a Department entity. Each department has an ID and a name. */
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "departments")
 public class Department {
 
-  /** The ID of the department. It is unique and generated automatically. */
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+    /** Unique identifier for the department. */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-  /** The name of the department. */
-  @NotBlank(message = "Department name is required")
-  private String name;
+    /** Name of the department (e.g., HR, Engineering). Must be unique. */
+    @NotBlank(message = "Department name is required")
+    private String name;
 
-  /** The list of employees in the department. */
-  @OneToMany(
-      mappedBy = "department",
-      cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-  @JsonManagedReference
-  private List<Employee> employees;
+    /**
+     * List of employees associated with this department.
+     * One department can have multiple employees.
+     */
+    @OneToMany(
+            mappedBy = "department",
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JsonManagedReference
+    private List<Employee> employees;
 }
