@@ -134,4 +134,23 @@ public class GlobalExceptionHandler {
 
     return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
   }
+
+    /**
+     * Handles business logic conflicts such as duplicate resources or invalid state transitions.
+     *
+     * <p>This is typically used when an operation violates application-level constraints,
+     * for example attempting to register a user with an existing username or deleting
+     * a resource that is still in use.
+     *
+     * @param ex the exception containing the conflict message
+     * @return a {@code 409 Conflict} response with the error message
+     */
+    @ExceptionHandler(IllegalStateException.class)
+    public ResponseEntity<Map<String, String>> handleConflict(IllegalStateException ex) {
+
+        Map<String, String> error = new HashMap<>();
+        error.put("message", ex.getMessage());
+
+        return new ResponseEntity<>(error, HttpStatus.CONFLICT);
+    }
 }

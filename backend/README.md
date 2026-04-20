@@ -137,51 +137,81 @@ The backend server will be available at [http://localhost:8080](http://localhost
 
 ### 5. Access the API Endpoints
 
+Most endpoints require JWT authentication.
+
+#### Authentication Steps
+
+1. Register a user via `/register`
+2. Authenticate via `/authenticate` to receive a JWT token
+3. Include the token in all subsequent requests:
+
+```bash
+Authorization: Bearer <your-token>
+```
+
 Here are some example API endpoints you can use to interact with the backend:
 
-- **Get All Employees:**
+**Get All Employees:**
 
-  ```bash
-  curl -X GET http://localhost:8080/api/employees
-  ```
+```bash
+curl -X GET http://localhost:8080/api/employees \
+  -H "Authorization: Bearer <your-token>"
+```
 
-- **Get Employee by ID:**
+**Get Employee by ID:**
 
-  ```bash
-  curl -X GET http://localhost:8080/api/employees/1
-  ```
+```bash
+curl -X GET http://localhost:8080/api/employees/1 \
+  -H "Authorization: Bearer <your-token>"
+```
 
-- **Create a New Employee:**
+**Create a New Employee (ADMIN only):**
 
-  ```bash
-  curl -X POST http://localhost:8080/api/employees -H "Content-Type: application/json" \
-    -d '{"firstName": "John", "lastName": "Doe", "email": "john.doe@example.com", "age": 30, "department": {"id": 1}}'
-  ```
+```bash
+curl -X POST http://localhost:8080/api/employees \
+  -H "Authorization: Bearer <admin-token>" \
+  -H "Content-Type: application/json" \
+  -d '{"firstName": "John", "lastName": "Doe", "email": "john.doe@example.com", "age": 30, "department": {"id": 1}}'
+```
 
-- **Update an Employee:**
+**Update an Employee (ADMIN / MANAGER):**
 
-  ```bash
-  curl -X PUT http://localhost:8080/api/employees/1 -H "Content-Type: application/json" \
-    -d '{"firstName": "John", "lastName": "Doe", "email": "john.updated@example.com", "age": 31, "department": {"id": 1}}'
-  ```
+```bash
+curl -X PUT http://localhost:8080/api/employees/1 \
+  -H "Authorization: Bearer <token>" \
+  -H "Content-Type: application/json" \
+  -d '{"firstName": "John", "lastName": "Doe", "email": "john.updated@example.com", "age": 31, "department": {"id": 1}}'
+```
 
-- **Delete an Employee:**
+**Delete an Employee (ADMIN only):**
 
-  ```bash
-  curl -X DELETE http://localhost:8080/api/employees/1
-  ```
+```bash
+curl -X DELETE http://localhost:8080/api/employees/1 \
+  -H "Authorization: Bearer <admin-token>"
+```
 
-- **Get All Departments:**
+**Get All Departments:**
 
-  ```bash
-  curl -X GET http://localhost:8080/api/departments
-  ```
+```bash
+curl -X GET http://localhost:8080/api/departments \
+  -H "Authorization: Bearer <your-token>"
+```
 
-- **Get Department by ID:**
+**Get Department by ID:**
 
-  ```bash
-  curl -X GET http://localhost:8080/api/departments/1
-  ```
+```bash
+curl -X GET http://localhost:8080/api/departments/1 \
+  -H "Authorization: Bearer <your-token>"
+```
+
+**Assign Role (ADMIN only):**
+
+```bash
+curl -X PUT http://localhost:8080/api/admin/users/{id}/role \
+  -H "Authorization: Bearer <admin-token>" \
+  -H "Content-Type: application/json" \
+  -d '{"role": "MANAGER"}'
+```
 
 ### 6. Data Initialization
 
@@ -193,7 +223,14 @@ It is **idempotent** — it only seeds data if the database is empty:
 - On a fresh database, it inserts 50 fake departments and 295 fake employees
 - It does not seed the `users` table. Login accounts must be created through the UI or the auth endpoints
 
-### 7. Running Tests
+### 7. RBAC Testing Notes
+
+- Ensure roles are assigned to users before testing protected endpoints
+- `ADMIN` users are required for create and delete operations
+- `MANAGER` users can update employees but have restricted access elsewhere
+- Unauthorized access returns `403 Forbidden`
+
+### 8. Running Tests
 
 To run the unit and integration tests, use:
 
@@ -211,7 +248,7 @@ The main class that serves as the entry point for the Spring Boot application.
 
 - `EmployeeController.java` — REST endpoints for employee CRUD. Accepts `EmployeeRequestDto`, returns `EmployeeResponseDto`.
 - `DepartmentController.java` — REST endpoints for department CRUD. Accepts `DepartmentRequestDto`, returns `DepartmentResponseDto`. Rejects deleting departments that still have employees (409 Conflict).
-- `AuthController.java` — User registration, authentication (JWT), username verification, and password reset. Accepts `AuthRequestDto` / `ResetPasswordRequestDto`.
+- `AuthController.java` — User registration, authentication (JWT), username verification, password reset, and role assignment (ADMIN only).
 - `HomeController.java` — Default landing redirect to Swagger UI.
 
 ### DTOs (`dto/`)
@@ -222,11 +259,13 @@ The main class that serves as the entry point for the Spring Boot application.
 - `DepartmentResponseDto.java` — API response with `id`, `name`, `employeeCount`
 - `AuthRequestDto.java` — Input validation for login/register (username, password)
 - `ResetPasswordRequestDto.java` — Input validation for password reset (username, newPassword)
+- `AssignRoleRequestDto.java` — Request DTO for assigning user roles
+- `UserResponseDto.java` — Response DTO for user details (id, username, role)
 
 ### Entities (`model/`)
 
 - `Department.java` and `Employee.java` — JPA entities with Bean Validation annotations.
-- `User.java` — Authentication principal entity.
+- `User.java` — Authentication principal entity with role support.
 
 ### Exception Handling (`exception/`)
 
@@ -236,10 +275,12 @@ The main class that serves as the entry point for the Spring Boot application.
 ### Repositories, Services, Security, Config
 
 - `EmployeeRepository.java` — `LEFT JOIN FETCH` queries for eager department loading + `countByDepartmentId()`
-- `EmployeeService.java` — `@Transactional` save with `flush` + `refresh` for complete entity state
+- `EmployeeService.java` — Handles business logic for employee operations
 - `DepartmentService.java` — CRUD + `countEmployeesInDepartment()` for safe deletion checks
+- `AuthService.java` — Handles authentication, registration, and role assignment logic
 - `JwtTokenUtil.java` — JWT signing/verification with externalized `${JWT_SECRET}`
 - `JwtRequestFilter.java` — Graceful handling of invalid/expired tokens
+- `SecurityConfig.java` — Configures authentication, JWT filter, and RBAC rules
 - `DataInitializer.java` — Idempotent seeding (skips if data exists)
 
 ### `application.properties`
