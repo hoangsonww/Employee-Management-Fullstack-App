@@ -3,7 +3,6 @@ import {
   Box,
   Typography,
   Button,
-  CircularProgress,
   Snackbar,
   Alert,
   Grid,
@@ -19,6 +18,9 @@ import {
 import { useNavigate, Link } from 'react-router-dom';
 import { getAllEmployees } from '../services/employeeService';
 import { getAllDepartments } from '../services/departmentService';
+import LoadingOverlay from './LoadingOverlay';
+import useAuth from '../hooks/useAuth';
+import { clearSession } from '../services/authService';
 import ShieldIcon from '@mui/icons-material/Shield';
 import TimelineIcon from '@mui/icons-material/Timeline';
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -29,7 +31,7 @@ import EmailIcon from '@mui/icons-material/Email';
 
 const Profile = () => {
   const navigate = useNavigate();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { authenticated: isLoggedIn, username: authUsername } = useAuth();
   const [employeeCount, setEmployeeCount] = useState(0);
   const [departmentCount, setDepartmentCount] = useState(0);
   const [averageAge, setAverageAge] = useState(0);
@@ -37,17 +39,8 @@ const Profile = () => {
   const [showSnackbar, setShowSnackbar] = useState(false);
 
   useEffect(() => {
-    const checkLoginStatus = () => {
-      const token = localStorage.getItem('token');
-      if (token) {
-        setIsLoggedIn(true);
-      } else {
-        setShowSnackbar(true); // Show the snackbar notification
-      }
-    };
-
-    checkLoginStatus();
-  }, [navigate]);
+    if (!isLoggedIn) setShowSnackbar(true);
+  }, [isLoggedIn]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -106,23 +99,11 @@ const Profile = () => {
   }
 
   if (loading) {
-    return (
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: '100vh',
-          backgroundColor: 'background.default',
-        }}
-      >
-        <CircularProgress />
-      </Box>
-    );
+    return <LoadingOverlay message="Loading your profile…" />;
   }
 
   const profileData = {
-    username: localStorage.getItem('EMSusername') || 'John Doe',
+    username: authUsername || 'John Doe',
     employeeCount,
     departmentCount,
     averageAge,
@@ -135,7 +116,7 @@ const Profile = () => {
   const displayEmail = email.length > 34 ? `${email.slice(0, 32)}…` : email;
 
   const handleLogout = () => {
-    localStorage.removeItem('token');
+    clearSession();
     navigate('/login');
   };
 

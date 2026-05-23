@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { AppBar, Toolbar, Typography, Button, Box, IconButton, Drawer, List, ListItem, ListItemText } from '@mui/material';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import useAuth from '../hooks/useAuth';
+import { clearSession } from '../services/authService';
 
 const Navbar = () => {
   const location = useLocation();
   const currentPath = location.pathname;
   const navigate = useNavigate();
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { authenticated: isLoggedIn } = useAuth();
 
   // Check if screen width is below 1000px
   const isMobile = useMediaQuery('(max-width:1000px)');
@@ -20,22 +22,8 @@ const Navbar = () => {
     setDrawerOpen(!drawerOpen);
   };
 
-  useEffect(() => {
-    const checkLoginStatus = () => {
-      const token = localStorage.getItem('token');
-      setIsLoggedIn(!!token);
-    };
-
-    checkLoginStatus();
-    const interval = setInterval(checkLoginStatus, 2000);
-
-    return () => clearInterval(interval);
-  }, []);
-
   const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('EMSusername');
-    setIsLoggedIn(false);
+    clearSession();
     navigate('/login');
   };
 
