@@ -60,7 +60,7 @@ describe('<Login />', () => {
 
     fireEvent.change(screen.getByLabelText(/username/i), { target: { value: 'user1' } });
     fireEvent.change(screen.getByLabelText(/password/i, { selector: 'input' }), { target: { value: 'pass1' } });
-    fireEvent.click(screen.getByRole('button', { name: /^login$/i }));
+    fireEvent.click(screen.getByRole('button', { name: /^login$|signing in/i }));
 
     expect(screen.getByRole('progressbar')).toBeInTheDocument();
 
@@ -68,21 +68,10 @@ describe('<Login />', () => {
       () => {
         expect(localStorage.getItem('token')).toBe('tok123');
         expect(localStorage.getItem('EMSusername')).toBe('user1');
+        expect(navigate).toHaveBeenCalledWith('/dashboard');
       },
       { timeout: 3000 }
     );
-
-    // Wait for success dialog
-    await waitFor(
-      () => {
-        expect(screen.getByText(/Login successful/i)).toBeInTheDocument();
-      },
-      { timeout: 3000 }
-    );
-
-    // Click the continue button (it should have the destinationLabel text)
-    fireEvent.click(screen.getByRole('button', { name: /go to dashboard/i }));
-    expect(navigate).toHaveBeenCalledWith('/dashboard');
   });
 
   it('shows error message on invalid credentials', async () => {

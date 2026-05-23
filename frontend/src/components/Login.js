@@ -11,10 +11,6 @@ import {
   Stack,
   Alert,
   Divider,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
 } from '@mui/material';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
@@ -27,11 +23,9 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const [successOpen, setSuccessOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const redirectPath = location.state?.from;
-  const destinationLabel = redirectPath ? 'Continue' : 'Go to dashboard';
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -50,7 +44,7 @@ const Login = () => {
 
       if (response.ok) {
         setSession(data.token, username);
-        setSuccessOpen(true);
+        navigate(redirectPath || '/dashboard');
       } else {
         setError('Invalid credentials. Please try again.');
       }
@@ -62,12 +56,6 @@ const Login = () => {
 
   const handleTogglePasswordVisibility = () => {
     setShowPassword(!showPassword);
-  };
-
-  const handleSuccessContinue = () => {
-    const target = redirectPath || '/dashboard';
-    setSuccessOpen(false);
-    navigate(target);
   };
 
   return (
@@ -194,17 +182,6 @@ const Login = () => {
 
       {loading && <LoadingOverlay message="Signing you in…" />}
 
-      <Dialog open={successOpen} onClose={handleSuccessContinue} aria-labelledby="login-success-title">
-        <DialogTitle id="login-success-title">Login successful</DialogTitle>
-        <DialogContent>
-          <Typography variant="body1">Welcome back, {username || 'there'}! Ready to continue?</Typography>
-        </DialogContent>
-        <DialogActions>
-          <Button variant="contained" onClick={handleSuccessContinue}>
-            {destinationLabel}
-          </Button>
-        </DialogActions>
-      </Dialog>
     </Box>
   );
 };

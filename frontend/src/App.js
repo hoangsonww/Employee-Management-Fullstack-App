@@ -17,6 +17,7 @@ import ResetPassword from './components/ResetPassword';
 import VerifyUsername from './components/VerifyUsername';
 import NotFoundPage from './components/NotFoundPage';
 import ProtectedRoute from './components/ProtectedRoute';
+import PublicOnlyRoute from './components/PublicOnlyRoute';
 import QuickActions from './components/QuickActions';
 
 const AppContent = () => {
@@ -93,8 +94,22 @@ const AppContent = () => {
               </ProtectedRoute>
             }
           />
-          <Route path="/verify-username" element={<VerifyUsername />} />
-          <Route path="/reset-password" element={<ResetPassword />} />
+          <Route
+            path="/verify-username"
+            element={
+              <PublicOnlyRoute>
+                <VerifyUsername />
+              </PublicOnlyRoute>
+            }
+          />
+          <Route
+            path="/reset-password"
+            element={
+              <PublicOnlyRoute>
+                <ResetPassword />
+              </PublicOnlyRoute>
+            }
+          />
           <Route
             path="/profile"
             element={
@@ -103,8 +118,22 @@ const AppContent = () => {
               </ProtectedRoute>
             }
           />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route
+            path="/login"
+            element={
+              <PublicOnlyRoute>
+                <Login />
+              </PublicOnlyRoute>
+            }
+          />
+          <Route
+            path="/register"
+            element={
+              <PublicOnlyRoute>
+                <Register />
+              </PublicOnlyRoute>
+            }
+          />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Container>
