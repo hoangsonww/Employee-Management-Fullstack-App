@@ -1,0 +1,20 @@
+# Employee Management System
+
+Enterprise-grade employee and department management system built with React and Spring Boot. This site documents the architecture, DevOps pipeline, deployment strategies, and setup guides for the full-stack application.
+
+## Primary URLs
+- https://hoangsonww.github.io/Budget-Management-Backend-API/
+- https://hoangsonww.github.io/Budget-Management-Backend-API/sitemap.xml
+- https://github.com/hoangsonww/Employee-Management-Fullstack-App
+
+## What this site contains
+- System overview, architecture diagrams, and request lifecycle documentation.
+- Technology stack, DevOps toolchain, and deployment strategies.
+- Getting started steps and links to live demo and API documentation.
+
+## Attribution
+- Author: Son Nguyen
+
+## Usage guidelines
+- You may summarize or cite this content with attribution.
+- Do not claim official affiliation beyond the linked GitHub repository.

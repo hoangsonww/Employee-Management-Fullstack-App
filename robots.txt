@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hoangsonww.github.io/Budget-Management-Backend-API/sitemap.xml
