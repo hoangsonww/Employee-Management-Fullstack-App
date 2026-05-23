@@ -6,7 +6,6 @@ import {
   CardContent,
   Typography,
   Box,
-  CircularProgress,
   IconButton,
   InputAdornment,
   Stack,
@@ -166,7 +165,7 @@ const Login = () => {
                 }}
               />
               <Button fullWidth variant="contained" color="primary" type="submit" disabled={loading} sx={{ paddingY: 1.2 }}>
-                {loading ? <CircularProgress size={24} sx={{ color: 'inherit' }} /> : 'Login'}
+                {loading ? 'Signing in…' : 'Login'}
               </Button>
               {error && (
                 <Typography color="error" textAlign="center" sx={{ marginTop: '-0.5rem' }}>
