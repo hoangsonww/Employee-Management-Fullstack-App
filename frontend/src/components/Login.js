@@ -19,6 +19,8 @@ import {
 } from '@mui/material';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { setSession } from '../services/authService';
+import LoadingOverlay from './LoadingOverlay';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -48,8 +50,7 @@ const Login = () => {
       setLoading(false);
 
       if (response.ok) {
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('EMSusername', username);
+        setSession(data.token, username);
         setSuccessOpen(true);
       } else {
         setError('Invalid credentials. Please try again.');
@@ -164,15 +165,9 @@ const Login = () => {
                   },
                 }}
               />
-              {loading ? (
-                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                  <CircularProgress />
-                </Box>
-              ) : (
-                <Button fullWidth variant="contained" color="primary" type="submit" sx={{ paddingY: 1.2 }}>
-                  Login
-                </Button>
-              )}
+              <Button fullWidth variant="contained" color="primary" type="submit" disabled={loading} sx={{ paddingY: 1.2 }}>
+                {loading ? <CircularProgress size={24} sx={{ color: 'inherit' }} /> : 'Login'}
+              </Button>
               {error && (
                 <Typography color="error" textAlign="center" sx={{ marginTop: '-0.5rem' }}>
                   {error}
@@ -197,6 +192,8 @@ const Login = () => {
           </form>
         </CardContent>
       </Card>
+
+      {loading && <LoadingOverlay message="Signing you in…" />}
 
       <Dialog open={successOpen} onClose={handleSuccessContinue} aria-labelledby="login-success-title">
         <DialogTitle id="login-success-title">Login successful</DialogTitle>

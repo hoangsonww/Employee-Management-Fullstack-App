@@ -4,11 +4,13 @@ import { Bar, Pie, Line } from 'react-chartjs-2';
 import { getAllEmployees } from '../services/employeeService';
 import { getAllDepartments } from '../services/departmentService';
 import { Chart, CategoryScale, LinearScale, BarElement, LineElement, PointElement, Title, Tooltip, Legend, ArcElement } from 'chart.js';
-import { Card, CardContent, Grid, Typography, Box, CircularProgress, Button, Stack, Chip, Divider } from '@mui/material';
+import { Card, CardContent, Grid, Typography, Box, Button, Stack, Chip, Divider } from '@mui/material';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import GroupWorkIcon from '@mui/icons-material/GroupWork';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import LoadingOverlay from './LoadingOverlay';
+import { getUsername } from '../services/authService';
 
 Chart.register(CategoryScale, LinearScale, BarElement, LineElement, PointElement, Title, Tooltip, Legend, ArcElement);
 
@@ -111,7 +113,7 @@ const Dashboard = () => {
     'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
   ];
 
-  const username = localStorage.getItem('EMSusername') || 'there';
+  const username = getUsername() || 'there';
   const averageTeamSize = departmentCount ? (employeeCount / departmentCount).toFixed(1) : 0;
   const projectedGrowth = employeeGrowth.length
     ? Math.round(((employeeGrowth[employeeGrowth.length - 1].count - employeeGrowth[0].count) / employeeGrowth[0].count) * 100)
@@ -257,24 +259,7 @@ const Dashboard = () => {
       : null;
 
   if (loading) {
-    return (
-      <Box
-        sx={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          backgroundColor: 'rgba(255, 255, 255, 0.8)',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          zIndex: 1000,
-        }}
-      >
-        <CircularProgress />
-      </Box>
-    );
+    return <LoadingOverlay message="Crunching the latest org data…" />;
   }
 
   return (

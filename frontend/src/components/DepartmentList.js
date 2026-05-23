@@ -29,6 +29,8 @@ import {
   FormControlLabel,
 } from '@mui/material';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import LoadingOverlay from './LoadingOverlay';
+import useAuth from '../hooks/useAuth';
 
 const DepartmentList = () => {
   const navigate = useNavigate();
@@ -38,20 +40,14 @@ const DepartmentList = () => {
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [loading, setLoading] = useState(false);
   const [deletingDepartmentId, setDeletingDepartmentId] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { authenticated: isLoggedIn } = useAuth();
   const [showSnackbar, setShowSnackbar] = useState(false);
   const [sortDirection, setSortDirection] = useState('asc');
   const [denseRows, setDenseRows] = useState(false);
 
-  // Check login status
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      setIsLoggedIn(true);
-    } else {
-      setShowSnackbar(true);
-    }
-  }, [navigate]);
+    if (!isLoggedIn) setShowSnackbar(true);
+  }, [isLoggedIn]);
 
   // Fetch departments data if logged in
   useEffect(() => {
@@ -128,24 +124,7 @@ const DepartmentList = () => {
   const visibleDepartments = filteredDepartments.length;
 
   if (loading) {
-    return (
-      <Box
-        sx={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          backgroundColor: 'rgba(255, 255, 255, 0.8)',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          zIndex: 1000,
-        }}
-      >
-        <CircularProgress />
-      </Box>
-    );
+    return <LoadingOverlay message="Loading departments…" />;
   }
 
   const handleCloseSnackbar = () => {

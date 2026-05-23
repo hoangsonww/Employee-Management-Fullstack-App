@@ -32,6 +32,8 @@ import {
 } from '@mui/material';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import EmailIcon from '@mui/icons-material/Email';
+import LoadingOverlay from './LoadingOverlay';
+import useAuth from '../hooks/useAuth';
 
 const EmployeeList = () => {
   const navigate = useNavigate();
@@ -41,7 +43,7 @@ const EmployeeList = () => {
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [loading, setLoading] = useState(false);
   const [deletingEmployeeId, setDeletingEmployeeId] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const { authenticated: isLoggedIn } = useAuth();
   const [showSnackbar, setShowSnackbar] = useState(false);
   const [departments, setDepartments] = useState([]);
   const [departmentFilter, setDepartmentFilter] = useState('all');
@@ -50,13 +52,8 @@ const EmployeeList = () => {
   const [denseRows, setDenseRows] = useState(false);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      setIsLoggedIn(true);
-    } else {
-      setShowSnackbar(true);
-    }
-  }, [navigate]);
+    if (!isLoggedIn) setShowSnackbar(true);
+  }, [isLoggedIn]);
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -175,24 +172,7 @@ const EmployeeList = () => {
   };
 
   if (loading) {
-    return (
-      <Box
-        sx={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          backgroundColor: 'rgba(255, 255, 255, 0.8)',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          zIndex: 1000,
-        }}
-      >
-        <CircularProgress />
-      </Box>
-    );
+    return <LoadingOverlay message="Loading employees…" />;
   }
 
   const handleCloseSnackbar = () => {
