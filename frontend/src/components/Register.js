@@ -20,6 +20,11 @@ import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 import ShieldIcon from '@mui/icons-material/Shield';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { useNavigate } from 'react-router-dom';
+import { setSession } from '../services/authService';
+import { isWebAuthnSupported } from '../utils/webauthn';
+import PasskeyPromptDialog from './PasskeyPromptDialog';
+
+const API_BASE = process.env.REACT_APP_API_BASE_URL || 'https://employee-management-app-gdm5.onrender.com';
 
 const Register = () => {
   const [username, setUsername] = useState('');
@@ -30,7 +35,35 @@ const Register = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [successOpen, setSuccessOpen] = useState(false);
+  const [passkeyPromptOpen, setPasskeyPromptOpen] = useState(false);
   const navigate = useNavigate();
+
+  // After registering, sign the user in so they can immediately set up a passkey. Falls back to the
+  // "go to login" dialog if auto sign-in is unavailable.
+  const finishSignup = async () => {
+    try {
+      const authRes = await fetch(`${API_BASE}/authenticate`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password }),
+      });
+      if (authRes.ok) {
+        const data = await authRes.json();
+        setSession(data.token, username);
+        setLoading(false);
+        if (isWebAuthnSupported()) {
+          setPasskeyPromptOpen(true);
+        } else {
+          navigate('/dashboard');
+        }
+        return;
+      }
+    } catch (err) {
+      // Ignore and fall back to the manual login dialog below.
+    }
+    setLoading(false);
+    setSuccessOpen(true);
+  };
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -44,24 +77,28 @@ const Register = () => {
     setLoading(true);
 
     try {
-      const response = await fetch('https://employee-management-app-gdm5.onrender.com/register', {
+      const response = await fetch(`${API_BASE}/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password }),
       });
 
-      setLoading(false);
-
       if (response.ok) {
-        setSuccessOpen(true);
+        await finishSignup();
       } else {
-        const data = await response.json();
+        setLoading(false);
+        const data = await response.json().catch(() => ({}));
         setError(data.message || 'Error registering user. Please try again.');
       }
     } catch (err) {
       setLoading(false);
       setError('Something went wrong. Please try again later.');
     }
+  };
+
+  const handlePasskeyPromptClose = () => {
+    setPasskeyPromptOpen(false);
+    navigate('/dashboard');
   };
 
   const handleTogglePasswordVisibility = () => {
@@ -229,6 +266,8 @@ const Register = () => {
           </Button>
         </DialogActions>
       </Dialog>
+
+      <PasskeyPromptDialog open={passkeyPromptOpen} onClose={handlePasskeyPromptClose} username={username} />
     </Box>
   );
 };

@@ -77,6 +77,13 @@
       <version>0.9.1</version>
     </dependency>
 
+    <!-- WebAuthn / Passkeys (FIDO2) server library -->
+    <dependency>
+      <groupId>com.yubico</groupId>
+      <artifactId>webauthn-server-core</artifactId>
+      <version>2.6.0</version>
+    </dependency>
+
     <!-- Spring Boot Starter Test -->
     <dependency>
       <groupId>org.springframework.boot</groupId>

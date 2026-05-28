@@ -13,4 +13,12 @@ public interface UserRepository extends JpaRepository<User, Long> {
    * @return an {@link Optional} containing the user if found, or empty otherwise
    */
   Optional<User> findByUsername(String username);
+
+  /**
+   * Finds a user by their stable WebAuthn user handle.
+   *
+   * @param userHandle the base64url-encoded user handle
+   * @return an {@link Optional} containing the user if found, or empty otherwise
+   */
+  Optional<User> findByUserHandle(String userHandle);
 }

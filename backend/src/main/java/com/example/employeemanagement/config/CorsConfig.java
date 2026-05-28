@@ -31,7 +31,7 @@ public class CorsConfig {
         registry
             .addMapping("/**")
             .allowedOriginPatterns("*") // Allows all origins with patterns
-            .allowedMethods("GET", "POST", "PUT", "DELETE") // List all allowed HTTP methods
+            .allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS") // Allowed HTTP methods
             .allowedHeaders("*") // Allows all headers
             .allowCredentials(true); // Allow credentials (cookies, etc.)
       }
