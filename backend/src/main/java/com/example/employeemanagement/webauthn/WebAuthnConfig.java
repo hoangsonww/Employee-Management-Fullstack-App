@@ -41,7 +41,7 @@ public class WebAuthnConfig {
         .identity(identity)
         .credentialRepository(credentialRepository)
         .origins(origins)
-        .allowOriginPort(true)
+        .allowOriginPort(properties.isAllowOriginPort())
         .build();
   }
 }

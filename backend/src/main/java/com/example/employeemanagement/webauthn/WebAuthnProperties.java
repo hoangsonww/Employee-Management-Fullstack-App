@@ -21,6 +21,13 @@ public class WebAuthnProperties {
   private long ceremonyTimeoutSeconds = 300;
 
   /**
+   * Whether to relax origin validation so any port is accepted for an otherwise-matching origin.
+   * Defaults to {@code false} for strict, exact origin matching; enable only if you cannot enumerate
+   * every frontend port in {@link #allowedOrigins}.
+   */
+  private boolean allowOriginPort = false;
+
+  /**
    * Gets the relying party id.
    *
    * @return the rp id
@@ -90,5 +97,23 @@ public class WebAuthnProperties {
    */
   public void setCeremonyTimeoutSeconds(long ceremonyTimeoutSeconds) {
     this.ceremonyTimeoutSeconds = ceremonyTimeoutSeconds;
+  }
+
+  /**
+   * Gets whether any port is accepted during origin validation.
+   *
+   * @return the allow-origin-port flag
+   */
+  public boolean isAllowOriginPort() {
+    return allowOriginPort;
+  }
+
+  /**
+   * Sets whether any port is accepted during origin validation.
+   *
+   * @param allowOriginPort the allow-origin-port flag
+   */
+  public void setAllowOriginPort(boolean allowOriginPort) {
+    this.allowOriginPort = allowOriginPort;
   }
 }

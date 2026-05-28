@@ -90,6 +90,7 @@ public class JpaCredentialRepository implements CredentialRepository {
   public Set<RegisteredCredential> lookupAll(ByteArray credentialId) {
     return credentialRepository
         .findByCredentialId(credentialId.getBase64Url())
+        .filter(credential -> credential.getUser() != null && credential.getUser().getUserHandle() != null)
         .map(
             credential ->
                 Collections.singleton(

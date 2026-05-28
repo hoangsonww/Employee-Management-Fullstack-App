@@ -5,12 +5,11 @@ import com.example.employeemanagement.dto.ResetPasswordRequestDto;
 import com.example.employeemanagement.model.User;
 import com.example.employeemanagement.repository.UserRepository;
 import com.example.employeemanagement.security.JwtTokenUtil;
+import com.example.employeemanagement.webauthn.UserHandles;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import java.security.SecureRandom;
-import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -47,12 +46,6 @@ public class AuthController {
   /** Utility for generating and validating JWT tokens. */
   @Autowired private JwtTokenUtil jwtTokenUtil;
 
-  /** Source of randomness for generating WebAuthn user handles. */
-  private static final SecureRandom SECURE_RANDOM = new SecureRandom();
-
-  /** Number of random bytes used for a WebAuthn user handle. */
-  private static final int USER_HANDLE_BYTES = 32;
-
   /**
    * Register user API.
    *
@@ -72,7 +65,7 @@ public class AuthController {
       User user = new User();
       user.setUsername(request.getUsername());
       user.setPassword(passwordEncoder.encode(request.getPassword()));
-      user.setUserHandle(generateUserHandle());
+      user.setUserHandle(UserHandles.generate());
       userRepository.save(user);
       return ResponseEntity.ok("User registered successfully!");
     } catch (DataIntegrityViolationException e) {
@@ -166,17 +159,5 @@ public class AuthController {
     } else {
       return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error: Username not found");
     }
-  }
-
-  /**
-   * Generates a fresh, random, base64url-encoded WebAuthn user handle so every account has a stable
-   * identifier available for passkeys from the moment it is created.
-   *
-   * @return the new user handle
-   */
-  private static String generateUserHandle() {
-    byte[] bytes = new byte[USER_HANDLE_BYTES];
-    SECURE_RANDOM.nextBytes(bytes);
-    return Base64.getUrlEncoder().withoutPadding().encodeToString(bytes);
   }
 }

@@ -77,6 +77,12 @@ jobs:
     needs:
       - backend
       - frontend
+    # Building the images pulls base images (maven, temurin, node, nginx) from Docker Hub, whose
+    # anonymous pull rate limit intermittently 429s on shared CI runners and fails this job. Run it
+    # only on pushes to master (where images are actually published); pull requests are already
+    # validated by the lint, backend-test and frontend-test jobs above. To also build/push on PRs,
+    # add DOCKERHUB_USERNAME/DOCKERHUB_TOKEN secrets and a docker/login-action step for docker.io.
+    if: github.event_name != 'pull_request'
     permissions:
       contents: read
       packages: write
@@ -85,8 +91,6 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Log in to GHCR
-        # Publishing only happens on pushes to master; skip the login on pull requests.
-        if: github.event_name != 'pull_request'
         uses: docker/login-action@v2
         with:
           registry: ghcr.io
@@ -98,8 +102,7 @@ jobs:
         with:
           context: ./backend
           file: ./backend/Dockerfile
-          # Build on every event to validate the Dockerfile; only push from master.
-          push: ${{ github.event_name != 'pull_request' }}
+          push: true
           tags: |
             ghcr.io/${{ github.repository_owner }}/employee-management-backend:${{ github.sha }}
             ghcr.io/${{ github.repository_owner }}/employee-management-backend:latest
@@ -109,8 +112,7 @@ jobs:
         with:
           context: ./frontend
           file: ./frontend/Dockerfile
-          # Build on every event to validate the Dockerfile; only push from master.
-          push: ${{ github.event_name != 'pull_request' }}
+          push: true
           tags: |
             ghcr.io/${{ github.repository_owner }}/employee-management-frontend:${{ github.sha }}
             ghcr.io/${{ github.repository_owner }}/employee-management-frontend:latest

@@ -29,9 +29,7 @@ import com.yubico.webauthn.data.exception.Base64UrlException;
 import com.yubico.webauthn.exception.AssertionFailedException;
 import com.yubico.webauthn.exception.RegistrationFailedException;
 import java.io.IOException;
-import java.security.SecureRandom;
 import java.time.Instant;
-import java.util.Base64;
 import java.util.List;
 import java.util.SortedSet;
 import java.util.stream.Collectors;
@@ -51,14 +49,8 @@ public class PasskeyService {
   /** Logger. */
   private static final Logger log = LoggerFactory.getLogger(PasskeyService.class);
 
-  /** Number of random bytes used for a user handle. */
-  private static final int USER_HANDLE_BYTES = 32;
-
   /** Default label applied to a passkey when the user does not provide one. */
   private static final String DEFAULT_PASSKEY_NAME = "Passkey";
-
-  /** Source of randomness for user handles. */
-  private final SecureRandom secureRandom = new SecureRandom();
 
   /** The Yubico relying party. */
   private final RelyingParty relyingParty;
@@ -360,7 +352,7 @@ public class PasskeyService {
   private ByteArray ensureUserHandle(User user) {
     String handle = user.getUserHandle();
     if (handle == null || handle.isEmpty()) {
-      handle = generateUserHandle();
+      handle = UserHandles.generate();
       user.setUserHandle(handle);
       userRepository.save(user);
     }
@@ -370,17 +362,6 @@ public class PasskeyService {
       throw new PasskeyException(
           HttpStatus.INTERNAL_SERVER_ERROR, "Corrupt user handle for account", e);
     }
-  }
-
-  /**
-   * Generates a fresh, random, base64url-encoded user handle.
-   *
-   * @return the new user handle
-   */
-  private String generateUserHandle() {
-    byte[] bytes = new byte[USER_HANDLE_BYTES];
-    secureRandom.nextBytes(bytes);
-    return Base64.getUrlEncoder().withoutPadding().encodeToString(bytes);
   }
 
   /**

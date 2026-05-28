@@ -30,7 +30,15 @@ export const base64urlToBuffer = base64url => {
  * @returns {string} the base64url-encoded value
  */
 export const bufferToBase64url = buffer => {
-  const bytes = buffer instanceof ArrayBuffer ? new Uint8Array(buffer) : new Uint8Array(buffer.buffer || buffer);
+  let bytes;
+  if (buffer instanceof ArrayBuffer) {
+    bytes = new Uint8Array(buffer);
+  } else if (ArrayBuffer.isView(buffer)) {
+    // Respect the view's offset and length so we only encode the intended bytes.
+    bytes = new Uint8Array(buffer.buffer, buffer.byteOffset, buffer.byteLength);
+  } else {
+    bytes = new Uint8Array(buffer);
+  }
   let str = '';
   for (let i = 0; i < bytes.length; i += 1) {
     str += String.fromCharCode(bytes[i]);
