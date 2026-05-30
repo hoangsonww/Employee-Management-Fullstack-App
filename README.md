@@ -270,6 +270,13 @@ Here's a table listing all the RESTful API endpoints provided by this applicatio
 | `/authenticate`                | POST   | Authenticate and get JWT token      | `AuthRequestDto`         | `{ token }`               |
 | `/verify-username/{username}`  | GET    | Check if a username exists          | -                        | Status message            |
 | `/reset-password`              | POST   | Reset a user's password             | `ResetPasswordRequestDto`| Status message            |
+| `/api/passkeys/register/start` | POST   | Start passkey registration (JWT)    | -                        | `{ flowId, options }`     |
+| `/api/passkeys/register/finish`| POST   | Finish passkey registration (JWT)   | `{ flowId, credential, name }` | `PasskeyDto`        |
+| `/api/passkeys`                | GET    | List my passkeys (JWT)              | -                        | `PasskeyDto[]`            |
+| `/api/passkeys/{id}`           | PATCH  | Rename a passkey (JWT)              | `{ name }`               | `PasskeyDto`              |
+| `/api/passkeys/{id}`           | DELETE | Delete a passkey (JWT)             | -                        | 204 No Content            |
+| `/api/passkeys/authenticate/start` | POST | Start passkey login (public)     | `{ username? }`          | `{ flowId, options }`     |
+| `/api/passkeys/authenticate/finish`| POST | Finish passkey login (public)    | `{ flowId, credential }` | `{ token, username }`     |
 | `/swagger-ui.html`             | GET    | Access the Swagger UI documentation | -                        | -                         |
 
 ### DTO Reference
@@ -434,7 +441,15 @@ MONGO_URI=mongodb://localhost:27017/employee_management
 
 # JWT Secret (required - generate with: openssl rand -base64 32)
 JWT_SECRET=your-secret-key-here
+
+# Passkeys / WebAuthn — rp-id MUST match the domain the FRONTEND is served from (no scheme/port).
+# Defaults target local development; set these for production.
+WEBAUTHN_RP_ID=localhost
+WEBAUTHN_RP_NAME=Employee Management System
+WEBAUTHN_ALLOWED_ORIGINS=http://localhost:3000,http://localhost:8080
 ```
+
+> **Passkeys in production:** set `WEBAUTHN_RP_ID` to the frontend's domain (e.g. `employee-management-fullstack-app.vercel.app`) and `WEBAUTHN_ALLOWED_ORIGINS` to the exact frontend origin(s) (e.g. `https://employee-management-fullstack-app.vercel.app`). WebAuthn requires HTTPS (localhost is exempt).
 
 For MySQL bootstrap, you have two supported options:
 

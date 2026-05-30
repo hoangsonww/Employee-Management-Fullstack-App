@@ -13,6 +13,7 @@ The backend of the Employee Management System is built using Spring Boot, a powe
 - **Data Initialization**: Seeds sample data on first startup only (idempotent — skips if data exists).
 - **Integration**: Connects to both MySQL and MongoDB databases.
 - **JWT Authentication**: Token-based auth with externalized secret (`JWT_SECRET` env var). Invalid/expired tokens are handled gracefully.
+- **Passkeys (WebAuthn/FIDO2)**: Passwordless, phishing-resistant sign-in via the Yubico `java-webauthn-server` library. Users can register multiple passkeys, log in with them, and manage (list/rename/delete) them. Only passkey-management routes require a JWT; passkey login is public.
 
 ## Technologies
 
@@ -110,9 +111,17 @@ MONGO_URI=mongodb://localhost:27017/employee_management
 
 # JWT Secret (required - generate with: openssl rand -base64 32)
 JWT_SECRET=your-secret-key-here
+
+# Passkeys / WebAuthn — rp-id MUST match the domain the frontend is served from (no scheme/port)
+WEBAUTHN_RP_ID=localhost
+WEBAUTHN_RP_NAME=Employee Management System
+WEBAUTHN_ALLOWED_ORIGINS=http://localhost:3000,http://localhost:8080
+# Optional: relax origin port matching (default false) and ceremony TTL seconds (default 300)
+WEBAUTHN_ALLOW_ORIGIN_PORT=false
+WEBAUTHN_CEREMONY_TIMEOUT_SECONDS=300
 ```
 
-The active datasource config lives in `src/main/resources/application.properties` and expects those variables to exist.
+The active datasource config lives in `src/main/resources/application.properties` and expects those variables to exist. For production, set `WEBAUTHN_RP_ID` to your frontend domain (e.g. `employee-management-fullstack-app.vercel.app`) and `WEBAUTHN_ALLOWED_ORIGINS` to the exact HTTPS origin(s); WebAuthn requires HTTPS (localhost is exempt).
 
 For a new MySQL setup, use one of these two paths:
 
@@ -183,6 +192,18 @@ Here are some example API endpoints you can use to interact with the backend:
   curl -X GET http://localhost:8080/api/departments/1
   ```
 
+- **Passkeys (WebAuthn):** management endpoints require `Authorization: Bearer <token>`; the `authenticate` endpoints are public.
+
+  ```text
+  POST   /api/passkeys/register/start         (JWT)    begin registering a passkey
+  POST   /api/passkeys/register/finish        (JWT)    verify attestation + store passkey
+  GET    /api/passkeys                        (JWT)    list my passkeys
+  PATCH  /api/passkeys/{id}                    (JWT)    rename a passkey
+  DELETE /api/passkeys/{id}                    (JWT)    delete a passkey
+  POST   /api/passkeys/authenticate/start      (public) begin a passkey login
+  POST   /api/passkeys/authenticate/finish     (public) verify assertion + issue JWT
+  ```
+
 ### 6. Data Initialization
 
 `config/DataInitializer.java` automatically runs on backend startup.
@@ -211,7 +232,8 @@ The main class that serves as the entry point for the Spring Boot application.
 
 - `EmployeeController.java` — REST endpoints for employee CRUD. Accepts `EmployeeRequestDto`, returns `EmployeeResponseDto`.
 - `DepartmentController.java` — REST endpoints for department CRUD. Accepts `DepartmentRequestDto`, returns `DepartmentResponseDto`. Rejects deleting departments that still have employees (409 Conflict).
-- `AuthController.java` — User registration, authentication (JWT), username verification, and password reset. Accepts `AuthRequestDto` / `ResetPasswordRequestDto`.
+- `AuthController.java` — User registration, authentication (JWT), username verification, and password reset. Accepts `AuthRequestDto` / `ResetPasswordRequestDto`. Registration also assigns the user's WebAuthn `userHandle`.
+- `PasskeyController.java` — WebAuthn passkey registration/login ceremonies and credential management (`/api/passkeys/**`).
 - `HomeController.java` — Default landing redirect to Swagger UI.
 
 ### DTOs (`dto/`)
@@ -222,11 +244,13 @@ The main class that serves as the entry point for the Spring Boot application.
 - `DepartmentResponseDto.java` — API response with `id`, `name`, `employeeCount`
 - `AuthRequestDto.java` — Input validation for login/register (username, password)
 - `ResetPasswordRequestDto.java` — Input validation for password reset (username, newPassword)
+- Passkey DTOs — `PasskeyDto`, `PasskeyCeremonyStartResponse`, and the registration/authentication/rename request bodies.
 
 ### Entities (`model/`)
 
 - `Department.java` and `Employee.java` — JPA entities with Bean Validation annotations.
-- `User.java` — Authentication principal entity.
+- `User.java` — Authentication principal entity (now with a stable `userHandle` for passkeys).
+- `WebAuthnCredential.java` — A registered passkey (credential id, COSE public key, signature counter, transports, AAGUID, backup flags, timestamps).
 
 ### Exception Handling (`exception/`)
 
@@ -239,8 +263,9 @@ The main class that serves as the entry point for the Spring Boot application.
 - `EmployeeService.java` — `@Transactional` save with `flush` + `refresh` for complete entity state
 - `DepartmentService.java` — CRUD + `countEmployeesInDepartment()` for safe deletion checks
 - `JwtTokenUtil.java` — JWT signing/verification with externalized `${JWT_SECRET}`
-- `JwtRequestFilter.java` — Graceful handling of invalid/expired tokens
+- `JwtRequestFilter.java` — Graceful handling of invalid/expired tokens; registered once inside the Spring Security chain
 - `DataInitializer.java` — Idempotent seeding (skips if data exists)
+- `webauthn/` — Passkey support: `PasskeyService` (ceremony orchestration), `WebAuthnConfig` + `WebAuthnProperties` (relying-party setup), `JpaCredentialRepository` (Yubico `CredentialRepository` adapter), `WebAuthnCeremonyStore` (single-use, TTL-bound challenge state), `UserHandles`, and `PasskeyException`
 
 ### `application.properties`
 
