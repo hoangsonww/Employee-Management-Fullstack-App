@@ -22,6 +22,8 @@ import FingerprintIcon from '@mui/icons-material/Fingerprint';
 import { setSession } from '../services/authService';
 import { loginWithPasskey, getApiErrorMessage } from '../services/passkeyService';
 import { isWebAuthnSupported, describeWebAuthnError } from '../utils/webauthn';
+import { extractFetchError } from '../utils/apiError';
+import { notifySuccess, notifyError } from '../utils/toast';
 import LoadingOverlay from './LoadingOverlay';
 
 const Login = () => {
@@ -30,7 +32,6 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [passkeyLoading, setPasskeyLoading] = useState(false);
-  const [error, setError] = useState('');
   const [successOpen, setSuccessOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
@@ -41,7 +42,6 @@ const Login = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     setLoading(true);
-    setError('');
 
     try {
       const response = await fetch('https://employee-management-app-gdm5.onrender.com/authenticate', {
@@ -50,35 +50,37 @@ const Login = () => {
         body: JSON.stringify({ username, password }),
       });
 
-      const data = await response.json();
-      setLoading(false);
-
       if (response.ok) {
+        const data = await response.json();
+        setLoading(false);
         setSession(data.token, username);
+        notifySuccess(`Welcome back, ${username}! You're signed in.`);
         setSuccessOpen(true);
       } else {
-        setError('Invalid credentials. Please try again.');
+        setLoading(false);
+        const message = await extractFetchError(response, 'Invalid username or password. Please try again.');
+        notifyError(message);
       }
     } catch (err) {
       setLoading(false);
-      setError('Invalid credentials or our server is not currently active. Please try again later.');
+      notifyError('We could not reach the server (it may be waking up). Please try again in a moment.');
     }
   };
 
   const handlePasskeyLogin = async () => {
     setPasskeyLoading(true);
-    setError('');
     try {
       const data = await loginWithPasskey(username.trim() || undefined);
       setSession(data.token, data.username);
       setUsername(data.username || username);
+      notifySuccess(`Welcome back, ${data.username || username}! Signed in with your passkey.`);
       setSuccessOpen(true);
     } catch (err) {
       const message =
         err && err.name && err.name.endsWith('Error') && !err.response
           ? describeWebAuthnError(err)
           : getApiErrorMessage(err, 'We could not sign you in with a passkey. Please try again.');
-      setError(message);
+      notifyError(message);
     } finally {
       setPasskeyLoading(false);
     }
@@ -201,16 +203,21 @@ const Login = () => {
                     startIcon={<FingerprintIcon />}
                     onClick={handlePasskeyLogin}
                     disabled={loading || passkeyLoading}
-                    sx={{ paddingY: 1.2 }}
+                    sx={{
+                      paddingY: 1.2,
+                      '&:hover': {
+                        backgroundColor: 'primary.main',
+                        borderColor: 'primary.main',
+                        color: '#fff',
+                      },
+                      '&:hover .MuiButton-startIcon': {
+                        color: '#fff',
+                      },
+                    }}
                   >
                     {passkeyLoading ? 'Waiting for your device…' : 'Sign in with a passkey'}
                   </Button>
                 </>
-              )}
-              {error && (
-                <Typography color="error" textAlign="center" sx={{ marginTop: '-0.5rem' }}>
-                  {error}
-                </Typography>
               )}
               <Divider />
               <Stack spacing={1} alignItems="center">

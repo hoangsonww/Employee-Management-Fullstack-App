@@ -34,6 +34,7 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import EmailIcon from '@mui/icons-material/Email';
 import LoadingOverlay from './LoadingOverlay';
 import useAuth from '../hooks/useAuth';
+import { notifyInfo, notifyApiError } from '../utils/toast';
 
 const EmployeeList = () => {
   const navigate = useNavigate();
@@ -66,6 +67,7 @@ const EmployeeList = () => {
           setDepartments(departmentData);
         } catch (error) {
           console.error('Error fetching employees:', error);
+          notifyApiError(error, 'We could not load your employees. Please try again.');
         }
         setLoading(false);
       };
@@ -75,11 +77,14 @@ const EmployeeList = () => {
 
   const handleDelete = async id => {
     setDeletingEmployeeId(id);
+    const removed = employees.find(employee => employee.id === id);
     try {
       await deleteEmployee(id);
       setEmployees(prevEmployees => prevEmployees.filter(employee => employee.id !== id));
+      notifyInfo(`${removed ? `${removed.firstName} ${removed.lastName}` : 'Employee'} was removed.`);
     } catch (error) {
       console.error('Error deleting employee:', error);
+      notifyApiError(error, 'We could not delete this employee. Please try again.');
     }
     setDeletingEmployeeId(null);
   };

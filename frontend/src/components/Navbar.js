@@ -17,7 +17,6 @@ import {
 } from '@mui/material';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import FingerprintIcon from '@mui/icons-material/Fingerprint';
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -217,7 +216,6 @@ const Navbar = () => {
                 <>
                   <Button
                     onClick={handleAccountOpen}
-                    startIcon={<AccountCircleIcon />}
                     endIcon={<KeyboardArrowDownIcon />}
                     aria-haspopup="true"
                     aria-controls={accountMenuOpen ? 'account-menu' : undefined}
@@ -243,14 +241,14 @@ const Navbar = () => {
                     }}
                   >
                     <MenuItem onClick={handleGoToPasskeys} selected={isActive('/passkeys')}>
-                      <ListItemIcon>
+                      <ListItemIcon sx={{ minWidth: 28 }}>
                         <FingerprintIcon fontSize="small" />
                       </ListItemIcon>
                       <ListItemText>Passkeys</ListItemText>
                     </MenuItem>
                     <Divider />
                     <MenuItem onClick={handleMenuLogout} sx={{ color: 'error.main' }}>
-                      <ListItemIcon>
+                      <ListItemIcon sx={{ minWidth: 28 }}>
                         <LogoutIcon fontSize="small" sx={{ color: 'error.main' }} />
                       </ListItemIcon>
                       <ListItemText>Log Out</ListItemText>

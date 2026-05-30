@@ -252,6 +252,12 @@ The frontend is also live at [https://employee-management-fullstack-app.vercel.a
   <img src="img/profile.png" alt="Profile Page" style="border-radius: 10px" width="100%"/>
 </p>
 
+**Passkeys Management Page:**
+
+<p align="center" style="cursor: pointer">
+  <img src="img/passkeys.png" alt="Passkeys Management Page" style="border-radius: 10px" width="100%"/>
+</p>
+
 **Login Page:**
 
 <p align="center" style="cursor: pointer">
@@ -262,6 +268,12 @@ The frontend is also live at [https://employee-management-fullstack-app.vercel.a
 
 <p align="center" style="cursor: pointer">
   <img src="img/register.png" alt="Register Page" style="border-radius: 10px" width="100%"/>
+</p>
+
+**Reset Password Page:**
+
+<p align="center" style="cursor: pointer">
+  <img src="img/reset-password.png" alt="Reset Password Page" style="border-radius: 10px" width="100%"/>
 </p>
 
 <p align="center">

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { addDepartment, getDepartmentById, updateDepartment } from '../services/departmentService';
 import { TextField, Button, CircularProgress, Box } from '@mui/material';
+import { notifySuccess, notifyApiError } from '../utils/toast';
 
 const DepartmentForm = () => {
   const [department, setDepartment] = useState({ name: '' });
@@ -18,6 +19,7 @@ const DepartmentForm = () => {
           setDepartment(departmentData);
         } catch (error) {
           console.error('Error fetching department data:', error);
+          notifyApiError(error, 'We could not load this department. Please refresh and try again.');
         } finally {
           setIsLoading(false); // Stop loading
         }
@@ -40,10 +42,12 @@ const DepartmentForm = () => {
         await addDepartment(department);
       }
       setIsLoading(false); // Stop loading
+      notifySuccess(`Department "${department.name}" was ${id ? 'updated' : 'created'} successfully.`);
       navigate('/departments');
     } catch (error) {
       console.error('Error saving department:', error);
       setIsLoading(false); // Stop loading
+      notifyApiError(error, `We could not ${id ? 'update' : 'create'} this department. Please try again.`);
     }
   };
 
@@ -64,12 +68,21 @@ const DepartmentForm = () => {
   }
 
   return (
-    <Box component="form" onSubmit={handleSubmit} sx={{ '& .MuiTextField-root': { marginBottom: '1rem', width: '100%' }, maxWidth: '400px', margin: '0 auto' }}>
-      <h2>{id ? 'Edit Department' : 'Add Department'}</h2>
-      <TextField label="Department Name" name="name" value={department.name} onChange={handleChange} required fullWidth />
-      <Button type="submit" variant="contained" color="primary" sx={{ marginTop: '1rem' }}>
-        Save
-      </Button>
+    <Box
+      sx={{
+        minHeight: { xs: 'calc(100vh - 220px)', md: 'calc(100vh - 260px)' },
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+      }}
+    >
+      <Box component="form" onSubmit={handleSubmit} sx={{ '& .MuiTextField-root': { marginBottom: '1rem', width: '100%' }, maxWidth: '400px', width: '100%', margin: '0 auto' }}>
+        <h2>{id ? 'Edit Department' : 'Add Department'}</h2>
+        <TextField label="Department Name" name="name" value={department.name} onChange={handleChange} required fullWidth />
+        <Button type="submit" variant="contained" color="primary" sx={{ marginTop: '1rem' }}>
+          Save
+        </Button>
+      </Box>
     </Box>
   );
 };

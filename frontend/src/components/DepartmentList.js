@@ -31,6 +31,7 @@ import {
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import LoadingOverlay from './LoadingOverlay';
 import useAuth from '../hooks/useAuth';
+import { notifyInfo, notifyApiError } from '../utils/toast';
 
 const DepartmentList = () => {
   const navigate = useNavigate();
@@ -59,6 +60,7 @@ const DepartmentList = () => {
           setDepartments(data);
         } catch (error) {
           console.error('Error fetching departments:', error);
+          notifyApiError(error, 'We could not load your departments. Please try again.');
         }
         setLoading(false);
       };
@@ -68,11 +70,14 @@ const DepartmentList = () => {
 
   const handleDelete = async id => {
     setDeletingDepartmentId(id);
+    const removed = departments.find(department => department.id === id);
     try {
       await deleteDepartment(id);
       setDepartments(prevDepartments => prevDepartments.filter(department => department.id !== id));
+      notifyInfo(`${removed ? `Department "${removed.name}"` : 'Department'} was removed.`);
     } catch (error) {
       console.error('Error deleting department:', error);
+      notifyApiError(error, 'We could not delete this department. It may still have employees assigned.');
     }
     setDeletingDepartmentId(null);
   };

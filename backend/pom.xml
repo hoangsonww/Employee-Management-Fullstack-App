@@ -21,6 +21,14 @@
   <!-- Using Java 11 -->
   <properties>
     <java.version>11</java.version>
+    <!--
+      Pin the whole Jackson stack to a released (GA) version. The Yubico WebAuthn library pulls in
+      jackson-dataformat-cbor whose transitive jackson-databind otherwise resolves to an unreleased
+      2.19.5-SNAPSHOT, which breaks `mvn dependency:go-offline` in the Docker build. Spring Boot
+      imports the Jackson BOM via this property, so overriding it aligns every Jackson module
+      (core, databind, annotations, dataformat-cbor) on the same stable release.
+    -->
+    <jackson-bom.version>2.19.4</jackson-bom.version>
   </properties>
 
   <dependencies>
@@ -77,11 +85,55 @@
       <version>0.9.1</version>
     </dependency>
 
-    <!-- WebAuthn / Passkeys (FIDO2) server library -->
+    <!--
+      WebAuthn / Passkeys (FIDO2) server library.
+
+      Yubico's webauthn-server-parent pins its Jackson dependencies with version RANGES
+      (e.g. [2.13.2.1,3)). `mvn dependency:go-offline` resolves those ranges against the
+      configured repositories and, when a snapshots repo is enabled (as on Maven Central's
+      central-snapshots), it can resolve to an unreleased build such as jackson-databind
+      2.19.5-SNAPSHOT and fail. We exclude those transitive (ranged) Jackson artifacts and
+      provide concrete, released versions below so resolution is deterministic and offline-safe.
+    -->
     <dependency>
       <groupId>com.yubico</groupId>
       <artifactId>webauthn-server-core</artifactId>
       <version>2.6.0</version>
+      <exclusions>
+        <exclusion>
+          <groupId>com.fasterxml.jackson.core</groupId>
+          <artifactId>jackson-databind</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.fasterxml.jackson.dataformat</groupId>
+          <artifactId>jackson-dataformat-cbor</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.fasterxml.jackson.datatype</groupId>
+          <artifactId>jackson-datatype-jdk8</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.fasterxml.jackson.datatype</groupId>
+          <artifactId>jackson-datatype-jsr310</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <!-- Concrete, released Jackson modules for the WebAuthn/CBOR stack (replaces Yubico's ranged ones) -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.dataformat</groupId>
+      <artifactId>jackson-dataformat-cbor</artifactId>
+      <version>2.19.4</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.datatype</groupId>
+      <artifactId>jackson-datatype-jdk8</artifactId>
+      <version>2.19.4</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.datatype</groupId>
+      <artifactId>jackson-datatype-jsr310</artifactId>
+      <version>2.19.4</version>
     </dependency>
 
     <!-- Spring Boot Starter Test -->
@@ -131,6 +183,48 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+
+  <!--
+    Jackson's and Yubico's parent POMs transitively introduce SNAPSHOT repositories
+    (central-snapshots, sonatype-nexus-snapshots). With those enabled, Maven resolves Yubico's
+    Jackson version ranges (e.g. [2.13.2.1,3)) against the snapshot repos and can pick an
+    unreleased build such as jackson-databind 2.19.5-SNAPSHOT, which has no published descriptor
+    and breaks `mvn dependency:go-offline` in the Docker build. We never want SNAPSHOT
+    dependencies here, so we override those repository ids to point at Maven Central with
+    snapshots disabled, forcing range resolution to consider released versions only.
+  -->
+  <repositories>
+    <repository>
+      <id>central</id>
+      <url>https://repo.maven.apache.org/maven2</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>central-snapshots</id>
+      <url>https://repo.maven.apache.org/maven2</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>sonatype-nexus-snapshots</id>
+      <url>https://repo.maven.apache.org/maven2</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
 
   <build>
     <plugins>

@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Container, CssBaseline, ThemeProvider } from '@mui/material';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import theme from './theme';
 import Dashboard from './components/Dashboard';
 import EmployeeList from './components/EmployeeList';
@@ -130,6 +132,17 @@ const App = () => {
       <Router>
         <AppContent />
       </Router>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={4500}
+        newestOnTop
+        closeOnClick
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+        style={{ zIndex: 20000 }}
+      />
     </ThemeProvider>
   );
 };
