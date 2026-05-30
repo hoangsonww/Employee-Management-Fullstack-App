@@ -14,7 +14,8 @@ databases/
 │   ├── 04_seed_data.sql
 │   ├── 05_views.sql
 │   ├── 06_stored_procedures.sql
-│   └── 07_full_setup.sql   ← All-in-one runner
+│   ├── 07_full_setup.sql   ← All-in-one runner
+│   └── 08_webauthn_credentials.sql  ← Passkey / WebAuthn table
 └── mongo/                  ← MongoDB setup scripts
     ├── 01_init_database.js
     ├── 02_indexes.js
@@ -26,7 +27,7 @@ databases/
 
 ## Schema Overview
 
-Both databases share the same logical schema with three entities:
+The core logical schema has three entities, plus a `webauthn_credentials` table for passkey sign-in (MySQL only):
 
 ```
 ┌──────────────┐       1:N       ┌──────────────────┐
@@ -40,21 +41,31 @@ Both databases share the same logical schema with three entities:
 │    users     │                 │ department_id(FK)│
 ├──────────────┤                 └──────────────────┘
 │ id (PK)      │
-│ username (UQ)│
-│ password     │  ← BCrypt hash
-└──────────────┘
+│ username (UQ)│       1:N       ┌────────────────────────┐
+│ password     │────────────────▶│  webauthn_credentials  │
+└──────────────┘   ← BCrypt hash ├────────────────────────┤
+                                 │ id (PK)                │
+                                 │ user_id (FK)           │
+                                 │ credential_id (UQ)     │
+                                 │ public_key_cose        │
+                                 │ signature_count        │
+                                 │ backup_state / …       │
+                                 └────────────────────────┘
 ```
 
 **Relationships:**
 - One **Department** has many **Employees**
 - Each **Employee** belongs to exactly one **Department**
-- **Users** are standalone (authentication only — no FK to employees)
+- **Users** are standalone for password auth (no FK to employees)
+- One **User** has many **WebAuthn credentials** (passkeys), one per device
 
 **Constraints:**
 - `employees.age` must be between 18 and 65
 - `users.username` must be unique
 - `employees.department_id` is a required foreign key
 - Deleting a department with employees is blocked (`ON DELETE RESTRICT` / no cascade)
+- `webauthn_credentials.credential_id` must be globally unique
+- Deleting a user cascades to their passkeys (`ON DELETE CASCADE`)
 
 ---
 
@@ -93,6 +104,9 @@ mysql -u root -p < databases/sql/05_views.sql
 
 # 6. Create stored procedures (optional — DBA utilities)
 mysql -u root -p < databases/sql/06_stored_procedures.sql
+
+# 7. Create the passkey / WebAuthn credentials table
+mysql -u root -p < databases/sql/08_webauthn_credentials.sql
 ```
 
 ### Script Details
@@ -105,7 +119,8 @@ mysql -u root -p < databases/sql/06_stored_procedures.sql
 | `04_seed_data.sql` | 10 departments + 20 employees + 1 demo user | Optional |
 | `05_views.sql` | 4 read-only views matching DTO response shapes | Optional |
 | `06_stored_procedures.sql` | 6 utility procedures (search, transfer, report, health check) | Optional |
-| `07_full_setup.sql` | Runs all scripts in order | Convenience |
+| `07_full_setup.sql` | Runs all scripts in order (includes `08`) | Convenience |
+| `08_webauthn_credentials.sql` | DDL for the `webauthn_credentials` (passkey) table, FK to `users` | Required for passkeys |
 
 ### Views
 

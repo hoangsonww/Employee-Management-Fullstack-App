@@ -6,6 +6,7 @@ import { getAllDepartments } from '../services/departmentService';
 import LoadingOverlay from './LoadingOverlay';
 import useAuth from '../hooks/useAuth';
 import { clearSession } from '../services/authService';
+import { notifyInfo, notifyApiError } from '../utils/toast';
 import ShieldIcon from '@mui/icons-material/Shield';
 import TimelineIcon from '@mui/icons-material/Timeline';
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -41,6 +42,7 @@ const Profile = () => {
         setAverageAge(avgAge);
       } catch (error) {
         console.error('Failed to fetch data:', error);
+        notifyApiError(error, 'We could not load your profile stats. Please refresh to try again.');
       }
       setLoading(false);
     };
@@ -102,6 +104,7 @@ const Profile = () => {
 
   const handleLogout = () => {
     clearSession();
+    notifyInfo('You have been signed out.');
     navigate('/login');
   };
 

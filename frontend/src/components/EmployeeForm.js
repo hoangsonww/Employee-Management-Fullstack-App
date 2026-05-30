@@ -4,6 +4,7 @@ import { addEmployee, getEmployeeById, updateEmployee } from '../services/employ
 import { getAllDepartments } from '../services/departmentService';
 import { TextField, Button, MenuItem, Box, CircularProgress } from '@mui/material';
 import { styled } from '@mui/system';
+import { notifySuccess, notifyApiError } from '../utils/toast';
 
 const CenteredSpinner = styled('div')({
   display: 'flex',
@@ -49,6 +50,7 @@ const EmployeeForm = () => {
         setIsLoading(false);
       } catch (error) {
         console.error('Error fetching data:', error);
+        notifyApiError(error, 'We could not load the form data. Please refresh and try again.');
         setIsLoading(false);
       }
     };
@@ -77,10 +79,12 @@ const EmployeeForm = () => {
         await addEmployee(employee);
       }
       setIsLoading(false);
+      notifySuccess(`${employee.firstName} ${employee.lastName} was ${id ? 'updated' : 'added'} successfully.`);
       navigate('/employees');
     } catch (error) {
       console.error('Error saving employee:', error);
       setIsLoading(false);
+      notifyApiError(error, `We could not ${id ? 'update' : 'add'} this employee. Please check the details and try again.`);
     }
   };
 

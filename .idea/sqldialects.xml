@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/backend/sql/01_create_database.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/backend/sql/02_create_tables.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/backend/sql/03_indexes.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/backend/sql/04_seed_data.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/backend/sql/05_views.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/backend/sql/06_stored_procedures.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/backend/sql/07_full_setup.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/backend/sql/08_webauthn_credentials.sql" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/data.sql" dialect="MySQL" />
   </component>
 </project>

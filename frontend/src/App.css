@@ -7,6 +7,21 @@ body {
   padding: 0;
 }
 
+/* react-toastify defaults --toastify-font-family to sans-serif and applies it to
+   .Toastify__toast, so the global Poppins never cascades into toasts. Override the
+   variable and force Poppins on every toast element (body text, close button, etc.). */
+:root {
+  --toastify-font-family: 'Poppins', sans-serif;
+}
+
+.Toastify,
+.Toastify__toast,
+.Toastify__toast-body,
+.Toastify__toast-body > div,
+.Toastify__close-button {
+  font-family: 'Poppins', sans-serif !important;
+}
+
 h1,
 h2,
 h3,

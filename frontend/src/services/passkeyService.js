@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { getToken } from './authService';
 import { createRegistrationCredential, getAssertionCredential } from '../utils/webauthn';
+import { extractApiError } from '../utils/apiError';
 
 const API_BASE = process.env.REACT_APP_API_BASE_URL || 'https://employee-management-app-gdm5.onrender.com';
 const PASSKEYS_URL = `${API_BASE}/api/passkeys`;
@@ -84,9 +85,4 @@ export const loginWithPasskey = async username => {
  * @param {string} fallback a default message
  * @returns {string} a human-readable message
  */
-export const getApiErrorMessage = (error, fallback) => {
-  if (error && error.response && error.response.data && error.response.data.message) {
-    return error.response.data.message;
-  }
-  return fallback;
-};
+export const getApiErrorMessage = (error, fallback) => extractApiError(error, fallback);

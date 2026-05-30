@@ -15,7 +15,6 @@ import {
   DialogActions,
   TextField,
   Alert,
-  Snackbar,
   CircularProgress,
   Skeleton,
 } from '@mui/material';
@@ -31,6 +30,7 @@ import CloudDoneIcon from '@mui/icons-material/CloudDone';
 import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
 import { getPasskeys, registerNewPasskey, renamePasskey, deletePasskey, getApiErrorMessage } from '../services/passkeyService';
 import { isWebAuthnSupported, isPlatformAuthenticatorAvailable, describeWebAuthnError, suggestPasskeyName } from '../utils/webauthn';
+import { notifySuccess, notifyInfo, notifyError } from '../utils/toast';
 
 const GRADIENT = 'linear-gradient(135deg, #1E3C72 0%, #2A5298 100%)';
 
@@ -86,9 +86,11 @@ const Passkeys = () => {
   const [deleteTarget, setDeleteTarget] = useState(null);
   const [deleting, setDeleting] = useState(false);
 
-  const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: 'success' });
-
-  const notify = (message, severity = 'success') => setSnackbar({ open: true, message, severity });
+  const notify = (message, severity = 'success') => {
+    if (severity === 'error') notifyError(message);
+    else if (severity === 'info') notifyInfo(message);
+    else notifySuccess(message);
+  };
 
   const fetchPasskeys = useCallback(async () => {
     setLoading(true);
@@ -290,7 +292,16 @@ const Passkeys = () => {
                           <Stack direction="row" spacing={0.75} sx={{ mt: 0.75, flexWrap: 'wrap', gap: 0.75 }}>
                             <Chip size="small" variant="outlined" label={meta.label} />
                             {passkey.discoverable && <Chip size="small" color="primary" variant="outlined" label="Passwordless" />}
-                            {passkey.backupState && <Chip size="small" color="success" variant="outlined" icon={<CloudDoneIcon />} label="Synced" />}
+                            {passkey.backupState && (
+                              <Chip
+                                size="small"
+                                color="success"
+                                variant="outlined"
+                                icon={<CloudDoneIcon />}
+                                label="Synced"
+                                sx={{ '& .MuiChip-label': { px: 1 }, '& .MuiChip-icon': { ml: 1 } }}
+                              />
+                            )}
                           </Stack>
                         </Box>
                         <Stack direction="row" spacing={0.5} sx={{ flexShrink: 0 }}>
@@ -410,17 +421,6 @@ const Passkeys = () => {
           </Button>
         </DialogActions>
       </Dialog>
-
-      <Snackbar
-        open={snackbar.open}
-        autoHideDuration={4000}
-        onClose={() => setSnackbar(s => ({ ...s, open: false }))}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-      >
-        <Alert onClose={() => setSnackbar(s => ({ ...s, open: false }))} severity={snackbar.severity} sx={{ width: '100%' }}>
-          {snackbar.message}
-        </Alert>
-      </Snackbar>
     </Box>
   );
 };

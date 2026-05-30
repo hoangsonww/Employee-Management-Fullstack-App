@@ -11,6 +11,7 @@ import GroupWorkIcon from '@mui/icons-material/GroupWork';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import LoadingOverlay from './LoadingOverlay';
 import { getUsername } from '../services/authService';
+import { notifyApiError } from '../utils/toast';
 
 Chart.register(CategoryScale, LinearScale, BarElement, LineElement, PointElement, Title, Tooltip, Legend, ArcElement);
 
@@ -31,8 +32,17 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true); // Set loading to true when fetching data
-      const employees = await getAllEmployees();
-      const departments = await getAllDepartments();
+      let employees = [];
+      let departments = [];
+      try {
+        employees = await getAllEmployees();
+        departments = await getAllDepartments();
+      } catch (error) {
+        console.error('Error loading dashboard data:', error);
+        notifyApiError(error, 'We could not load your dashboard data. Please refresh to try again.');
+        setLoading(false);
+        return;
+      }
       setEmployeeCount(employees.length);
       setDepartmentCount(departments.length);
 

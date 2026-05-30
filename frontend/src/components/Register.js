@@ -22,6 +22,8 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { useNavigate } from 'react-router-dom';
 import { setSession } from '../services/authService';
 import { isWebAuthnSupported } from '../utils/webauthn';
+import { extractFetchError } from '../utils/apiError';
+import { notifySuccess, notifyError, notifyWarning } from '../utils/toast';
 import PasskeyPromptDialog from './PasskeyPromptDialog';
 
 const API_BASE = process.env.REACT_APP_API_BASE_URL || 'https://employee-management-app-gdm5.onrender.com';
@@ -33,7 +35,6 @@ const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
   const [successOpen, setSuccessOpen] = useState(false);
   const [passkeyPromptOpen, setPasskeyPromptOpen] = useState(false);
   const navigate = useNavigate();
@@ -51,6 +52,7 @@ const Register = () => {
         const data = await authRes.json();
         setSession(data.token, username);
         setLoading(false);
+        notifySuccess(`Your account is ready, ${username}! You're signed in.`);
         if (isWebAuthnSupported()) {
           setPasskeyPromptOpen(true);
         } else {
@@ -62,15 +64,15 @@ const Register = () => {
       // Ignore and fall back to the manual login dialog below.
     }
     setLoading(false);
+    notifySuccess('Account created! Please sign in to continue.');
     setSuccessOpen(true);
   };
 
   const handleSubmit = async e => {
     e.preventDefault();
-    setError('');
 
     if (password !== confirmPassword) {
-      setError('Passwords do not match.');
+      notifyWarning('Those passwords do not match. Please re-enter them.');
       return;
     }
 
@@ -87,12 +89,12 @@ const Register = () => {
         await finishSignup();
       } else {
         setLoading(false);
-        const data = await response.json().catch(() => ({}));
-        setError(data.message || 'Error registering user. Please try again.');
+        const message = await extractFetchError(response, 'We could not register that account. The username may already be taken.');
+        notifyError(message);
       }
     } catch (err) {
       setLoading(false);
-      setError('Something went wrong. Please try again later.');
+      notifyError('We could not reach the server (it may be waking up). Please try again in a moment.');
     }
   };
 
@@ -239,11 +241,6 @@ const Register = () => {
               <Button fullWidth variant="contained" color="primary" type="submit" sx={{ py: 1.2 }}>
                 Register
               </Button>
-            )}
-            {error && (
-              <Typography color="error" textAlign="center" sx={{ marginTop: '1rem' }}>
-                {error}
-              </Typography>
             )}
             <Typography textAlign="center" sx={{ marginTop: '1rem' }}>
               Already have an account?{' '}
