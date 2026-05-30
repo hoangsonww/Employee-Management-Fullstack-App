@@ -10,7 +10,8 @@ const tooltipContent = (
       Why is this slow?
     </Typography>
     <Typography variant="caption" sx={{ display: 'block', lineHeight: 1.55 }}>
-      Our backend runs on Render's free tier (512&nbsp;MB RAM, 0.1 CPU). When it has been idle the instance spins down, and a cold start typically takes 30–60&nbsp;seconds. Once it is warm, requests are much faster.
+      Our backend runs on Render's free tier (512&nbsp;MB RAM, 0.1 CPU). When it has been idle the instance spins down, and a cold start typically takes
+      30–60&nbsp;seconds. Once it is warm, requests are much faster.
     </Typography>
   </Box>
 );

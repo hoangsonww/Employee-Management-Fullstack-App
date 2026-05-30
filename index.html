@@ -8,7 +8,7 @@
     <meta name="keywords" content="Employee Management System, Employee Management App, Department Management, React, Spring Boot, Java, REST API, Full-Stack, DevOps, CI/CD, Docker, Kubernetes, Terraform, AWS, Architecture, Documentation">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="theme-color" content="#0f172a">
-    <meta name="color-scheme" content="light dark">
+    <meta name="color-scheme" content="dark">
     <meta name="application-name" content="Employee Management System">
     <meta name="apple-mobile-web-app-title" content="Employee Management System">
     <meta name="format-detection" content="telephone=no">
@@ -198,7 +198,7 @@
                         <span class="stat-label">API Endpoints</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-value">3</span>
+                        <span class="stat-value">4</span>
                         <span class="stat-label">Core Entities</span>
                     </div>
                     <div class="stat-item">
@@ -228,14 +228,47 @@
                 <div class="card">
                     <div class="card-icon">⚡</div>
                     <h3>Features</h3>
-                    <p>Complete CRUD operations, real-time dashboards, authentication & authorization, data visualization, 
-                       responsive UI, and comprehensive API documentation with Swagger.</p>
+                    <p>Complete CRUD operations, real-time dashboards, authentication &amp; authorization, passwordless
+                       passkey (WebAuthn) sign-in, data visualization, responsive UI, and comprehensive API
+                       documentation with Swagger.</p>
                 </div>
                 <div class="card">
                     <div class="card-icon">🚀</div>
                     <h3>DevOps</h3>
                     <p>Docker containerization, Kubernetes orchestration with blue-green & canary deployments, 
                        Jenkins CI/CD pipeline, and Terraform infrastructure as code for AWS.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🔐</div>
+                    <h3>Security</h3>
+                    <p>Spring Security with JWT-based sessions, BCrypt password hashing, and FIDO2/WebAuthn
+                       passkeys powered by the Yubico server library for phishing-resistant, passwordless
+                       authentication.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🧪</div>
+                    <h3>Testing</h3>
+                    <p>Comprehensive coverage across the stack with JUnit 5 and an in-memory H2 database on the
+                       backend, plus Jest and React Testing Library on the frontend to keep regressions out of
+                       production.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📊</div>
+                    <h3>Data &amp; Persistence</h3>
+                    <p>Polyglot persistence with MySQL via Spring Data JPA and Hibernate, MongoDB for flexible
+                       document storage, and Faker-seeded demo data for instant, realistic environments.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🎨</div>
+                    <h3>Modern UI</h3>
+                    <p>A responsive React 18 single-page app built with Material UI and Tailwind CSS, interactive
+                       Chart.js dashboards, and smooth client-side routing with React Router.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📖</div>
+                    <h3>Documentation</h3>
+                    <p>Interactive, always-current REST API docs generated with Swagger/OpenAPI, alongside detailed
+                       setup, deployment, and contributing guides for a frictionless developer onboarding.</p>
                 </div>
             </div>
         </div>
@@ -378,14 +411,20 @@ flowchart LR
                 <div class="badges">
                     <span class="badge badge-react">React 18</span>
                     <span class="badge badge-js">JavaScript ES6+</span>
+                    <span class="badge badge-html5">HTML5</span>
+                    <span class="badge badge-css3">CSS3</span>
                     <span class="badge badge-router">React Router</span>
                     <span class="badge badge-redux">Redux</span>
                     <span class="badge badge-axios">Axios</span>
                     <span class="badge badge-tailwind">Tailwind CSS</span>
                     <span class="badge badge-mui">Material UI</span>
+                    <span class="badge badge-emotion">Emotion</span>
                     <span class="badge badge-chart">Chart.js</span>
+                    <span class="badge badge-chart">react-chartjs-2</span>
+                    <span class="badge badge-webvitals">Web Vitals</span>
                     <span class="badge badge-jest">Jest</span>
                     <span class="badge badge-rtl">React Testing Library</span>
+                    <span class="badge badge-prettier">Prettier</span>
                 </div>
             </div>
 
@@ -396,10 +435,25 @@ flowchart LR
                     <span class="badge badge-spring">Spring Boot 2.7</span>
                     <span class="badge badge-jpa">Spring Data JPA</span>
                     <span class="badge badge-hibernate">Hibernate</span>
-                    <span class="badge badge-security">Spring Security</span>
+                    <span class="badge badge-validation">Bean Validation</span>
+                    <span class="badge badge-lombok">Lombok</span>
                     <span class="badge badge-junit">JUnit 5</span>
+                    <span class="badge badge-faker">JavaFaker</span>
                     <span class="badge badge-swagger">Swagger/OpenAPI</span>
                     <span class="badge badge-maven">Maven</span>
+                </div>
+            </div>
+
+            <div class="tech-category">
+                <h3>Security & Authentication</h3>
+                <div class="badges">
+                    <span class="badge badge-security">Spring Security</span>
+                    <span class="badge badge-webauthn">WebAuthn</span>
+                    <span class="badge badge-passkeys">Passkeys</span>
+                    <span class="badge badge-fido2">FIDO2</span>
+                    <span class="badge badge-yubico">Yubico WebAuthn</span>
+                    <span class="badge badge-jwt">JWT</span>
+                    <span class="badge badge-bcrypt">BCrypt</span>
                 </div>
             </div>
 
@@ -408,6 +462,7 @@ flowchart LR
                 <div class="badges">
                     <span class="badge badge-mysql">MySQL</span>
                     <span class="badge badge-mongodb">MongoDB</span>
+                    <span class="badge badge-h2">H2 (Tests)</span>
                 </div>
             </div>
 
@@ -420,6 +475,10 @@ flowchart LR
                     <span class="badge badge-terraform">Terraform</span>
                     <span class="badge badge-aws">AWS (EKS, RDS, ECR)</span>
                     <span class="badge badge-nginx">Nginx</span>
+                    <span class="badge badge-render">Render</span>
+                    <span class="badge badge-vercel">Vercel</span>
+                    <span class="badge badge-node">Node.js</span>
+                    <span class="badge badge-npm">npm</span>
                     <span class="badge badge-git">Git</span>
                     <span class="badge badge-github">GitHub</span>
                 </div>
@@ -550,8 +609,8 @@ flowchart TB
                 <div class="feature-card">
                     <div class="feature-icon">🔐</div>
                     <h3>Authentication & Security</h3>
-                    <p>JWT-based authentication, BCrypt password hashing, role-based access control, 
-                       and secure API endpoints.</p>
+                    <p>JWT-based authentication, passwordless passkeys (WebAuthn/FIDO2) with biometrics or security
+                       keys, BCrypt password hashing, and secure API endpoints.</p>
                 </div>
                 
                 <div class="feature-card">
@@ -677,6 +736,47 @@ flowchart TB
                         <span class="method method-post">POST</span>
                         <code>/api/auth/reset-password</code>
                         <span class="description">Reset user password</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-section">
+                <h3>🔑 Passkey Endpoints (WebAuthn)</h3>
+                <div class="api-endpoints">
+                    <div class="api-endpoint">
+                        <span class="method method-post">POST</span>
+                        <code>/api/passkeys/register/start</code>
+                        <span class="description">Begin registering a passkey (JWT)</span>
+                    </div>
+                    <div class="api-endpoint">
+                        <span class="method method-post">POST</span>
+                        <code>/api/passkeys/register/finish</code>
+                        <span class="description">Verify attestation &amp; store passkey (JWT)</span>
+                    </div>
+                    <div class="api-endpoint">
+                        <span class="method method-get">GET</span>
+                        <code>/api/passkeys</code>
+                        <span class="description">List my passkeys (JWT)</span>
+                    </div>
+                    <div class="api-endpoint">
+                        <span class="method method-put">PATCH</span>
+                        <code>/api/passkeys/{id}</code>
+                        <span class="description">Rename a passkey (JWT)</span>
+                    </div>
+                    <div class="api-endpoint">
+                        <span class="method method-delete">DELETE</span>
+                        <code>/api/passkeys/{id}</code>
+                        <span class="description">Delete a passkey (JWT)</span>
+                    </div>
+                    <div class="api-endpoint">
+                        <span class="method method-post">POST</span>
+                        <code>/api/passkeys/authenticate/start</code>
+                        <span class="description">Begin a passkey login (public)</span>
+                    </div>
+                    <div class="api-endpoint">
+                        <span class="method method-post">POST</span>
+                        <code>/api/passkeys/authenticate/finish</code>
+                        <span class="description">Verify assertion &amp; issue JWT (public)</span>
                     </div>
                 </div>
             </div>

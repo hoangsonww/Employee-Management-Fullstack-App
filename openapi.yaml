@@ -259,7 +259,182 @@ paths:
           description: Username verified successfully
         '404':
           description: Username not found
+  /api/passkeys/register/start:
+    post:
+      summary: Start passkey registration
+      description: Begins a WebAuthn registration ceremony for the authenticated user and returns the flow id plus browser-ready creation options.
+      tags:
+        - Passkeys
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Registration options issued
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PasskeyCeremonyStart'
+        '401':
+          description: Authentication required
+  /api/passkeys/register/finish:
+    post:
+      summary: Finish passkey registration
+      description: Verifies the authenticator attestation against the issued challenge and stores the new passkey.
+      tags:
+        - Passkeys
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PasskeyRegistrationFinish'
+      responses:
+        '201':
+          description: Passkey registered successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Passkey'
+        '400':
+          description: Ceremony expired or attestation malformed/unverifiable
+        '401':
+          description: Authentication required
+        '409':
+          description: This passkey is already registered
+  /api/passkeys:
+    get:
+      summary: List my passkeys
+      description: Returns all passkeys registered by the authenticated user, newest first.
+      tags:
+        - Passkeys
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Passkeys returned
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Passkey'
+        '401':
+          description: Authentication required
+  /api/passkeys/{id}:
+    patch:
+      summary: Rename a passkey
+      tags:
+        - Passkeys
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+              properties:
+                name:
+                  type: string
+                  maxLength: 100
+      responses:
+        '200':
+          description: Passkey renamed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Passkey'
+        '401':
+          description: Authentication required
+        '404':
+          description: Passkey not found
+    delete:
+      summary: Delete a passkey
+      tags:
+        - Passkeys
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: Passkey deleted
+        '401':
+          description: Authentication required
+        '404':
+          description: Passkey not found
+  /api/passkeys/authenticate/start:
+    post:
+      summary: Start passkey login
+      description: Begins a WebAuthn assertion ceremony. Public endpoint — provide a username to scope the ceremony, or omit the body for a username-less (discoverable credential) login.
+      tags:
+        - Passkeys
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+      responses:
+        '200':
+          description: Assertion options issued
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PasskeyCeremonyStart'
+  /api/passkeys/authenticate/finish:
+    post:
+      summary: Finish passkey login
+      description: Verifies the authenticator assertion and, on success, returns a JWT and the authenticated username. Public endpoint.
+      tags:
+        - Passkeys
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PasskeyAuthenticationFinish'
+      responses:
+        '200':
+          description: Authenticated; JWT issued
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                  username:
+                    type: string
+        '400':
+          description: Ceremony expired or assertion malformed
+        '401':
+          description: Passkey authentication failed
 components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
   schemas:
     Department:
       type: object
@@ -292,3 +467,74 @@ components:
           type: string
         password:
           type: string
+    Passkey:
+      type: object
+      description: A safe, client-facing summary of a registered passkey (never exposes key material).
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        transports:
+          type: string
+          nullable: true
+          description: Comma-separated authenticator transports (e.g. "internal,hybrid").
+        aaguid:
+          type: string
+          nullable: true
+          description: Base64url-encoded authenticator model identifier, when known.
+        discoverable:
+          type: boolean
+          nullable: true
+          description: Whether the passkey can be used for username-less login.
+        backupEligible:
+          type: boolean
+          nullable: true
+        backupState:
+          type: boolean
+          nullable: true
+          description: Whether the passkey is currently backed up / synced.
+        createdAt:
+          type: string
+          format: date-time
+        lastUsedAt:
+          type: string
+          format: date-time
+          nullable: true
+    PasskeyCeremonyStart:
+      type: object
+      description: The flow id and browser-ready public-key options returned when a ceremony starts.
+      properties:
+        flowId:
+          type: string
+          description: Opaque, single-use id that must be echoed back on the matching finish call.
+        options:
+          type: object
+          description: 'Options for navigator.credentials, wrapped as { "publicKey": { ... } }.'
+    PasskeyRegistrationFinish:
+      type: object
+      required:
+        - flowId
+        - credential
+      properties:
+        flowId:
+          type: string
+        credential:
+          type: object
+          description: The PublicKeyCredential JSON produced by navigator.credentials.create().
+        name:
+          type: string
+          maxLength: 100
+          description: Optional friendly label for the new passkey.
+    PasskeyAuthenticationFinish:
+      type: object
+      required:
+        - flowId
+        - credential
+      properties:
+        flowId:
+          type: string
+        credential:
+          type: object
+          description: The PublicKeyCredential JSON produced by navigator.credentials.get().

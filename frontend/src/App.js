@@ -10,6 +10,7 @@ import DepartmentForm from './components/DepartmentForm';
 import Navbar from './components/Navbar';
 import LandingPage from './components/LandingPage';
 import Profile from './components/Profile';
+import Passkeys from './components/Passkeys';
 import Footer from './components/Footer';
 import Login from './components/Login';
 import Register from './components/Register';
@@ -100,6 +101,14 @@ const AppContent = () => {
             element={
               <ProtectedRoute>
                 <Profile />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/passkeys"
+            element={
+              <ProtectedRoute>
+                <Passkeys />
               </ProtectedRoute>
             }
           />

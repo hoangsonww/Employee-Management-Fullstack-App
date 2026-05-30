@@ -1,15 +1,20 @@
 package com.example.employeemanagement.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 /** This class represents the security configuration. */
 @EnableWebSecurity
@@ -17,6 +22,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
   /** The user details service. */
   @Autowired private UserDetailsService userDetailsService;
+
+  /** The JWT request filter that authenticates requests carrying a Bearer token. */
+  @Autowired private JwtRequestFilter jwtRequestFilter;
 
   /**
    * Configure authentication.
@@ -52,18 +60,61 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   }
 
   /**
+   * Prevents the {@link JwtRequestFilter} {@code @Component} from being auto-registered with the
+   * servlet container, so it executes only once — inside the Spring Security filter chain.
+   *
+   * @param filter the JWT request filter
+   * @return a disabled registration bean
+   */
+  @Bean
+  public FilterRegistrationBean<JwtRequestFilter> jwtRequestFilterRegistration(
+      JwtRequestFilter filter) {
+    FilterRegistrationBean<JwtRequestFilter> registration = new FilterRegistrationBean<>(filter);
+    registration.setEnabled(false);
+    return registration;
+  }
+
+  /**
    * Configure security.
+   *
+   * <p>Passkey management endpoints require an authenticated user (resolved from the JWT), while
+   * passkey login endpoints and all pre-existing endpoints remain public to preserve current
+   * application behaviour. CORS pre-flight requests are always permitted.
    *
    * @param http The HTTP security
    * @throws Exception If an error occurs
    */
   @Override
   protected void configure(HttpSecurity http) throws Exception {
-    // Disable authentication for all routes
     http.csrf()
         .disable()
+        .sessionManagement()
+        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+        .and()
         .authorizeRequests()
+        .antMatchers(HttpMethod.OPTIONS, "/**")
+        .permitAll()
+        .antMatchers("/api/passkeys/authenticate/**")
+        .permitAll()
+        .antMatchers("/api/passkeys/register/**")
+        .authenticated()
+        .antMatchers(HttpMethod.GET, "/api/passkeys")
+        .authenticated()
+        .antMatchers(HttpMethod.PATCH, "/api/passkeys/**")
+        .authenticated()
+        .antMatchers(HttpMethod.DELETE, "/api/passkeys/**")
+        .authenticated()
         .anyRequest()
-        .permitAll(); // Allow access to all routes without authentication (for now)
+        .permitAll()
+        .and()
+        .exceptionHandling()
+        .authenticationEntryPoint(
+            (request, response, authException) -> {
+              response.setStatus(HttpStatus.UNAUTHORIZED.value());
+              response.setContentType("application/json");
+              response.getWriter().write("{\"message\":\"Authentication required\"}");
+            });
+
+    http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
   }
 }

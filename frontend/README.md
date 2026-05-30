@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Employee Management System frontend is a **React-based** application that provides a user interface for managing employee and department data. The app includes features for viewing, adding, editing, and deleting employees and departments. It also includes visualizations for employee metrics such as growth over time and distribution by age range.
+The Employee Management System frontend is a **React-based** application that provides a user interface for managing employee and department data. The app includes features for viewing, adding, editing, and deleting employees and departments. It also includes visualizations for employee metrics such as growth over time and distribution by age range, plus **passwordless sign-in with passkeys (WebAuthn)** and an Account → Passkeys page to manage them.
 
 ## File Structure
 
@@ -31,9 +31,17 @@ mindmap
           DepartmentList.js
           DepartmentForm.js
           Navbar.js
+          Login.js
+          Register.js
+          Passkeys.js
+          PasskeyPromptDialog.js
         services
           employeeService.js
           departmentService.js
+          authService.js
+          passkeyService.js
+        utils
+          webauthn.js
         App.js
         index.js
         index.css
@@ -78,9 +86,13 @@ Create a `.env` file in the root of your project if it doesn't already exist. Ad
 
 ```env
 REACT_APP_API_URL=http://localhost:8080/api
+# Optional: override the API base URL used by the passkey service (defaults to the deployed backend)
+REACT_APP_API_BASE_URL=http://localhost:8080
 ```
 
 Make sure to replace the `REACT_APP_API_URL` with your backend server URL.
+
+> **Passkeys note:** WebAuthn requires a secure context — it works on `localhost` and over HTTPS, but not over plain HTTP on a remote host. The backend's `WEBAUTHN_RP_ID` must match the domain serving this frontend.
 
 ### 4. Start the Development Server
 
@@ -136,7 +148,23 @@ Provides a form for adding or editing department details.
 
 ### `Navbar.js`
 
-The navigation bar component that includes links to various pages such as Dashboard, Employees, and Departments. Highlights the currently active page.
+The navigation bar component that includes links to various pages such as Dashboard, Employees, and Departments. Highlights the currently active page. When signed in, the logout button is replaced by an **Account** dropdown with **Passkeys** and a destructive (red) **Log Out** option (mirrored in the mobile drawer).
+
+### `Passkeys.js`
+
+The **Account → Passkeys** management page (`/passkeys`, protected). Lists the user's passkeys with device hints and badges, and supports adding, renaming, and deleting passkeys. Warns if the browser does not support WebAuthn.
+
+### `PasskeyPromptDialog.js`
+
+A styled in-app modal (no native `alert`/`prompt`) shown after sign-up that invites the user to create a passkey, driving the full registration ceremony with progress, success, and error states.
+
+### `Login.js` / `Register.js`
+
+`Login.js` adds a **"Sign in with a passkey"** button (username-less / discoverable login). `Register.js` auto-signs-in after registration and then shows the passkey prompt so users can set one up immediately.
+
+### `services/passkeyService.js` & `utils/webauthn.js`
+
+`passkeyService.js` wraps the `/api/passkeys/**` API and exposes high-level `registerNewPasskey` / `loginWithPasskey` helpers. `utils/webauthn.js` handles base64url ⇆ ArrayBuffer conversion, the `navigator.credentials` ceremony drivers, capability checks, and friendly error messages.
 
 ## Troubleshooting
 

@@ -5,6 +5,7 @@ import com.example.employeemanagement.dto.ResetPasswordRequestDto;
 import com.example.employeemanagement.model.User;
 import com.example.employeemanagement.repository.UserRepository;
 import com.example.employeemanagement.security.JwtTokenUtil;
+import com.example.employeemanagement.webauthn.UserHandles;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -64,6 +65,7 @@ public class AuthController {
       User user = new User();
       user.setUsername(request.getUsername());
       user.setPassword(passwordEncoder.encode(request.getPassword()));
+      user.setUserHandle(UserHandles.generate());
       userRepository.save(user);
       return ResponseEntity.ok("User registered successfully!");
     } catch (DataIntegrityViolationException e) {

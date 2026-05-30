@@ -24,7 +24,8 @@ This document captures the current architecture of the Employee Management Syste
 - Feature components live in `src/components/` and rely on React hooks for state management (`useState`, `useEffect`).
 - `Dashboard.js` combines live API data with static samples to render Chart.js bar/line/pie charts for metrics such as employee count, age distribution, and growth trends.
 - CRUD components (`EmployeeList.js`, `EmployeeForm.js`, `DepartmentList.js`, `DepartmentForm.js`, `NewDepartmentForm.js`) share a consistent pattern: fetch data on mount, expose form interactions, and invoke service helpers for persistence.
-- Authentication-related components (`Login.js`, `Register.js`, `ResetPassword.js`, `VerifyUsername.js`) render forms but do not store tokens locally—the backend currently permits all requests (see §4.5).
+- Authentication-related components (`Login.js`, `Register.js`, `ResetPassword.js`, `VerifyUsername.js`) render forms and persist the JWT via `authService`. `Login.js` also offers "Sign in with a passkey", and `Register.js` auto-signs-in after sign-up then shows a passkey-setup modal.
+- Passkey components: `Passkeys.js` (the `/passkeys` management page — add/rename/delete) and `PasskeyPromptDialog.js` (the post-sign-up modal). The `Navbar` exposes them via an **Account** dropdown (Passkeys + Log Out).
 
 ```mermaid
 flowchart LR
@@ -50,7 +51,7 @@ flowchart LR
 
 ### 2.3 Data access layer
 
-- Network calls are centralized in `src/services/employeeService.js` and `src/services/departmentService.js`. Both modules use Axios and point to the Render-hosted backend (`https://employee-management-app-gdm5.onrender.com/...`).
+- Network calls are centralized in `src/services/employeeService.js`, `src/services/departmentService.js`, and `src/services/passkeyService.js`. They use Axios and point to the Render-hosted backend (`https://employee-management-app-gdm5.onrender.com/...`); `passkeyService.js` honours an optional `REACT_APP_API_BASE_URL` override and attaches the JWT to management calls. `src/utils/webauthn.js` provides base64url ⇆ ArrayBuffer conversion and the `navigator.credentials` ceremony drivers.
 - For local development the README instructs developers to override the base URL via `.env` (`REACT_APP_API_URL`), though conditional switching logic is not present in code—contributors must update the service files or provide proxy settings when pointing to a different backend.
 
 ### 2.4 Styling and UX
@@ -78,11 +79,13 @@ flowchart LR
 - Entities (`model/`):
   - `Employee` links to `Department` via `@ManyToOne` with eager fetch. Fields are validated with Bean Validation annotations (`@NotBlank`, `@Email`, `@Min`, `@Max`, `@NotNull`).
   - `Department` maintains a `@OneToMany` collection of `Employee` instances with `CascadeType.PERSIST` and `CascadeType.MERGE` (no cascade delete — departments with employees cannot be deleted).
-  - `User` represents authentication principals stored in a `users` table.
+  - `User` represents authentication principals stored in a `users` table. Each user also has a stable, opaque `userHandle` used by passkeys in place of the username.
+  - `WebAuthnCredential` represents a registered passkey stored in `webauthn_credentials` (credential id, COSE public key, signature counter, transports, AAGUID, backup flags, timestamps) with a `@ManyToOne` link to `User`.
 - Repositories (`repository/`):
   - `EmployeeRepository` extends `JpaRepository` and exposes `findAllWithDepartments()` and `findByIdWithDepartment()` using `LEFT JOIN FETCH` queries to avoid N+1 problems and ensure department data is always available. Also provides `countByDepartmentId()` for safe pre-delete checks.
   - `DepartmentRepository` offers standard CRUD.
-  - `UserRepository` enables lookup by username for authentication flows.
+  - `UserRepository` enables lookup by username (and `userHandle`) for authentication flows.
+  - `WebAuthnCredentialRepository` looks up passkeys by owner and by credential id.
 - Data initialization (`config/DataInitializer.java`) seeds 50 fake departments and 295 employees on first startup using Java Faker. The initializer checks `departmentRepository.count()` and skips seeding if data already exists, making it safe for production restarts.
 
 ### 3.3 DTO layer (`dto/`)
@@ -94,9 +97,11 @@ The API uses a dedicated DTO (Data Transfer Object) layer to decouple internal J
   - `DepartmentRequestDto`: validated `name` field
   - `AuthRequestDto`: validated `username` and `password` for login/register
   - `ResetPasswordRequestDto`: validated `username` and `newPassword`
+  - Passkey DTOs: `PasskeyRegistrationFinishRequest`, `PasskeyAuthenticationStartRequest`, `PasskeyAuthenticationFinishRequest`, `PasskeyRenameRequest`
 - **Response DTOs** — define the shape of API responses, preventing entity internals from leaking:
   - `EmployeeResponseDto`: includes a nested `department` object with `id` and `name` (avoids circular serialization issues between Employee and Department entities)
   - `DepartmentResponseDto`: returns `id`, `name`, and `employeeCount` (integer) instead of serializing the full employee list
+  - `PasskeyDto` (safe passkey summary — never exposes key material) and `PasskeyCeremonyStartResponse` (flow id + browser-ready options)
 
 Controllers convert between entities and DTOs using private `convertToDto()` and `convertToEntity()` methods.
 
@@ -104,13 +109,15 @@ Controllers convert between entities and DTOs using private `convertToDto()` and
 
 - `EmployeeService` wraps repository interactions and uses `@Transactional` with `EntityManager.flush()` and `EntityManager.refresh()` on save operations to ensure the returned entity has fully-loaded associations (e.g., department name after save).
 - `DepartmentService` wraps repository CRUD and exposes `countEmployeesInDepartment()` for safe pre-delete validation.
+- Passkeys (`webauthn/`): `PasskeyService` orchestrates WebAuthn registration and assertion ceremonies via the Yubico `java-webauthn-server` `RelyingParty`. Supporting types: `WebAuthnConfig` + `WebAuthnProperties` (build the relying party), `JpaCredentialRepository` (adapts stored credentials to Yubico's `CredentialRepository`), `WebAuthnCeremonyStore` (single-use, TTL-bound, in-memory challenge state), `UserHandles` (shared handle generation), `PasskeyException` (HTTP-status-aware errors).
 
 ### 3.5 API layer
 
 - Controllers (`controller/`):
   - `EmployeeController` accepts `EmployeeRequestDto` for create/update and returns `EmployeeResponseDto`. It validates input via `@Valid`, resolves the department reference from the request DTO, and converts entities to DTOs before responding.
   - `DepartmentController` accepts `DepartmentRequestDto` for create/update and returns `DepartmentResponseDto` (with `employeeCount`). Department deletion is rejected with 409 Conflict if the department still has employees.
-  - `AuthController` accepts `AuthRequestDto` for registration and authentication, `ResetPasswordRequestDto` for password resets. All inputs are validated with Bean Validation. The controller never exposes the `User` entity directly.
+  - `AuthController` accepts `AuthRequestDto` for registration and authentication, `ResetPasswordRequestDto` for password resets. All inputs are validated with Bean Validation. The controller never exposes the `User` entity directly. Registration also assigns the user's WebAuthn `userHandle`.
+  - `PasskeyController` (`/api/passkeys/**`) drives passkey registration/login ceremonies (start + finish) and credential management (list/rename/delete); a successful passkey login issues a JWT just like password login.
   - `HomeController` serves a default view (used for Swagger UI landing).
 - Exception handling (`exception/`):
   - `GlobalExceptionHandler` (`@RestControllerAdvice`) handles `MethodArgumentNotValidException` (400), `ResourceNotFoundException` (404), `DataIntegrityViolationException` (400), `HttpMessageNotReadableException` (400), `AccessDeniedException` (403), `AuthenticationException` (401), and a generic `Exception` fallback (500). No stack traces are leaked to clients.
@@ -139,13 +146,15 @@ sequenceDiagram
 ### 3.5 Configuration & environment
 
 - `application.properties` imports an optional `config.properties` file, enabling secrets and connection strings to be defined outside version control. By default the application expects MySQL and MongoDB credentials through environment variables.
-- `CorsConfig` registers a permissive CORS policy allowing any origin, headers, and credentials.
+- `CorsConfig` registers a permissive CORS policy allowing any origin, headers, credentials, and the `GET/POST/PUT/PATCH/DELETE/OPTIONS` methods.
+- WebAuthn relying-party settings are externalised under `webauthn.*` (`WEBAUTHN_RP_ID`, `WEBAUTHN_RP_NAME`, `WEBAUTHN_ALLOWED_ORIGINS`, plus optional `WEBAUTHN_ALLOW_ORIGIN_PORT` / `WEBAUTHN_CEREMONY_TIMEOUT_SECONDS`).
 - `config.properties` in the repo contains sample managed service credentials. Treat these values as placeholders—they should be rotated before real deployments.
 
 ### 3.6 Security posture
 
-- `SecurityConfig` extends `WebSecurityConfigurerAdapter`, wires `CustomUserDetailsService` with BCrypt password encoding, but ultimately disables CSRF and permits all requests (`http.csrf().disable().authorizeRequests().anyRequest().permitAll()`).
-- JWT helpers (`JwtTokenUtil`, `JwtRequestFilter`) and `CustomUserDetailsService` are present. `JwtTokenUtil` reads the signing secret from `${JWT_SECRET}` (environment variable, no hardcoded fallback). `JwtRequestFilter` gracefully handles invalid/expired tokens (catches `JwtException` and continues the filter chain unauthenticated). Authentication endpoints can issue tokens, but downstream controllers do not enforce them yet.
+- `SecurityConfig` extends `WebSecurityConfigurerAdapter`, wires `CustomUserDetailsService` with BCrypt encoding, disables CSRF, and uses stateless sessions. It registers `JwtRequestFilter` in the chain and secures the passkey-management routes (`/api/passkeys/register/**` and the list/rename/delete operations) behind a valid JWT; passkey login (`/api/passkeys/authenticate/**`) and all pre-existing routes remain public, preserving current behaviour. Unauthenticated access to a protected route returns a JSON `401`.
+- JWT helpers (`JwtTokenUtil`, `JwtRequestFilter`) and `CustomUserDetailsService` drive token auth. `JwtTokenUtil` reads the signing secret from `${JWT_SECRET}` (no hardcoded fallback). `JwtRequestFilter` parses `Authorization: Bearer` headers, handles invalid/expired tokens gracefully, and is registered once inside the Spring Security chain (its servlet auto-registration is disabled). A successful passkey login also issues a JWT.
+- **Passkeys / WebAuthn** add phishing-resistant, passwordless auth: only public-key material is stored, challenges are single-use and short-lived, and the relying party validates origin/RP-ID and the signature counter on every assertion.
 - Password hashing uses Spring Security's BCrypt encoder before persisting to the `users` table.
 - Input validation: all request DTOs use Bean Validation (`@NotBlank`, `@Email`, `@Min`, `@Max`, `@NotNull`) enforced at the controller layer via `@Valid`.
 
@@ -244,7 +253,8 @@ flowchart LR
 
 ## 6. Security & Compliance Considerations
 
-- **Authentication & authorization**: Although JWT utilities exist, all endpoints are effectively public. Hardening requires registering `JwtRequestFilter`, protecting controller methods with `@PreAuthorize` or request matchers, and storing secrets securely.
+- **Authentication & authorization**: `JwtRequestFilter` is registered in the Spring Security chain. Passkey-management routes require a valid JWT; passkey login and the pre-existing employee/department endpoints remain public by design. Further hardening (protecting the employee/department endpoints with request matchers or `@PreAuthorize`) is still recommended for production.
+- **Passkeys (WebAuthn/FIDO2)**: phishing-resistant, passwordless sign-in. Only public keys are stored; challenges are single-use with a short TTL; the relying party validates origin/RP-ID and the signature counter. Configure `WEBAUTHN_RP_ID` / `WEBAUTHN_ALLOWED_ORIGINS` per environment (must match the frontend's HTTPS origin; localhost is exempt from the HTTPS requirement).
 - **Secrets management**: Replace the checked-in credentials in `backend/config.properties` with environment-specific secrets (AWS Secrets Manager, SSM Parameter Store, or Kubernetes Secrets) before production deployment. The JWT signing secret must be provided via the `JWT_SECRET` environment variable — the application will fail to start without it.
 - **Database migrations**: Switching from Hibernate `ddl-auto=update` to an explicit migration tool (Flyway/Liquibase) is recommended to control schema evolution.
 - **Data seeding**: `DataInitializer` is now idempotent — it only seeds when the database is empty. Safe for production restarts.
@@ -289,6 +299,7 @@ flowchart TD
 | Entities | `backend/src/main/java/com/example/employeemanagement/model` |
 | Exception handling | `backend/src/main/java/com/example/employeemanagement/exception` |
 | Security configuration | `backend/src/main/java/com/example/employeemanagement/security` |
+| Passkeys / WebAuthn | `backend/.../webauthn`, `controller/PasskeyController.java`, `frontend/src/services/passkeyService.js`, `frontend/src/utils/webauthn.js`, `frontend/src/components/Passkeys.js` |
 | Data seeding | `backend/src/main/java/com/example/employeemanagement/config/DataInitializer.java` |
 | Root SQL bootstrap | `data.sql` |
 | Split SQL bootstrap | `backend/sql/` |

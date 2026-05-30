@@ -77,6 +77,12 @@ jobs:
     needs:
       - backend
       - frontend
+    # Building the images pulls base images (maven, temurin, node, nginx) from Docker Hub, whose
+    # anonymous pull rate limit intermittently 429s on shared CI runners and fails this job. Run it
+    # only on pushes to master (where images are actually published); pull requests are already
+    # validated by the lint, backend-test and frontend-test jobs above. To also build/push on PRs,
+    # add DOCKERHUB_USERNAME/DOCKERHUB_TOKEN secrets and a docker/login-action step for docker.io.
+    if: github.event_name != 'pull_request'
     permissions:
       contents: read
       packages: write

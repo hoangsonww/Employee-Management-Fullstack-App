@@ -18,7 +18,10 @@ import {
 } from '@mui/material';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
+import FingerprintIcon from '@mui/icons-material/Fingerprint';
 import { setSession } from '../services/authService';
+import { loginWithPasskey, getApiErrorMessage } from '../services/passkeyService';
+import { isWebAuthnSupported, describeWebAuthnError } from '../utils/webauthn';
 import LoadingOverlay from './LoadingOverlay';
 
 const Login = () => {
@@ -26,12 +29,14 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [passkeyLoading, setPasskeyLoading] = useState(false);
   const [error, setError] = useState('');
   const [successOpen, setSuccessOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const redirectPath = location.state?.from;
   const destinationLabel = redirectPath ? 'Continue' : 'Go to dashboard';
+  const passkeySupported = isWebAuthnSupported();
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -57,6 +62,25 @@ const Login = () => {
     } catch (err) {
       setLoading(false);
       setError('Invalid credentials or our server is not currently active. Please try again later.');
+    }
+  };
+
+  const handlePasskeyLogin = async () => {
+    setPasskeyLoading(true);
+    setError('');
+    try {
+      const data = await loginWithPasskey(username.trim() || undefined);
+      setSession(data.token, data.username);
+      setUsername(data.username || username);
+      setSuccessOpen(true);
+    } catch (err) {
+      const message =
+        err && err.name && err.name.endsWith('Error') && !err.response
+          ? describeWebAuthnError(err)
+          : getApiErrorMessage(err, 'We could not sign you in with a passkey. Please try again.');
+      setError(message);
+    } finally {
+      setPasskeyLoading(false);
     }
   };
 
@@ -164,9 +188,25 @@ const Login = () => {
                   },
                 }}
               />
-              <Button fullWidth variant="contained" color="primary" type="submit" disabled={loading} sx={{ paddingY: 1.2 }}>
+              <Button fullWidth variant="contained" color="primary" type="submit" disabled={loading || passkeyLoading} sx={{ paddingY: 1.2 }}>
                 {loading ? 'Signing in…' : 'Login'}
               </Button>
+              {passkeySupported && (
+                <>
+                  <Divider sx={{ color: 'text.secondary' }}>or</Divider>
+                  <Button
+                    fullWidth
+                    variant="outlined"
+                    color="primary"
+                    startIcon={<FingerprintIcon />}
+                    onClick={handlePasskeyLogin}
+                    disabled={loading || passkeyLoading}
+                    sx={{ paddingY: 1.2 }}
+                  >
+                    {passkeyLoading ? 'Waiting for your device…' : 'Sign in with a passkey'}
+                  </Button>
+                </>
+              )}
               {error && (
                 <Typography color="error" textAlign="center" sx={{ marginTop: '-0.5rem' }}>
                   {error}
@@ -192,7 +232,7 @@ const Login = () => {
         </CardContent>
       </Card>
 
-      {loading && <LoadingOverlay message="Signing you in…" />}
+      {(loading || passkeyLoading) && <LoadingOverlay message={passkeyLoading ? 'Verifying your passkey…' : 'Signing you in…'} />}
 
       <Dialog open={successOpen} onClose={handleSuccessContinue} aria-labelledby="login-success-title">
         <DialogTitle id="login-success-title">Login successful</DialogTitle>

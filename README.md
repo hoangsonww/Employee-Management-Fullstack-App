@@ -69,14 +69,32 @@ The Employee Management System is a dynamic full-stack application that seamless
 ![Chart.js](https://img.shields.io/badge/Chart.js-FF6384?style=for-the-badge&logo=chartdotjs&logoColor=white)
 ![Jest](https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white)
 ![React Testing Library](https://img.shields.io/badge/React%20Testing%20Library-E33332?style=for-the-badge&logo=testinglibrary&logoColor=white)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![Material UI](https://img.shields.io/badge/Material%20UI-007FFF?style=for-the-badge&logo=mui&logoColor=white)
+![Emotion](https://img.shields.io/badge/Emotion-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=white)
+![react-chartjs-2](https://img.shields.io/badge/react--chartjs--2-FF6384?style=for-the-badge&logo=chartdotjs&logoColor=white)
+![Web Vitals](https://img.shields.io/badge/Web%20Vitals-4285F4?style=for-the-badge&logo=googlechrome&logoColor=white)
+![Prettier](https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=prettier&logoColor=black)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)
 ![Spring Data JPA](https://img.shields.io/badge/Spring%20Data%20JPA-6DB33F?style=for-the-badge&logo=spring&logoColor=white)
 ![Hibernate](https://img.shields.io/badge/Hibernate-59666C?style=for-the-badge&logo=hibernate&logoColor=white)
 ![JUnit5](https://img.shields.io/badge/JUnit5-25A162?style=for-the-badge&logo=junit5&logoColor=white)
 ![Swagger](https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=swagger&logoColor=black)
 ![OpenAPI](https://img.shields.io/badge/OpenAPI-6BA539?style=for-the-badge&logo=openapiinitiative&logoColor=white)
+![Bean Validation](https://img.shields.io/badge/Bean%20Validation-6DB33F?style=for-the-badge&logo=spring&logoColor=white)
+![Lombok](https://img.shields.io/badge/Lombok-BC2C2B?style=for-the-badge&logo=lombok&logoColor=white)
+![JavaFaker](https://img.shields.io/badge/JavaFaker-2E7D32?style=for-the-badge&logo=faker&logoColor=white)
+![Spring Security](https://img.shields.io/badge/Spring%20Security-6DB33F?style=for-the-badge&logo=springsecurity&logoColor=white)
+![WebAuthn](https://img.shields.io/badge/WebAuthn-3423A6?style=for-the-badge&logo=webauthn&logoColor=white)
+![Passkeys](https://img.shields.io/badge/Passkeys-4285F4?style=for-the-badge&logo=passport&logoColor=white)
+![FIDO2](https://img.shields.io/badge/FIDO2-ED1C24?style=for-the-badge&logo=fidoalliance&logoColor=white)
+![Yubico WebAuthn](https://img.shields.io/badge/Yubico%20WebAuthn-84BD00?style=for-the-badge&logo=yubico&logoColor=black)
+![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)
+![BCrypt](https://img.shields.io/badge/BCrypt-338033?style=for-the-badge&logo=letsencrypt&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
+![H2 Database](https://img.shields.io/badge/H2%20Database-09476B?style=for-the-badge&logo=h2database&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 ![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white)
 ![Jenkins](https://img.shields.io/badge/Jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white)
@@ -270,6 +288,13 @@ Here's a table listing all the RESTful API endpoints provided by this applicatio
 | `/authenticate`                | POST   | Authenticate and get JWT token      | `AuthRequestDto`         | `{ token }`               |
 | `/verify-username/{username}`  | GET    | Check if a username exists          | -                        | Status message            |
 | `/reset-password`              | POST   | Reset a user's password             | `ResetPasswordRequestDto`| Status message            |
+| `/api/passkeys/register/start` | POST   | Start passkey registration (JWT)    | -                        | `{ flowId, options }`     |
+| `/api/passkeys/register/finish`| POST   | Finish passkey registration (JWT)   | `{ flowId, credential, name }` | `PasskeyDto`        |
+| `/api/passkeys`                | GET    | List my passkeys (JWT)              | -                        | `PasskeyDto[]`            |
+| `/api/passkeys/{id}`           | PATCH  | Rename a passkey (JWT)              | `{ name }`               | `PasskeyDto`              |
+| `/api/passkeys/{id}`           | DELETE | Delete a passkey (JWT)             | -                        | 204 No Content            |
+| `/api/passkeys/authenticate/start` | POST | Start passkey login (public)     | `{ username? }`          | `{ flowId, options }`     |
+| `/api/passkeys/authenticate/finish`| POST | Finish passkey login (public)    | `{ flowId, credential }` | `{ token, username }`     |
 | `/swagger-ui.html`             | GET    | Access the Swagger UI documentation | -                        | -                         |
 
 ### DTO Reference
@@ -434,7 +459,15 @@ MONGO_URI=mongodb://localhost:27017/employee_management
 
 # JWT Secret (required - generate with: openssl rand -base64 32)
 JWT_SECRET=your-secret-key-here
+
+# Passkeys / WebAuthn — rp-id MUST match the domain the FRONTEND is served from (no scheme/port).
+# Defaults target local development; set these for production.
+WEBAUTHN_RP_ID=localhost
+WEBAUTHN_RP_NAME=Employee Management System
+WEBAUTHN_ALLOWED_ORIGINS=http://localhost:3000,http://localhost:8080
 ```
+
+> **Passkeys in production:** set `WEBAUTHN_RP_ID` to the frontend's domain (e.g. `employee-management-fullstack-app.vercel.app`) and `WEBAUTHN_ALLOWED_ORIGINS` to the exact frontend origin(s) (e.g. `https://employee-management-fullstack-app.vercel.app`). WebAuthn requires HTTPS (localhost is exempt).
 
 For MySQL bootstrap, you have two supported options:
 

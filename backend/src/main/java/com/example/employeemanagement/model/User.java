@@ -20,6 +20,14 @@ public class User {
   @Column(nullable = false)
   private String password;
 
+  /**
+   * The WebAuthn user handle: a stable, opaque, base64url-encoded identifier for this user that is
+   * used by passkeys instead of the username. It is generated lazily the first time the user
+   * registers a passkey and never changes for the lifetime of the account.
+   */
+  @Column(name = "user_handle", unique = true, length = 64)
+  private String userHandle;
+
   // Getters and Setters
 
   /**
@@ -74,5 +82,23 @@ public class User {
    */
   public void setPassword(String password) {
     this.password = password;
+  }
+
+  /**
+   * Gets the WebAuthn user handle.
+   *
+   * @return The base64url-encoded user handle, or {@code null} if none has been assigned yet
+   */
+  public String getUserHandle() {
+    return userHandle;
+  }
+
+  /**
+   * Sets the WebAuthn user handle.
+   *
+   * @param userHandle The base64url-encoded user handle
+   */
+  public void setUserHandle(String userHandle) {
+    this.userHandle = userHandle;
   }
 }

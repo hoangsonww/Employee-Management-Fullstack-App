@@ -1,5 +1,6 @@
 package com.example.employeemanagement.exception;
 
+import com.example.employeemanagement.webauthn.PasskeyException;
 import java.util.HashMap;
 import java.util.Map;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -118,6 +119,21 @@ public class GlobalExceptionHandler {
     error.put("message", "Authentication required");
 
     return new ResponseEntity<>(error, HttpStatus.UNAUTHORIZED);
+  }
+
+  /**
+   * Handles passkey/WebAuthn domain errors, returning the status carried by the exception.
+   *
+   * @param ex the passkey exception
+   * @return a response with the exception's status and a client-safe message
+   */
+  @ExceptionHandler(PasskeyException.class)
+  public ResponseEntity<Map<String, String>> handlePasskeyException(PasskeyException ex) {
+
+    Map<String, String> error = new HashMap<>();
+    error.put("message", ex.getMessage());
+
+    return new ResponseEntity<>(error, ex.getStatus());
   }
 
   /**

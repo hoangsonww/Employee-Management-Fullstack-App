@@ -82,8 +82,10 @@ html {
 body {
     font-family: var(--font-sans);
     line-height: 1.6;
-    color: var(--gray-800);
-    background-color: var(--gray-50);
+    /* Force dark styling regardless of OS color-scheme preference */
+    color: #e2e8f0;
+    background-color: var(--dark-bg);
+    color-scheme: dark;
     overflow-x: hidden;
     max-width: 100vw;
 }
@@ -476,6 +478,7 @@ a:hover {
     margin-bottom: var(--spacing-lg);
     position: relative;
     padding-bottom: var(--spacing-md);
+    color: var(--white);
 }
 
 .section-title::after {
@@ -654,6 +657,7 @@ a:hover {
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: var(--spacing-lg);
+    color: var(--white);
 }
 
 .badges {
@@ -706,6 +710,25 @@ a:hover {
 .badge-nginx { background: #009639; color: #fff; }
 .badge-git { background: #F05032; color: #fff; }
 .badge-github { background: #181717; color: #fff; }
+.badge-html5 { background: #E34F26; color: #fff; }
+.badge-css3 { background: #1572B6; color: #fff; }
+.badge-emotion { background: #DB7093; color: #fff; }
+.badge-webvitals { background: #4285F4; color: #fff; }
+.badge-prettier { background: #F7B93E; color: #000; }
+.badge-lombok { background: #BC2C2B; color: #fff; }
+.badge-jwt { background: #000000; color: #fff; }
+.badge-validation { background: #6DB33F; color: #fff; }
+.badge-h2 { background: #09476B; color: #fff; }
+.badge-faker { background: #2E7D32; color: #fff; }
+.badge-bcrypt { background: #338033; color: #fff; }
+.badge-webauthn { background: #3423A6; color: #fff; }
+.badge-passkeys { background: #4285F4; color: #fff; }
+.badge-fido2 { background: #ED1C24; color: #fff; }
+.badge-yubico { background: #84BD00; color: #000; }
+.badge-render { background: #000000; color: #fff; }
+.badge-vercel { background: #000000; color: #fff; }
+.badge-node { background: #339933; color: #fff; }
+.badge-npm { background: #CB3837; color: #fff; }
 
 /* Deployment Cards */
 .deployment-grid {
@@ -892,16 +915,16 @@ a:hover {
     cursor: pointer;
     font-weight: 600;
     transition: all var(--transition-base);
-    color: var(--gray-600);
+    color: var(--gray-300);
 }
 
 .tab-button:hover {
-    color: var(--primary-color);
+    color: var(--primary-light);
 }
 
 .tab-button.active {
-    color: var(--primary-color);
-    border-bottom-color: var(--primary-color);
+    color: var(--primary-light);
+    border-bottom-color: var(--primary-light);
 }
 
 .tab-content {
@@ -921,7 +944,7 @@ a:hover {
     font-size: 1.25rem;
     font-weight: 700;
     margin-bottom: var(--spacing-md);
-    color: var(--gray-900);
+    color: var(--white);
 }
 
 .setup-section ul {
@@ -932,6 +955,7 @@ a:hover {
 .setup-section li {
     padding: var(--spacing-sm) 0;
     position: relative;
+    color: var(--gray-200);
 }
 
 .setup-section li::before {
@@ -1318,15 +1342,26 @@ a:hover {
 }
 
 .footer-links a {
-    color: var(--gray-400);
+    color: var(--white);
+    font-weight: 600;
     text-decoration: none;
     transition: all var(--transition-base);
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    border-bottom: 1px solid transparent;
+}
+
+.footer-links a::before {
+    content: '\203A';
+    color: var(--primary-light);
+    font-weight: 700;
 }
 
 .footer-links a:hover {
     color: var(--primary-light);
-    text-decoration: underline;
+    border-bottom-color: var(--primary-light);
+    text-decoration: none;
     transform: translateX(5px);
 }
 
