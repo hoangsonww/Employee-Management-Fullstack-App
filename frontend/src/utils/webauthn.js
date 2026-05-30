@@ -89,8 +89,7 @@ const registrationCredentialToJson = credential => {
       attestationObject: bufferToBase64url(response.attestationObject),
       clientDataJSON: bufferToBase64url(response.clientDataJSON),
     },
-    clientExtensionResults:
-      typeof credential.getClientExtensionResults === 'function' ? credential.getClientExtensionResults() : {},
+    clientExtensionResults: typeof credential.getClientExtensionResults === 'function' ? credential.getClientExtensionResults() : {},
   };
   if (typeof response.getTransports === 'function') {
     const transports = response.getTransports();
@@ -118,8 +117,7 @@ const assertionCredentialToJson = credential => {
       clientDataJSON: bufferToBase64url(response.clientDataJSON),
       signature: bufferToBase64url(response.signature),
     },
-    clientExtensionResults:
-      typeof credential.getClientExtensionResults === 'function' ? credential.getClientExtensionResults() : {},
+    clientExtensionResults: typeof credential.getClientExtensionResults === 'function' ? credential.getClientExtensionResults() : {},
   };
   if (response.userHandle) {
     json.response.userHandle = bufferToBase64url(response.userHandle);

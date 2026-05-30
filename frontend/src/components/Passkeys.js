@@ -225,7 +225,15 @@ const Passkeys = () => {
             </Stack>
           )}
           {loadError && (
-            <Alert severity="error" sx={{ mb: 2 }} action={<Button color="inherit" size="small" onClick={fetchPasskeys}>Retry</Button>}>
+            <Alert
+              severity="error"
+              sx={{ mb: 2 }}
+              action={
+                <Button color="inherit" size="small" onClick={fetchPasskeys}>
+                  Retry
+                </Button>
+              }
+            >
               {loadError}
             </Alert>
           )}
@@ -282,9 +290,7 @@ const Passkeys = () => {
                           <Stack direction="row" spacing={0.75} sx={{ mt: 0.75, flexWrap: 'wrap', gap: 0.75 }}>
                             <Chip size="small" variant="outlined" label={meta.label} />
                             {passkey.discoverable && <Chip size="small" color="primary" variant="outlined" label="Passwordless" />}
-                            {passkey.backupState && (
-                              <Chip size="small" color="success" variant="outlined" icon={<CloudDoneIcon />} label="Synced" />
-                            )}
+                            {passkey.backupState && <Chip size="small" color="success" variant="outlined" icon={<CloudDoneIcon />} label="Synced" />}
                           </Stack>
                         </Box>
                         <Stack direction="row" spacing={0.5} sx={{ flexShrink: 0 }}>
@@ -370,7 +376,12 @@ const Passkeys = () => {
           <Button onClick={() => setRenameTarget(null)} disabled={renaming} color="inherit">
             Cancel
           </Button>
-          <Button variant="contained" onClick={handleRename} disabled={renaming || !renameName.trim()} startIcon={renaming ? <CircularProgress size={18} color="inherit" /> : null}>
+          <Button
+            variant="contained"
+            onClick={handleRename}
+            disabled={renaming || !renameName.trim()}
+            startIcon={renaming ? <CircularProgress size={18} color="inherit" /> : null}
+          >
             Save
           </Button>
         </DialogActions>
@@ -388,7 +399,13 @@ const Passkeys = () => {
           <Button onClick={() => setDeleteTarget(null)} disabled={deleting} color="inherit">
             Cancel
           </Button>
-          <Button variant="contained" color="error" onClick={handleDelete} disabled={deleting} startIcon={deleting ? <CircularProgress size={18} color="inherit" /> : <DeleteOutlineIcon />}>
+          <Button
+            variant="contained"
+            color="error"
+            onClick={handleDelete}
+            disabled={deleting}
+            startIcon={deleting ? <CircularProgress size={18} color="inherit" /> : <DeleteOutlineIcon />}
+          >
             Remove
           </Button>
         </DialogActions>

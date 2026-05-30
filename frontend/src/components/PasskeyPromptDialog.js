@@ -79,11 +79,7 @@ const PasskeyPromptDialog = ({ open, onClose, username }) => {
             border: '1px solid rgba(255,255,255,0.35)',
           }}
         >
-          {status === 'success' ? (
-            <CheckCircleRoundedIcon sx={{ fontSize: 44, color: '#69f0ae' }} />
-          ) : (
-            <FingerprintIcon sx={{ fontSize: 44 }} />
-          )}
+          {status === 'success' ? <CheckCircleRoundedIcon sx={{ fontSize: 44, color: '#69f0ae' }} /> : <FingerprintIcon sx={{ fontSize: 44 }} />}
         </Box>
         <Typography id="passkey-prompt-title" variant="h5" sx={{ fontWeight: 800 }}>
           {status === 'success' ? 'Passkey created!' : 'Set up a passkey'}

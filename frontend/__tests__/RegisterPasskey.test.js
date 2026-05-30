@@ -68,9 +68,7 @@ describe('<Register /> auto-login + passkey prompt', () => {
 
   it('auto-logs in and shows the passkey prompt when passkeys are supported', async () => {
     isWebAuthnSupported.mockReturnValue(true);
-    global.fetch
-      .mockResolvedValueOnce({ ok: true })
-      .mockResolvedValueOnce({ ok: true, json: async () => ({ token: 'tokR2', username: 'newuser' }) });
+    global.fetch.mockResolvedValueOnce({ ok: true }).mockResolvedValueOnce({ ok: true, json: async () => ({ token: 'tokR2', username: 'newuser' }) });
 
     render(
       <MemoryRouter>

@@ -1,20 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {
-  Box,
-  Typography,
-  Button,
-  Snackbar,
-  Alert,
-  Grid,
-  Card,
-  CardContent,
-  Avatar,
-  Chip,
-  Stack,
-  Divider,
-  Paper,
-  Tooltip,
-} from '@mui/material';
+import { Box, Typography, Button, Snackbar, Alert, Grid, Card, CardContent, Avatar, Chip, Stack, Divider, Paper, Tooltip } from '@mui/material';
 import { useNavigate, Link } from 'react-router-dom';
 import { getAllEmployees } from '../services/employeeService';
 import { getAllDepartments } from '../services/departmentService';

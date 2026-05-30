@@ -20,11 +20,7 @@ export const startPasskeyRegistration = async () => {
 };
 
 export const finishPasskeyRegistration = async (flowId, credential, name) => {
-  const { data } = await axios.post(
-    `${PASSKEYS_URL}/register/finish`,
-    { flowId, credential, name },
-    { headers: authHeaders() }
-  );
+  const { data } = await axios.post(`${PASSKEYS_URL}/register/finish`, { flowId, credential, name }, { headers: authHeaders() });
   return data;
 };
 
