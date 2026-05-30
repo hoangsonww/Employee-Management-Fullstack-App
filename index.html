@@ -198,7 +198,7 @@
                         <span class="stat-label">API Endpoints</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-value">3</span>
+                        <span class="stat-value">4</span>
                         <span class="stat-label">Core Entities</span>
                     </div>
                     <div class="stat-item">
@@ -228,8 +228,9 @@
                 <div class="card">
                     <div class="card-icon">⚡</div>
                     <h3>Features</h3>
-                    <p>Complete CRUD operations, real-time dashboards, authentication & authorization, data visualization, 
-                       responsive UI, and comprehensive API documentation with Swagger.</p>
+                    <p>Complete CRUD operations, real-time dashboards, authentication &amp; authorization, passwordless
+                       passkey (WebAuthn) sign-in, data visualization, responsive UI, and comprehensive API
+                       documentation with Swagger.</p>
                 </div>
                 <div class="card">
                     <div class="card-icon">🚀</div>
@@ -550,8 +551,8 @@ flowchart TB
                 <div class="feature-card">
                     <div class="feature-icon">🔐</div>
                     <h3>Authentication & Security</h3>
-                    <p>JWT-based authentication, BCrypt password hashing, role-based access control, 
-                       and secure API endpoints.</p>
+                    <p>JWT-based authentication, passwordless passkeys (WebAuthn/FIDO2) with biometrics or security
+                       keys, BCrypt password hashing, and secure API endpoints.</p>
                 </div>
                 
                 <div class="feature-card">
@@ -677,6 +678,47 @@ flowchart TB
                         <span class="method method-post">POST</span>
                         <code>/api/auth/reset-password</code>
                         <span class="description">Reset user password</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="api-section">
+                <h3>🔑 Passkey Endpoints (WebAuthn)</h3>
+                <div class="api-endpoints">
+                    <div class="api-endpoint">
+                        <span class="method method-post">POST</span>
+                        <code>/api/passkeys/register/start</code>
+                        <span class="description">Begin registering a passkey (JWT)</span>
+                    </div>
+                    <div class="api-endpoint">
+                        <span class="method method-post">POST</span>
+                        <code>/api/passkeys/register/finish</code>
+                        <span class="description">Verify attestation &amp; store passkey (JWT)</span>
+                    </div>
+                    <div class="api-endpoint">
+                        <span class="method method-get">GET</span>
+                        <code>/api/passkeys</code>
+                        <span class="description">List my passkeys (JWT)</span>
+                    </div>
+                    <div class="api-endpoint">
+                        <span class="method method-put">PATCH</span>
+                        <code>/api/passkeys/{id}</code>
+                        <span class="description">Rename a passkey (JWT)</span>
+                    </div>
+                    <div class="api-endpoint">
+                        <span class="method method-delete">DELETE</span>
+                        <code>/api/passkeys/{id}</code>
+                        <span class="description">Delete a passkey (JWT)</span>
+                    </div>
+                    <div class="api-endpoint">
+                        <span class="method method-post">POST</span>
+                        <code>/api/passkeys/authenticate/start</code>
+                        <span class="description">Begin a passkey login (public)</span>
+                    </div>
+                    <div class="api-endpoint">
+                        <span class="method method-post">POST</span>
+                        <code>/api/passkeys/authenticate/finish</code>
+                        <span class="description">Verify assertion &amp; issue JWT (public)</span>
                     </div>
                 </div>
             </div>
