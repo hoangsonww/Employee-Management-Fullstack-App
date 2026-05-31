@@ -24,7 +24,11 @@ jest.mock('react-router-dom', () => {
 
 describe('<Dashboard />', () => {
   beforeEach(() => {
-    getAllEmployees.mockResolvedValue([{ age: 30 }, { age: 40 }, { age: 50 }]);
+    getAllEmployees.mockResolvedValue([
+      { id: 1, age: 30, firstName: 'A', lastName: 'One' },
+      { id: 2, age: 40, firstName: 'B', lastName: 'Two' },
+      { id: 3, age: 50, firstName: 'C', lastName: 'Three' },
+    ]);
     getAllDepartments.mockResolvedValue([{}, {}]);
   });
 

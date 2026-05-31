@@ -547,9 +547,9 @@ const Dashboard = () => {
               <Typography variant="h6">Recent Employees</Typography>
               {recentEmployees.length ? (
                 <Stack spacing={1.2} sx={{ marginTop: '0.5rem' }}>
-                  {recentEmployees.map(emp => (
+                  {recentEmployees.map((emp, index) => (
                     <Stack
-                      key={`${emp.id}-${emp.email}`}
+                      key={emp.id != null ? `employee-${emp.id}` : `recent-employee-${index}`}
                       direction="row"
                       justifyContent="space-between"
                       sx={{ padding: '0.75rem', backgroundColor: '#f5f5f5', borderRadius: 1 }}

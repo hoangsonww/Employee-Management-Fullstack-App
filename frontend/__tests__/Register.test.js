@@ -4,6 +4,14 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { useNavigate } from 'react-router-dom';
 import Register from '../src/components/Register';
 import { MemoryRouter } from 'react-router-dom';
+import { notifyError, notifyWarning } from '../src/utils/toast';
+
+jest.mock('../src/utils/toast', () => ({
+  notifySuccess: jest.fn(),
+  notifyError: jest.fn(),
+  notifyWarning: jest.fn(),
+  notifyInfo: jest.fn(),
+}));
 
 // suppress act() warnings
 beforeAll(() => {
@@ -84,7 +92,9 @@ describe('<Register />', () => {
 
     fireEvent.click(screen.getByRole('button', { name: /register/i }));
 
-    expect(await screen.findByText(/passwords do not match/i)).toBeInTheDocument();
+    await waitFor(() => {
+      expect(notifyWarning).toHaveBeenCalledWith(expect.stringMatching(/passwords do not match/i));
+    });
     expect(global.fetch).not.toHaveBeenCalled();
   });
 
@@ -129,7 +139,8 @@ describe('<Register />', () => {
 
     global.fetch.mockResolvedValueOnce({
       ok: false,
-      json: async () => ({ message: 'username taken' }),
+      status: 409,
+      text: async () => JSON.stringify({ message: 'username taken' }),
     });
 
     fireEvent.change(screen.getByLabelText(/username/i), {
@@ -141,7 +152,9 @@ describe('<Register />', () => {
 
     fireEvent.click(screen.getByRole('button', { name: /register/i }));
 
-    expect(await screen.findByText(/username taken/i)).toBeInTheDocument();
+    await waitFor(() => {
+      expect(notifyError).toHaveBeenCalledWith('username taken');
+    });
     expect(navigate).not.toHaveBeenCalled();
   });
 });
