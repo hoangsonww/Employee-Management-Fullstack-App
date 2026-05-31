@@ -4,6 +4,14 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { MemoryRouter, useNavigate } from 'react-router-dom';
 import Login from '../src/components/Login';
 import { loginWithPasskey } from '../src/services/passkeyService';
+import { notifyError } from '../src/utils/toast';
+
+jest.mock('../src/utils/toast', () => ({
+  notifySuccess: jest.fn(),
+  notifyError: jest.fn(),
+  notifyWarning: jest.fn(),
+  notifyInfo: jest.fn(),
+}));
 
 beforeAll(() => {
   jest.spyOn(console, 'error').mockImplementation(() => {});
@@ -78,7 +86,7 @@ describe('<Login /> passkey flow', () => {
     fireEvent.click(screen.getByRole('button', { name: /sign in with a passkey/i }));
 
     await waitFor(() => {
-      expect(screen.getByText(/passkey prompt was dismissed/i)).toBeInTheDocument();
+      expect(notifyError).toHaveBeenCalledWith('The passkey prompt was dismissed.');
     });
     expect(navigate).not.toHaveBeenCalled();
     expect(localStorage.getItem('token')).toBeNull();

@@ -4,6 +4,14 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import Login from '../src/components/Login';
 import { useNavigate } from 'react-router-dom';
 import { MemoryRouter } from 'react-router-dom';
+import { notifyError } from '../src/utils/toast';
+
+jest.mock('../src/utils/toast', () => ({
+  notifySuccess: jest.fn(),
+  notifyError: jest.fn(),
+  notifyWarning: jest.fn(),
+  notifyInfo: jest.fn(),
+}));
 
 // suppress act() warnings
 beforeAll(() => {
@@ -94,7 +102,8 @@ describe('<Login />', () => {
 
     global.fetch.mockResolvedValueOnce({
       ok: false,
-      json: async () => ({ message: 'bad' }),
+      status: 401,
+      text: async () => JSON.stringify({ message: 'Invalid username or password. Please try again.' }),
     });
 
     fireEvent.change(screen.getByLabelText(/username/i), { target: { value: 'u' } });
@@ -102,7 +111,7 @@ describe('<Login />', () => {
     fireEvent.click(screen.getByRole('button', { name: /^login$/i }));
 
     await waitFor(() => {
-      expect(screen.getByText(/invalid credentials/i)).toBeInTheDocument();
+      expect(notifyError).toHaveBeenCalledWith('Invalid username or password. Please try again.');
       expect(navigate).not.toHaveBeenCalled();
     });
   });
