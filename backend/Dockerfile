@@ -4,9 +4,18 @@ FROM maven:3.8.6-openjdk-11 AS builder
 # Set the working directory
 WORKDIR /app
 
-# Copy the pom.xml and download dependencies
+# Copy the pom.xml and pre-fetch dependencies into a cached layer.
+#
+# We deliberately do NOT use `mvn dependency:go-offline` here. The Yubico WebAuthn library's
+# parent POM imports the Jackson BOM with a version RANGE (`jackson-bom:[2.13.2.1,3)`). go-offline
+# eagerly resolves that range to the newest release (currently jackson-bom 2.22.0) and then tries
+# to pre-download every module jar that BOM references — but jackson-core is only published up to
+# 2.21.4, so `jackson-core:jar:2.22.0` is absent and the build fails. `dependency:resolve` instead
+# downloads only the *mediated* graph, where our pinned jackson-bom (2.19.4) wins, so Jackson
+# resolves to 2.19.4 and never touches the unpublished 2.22.0 jars. resolve-plugins caches the
+# build plugins the same way go-offline did.
 COPY pom.xml ./
-RUN mvn dependency:go-offline
+RUN mvn -B dependency:resolve dependency:resolve-plugins
 
 # Copy the entire project source
 COPY src ./src
