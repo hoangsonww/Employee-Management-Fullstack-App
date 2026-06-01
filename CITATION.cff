@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata from this file."
+title: "Employee Management Full-Stack Application"
+abstract: >-
+  A modern, feature-rich full-stack system for managing employee and department
+  data. It pairs a responsive React (TypeScript) frontend with a robust Spring
+  Boot (Java 11) backend, providing CRUD operations, data visualization,
+  authentication (JWT and WebAuthn/passkeys), and secure REST APIs. The
+  application is fully containerized with Docker, orchestrated with Kubernetes,
+  and ships with CI/CD pipelines supporting blue/green and canary deployments.
+type: software
+authors:
+  - family-names: "Nguyen"
+    given-names: "Son"
+    alias: "hoangsonww"
+    email: "hoangson091104@gmail.com"
+    website: "https://github.com/hoangsonww"
+repository-code: "https://github.com/hoangsonww/Employee-Management-Fullstack-App"
+url: "https://github.com/hoangsonww/Employee-Management-Fullstack-App"
+version: "2.3.4"
+date-released: "2025-05-19"
+license: MIT
+keywords:
+  - "employee management"
+  - "full-stack application"
+  - "Spring Boot"
+  - "React"
+  - "TypeScript"
+  - "Java"
+  - "REST API"
+  - "Docker"
+  - "Kubernetes"
+  - "CI/CD"
