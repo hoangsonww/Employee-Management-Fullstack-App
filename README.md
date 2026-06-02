@@ -5,7 +5,7 @@ The **Employee Management Full-Stack Application** is a modern, feature-rich sys
 Designed with scalability and maintainability in mind, this application is also fully containerized with Docker, orchestrated with Kubernetes, and supports CI/CD pipelines & blue/green and canary deployment techniques through Jenkins, making it an ideal blueprint for real-world enterprise applications.
 
 <p align="center">
-  <a href="https://employee-management-fullstack-app.vercel.app" target="_blank">
+  <a href="https://employee-manage-app.vercel.app" target="_blank">
     <img src="img/logo.png" alt="Employee Management Full-Stack Application Logo" style="border-radius: 10px" width="35%"/>
   </a>
 </p>
@@ -220,7 +220,7 @@ The backend is also deployed with Render and is available at [https://employee-m
 
 The frontend of the Employee Management System provides a user-friendly interface for managing employees and departments. It includes features for viewing, adding, editing, and deleting employees and departments. The app also includes visualizations for employee metrics such as growth over time and distribution by age range.
 
-The frontend is also live at [https://employee-management-fullstack-app.vercel.app](https://employee-management-fullstack-app.vercel.app) for you to explore and interact with the application. Note that the backend is not hosted, so the API calls will not work and the data will not be present.
+The frontend is also live at [https://employee-manage-app.vercel.app](https://employee-manage-app.vercel.app) for you to explore and interact with the application. Note that the backend is not hosted, so the API calls will not work and the data will not be present.
 
 **Landing Page:**
 
@@ -479,7 +479,7 @@ WEBAUTHN_RP_NAME=Employee Management System
 WEBAUTHN_ALLOWED_ORIGINS=http://localhost:3000,http://localhost:8080
 ```
 
-> **Passkeys in production:** set `WEBAUTHN_RP_ID` to the frontend's domain (e.g. `employee-management-fullstack-app.vercel.app`) and `WEBAUTHN_ALLOWED_ORIGINS` to the exact frontend origin(s) (e.g. `https://employee-management-fullstack-app.vercel.app`). WebAuthn requires HTTPS (localhost is exempt).
+> **Passkeys in production:** set `WEBAUTHN_RP_ID` to the frontend's domain (e.g. `employee-manage-app.vercel.app`) and `WEBAUTHN_ALLOWED_ORIGINS` to the exact frontend origin(s) (e.g. `https://employee-manage-app.vercel.app`). WebAuthn requires HTTPS (localhost is exempt).
 
 For MySQL bootstrap, you have two supported options:
 
