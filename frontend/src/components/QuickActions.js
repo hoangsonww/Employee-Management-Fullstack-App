@@ -8,8 +8,11 @@ import { useNavigate } from 'react-router-dom';
 
 const QuickActions = () => {
   const navigate = useNavigate();
-  const [open, setOpen] = useState(false);
-  const [tooltipOpen, setTooltipOpen] = useState(false);
+  // Track the SpeedDial open state only so we can hide the main tooltip while
+  // the actions are showing. The SpeedDial itself stays uncontrolled so its
+  // native hover/focus behavior (menu items appear on hover) keeps working.
+  const [dialOpen, setDialOpen] = useState(false);
+  const [hovered, setHovered] = useState(false);
 
   const actions = [
     { icon: <DashboardIcon />, name: 'Dashboard', onClick: () => navigate('/dashboard') },
@@ -17,32 +20,27 @@ const QuickActions = () => {
     { icon: <ApartmentIcon />, name: 'Add Department', onClick: () => navigate('/add-department') },
   ];
 
-  const closeAll = () => {
-    setOpen(false);
-    setTooltipOpen(false);
-  };
-
   const handleAction = onClick => {
-    closeAll();
+    setHovered(false);
     onClick();
   };
 
   return (
     <Tooltip
       title="Quick actions"
-      // Only show the FAB tooltip while the SpeedDial is collapsed, otherwise
-      // it stays stuck on screen once the actions are opened/closed.
-      open={tooltipOpen && !open}
-      onOpen={() => setTooltipOpen(true)}
-      onClose={() => setTooltipOpen(false)}
+      // Show the label only when the menu is closed, and never on focus —
+      // otherwise it stays stuck on the FAB after opening/closing the items.
+      open={hovered && !dialOpen}
+      onOpen={() => setHovered(true)}
+      onClose={() => setHovered(false)}
+      disableFocusListener
     >
       <SpeedDial
         ariaLabel="Quick actions"
         sx={{ position: 'fixed', bottom: 24, right: 24, zIndex: 1500 }}
         icon={<SpeedDialIcon openIcon={<AddIcon />} />}
-        open={open}
-        onOpen={() => setOpen(true)}
-        onClose={closeAll}
+        onOpen={() => setDialOpen(true)}
+        onClose={() => setDialOpen(false)}
       >
         {actions.map(action => (
           <SpeedDialAction key={action.name} icon={action.icon} tooltipTitle={action.name} onClick={() => handleAction(action.onClick)} />
