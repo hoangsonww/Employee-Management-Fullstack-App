@@ -180,14 +180,14 @@ const Passkeys = () => {
             <Stack direction="row" spacing={2} alignItems="center">
               <Box
                 sx={{
-                  width: 56,
-                  height: 56,
+                  width: { xs: 'auto', sm: 56 },
+                  height: { xs: 'auto', sm: 56 },
                   borderRadius: '50%',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  background: 'rgba(255,255,255,0.15)',
-                  border: '1px solid rgba(255,255,255,0.35)',
+                  background: { xs: 'none', sm: 'rgba(255,255,255,0.15)' },
+                  border: { xs: 'none', sm: '1px solid rgba(255,255,255,0.35)' },
                 }}
               >
                 <FingerprintIcon sx={{ fontSize: 32 }} />

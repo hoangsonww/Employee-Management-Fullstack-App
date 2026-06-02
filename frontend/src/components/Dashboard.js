@@ -448,9 +448,11 @@ const Dashboard = () => {
               <Typography variant="subtitle2" gutterBottom>
                 Top departments
               </Typography>
-              <Stack direction="row" spacing={1} flexWrap="wrap">
+              <Stack direction="row" useFlexGap flexWrap="wrap" sx={{ gap: 1, alignItems: 'center' }}>
                 {topDepartments.length ? (
-                  topDepartments.map(dept => <Chip key={dept.name} label={`${dept.name} · ${dept.count}`} color="primary" variant="outlined" />)
+                  topDepartments.map(dept => (
+                    <Chip key={dept.name} label={`${dept.name} · ${dept.count}`} color="primary" variant="outlined" sx={{ maxWidth: '100%' }} />
+                  ))
                 ) : (
                   <Typography color="text.secondary">No department data yet.</Typography>
                 )}

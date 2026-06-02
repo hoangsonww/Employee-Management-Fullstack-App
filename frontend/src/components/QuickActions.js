@@ -1,5 +1,5 @@
 import React from 'react';
-import { SpeedDial, SpeedDialAction, SpeedDialIcon, Tooltip } from '@mui/material';
+import { SpeedDial, SpeedDialAction, SpeedDialIcon } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
@@ -15,13 +15,11 @@ const QuickActions = () => {
   ];
 
   return (
-    <Tooltip title="Quick actions">
-      <SpeedDial ariaLabel="Quick actions" sx={{ position: 'fixed', bottom: 24, right: 24, zIndex: 1500 }} icon={<SpeedDialIcon openIcon={<AddIcon />} />}>
-        {actions.map(action => (
-          <SpeedDialAction key={action.name} icon={action.icon} tooltipTitle={action.name} onClick={action.onClick} />
-        ))}
-      </SpeedDial>
-    </Tooltip>
+    <SpeedDial ariaLabel="Quick actions" sx={{ position: 'fixed', bottom: 24, right: 24, zIndex: 1500 }} icon={<SpeedDialIcon openIcon={<AddIcon />} />}>
+      {actions.map(action => (
+        <SpeedDialAction key={action.name} icon={action.icon} tooltipTitle={action.name} onClick={action.onClick} />
+      ))}
+    </SpeedDial>
   );
 };
 

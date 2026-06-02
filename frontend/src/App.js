@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Container, CssBaseline, ThemeProvider } from '@mui/material';
 import { ToastContainer } from 'react-toastify';
@@ -25,6 +25,12 @@ import QuickActions from './components/QuickActions';
 const AppContent = () => {
   const location = useLocation();
   const isLanding = location.pathname === '/';
+
+  // Always start a freshly navigated page at the top instead of inheriting
+  // the previous page's scroll position (the browser's default behavior).
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  }, [location.pathname]);
 
   return (
     <>
