@@ -1880,7 +1880,7 @@ a:hover {
    ========================================== */
 @media (max-width: 768px) {
     .hero-marquee {
-        padding: 1rem 0 2.5rem;
+        padding: 1rem 0 1.75rem;
     }
 
     .marquee-chip {
