@@ -23,13 +23,13 @@ import org.springframework.context.annotation.Bean;
         contact = @Contact(
             name = "Employee Management System",
             email = "hoangson091104@gmail.com",
-            url = "https://employee-management-fullstack-app.vercel.app/"
+            url = "https://employee-manage-app.vercel.app/"
         ),
         license = @License(
             name = "MIT License",
             url = "https://opensource.org/licenses/MIT"
         ),
-        termsOfService = "https://employee-management-fullstack-app.vercel.app/"
+        termsOfService = "https://employee-manage-app.vercel.app/"
     )
 )
 @SecurityScheme(

@@ -121,7 +121,7 @@ WEBAUTHN_ALLOW_ORIGIN_PORT=false
 WEBAUTHN_CEREMONY_TIMEOUT_SECONDS=300
 ```
 
-The active datasource config lives in `src/main/resources/application.properties` and expects those variables to exist. For production, set `WEBAUTHN_RP_ID` to your frontend domain (e.g. `employee-management-fullstack-app.vercel.app`) and `WEBAUTHN_ALLOWED_ORIGINS` to the exact HTTPS origin(s); WebAuthn requires HTTPS (localhost is exempt).
+The active datasource config lives in `src/main/resources/application.properties` and expects those variables to exist. For production, set `WEBAUTHN_RP_ID` to your frontend domain (e.g. `employee-manage-app.vercel.app`) and `WEBAUTHN_ALLOWED_ORIGINS` to the exact HTTPS origin(s); WebAuthn requires HTTPS (localhost is exempt).
 
 For a new MySQL setup, use one of these two paths:
 
