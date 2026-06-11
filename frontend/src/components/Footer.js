@@ -8,8 +8,8 @@ const Footer = () => {
       sx={{
         background: 'linear-gradient(135deg, #1E3C72 0%, #2A5298 100%)',
         color: 'white',
-        padding: '2.5rem 0',
-        marginTop: '2rem',
+        padding: '3rem 0 2.5rem',
+        marginTop: 0,
         boxShadow: '0 -12px 35px rgba(15, 23, 42, 0.15)',
         position: 'relative',
         overflow: 'hidden',

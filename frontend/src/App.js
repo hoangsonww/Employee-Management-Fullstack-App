@@ -34,7 +34,7 @@ const AppContent = () => {
 
   return (
     <>
-      <Navbar />
+      {!isLanding && <Navbar />}
       <Container
         maxWidth={isLanding ? false : 'lg'}
         disableGutters={isLanding}
