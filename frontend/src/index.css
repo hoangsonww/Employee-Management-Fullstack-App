@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
+/* Never allow horizontal scroll. `clip` (not `hidden`) avoids creating a
+   scroll container, so position:sticky/fixed descendants keep working. */
+html,
+body {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
 body {
   margin: 0;
   font-family:

@@ -571,7 +571,7 @@ const trustedBy = ['Atlas HR', 'Northwind Ops', 'Acme Labs', 'Cobalt Systems', '
  * ------------------------------------------------------------------ */
 const LandingPage = () => {
   return (
-    <Box sx={{ position: 'relative', width: '100%', color: TEXT, background: PAGE_BG, minHeight: '100vh' }}>
+    <Box sx={{ position: 'relative', width: '100%', maxWidth: '100%', overflowX: 'clip', color: TEXT, background: PAGE_BG, minHeight: '100vh' }}>
       {/* Page-wide procedural 3D — fixed behind every section, including the CTA. */}
       <HeroBackground />
 
@@ -1063,7 +1063,7 @@ const LandingPage = () => {
         </Container>
 
         {/* ===================== FINAL CTA (3D shows through) ===================== */}
-        <Box component="section" sx={{ position: 'relative', py: { xs: 8, md: 12 } }}>
+        <Box component="section" sx={{ position: 'relative', py: { xs: 8, md: 12 }, overflow: 'hidden' }}>
           <Box
             aria-hidden
             sx={{
@@ -1073,7 +1073,7 @@ const LandingPage = () => {
               transform: 'translate(-50%, -50%)',
               width: 760,
               height: 760,
-              maxWidth: '120vw',
+              maxWidth: '100%',
               borderRadius: '50%',
               background: 'radial-gradient(circle, rgba(255,152,0,0.20), transparent 60%)',
               pointerEvents: 'none',
