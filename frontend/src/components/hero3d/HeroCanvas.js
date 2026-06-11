@@ -13,9 +13,7 @@ import * as THREE from 'three';
  */
 
 // Brand-aligned palette (primary #1E3C72, secondary #ff9800) widened for glow.
-const PALETTE = ['#1E3C72', '#3b5bdb', '#4f7cff', '#7c5cff', '#22d3ee', '#ff9800'].map(
-  c => new THREE.Color(c)
-);
+const PALETTE = ['#1E3C72', '#3b5bdb', '#4f7cff', '#7c5cff', '#22d3ee', '#ff9800'].map(c => new THREE.Color(c));
 
 // Deterministic PRNG so the layout is stable across re-renders / reloads.
 const mulberry32 = seed => {
@@ -48,7 +46,7 @@ const makeGlowTexture = () => {
   return tex;
 };
 
-const Constellation = ({ count, animate, pointer }) => {
+const Constellation = ({ count, animate, pointer, scroll }) => {
   const groupRef = useRef();
   const spriteTexture = useMemo(() => makeGlowTexture(), []);
 
@@ -75,9 +73,7 @@ const Constellation = ({ count, animate, pointer }) => {
       points.push(v);
 
       const t = (v.x / spread.x + 1) / 2; // left→right gradient
-      const base = PALETTE[Math.min(PALETTE.length - 1, Math.floor(t * (PALETTE.length - 1)))]
-        .clone()
-        .lerp(new THREE.Color('#ffffff'), rand() * 0.35);
+      const base = PALETTE[Math.min(PALETTE.length - 1, Math.floor(t * (PALETTE.length - 1)))].clone().lerp(new THREE.Color('#ffffff'), rand() * 0.35);
       colors.push(base.r, base.g, base.b);
       sizes.push(0.18 + rand() * 0.5);
     }
@@ -141,26 +137,21 @@ const Constellation = ({ count, animate, pointer }) => {
     const g = groupRef.current;
     if (!g || !animate) return;
     const d = Math.min(delta, 0.05);
+    // Scroll progress in viewport units (0 at top, grows as the page scrolls).
+    const s = scroll && typeof window !== 'undefined' ? scroll.current / window.innerHeight : 0;
     g.rotation.y += d * 0.06;
-    // Ease toward the pointer for a parallax tilt.
-    const targetX = pointer.current.y * 0.18;
-    const targetY = pointer.current.x * 0.32 + state.clock.elapsedTime * 0.0;
+    // Ease toward the pointer for a parallax tilt, biased by scroll position.
+    const targetX = pointer.current.y * 0.18 + s * 0.22;
     g.rotation.x += (targetX - g.rotation.x) * 0.04;
+    g.rotation.z += (s * 0.26 - g.rotation.z) * 0.04;
     g.position.x += (pointer.current.x * 0.8 - g.position.x) * 0.03;
-    g.position.y += (-pointer.current.y * 0.5 - g.position.y) * 0.03;
-    void targetY;
+    g.position.y += (-pointer.current.y * 0.5 - s * 1.4 - g.position.y) * 0.03;
   });
 
   return (
     <group ref={groupRef}>
       <lineSegments geometry={lineGeometry}>
-        <lineBasicMaterial
-          vertexColors
-          transparent
-          opacity={0.36}
-          blending={THREE.AdditiveBlending}
-          depthWrite={false}
-        />
+        <lineBasicMaterial vertexColors transparent opacity={0.36} blending={THREE.AdditiveBlending} depthWrite={false} />
       </lineSegments>
       <points geometry={nodeGeometry} material={nodeMaterial} />
     </group>
@@ -239,21 +230,25 @@ const BackdropRing = ({ animate }) => {
   );
 };
 
-const Rig = ({ pointer }) => {
-  // Subtle camera drift toward the pointer adds depth without nausea.
+const Rig = ({ pointer, scroll }) => {
+  // Subtle camera drift toward the pointer + a gentle dolly-out on scroll.
   useFrame((state, delta) => {
     const d = Math.min(delta, 0.05);
+    const s = scroll && typeof window !== 'undefined' ? scroll.current / window.innerHeight : 0;
     state.camera.position.x += (pointer.current.x * 1.2 - state.camera.position.x) * d * 1.5;
     state.camera.position.y += (pointer.current.y * 0.8 - state.camera.position.y) * d * 1.5;
+    state.camera.position.z += (15 + s * 2.4 - state.camera.position.z) * d * 1.5;
     state.camera.lookAt(0, 0, 0);
   });
   return null;
 };
 
-const HeroCanvas = ({ count = 150, animate = true, pointer }) => {
-  // A no-op pointer ref when the host doesn't supply one (e.g. reduced motion).
+const HeroCanvas = ({ count = 150, animate = true, pointer, scroll }) => {
+  // No-op refs when the host doesn't supply them (e.g. reduced motion).
   const localPointer = useRef({ x: 0, y: 0 });
+  const localScroll = useRef(0);
   const activePointer = pointer || localPointer;
+  const activeScroll = scroll || localScroll;
 
   return (
     <Canvas
@@ -269,19 +264,13 @@ const HeroCanvas = ({ count = 150, animate = true, pointer }) => {
       <pointLight position={[12, -6, 4]} intensity={90} color="#ff9800" />
       <pointLight position={[0, 8, -6]} intensity={60} color="#7c5cff" />
 
-      <Constellation count={count} animate={animate} pointer={activePointer} />
+      <Constellation count={count} animate={animate} pointer={activePointer} scroll={activeScroll} />
       <FloatingShapes animate={animate} />
       <BackdropRing animate={animate} />
-      <Rig pointer={activePointer} />
+      <Rig pointer={activePointer} scroll={activeScroll} />
 
       <EffectComposer disableNormalPass>
-        <Bloom
-          intensity={0.85}
-          luminanceThreshold={0.12}
-          luminanceSmoothing={0.9}
-          mipmapBlur
-          radius={0.7}
-        />
+        <Bloom intensity={0.85} luminanceThreshold={0.12} luminanceSmoothing={0.9} mipmapBlur radius={0.7} />
         <Vignette eskil={false} offset={0.25} darkness={0.85} />
       </EffectComposer>
     </Canvas>

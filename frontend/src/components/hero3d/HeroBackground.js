@@ -47,6 +47,7 @@ const HeroBackground = () => {
   const [enabled, setEnabled] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const pointer = useRef({ x: 0, y: 0 });
+  const scroll = useRef(0);
 
   // Only mount the heavy canvas on capable, idle clients.
   useEffect(() => {
@@ -72,6 +73,17 @@ const HeroBackground = () => {
     return () => window.removeEventListener('pointermove', onMove);
   }, [pointer]);
 
+  // Track scroll position so the scene reacts as the user scrolls the page.
+  useEffect(() => {
+    if (typeof window === 'undefined') return undefined;
+    const onScroll = () => {
+      scroll.current = window.scrollY || window.pageYOffset || 0;
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [scroll]);
+
   const count = isMobile ? 60 : 150;
   const animate = !reducedMotion;
 
@@ -96,7 +108,7 @@ const HeroBackground = () => {
       {enabled && (
         <SceneBoundary>
           <Suspense fallback={null}>
-            <HeroCanvas count={count} animate={animate} pointer={pointer} />
+            <HeroCanvas count={count} animate={animate} pointer={pointer} scroll={scroll} />
           </Suspense>
         </SceneBoundary>
       )}

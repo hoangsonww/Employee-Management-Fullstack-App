@@ -1038,11 +1038,10 @@ const LandingPage = () => {
             <SectionHeading eyebrow="Questions" title="Everything teams ask before rollout" center maxWidth={680} />
             <Box sx={{ maxWidth: 860, mx: 'auto' }}>
               {faqs.map((item, index) => (
-                <Reveal key={item.q} delay={index * 50}>
+                <Reveal key={item.q} delay={index * 50} sx={{ mb: 2 }}>
                   <Accordion
                     disableGutters
                     sx={{
-                      mb: 1.5,
                       borderRadius: '16px !important',
                       ...SURFACE,
                       color: TEXT,
