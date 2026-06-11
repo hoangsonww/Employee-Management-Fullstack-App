@@ -202,7 +202,9 @@ const AnimatedNumber = ({ value, duration = 1500, decimals = 0, prefix = '', suf
 };
 
 const Eyebrow = ({ children, sx }) => (
-  <Typography sx={{ display: 'inline-block', textTransform: 'uppercase', letterSpacing: 3, fontWeight: 800, fontSize: '0.78rem', mb: 1.5, ...gradientText(), ...sx }}>
+  <Typography
+    sx={{ display: 'inline-block', textTransform: 'uppercase', letterSpacing: 3, fontWeight: 800, fontSize: '0.78rem', mb: 1.5, ...gradientText(), ...sx }}
+  >
     {children}
   </Typography>
 );
@@ -218,9 +220,7 @@ const SectionHeading = ({ eyebrow, title, subtitle, center = false, maxWidth = 7
         {title}
       </Typography>
       {subtitle && (
-        <Typography sx={{ mt: 2, color: TEXT2, fontSize: { xs: '1rem', md: '1.14rem' }, lineHeight: 1.65, mx: center ? 'auto' : 0 }}>
-          {subtitle}
-        </Typography>
+        <Typography sx={{ mt: 2, color: TEXT2, fontSize: { xs: '1rem', md: '1.14rem' }, lineHeight: 1.65, mx: center ? 'auto' : 0 }}>{subtitle}</Typography>
       )}
     </Reveal>
   </Box>
@@ -277,7 +277,10 @@ const Logo = () => (
       <HubIcon sx={{ fontSize: 22 }} />
     </Box>
     <Typography sx={{ fontWeight: 800, letterSpacing: '-0.01em', fontSize: '1.12rem', color: '#fff' }}>
-      Employee<Box component="span" sx={gradientText()}>OS</Box>
+      Employee
+      <Box component="span" sx={gradientText()}>
+        OS
+      </Box>
     </Typography>
   </Stack>
 );
@@ -358,7 +361,11 @@ const LandingHeader = () => {
                   background: 'linear-gradient(135deg,#ffb74d,#ff9800)',
                   boxShadow: '0 10px 26px rgba(255,152,0,0.42)',
                   transition: 'all .25s ease',
-                  '&:hover': { background: 'linear-gradient(135deg,#ffc163,#ffa31a)', transform: 'translateY(-1px)', boxShadow: '0 14px 32px rgba(255,152,0,0.5)' },
+                  '&:hover': {
+                    background: 'linear-gradient(135deg,#ffc163,#ffa31a)',
+                    transform: 'translateY(-1px)',
+                    boxShadow: '0 14px 32px rgba(255,152,0,0.5)',
+                  },
                 }}
               >
                 Open Dashboard
@@ -393,7 +400,13 @@ const LandingHeader = () => {
           ))}
         </List>
         <Stack spacing={1.5} sx={{ p: 2.5, mt: 'auto' }}>
-          <Button component={Link} to="/login" onClick={() => setOpen(false)} variant="outlined" sx={{ color: '#fff', borderColor: 'rgba(255,255,255,0.4)', fontWeight: 700, '&:hover': { borderColor: '#fff' } }}>
+          <Button
+            component={Link}
+            to="/login"
+            onClick={() => setOpen(false)}
+            variant="outlined"
+            sx={{ color: '#fff', borderColor: 'rgba(255,255,255,0.4)', fontWeight: 700, '&:hover': { borderColor: '#fff' } }}
+          >
             Sign in
           </Button>
           <Button
@@ -401,7 +414,12 @@ const LandingHeader = () => {
             to="/dashboard"
             onClick={() => setOpen(false)}
             endIcon={<ArrowForwardIcon />}
-            sx={{ fontWeight: 800, color: '#0f172a', background: 'linear-gradient(135deg,#ffb74d,#ff9800)', '&:hover': { background: 'linear-gradient(135deg,#ffc163,#ffa31a)' } }}
+            sx={{
+              fontWeight: 800,
+              color: '#0f172a',
+              background: 'linear-gradient(135deg,#ffb74d,#ff9800)',
+              '&:hover': { background: 'linear-gradient(135deg,#ffc163,#ffa31a)' },
+            }}
           >
             Open Dashboard
           </Button>
@@ -430,12 +448,51 @@ const benchmarkStats = [
 ];
 
 const features = [
-  { title: 'Employee 360', desc: 'Full profiles, quick edits, exports, and smart filters for any slice of your org.', icon: <PeopleAltIcon />, from: '#4f7cff', to: '#1E3C72', link: '/employees' },
-  { title: 'Department clarity', desc: 'Keep teams organized with clean structures and quick pivots between units.', icon: <ShieldIcon />, from: '#7c5cff', to: '#4f7cff', link: '/departments' },
-  { title: 'Insightful dashboards', desc: 'Trend lines, cohorts, and composition charts that show what moves the needle.', icon: <TimelineIcon />, from: '#22d3ee', to: '#3b82f6', link: '/dashboard' },
-  { title: 'Launch updates fast', desc: 'Create employees or departments in minutes with guided, validated workflows.', icon: <RocketLaunchIcon />, from: '#ff9800', to: '#f97316' },
-  { title: 'Always in sync', desc: 'Charts, filters, and exports all run off the same single source of truth.', icon: <AutoGraphIcon />, from: '#10b981', to: '#059669' },
-  { title: 'Any device', desc: 'Responsive layouts keep dashboards and lists usable anywhere you work.', icon: <DevicesIcon />, from: '#60a5fa', to: '#7c5cff' },
+  {
+    title: 'Employee 360',
+    desc: 'Full profiles, quick edits, exports, and smart filters for any slice of your org.',
+    icon: <PeopleAltIcon />,
+    from: '#4f7cff',
+    to: '#1E3C72',
+    link: '/employees',
+  },
+  {
+    title: 'Department clarity',
+    desc: 'Keep teams organized with clean structures and quick pivots between units.',
+    icon: <ShieldIcon />,
+    from: '#7c5cff',
+    to: '#4f7cff',
+    link: '/departments',
+  },
+  {
+    title: 'Insightful dashboards',
+    desc: 'Trend lines, cohorts, and composition charts that show what moves the needle.',
+    icon: <TimelineIcon />,
+    from: '#22d3ee',
+    to: '#3b82f6',
+    link: '/dashboard',
+  },
+  {
+    title: 'Launch updates fast',
+    desc: 'Create employees or departments in minutes with guided, validated workflows.',
+    icon: <RocketLaunchIcon />,
+    from: '#ff9800',
+    to: '#f97316',
+  },
+  {
+    title: 'Always in sync',
+    desc: 'Charts, filters, and exports all run off the same single source of truth.',
+    icon: <AutoGraphIcon />,
+    from: '#10b981',
+    to: '#059669',
+  },
+  {
+    title: 'Any device',
+    desc: 'Responsive layouts keep dashboards and lists usable anywhere you work.',
+    icon: <DevicesIcon />,
+    from: '#60a5fa',
+    to: '#7c5cff',
+  },
 ];
 
 const platformPillars = [
@@ -474,8 +531,18 @@ const serviceLevels = [
 
 const personas = [
   { name: 'People Ops', title: 'HR Lead', quote: 'We went from ad-hoc spreadsheets to instant exports that finance loves.', icon: <WorkspacePremiumIcon /> },
-  { name: 'Tech Leads', title: 'Engineering Manager', quote: 'Charts and filters answer headcount questions before they are even asked.', icon: <TrendingUpIcon /> },
-  { name: 'Leadership', title: 'VP, Operations', quote: 'Department and growth mix are clear enough to drop straight into board updates.', icon: <EmojiEventsIcon /> },
+  {
+    name: 'Tech Leads',
+    title: 'Engineering Manager',
+    quote: 'Charts and filters answer headcount questions before they are even asked.',
+    icon: <TrendingUpIcon />,
+  },
+  {
+    name: 'Leadership',
+    title: 'VP, Operations',
+    quote: 'Department and growth mix are clear enough to drop straight into board updates.',
+    icon: <EmojiEventsIcon />,
+  },
 ];
 
 const steps = [
@@ -485,8 +552,14 @@ const steps = [
 ];
 
 const faqs = [
-  { q: 'Can I export data for finance or ops reviews?', a: 'Yes — use the built-in exports in Employees and Departments to get a clean CSV anytime, filtered to exactly the slice you need.' },
-  { q: 'Does it support remote and hybrid tracking?', a: 'Dashboard charts already visualize remote and hybrid preferences without any extra setup or configuration.' },
+  {
+    q: 'Can I export data for finance or ops reviews?',
+    a: 'Yes — use the built-in exports in Employees and Departments to get a clean CSV anytime, filtered to exactly the slice you need.',
+  },
+  {
+    q: 'Does it support remote and hybrid tracking?',
+    a: 'Dashboard charts already visualize remote and hybrid preferences without any extra setup or configuration.',
+  },
   { q: 'How fast can we onboard?', a: 'Most teams are running in under a day: set roles, add departments, and import employees in a single sitting.' },
   { q: 'Is access role-based?', a: 'Protected routes and role-aware surfaces mean people only see what they should, by department and seniority.' },
 ];
@@ -579,7 +652,11 @@ const LandingPage = () => {
                     background: 'linear-gradient(135deg,#ffb74d,#ff9800)',
                     boxShadow: '0 14px 36px rgba(255,152,0,0.45)',
                     transition: 'all .25s ease',
-                    '&:hover': { background: 'linear-gradient(135deg,#ffc163,#ffa31a)', transform: 'translateY(-2px)', boxShadow: '0 20px 48px rgba(255,152,0,0.55)' },
+                    '&:hover': {
+                      background: 'linear-gradient(135deg,#ffc163,#ffa31a)',
+                      transform: 'translateY(-2px)',
+                      boxShadow: '0 20px 48px rgba(255,152,0,0.55)',
+                    },
                   }}
                 >
                   View Dashboard
@@ -590,7 +667,15 @@ const LandingPage = () => {
                   size="large"
                   variant="outlined"
                   startIcon={<PeopleAltIcon />}
-                  sx={{ px: 3.6, py: 1.5, fontWeight: 700, color: '#fff', borderColor: 'rgba(255,255,255,0.42)', backdropFilter: 'blur(6px)', '&:hover': { borderColor: '#fff', backgroundColor: 'rgba(255,255,255,0.12)' } }}
+                  sx={{
+                    px: 3.6,
+                    py: 1.5,
+                    fontWeight: 700,
+                    color: '#fff',
+                    borderColor: 'rgba(255,255,255,0.42)',
+                    backdropFilter: 'blur(6px)',
+                    '&:hover': { borderColor: '#fff', backgroundColor: 'rgba(255,255,255,0.12)' },
+                  }}
                 >
                   Browse Directory
                 </Button>
@@ -608,7 +693,10 @@ const LandingPage = () => {
             <Reveal delay={260}>
               <Stack direction="row" sx={{ mt: 4, flexWrap: 'wrap', gap: 1.2 }}>
                 {['Faster onboarding', 'Role-based access', 'Export-ready data', 'Insightful dashboards'].map(label => (
-                  <Box key={label} sx={{ display: 'inline-flex', alignItems: 'center', gap: 0.8, px: 1.6, py: 0.8, borderRadius: 2, ...GLASS, boxShadow: 'none' }}>
+                  <Box
+                    key={label}
+                    sx={{ display: 'inline-flex', alignItems: 'center', gap: 0.8, px: 1.6, py: 0.8, borderRadius: 2, ...GLASS, boxShadow: 'none' }}
+                  >
                     <CheckCircleIcon sx={{ fontSize: 18, color: '#34d399' }} />
                     <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.9)', fontWeight: 600 }}>
                       {label}
@@ -689,7 +777,10 @@ const LandingPage = () => {
                 }}
               >
                 {[...trustedBy, ...trustedBy].map((name, i) => (
-                  <Box key={`${name}-${i}`} sx={{ px: 3, py: 1.4, borderRadius: '14px', ...GLASS, boxShadow: 'none', fontWeight: 800, color: TEXT, letterSpacing: '-0.01em' }}>
+                  <Box
+                    key={`${name}-${i}`}
+                    sx={{ px: 3, py: 1.4, borderRadius: '14px', ...GLASS, boxShadow: 'none', fontWeight: 800, color: TEXT, letterSpacing: '-0.01em' }}
+                  >
                     {name}
                   </Box>
                 ))}
@@ -710,7 +801,9 @@ const LandingPage = () => {
                   <Reveal delay={(index % 3) * 70}>
                     <Card sx={cardSx(168)}>
                       <CardContent sx={{ p: { xs: 2.6, md: 3 } }}>
-                        <Typography sx={{ fontWeight: 800, fontSize: { xs: '2.2rem', md: '2.6rem' }, ...gradientText('linear-gradient(90deg,#ffffff,#9cc0ff)') }}>
+                        <Typography
+                          sx={{ fontWeight: 800, fontSize: { xs: '2.2rem', md: '2.6rem' }, ...gradientText('linear-gradient(90deg,#ffffff,#9cc0ff)') }}
+                        >
                           <AnimatedNumber value={stat.value} decimals={stat.decimals} suffix={stat.suffix} format={stat.format} />
                         </Typography>
                         <Typography sx={{ fontWeight: 700, color: TEXT, mt: 0.5, fontSize: '1rem' }}>{stat.label}</Typography>
@@ -801,7 +894,13 @@ const LandingPage = () => {
 
           {/* Workflow timeline — uniform step cards */}
           <Box id="workflow" sx={{ ...sectionAnchor, ...sectionPad }}>
-            <SectionHeading eyebrow="How it works" title="Live in three focused steps" subtitle="Set up once, align departments, and publish insights without disrupting the team." center maxWidth={680} />
+            <SectionHeading
+              eyebrow="How it works"
+              title="Live in three focused steps"
+              subtitle="Set up once, align departments, and publish insights without disrupting the team."
+              center
+              maxWidth={680}
+            />
             <Box sx={{ position: 'relative' }}>
               <Box
                 aria-hidden
@@ -870,7 +969,13 @@ const LandingPage = () => {
 
           {/* Service levels — uniform tiles */}
           <Box sx={{ ...sectionPad }}>
-            <SectionHeading eyebrow="Service levels" title="Performance guardrails built for confidence" subtitle="Automation depth and operational coverage designed to keep your people data dependable." center maxWidth={680} />
+            <SectionHeading
+              eyebrow="Service levels"
+              title="Performance guardrails built for confidence"
+              subtitle="Automation depth and operational coverage designed to keep your people data dependable."
+              center
+              maxWidth={680}
+            />
             <Grid container spacing={2.5} alignItems="stretch">
               {serviceLevels.map((stat, index) => (
                 <Grid item xs={12} sm={6} md={3} key={stat.label}>
@@ -894,7 +999,11 @@ const LandingPage = () => {
 
           {/* Personas — uniform cards */}
           <Box sx={{ ...sectionPad }}>
-            <SectionHeading eyebrow="Who it's for" title="One data layer, every team aligned" subtitle="People leaders, engineering managers, and operations teams rely on the same trusted data to move fast and stay in sync." />
+            <SectionHeading
+              eyebrow="Who it's for"
+              title="One data layer, every team aligned"
+              subtitle="People leaders, engineering managers, and operations teams rely on the same trusted data to move fast and stay in sync."
+            />
             <Grid container spacing={2.5} alignItems="stretch">
               {personas.map((persona, index) => (
                 <Grid item xs={12} md={4} key={persona.name}>
@@ -906,7 +1015,9 @@ const LandingPage = () => {
                           {persona.quote}
                         </Typography>
                         <Stack direction="row" spacing={1.5} alignItems="center">
-                          <Avatar sx={{ background: 'linear-gradient(135deg,#1E3C72,#4f7cff)', color: '#fff', width: 46, height: 46 }}>{persona.name[0]}</Avatar>
+                          <Avatar sx={{ background: 'linear-gradient(135deg,#1E3C72,#4f7cff)', color: '#fff', width: 46, height: 46 }}>
+                            {persona.name[0]}
+                          </Avatar>
                           <Box>
                             <Typography sx={{ fontWeight: 800, color: TEXT }}>{persona.name}</Typography>
                             <Typography variant="caption" sx={{ color: TEXT3 }}>
@@ -973,7 +1084,10 @@ const LandingPage = () => {
             <Reveal>
               <Box sx={{ ...SURFACE, borderRadius: '28px', p: { xs: 4, md: 7 }, textAlign: 'center' }}>
                 <Eyebrow>Get started</Eyebrow>
-                <Typography component="h2" sx={{ fontWeight: 800, letterSpacing: '-0.02em', lineHeight: 1.08, fontSize: { xs: '2.2rem', sm: '2.8rem', md: '3.4rem' }, color: TEXT }}>
+                <Typography
+                  component="h2"
+                  sx={{ fontWeight: 800, letterSpacing: '-0.02em', lineHeight: 1.08, fontSize: { xs: '2.2rem', sm: '2.8rem', md: '3.4rem' }, color: TEXT }}
+                >
                   Ready to see your workforce{' '}
                   <Box component="span" sx={gradientText()}>
                     come into focus
@@ -1008,7 +1122,15 @@ const LandingPage = () => {
                     to="/register"
                     size="large"
                     variant="outlined"
-                    sx={{ px: 4, py: 1.6, fontWeight: 700, fontSize: '1.05rem', color: '#fff', borderColor: 'rgba(255,255,255,0.42)', '&:hover': { borderColor: '#fff', backgroundColor: 'rgba(255,255,255,0.1)' } }}
+                    sx={{
+                      px: 4,
+                      py: 1.6,
+                      fontWeight: 700,
+                      fontSize: '1.05rem',
+                      color: '#fff',
+                      borderColor: 'rgba(255,255,255,0.42)',
+                      '&:hover': { borderColor: '#fff', backgroundColor: 'rgba(255,255,255,0.1)' },
+                    }}
                   >
                     Create account
                   </Button>

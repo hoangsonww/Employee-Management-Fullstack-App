@@ -43,7 +43,7 @@
     "test:watch": "jest --config jest.config.js --watchAll",
     "test:coverage": "jest --config jest.config.js --coverage",
     "eject": "react-scripts eject",
-    "format": "prettier --config .prettierrc --write \"postcss.config.js\" \"tailwind.config.js\" \"src/components/*.{html,css,js,jsx,ts,tsx}\" \"src/services/*.{html,css,js,jsx,ts,tsx}\" \"src/tests/*.{html,css,js,jsx,ts,tsx}\" \"src/*.{html,css,js,jsx,ts,tsx}\""
+    "format": "prettier --config .prettierrc --no-error-on-unmatched-pattern --write \"postcss.config.js\" \"tailwind.config.js\" \"src/components/*.{html,css,js,jsx,ts,tsx}\" \"src/services/*.{html,css,js,jsx,ts,tsx}\" \"src/tests/*.{html,css,js,jsx,ts,tsx}\" \"src/*.{html,css,js,jsx,ts,tsx}\""
   },
   "eslintConfig": {
     "extends": [
