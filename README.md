@@ -196,6 +196,7 @@ The backend is also deployed with Render and is available at [https://employee-m
 - **React (Frontend)**: A modern JavaScript library for building user interfaces, providing a responsive and interactive experience.
   - **React Router**: A routing library for React that enables navigation and URL handling in single-page applications.
   - **Chart.js**: A JavaScript library for creating responsive and customizable charts and graphs.
+  - **React Three Fibers + Three.js + WebGL:** For 3D component stylings and appealing user experiences.
   - **Axios**: A promise-based HTTP client for making API requests.
   - **Tailwind CSS**: A utility-first CSS framework for creating custom designs with minimal CSS.
   - **Redux**: A predictable state container for managing application state.
@@ -225,7 +226,9 @@ The frontend of the Employee Management System provides a user-friendly interfac
 
 The frontend is also live at [https://employee-manage-app.vercel.app](https://employee-manage-app.vercel.app) for you to explore and interact with the application. Note that the backend is not hosted, so the API calls will not work and the data will not be present.
 
-**Landing Page:** Polished with `Three.js` and React Three Fiber for a great UX and 3D experience
+**Landing Page:** 
+
+Polished with `Three.js` and React Three Fiber + WebGL for a great UX and an immersive 3D experience
 
 <p align="center" style="cursor: pointer">
   <img src="img/landing.png" alt="Landing Page" style="border-radius: 10px" width="100%"/>
