@@ -35,8 +35,19 @@ COPY --from=builder /app/target/employee-management-app-0.0.1-SNAPSHOT.jar app.j
 # Expose the application port
 EXPOSE 8080
 
-# Run the application
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# Run the application.
+#
+# The JVM flags below shrink cold-start time, which matters on hosts that spin the instance down
+# after inactivity (e.g. Render's free tier) and pay a cold start on the next request:
+#   -XX:TieredStopAtLevel=1     stop JIT at C1; skips slow C2 compilation we don't benefit from on
+#                               a short-lived, low-traffic process, so startup is quicker.
+#   -XX:+UseSerialGC            single-threaded GC with the smallest startup/footprint overhead,
+#                               appropriate for a small heap on a free/shared instance.
+#   -Dspring.main.lazy-initialization=true  defer bean creation until first use, so the context
+#                                           comes up faster (first request to each bean is slightly
+#                                           slower, which the frontend warm-up ping absorbs).
+#   -Dspring.jmx.enabled=false  skip JMX bean export we don't use, trimming a little more startup.
+ENTRYPOINT ["java", "-XX:TieredStopAtLevel=1", "-XX:+UseSerialGC", "-Dspring.main.lazy-initialization=true", "-Dspring.jmx.enabled=false", "-jar", "app.jar"]
 
 # Commands for building and running the Docker container:
 #

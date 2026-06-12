@@ -21,6 +21,7 @@ import VerifyUsername from './components/VerifyUsername';
 import NotFoundPage from './components/NotFoundPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import QuickActions from './components/QuickActions';
+import { warmUpBackend } from './utils/warmup';
 
 const AppContent = () => {
   const location = useLocation();
@@ -132,6 +133,12 @@ const AppContent = () => {
 };
 
 const App = () => {
+  // Wake the (free-tier) backend as soon as the app loads so its cold start happens while the user
+  // is still on the landing page, not when they make their first real request.
+  useEffect(() => {
+    warmUpBackend();
+  }, []);
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
