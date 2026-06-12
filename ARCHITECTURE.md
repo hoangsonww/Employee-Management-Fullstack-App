@@ -59,7 +59,7 @@ flowchart LR
 - Material UI drives the bulk of presentation, while Tailwind utility classes supplement styling in custom JSX.
 - Chart.js (through `react-chartjs-2`) powers dashboard charts; `Chart.register(...)` is called within `Dashboard.js` to ensure the required controllers are available.
 - Animations and loaders leverage Material UI components such as `CircularProgress`.
-- Landing page is fully polished with 3D components and stylings with Three.js and React Three Fiber + WebGL.
+- Landing page is fully polished with 3D components and stylings with Three.js and React Three Fiber + WebGL for an immersive 3D experience.
 
 ### 2.5 Testing
 
