@@ -7,7 +7,7 @@ import '@testing-library/jest-dom';
 // reach for; stub them (inert) so component renders don't crash in tests.
 if (typeof window !== 'undefined') {
   if (typeof window.matchMedia !== 'function') {
-    window.matchMedia = (query) => ({
+    window.matchMedia = query => ({
       matches: false,
       media: query,
       onchange: null,
@@ -43,8 +43,7 @@ class MockObserver {
   }
 }
 if (typeof global.ResizeObserver === 'undefined') global.ResizeObserver = MockObserver;
-if (typeof global.IntersectionObserver === 'undefined')
-  global.IntersectionObserver = MockObserver;
+if (typeof global.IntersectionObserver === 'undefined') global.IntersectionObserver = MockObserver;
 
 // Keep the original console.error
 const originalConsoleError = console.error;
