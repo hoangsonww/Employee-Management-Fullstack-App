@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VerifyUsername snapshot matches the rendered markup 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiBox-root css-1fjjxay"
+  >
+    <div
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0  css-1d606iz-MuiPaper-root"
+      style="--Paper-shadow: none;"
+    >
+      <div
+        class="MuiBox-root css-115j56r"
+      />
+      <div
+        class="MuiBox-root css-19u9mpi"
+      />
+      <div
+        class="MuiBox-root css-79elbk"
+      >
+        <div
+          class="MuiBox-root css-cacgvk"
+        >
+          <div
+            class="MuiBox-root css-1gh7hit"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-52ct2d-MuiSvgIcon-root"
+              data-testid="PersonSearchIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                cx="10"
+                cy="8"
+                r="4"
+              />
+              <path
+                d="M10.35 14.01C7.62 13.91 2 15.27 2 18v2h9.54c-2.47-2.76-1.23-5.89-1.19-5.99m9.08 4.01c.36-.59.57-1.28.57-2.02 0-2.21-1.79-4-4-4s-4 1.79-4 4 1.79 4 4 4c.74 0 1.43-.22 2.02-.57L20.59 22 22 20.59zM16 18c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2"
+              />
+            </svg>
+          </div>
+          <h2
+            class="MuiTypography-root MuiTypography-h5  css-1d0c9so-MuiTypography-root"
+          >
+            Verify Username
+          </h2>
+          <p
+            class="MuiTypography-root MuiTypography-body2  css-9isvqg-MuiTypography-root"
+          >
+            Enter your username to start resetting your password.
+          </p>
+        </div>
+        <form>
+          <div
+            class="MuiFormControl-root MuiFormControl-fullWidth  MuiTextField-root  css-8szo48-MuiFormControl-root-MuiTextField-root"
+          >
+            <label
+              class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined  MuiFormLabel-colorPrimary  MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined  css-1q964xs-MuiFormLabel-root-MuiInputLabel-root"
+              data-shrink="false"
+              for=":r0:"
+              id=":r0:-label"
+            >
+              Username
+            </label>
+            <div
+              class="MuiInputBase-root MuiOutlinedInput-root  MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl  css-1o0kqxp-MuiInputBase-root-MuiOutlinedInput-root"
+            >
+              <input
+                aria-invalid="false"
+                class="MuiInputBase-input MuiOutlinedInput-input   css-1jk99ih-MuiInputBase-input-MuiOutlinedInput-input"
+                id=":r0:"
+                type="text"
+                value=""
+              />
+              <fieldset
+                aria-hidden="true"
+                class="MuiOutlinedInput-notchedOutline  css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+              >
+                <legend
+                  class="css-1pbc52w"
+                >
+                  <span>
+                    Username
+                  </span>
+                </legend>
+              </fieldset>
+            </div>
+          </div>
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButton-fullWidth   MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-colorPrimary MuiButton-fullWidth  css-10l9h5n-MuiButtonBase-root-MuiButton-root"
+            tabindex="0"
+            type="submit"
+          >
+            Verify Username
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

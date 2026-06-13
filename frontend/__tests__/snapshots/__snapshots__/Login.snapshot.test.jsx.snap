@@ -1,0 +1,200 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login snapshot matches the rendered markup 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiBox-root css-txx31i"
+  >
+    <div
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1  MuiCard-root  css-pmv2pw-MuiPaper-root-MuiCard-root"
+      style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);"
+    >
+      <div
+        class="MuiBox-root css-16l9zb1"
+      >
+        <h4
+          class="MuiTypography-root MuiTypography-h4  css-ol6fzo-MuiTypography-root"
+        >
+          Welcome back
+        </h4>
+        <p
+          class="MuiTypography-root MuiTypography-body1  css-1edfpdg-MuiTypography-root"
+        >
+          Sign in to access your dashboard, manage employees, and keep your organization humming.
+        </p>
+        <div
+          class="MuiStack-root  css-jfdv4h-MuiStack-root"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1  css-j515ph-MuiTypography-root"
+          >
+            Why log in?
+          </p>
+          <p
+            class="MuiTypography-root MuiTypography-body2  css-1nmqws6-MuiTypography-root"
+          >
+            • Securely access the insights-rich dashboard.
+          </p>
+          <p
+            class="MuiTypography-root MuiTypography-body2  css-1nmqws6-MuiTypography-root"
+          >
+            • Manage teams, departments, and updates in one spot.
+          </p>
+          <p
+            class="MuiTypography-root MuiTypography-body2  css-1nmqws6-MuiTypography-root"
+          >
+            • Pick up where you left off with your saved session.
+          </p>
+        </div>
+      </div>
+      <div
+        class="MuiCardContent-root  css-pe6mfu-MuiCardContent-root"
+      >
+        <h2
+          class="MuiTypography-root MuiTypography-h5  css-12pus0r-MuiTypography-root"
+        >
+          Login
+        </h2>
+        <form>
+          <div
+            class="MuiStack-root  css-1sazv7p-MuiStack-root"
+          >
+            <div
+              class="MuiFormControl-root MuiFormControl-fullWidth  MuiTextField-root  css-y4n9bg-MuiFormControl-root-MuiTextField-root"
+            >
+              <label
+                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined  MuiFormLabel-colorPrimary  MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined  css-1q964xs-MuiFormLabel-root-MuiInputLabel-root"
+                data-shrink="false"
+                for=":r0:"
+                id=":r0:-label"
+              >
+                Username
+              </label>
+              <div
+                class="MuiInputBase-root MuiOutlinedInput-root  MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl  css-1o0kqxp-MuiInputBase-root-MuiOutlinedInput-root"
+                style="font-family: Poppins, sans-serif;"
+              >
+                <input
+                  aria-invalid="false"
+                  class="MuiInputBase-input MuiOutlinedInput-input   css-1jk99ih-MuiInputBase-input-MuiOutlinedInput-input"
+                  id=":r0:"
+                  type="text"
+                  value=""
+                />
+                <fieldset
+                  aria-hidden="true"
+                  class="MuiOutlinedInput-notchedOutline  css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+                >
+                  <legend
+                    class="css-1pbc52w"
+                  >
+                    <span>
+                      Username
+                    </span>
+                  </legend>
+                </fieldset>
+              </div>
+            </div>
+            <div
+              class="MuiFormControl-root MuiFormControl-fullWidth  MuiTextField-root  css-y4n9bg-MuiFormControl-root-MuiTextField-root"
+            >
+              <label
+                class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined  MuiFormLabel-colorPrimary  MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined  css-1q964xs-MuiFormLabel-root-MuiInputLabel-root"
+                data-shrink="false"
+                for=":r1:"
+                id=":r1:-label"
+              >
+                Password
+              </label>
+              <div
+                class="MuiInputBase-root MuiOutlinedInput-root  MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd  css-1wgn40h-MuiInputBase-root-MuiOutlinedInput-root"
+                style="font-family: Poppins, sans-serif;"
+              >
+                <input
+                  aria-invalid="false"
+                  class="MuiInputBase-input MuiOutlinedInput-input  MuiInputBase-inputAdornedEnd  css-lc42l8-MuiInputBase-input-MuiOutlinedInput-input"
+                  id=":r1:"
+                  type="password"
+                  value=""
+                />
+                <div
+                  class="MuiInputAdornment-root MuiInputAdornment-positionEnd MuiInputAdornment-outlined MuiInputAdornment-sizeMedium  css-1i2hsuj-MuiInputAdornment-root"
+                >
+                  <button
+                    aria-label="toggle password visibility"
+                    class="MuiButtonBase-root  MuiIconButton-root MuiIconButton-edgeEnd MuiIconButton-sizeMedium  css-1a7z5rc-MuiButtonBase-root-MuiIconButton-root"
+                    tabindex="0"
+                    type="button"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-20bmp1-MuiSvgIcon-root"
+                      data-testid="VisibilityIcon"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5M12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5m0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <fieldset
+                  aria-hidden="true"
+                  class="MuiOutlinedInput-notchedOutline  css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+                >
+                  <legend
+                    class="css-1pbc52w"
+                  >
+                    <span>
+                      Password
+                    </span>
+                  </legend>
+                </fieldset>
+              </div>
+            </div>
+            <button
+              class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-fullWidth   MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-fullWidth  css-6m7w87-MuiButtonBase-root-MuiButton-root"
+              tabindex="0"
+              type="submit"
+            >
+              Login
+            </button>
+            <hr
+              class="MuiDivider-root MuiDivider-fullWidth  css-9mgopn-MuiDivider-root"
+            />
+            <div
+              class="MuiStack-root  css-aha7cr-MuiStack-root"
+            >
+              <p
+                class="MuiTypography-root MuiTypography-body2  css-1nmqws6-MuiTypography-root"
+              >
+                Don't have an account? 
+                <a
+                  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary   MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary  css-8iab9z-MuiButtonBase-root-MuiButton-root"
+                  href="/register"
+                  tabindex="0"
+                >
+                  Register
+                </a>
+              </p>
+              <p
+                class="MuiTypography-root MuiTypography-body2  css-1nmqws6-MuiTypography-root"
+              >
+                Forgot your password? 
+                <a
+                  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary   MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary  css-8iab9z-MuiButtonBase-root-MuiButton-root"
+                  href="/verify-username"
+                  tabindex="0"
+                >
+                  Reset Password
+                </a>
+              </p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

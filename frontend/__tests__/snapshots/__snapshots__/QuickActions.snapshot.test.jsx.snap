@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`QuickActions snapshot matches the rendered markup 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiSpeedDial-root MuiSpeedDial-directionUp  css-1isf2mj-MuiSpeedDial-root"
+    role="presentation"
+  >
+    <button
+      aria-controls="Quickactions-actions"
+      aria-expanded="false"
+      aria-haspopup="true"
+      aria-label="Quick actions"
+      class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeLarge MuiFab-primary   MuiFab-root MuiFab-circular MuiFab-sizeLarge MuiFab-primary  MuiSpeedDial-fab  css-1cpgcd7-MuiButtonBase-root-MuiFab-root-MuiSpeedDial-fab"
+      style="transform: none; webkit-transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
+      tabindex="0"
+      type="button"
+    >
+      <span
+        class="MuiSpeedDialIcon-root  css-ohncnb-MuiSpeedDialIcon-root"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  MuiSpeedDialIcon-openIcon  css-20bmp1-MuiSvgIcon-root"
+          data-testid="AddIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6z"
+          />
+        </svg>
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  MuiSpeedDialIcon-icon  css-20bmp1-MuiSvgIcon-root"
+          data-testid="AddIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+          />
+        </svg>
+      </span>
+    </button>
+    <div
+      aria-orientation="vertical"
+      class="MuiSpeedDial-actions MuiSpeedDial-actionsClosed  css-8xlyxc-MuiSpeedDial-actions"
+      id="Quickactions-actions"
+      role="menu"
+    >
+      <button
+        aria-label="Dashboard"
+        class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall MuiFab-default   MuiFab-root MuiFab-circular MuiFab-sizeSmall MuiFab-default  MuiSpeedDialAction-fab MuiSpeedDialAction-fabClosed  css-jl45v1-MuiButtonBase-root-MuiFab-root-MuiSpeedDialAction-fab"
+        data-mui-internal-clone-element="true"
+        role="menuitem"
+        style="transition-delay: 90ms;"
+        tabindex="-1"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-20bmp1-MuiSvgIcon-root"
+          data-testid="DashboardIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M3 13h8V3H3zm0 8h8v-6H3zm10 0h8V11h-8zm0-18v6h8V3z"
+          />
+        </svg>
+      </button>
+      <button
+        aria-label="Add Employee"
+        class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall MuiFab-default   MuiFab-root MuiFab-circular MuiFab-sizeSmall MuiFab-default  MuiSpeedDialAction-fab MuiSpeedDialAction-fabClosed  css-jl45v1-MuiButtonBase-root-MuiFab-root-MuiSpeedDialAction-fab"
+        data-mui-internal-clone-element="true"
+        role="menuitem"
+        style="transition-delay: 60ms;"
+        tabindex="-1"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-20bmp1-MuiSvgIcon-root"
+          data-testid="GroupAddIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M22 9V7h-2v2h-2v2h2v2h2v-2h2V9zM8 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4m0 1c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4m4.51-8.95C13.43 5.11 14 6.49 14 8s-.57 2.89-1.49 3.95C14.47 11.7 16 10.04 16 8s-1.53-3.7-3.49-3.95m4.02 9.78C17.42 14.66 18 15.7 18 17v3h2v-3c0-1.45-1.59-2.51-3.47-3.17"
+          />
+        </svg>
+      </button>
+      <button
+        aria-label="Add Department"
+        class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall MuiFab-default   MuiFab-root MuiFab-circular MuiFab-sizeSmall MuiFab-default  MuiSpeedDialAction-fab MuiSpeedDialAction-fabClosed  css-jl45v1-MuiButtonBase-root-MuiFab-root-MuiSpeedDialAction-fab"
+        data-mui-internal-clone-element="true"
+        role="menuitem"
+        style="transition-delay: 30ms;"
+        tabindex="-1"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-20bmp1-MuiSvgIcon-root"
+          data-testid="ApartmentIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M17 11V3H7v4H3v14h8v-4h2v4h8V11zM7 19H5v-2h2zm0-4H5v-2h2zm0-4H5V9h2zm4 4H9v-2h2zm0-4H9V9h2zm0-4H9V5h2zm4 8h-2v-2h2zm0-4h-2V9h2zm0-4h-2V5h2zm4 12h-2v-2h2zm0-4h-2v-2h2z"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;

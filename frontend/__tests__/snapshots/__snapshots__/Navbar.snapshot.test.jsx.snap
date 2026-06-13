@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar snapshot matches the rendered markup (signed out) 1`] = `
+<DocumentFragment>
+  <header
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4  MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionStatic  css-1pbr7h-MuiPaper-root-MuiAppBar-root"
+    style="--Paper-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);"
+  >
+    <div
+      class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular  css-95f9g5-MuiToolbar-root"
+    >
+      <a
+        class="MuiTypography-root MuiTypography-h6  css-g5b1a4-MuiTypography-root"
+        href="/"
+      >
+        Employee Management System
+      </a>
+      <div
+        class="MuiBox-root css-k9kc57"
+      >
+        <a
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary   MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary  css-sz7e5e-MuiButtonBase-root-MuiButton-root"
+          href="/"
+          tabindex="0"
+        >
+          Home
+        </a>
+        <a
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textInherit MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorInherit   MuiButton-root MuiButton-text MuiButton-textInherit MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorInherit  css-1ofy68o-MuiButtonBase-root-MuiButton-root"
+          href="/dashboard"
+          tabindex="0"
+        >
+          Dashboard
+        </a>
+        <a
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textInherit MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorInherit   MuiButton-root MuiButton-text MuiButton-textInherit MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorInherit  css-1ofy68o-MuiButtonBase-root-MuiButton-root"
+          href="/employees"
+          tabindex="0"
+        >
+          Employees
+        </a>
+        <a
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textInherit MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorInherit   MuiButton-root MuiButton-text MuiButton-textInherit MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorInherit  css-1ofy68o-MuiButtonBase-root-MuiButton-root"
+          href="/departments"
+          tabindex="0"
+        >
+          Departments
+        </a>
+        <a
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textInherit MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorInherit   MuiButton-root MuiButton-text MuiButton-textInherit MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorInherit  css-1ofy68o-MuiButtonBase-root-MuiButton-root"
+          href="/profile"
+          tabindex="0"
+        >
+          Profile
+        </a>
+        <a
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textInherit MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorInherit   MuiButton-root MuiButton-text MuiButton-textInherit MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorInherit  css-1ofy68o-MuiButtonBase-root-MuiButton-root"
+          href="/login"
+          tabindex="0"
+        >
+          Login
+        </a>
+        <a
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textInherit MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorInherit   MuiButton-root MuiButton-text MuiButton-textInherit MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorInherit  css-1ofy68o-MuiButtonBase-root-MuiButton-root"
+          href="/register"
+          tabindex="0"
+        >
+          Register
+        </a>
+      </div>
+    </div>
+  </header>
+</DocumentFragment>
+`;

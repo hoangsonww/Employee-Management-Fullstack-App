@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NewDepartmentForm snapshot matches the rendered markup 1`] = `
+<DocumentFragment>
+  <form
+    class="MuiBox-root css-c0ojgy"
+  >
+    <h2>
+      Create New Department
+    </h2>
+    <div
+      class="MuiFormControl-root MuiFormControl-fullWidth  MuiTextField-root  css-y4n9bg-MuiFormControl-root-MuiTextField-root"
+    >
+      <label
+        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined  MuiFormLabel-colorPrimary Mui-required  MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeMedium MuiInputLabel-outlined  css-1q964xs-MuiFormLabel-root-MuiInputLabel-root"
+        data-shrink="false"
+        for=":r0:"
+        id=":r0:-label"
+      >
+        Department Name
+        <span
+          aria-hidden="true"
+          class="MuiFormLabel-asterisk MuiInputLabel-asterisk   css-wgai2y-MuiFormLabel-asterisk"
+        >
+           *
+        </span>
+      </label>
+      <div
+        class="MuiInputBase-root MuiOutlinedInput-root  MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl  css-1o0kqxp-MuiInputBase-root-MuiOutlinedInput-root"
+      >
+        <input
+          aria-invalid="false"
+          class="MuiInputBase-input MuiOutlinedInput-input   css-1jk99ih-MuiInputBase-input-MuiOutlinedInput-input"
+          id=":r0:"
+          name="name"
+          required=""
+          type="text"
+          value=""
+        />
+        <fieldset
+          aria-hidden="true"
+          class="MuiOutlinedInput-notchedOutline  css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+        >
+          <legend
+            class="css-1pbc52w"
+          >
+            <span>
+              Department Name *
+            </span>
+          </legend>
+        </fieldset>
+      </div>
+    </div>
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary   MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary  css-joibnn-MuiButtonBase-root-MuiButton-root"
+      tabindex="0"
+      type="submit"
+    >
+      Save
+    </button>
+  </form>
+</DocumentFragment>
+`;

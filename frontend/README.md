@@ -124,6 +124,21 @@ npm test
 
 This will start the test runner and execute your test cases.
 
+Tests run on **Jest** + **React Testing Library** and live in `__tests__/`:
+
+- **Behavioral suites** exercise interactions on the core screens (Dashboard, Employee/Department lists, Login, Register, Profile, passkeys).
+- **Snapshot suites** (`__tests__/snapshots/`) lock in the rendered markup of **every screen** — Landing, the auth pages, the dashboard, the employee/department list & form pages, Profile, Passkeys, Not Found, Quick Actions, Navbar, and Footer — asserting each with `toMatchSnapshot()`.
+
+The snapshots are made deterministic (3D hero + charts stubbed, `autoFocus` neutralized, `Date` frozen where rendered, services mocked) so they pass identically on local machines and CI regardless of timezone or when they run.
+
+```bash
+# Run only the snapshot suites
+npm test -- __tests__/snapshots
+
+# Update snapshots after an intentional UI change, then commit the .snap files
+npm test -- -u
+```
+
 ## Detailed Component Instructions
 
 ### `Dashboard.js`
