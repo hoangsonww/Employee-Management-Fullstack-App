@@ -1,0 +1,2442 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LandingPage snapshot matches the rendered markup 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiBox-root css-7rylf6"
+  >
+    <div
+      data-testid="hero-background-mock"
+    />
+    <div
+      class="MuiBox-root css-rqgsqp"
+    >
+      <header
+        class="MuiBox-root css-ie89po"
+      >
+        <div
+          class="MuiContainer-root MuiContainer-maxWidthLg  css-1bbbwhe-MuiContainer-root"
+        >
+          <div
+            class="MuiStack-root  css-v0rvj0-MuiStack-root"
+          >
+            <a
+              class="MuiStack-root  css-1lcy74e-MuiStack-root"
+              href="/"
+            >
+              <div
+                class="MuiBox-root css-1ggwps9"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-jslvge-MuiSvgIcon-root"
+                  data-testid="HubIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M8.4 18.2c.38.5.6 1.12.6 1.8 0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3c.44 0 .85.09 1.23.26l1.41-1.77c-.92-1.03-1.29-2.39-1.09-3.69l-2.03-.68c-.54.83-1.46 1.38-2.52 1.38-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3c0 .07 0 .14-.01.21l2.03.68c.64-1.21 1.82-2.09 3.22-2.32V5.91C9.96 5.57 9 4.4 9 3c0-1.66 1.34-3 3-3s3 1.34 3 3c0 1.4-.96 2.57-2.25 2.91v2.16c1.4.23 2.58 1.11 3.22 2.32L18 9.71V9.5c0-1.66 1.34-3 3-3s3 1.34 3 3-1.34 3-3 3c-1.06 0-1.98-.55-2.52-1.37l-2.03.68c.2 1.29-.16 2.65-1.09 3.69l1.41 1.77Q17.34 17 18 17c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3c0-.68.22-1.3.6-1.8l-1.41-1.77c-1.35.75-3.01.76-4.37 0z"
+                  />
+                </svg>
+              </div>
+              <p
+                class="MuiTypography-root MuiTypography-body1  css-19g256p-MuiTypography-root"
+              >
+                Employee
+                <span
+                  class="MuiBox-root css-1cv996i"
+                >
+                  OS
+                </span>
+              </p>
+            </a>
+            <button
+              aria-label="Open menu"
+              class="MuiButtonBase-root  MuiIconButton-root MuiIconButton-sizeMedium  css-g37jwq-MuiButtonBase-root-MuiIconButton-root"
+              tabindex="0"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-20bmp1-MuiSvgIcon-root"
+                data-testid="MenuIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M3 18h18v-2H3zm0-5h18v-2H3zm0-7v2h18V6z"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </header>
+      <section
+        class="MuiBox-root css-1bya5ds"
+        id="top"
+      >
+        <div
+          class="MuiContainer-root MuiContainer-maxWidthLg  css-h9jbmk-MuiContainer-root"
+        >
+          <div
+            class="MuiBox-root css-y3ly9k"
+          >
+            <div
+              class="MuiBox-root css-1ufn0tk"
+            >
+              <div
+                class="MuiBox-root css-1ezo8v8"
+              />
+              <span
+                class="MuiTypography-root MuiTypography-overline  css-iho1ru-MuiTypography-root"
+              >
+                EMPLOYEE MANAGEMENT PLATFORM
+              </span>
+            </div>
+          </div>
+          <div
+            class="MuiBox-root css-1n97ixy"
+          >
+            <h1
+              class="MuiTypography-root MuiTypography-body1  css-1q4pka4-MuiTypography-root"
+            >
+              Run your workforce with 
+              <span
+                class="MuiBox-root css-1cv996i"
+              >
+                clarity & confidence
+              </span>
+              .
+            </h1>
+          </div>
+          <div
+            class="MuiBox-root css-53wtt7"
+          >
+            <p
+              class="MuiTypography-root MuiTypography-body1  css-tqid57-MuiTypography-root"
+            >
+              One place for dashboards, departments, and people operations — built for teams that need insights, not spreadsheets.
+            </p>
+          </div>
+          <div
+            class="MuiBox-root css-1tbj7ts"
+          >
+            <div
+              class="MuiStack-root  css-sjlbam-MuiStack-root"
+            >
+              <a
+                class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary   MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary  css-196xvcv-MuiButtonBase-root-MuiButton-root"
+                href="/dashboard"
+                tabindex="0"
+              >
+                <span
+                  class="MuiButton-icon MuiButton-startIcon MuiButton-iconSizeLarge  css-hev6se-MuiButton-startIcon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-20bmp1-MuiSvgIcon-root"
+                    data-testid="SpaceDashboardIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M11 21H5c-1.1 0-2-.9-2-2V5c0-1.1.9-2 2-2h6zm2 0h6c1.1 0 2-.9 2-2v-7h-8zm8-11V5c0-1.1-.9-2-2-2h-6v7z"
+                    />
+                  </svg>
+                </span>
+                View Dashboard
+              </a>
+              <a
+                class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary   MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary  css-5etw3k-MuiButtonBase-root-MuiButton-root"
+                href="/employees"
+                tabindex="0"
+              >
+                <span
+                  class="MuiButton-icon MuiButton-startIcon MuiButton-iconSizeLarge  css-hev6se-MuiButton-startIcon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-20bmp1-MuiSvgIcon-root"
+                    data-testid="PeopleAltIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M16.67 13.13C18.04 14.06 19 15.32 19 17v3h4v-3c0-2.18-3.57-3.47-6.33-3.87"
+                      fill-rule="evenodd"
+                    />
+                    <circle
+                      cx="9"
+                      cy="8"
+                      fill-rule="evenodd"
+                      r="4"
+                    />
+                    <path
+                      d="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4c-.47 0-.91.1-1.33.24C14.5 5.27 15 6.58 15 8s-.5 2.73-1.33 3.76c.42.14.86.24 1.33.24m-6 1c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                </span>
+                Browse Directory
+              </a>
+              <button
+                class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary   MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary  css-18071m-MuiButtonBase-root-MuiButton-root"
+                tabindex="0"
+                type="button"
+              >
+                Learn More
+                <span
+                  class="MuiButton-icon MuiButton-endIcon MuiButton-iconSizeLarge  css-3155yg-MuiButton-endIcon"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-20bmp1-MuiSvgIcon-root"
+                    data-testid="KeyboardArrowDownIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z"
+                    />
+                  </svg>
+                </span>
+              </button>
+            </div>
+          </div>
+          <div
+            class="MuiBox-root css-1rm90m3"
+          >
+            <div
+              class="MuiStack-root  css-14q4ayq-MuiStack-root"
+            >
+              <div
+                class="MuiBox-root css-bfkyfa"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-2pmdpe-MuiSvgIcon-root"
+                  data-testid="CheckCircleIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"
+                  />
+                </svg>
+                <p
+                  class="MuiTypography-root MuiTypography-body2  css-1823vqr-MuiTypography-root"
+                >
+                  Faster onboarding
+                </p>
+              </div>
+              <div
+                class="MuiBox-root css-bfkyfa"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-2pmdpe-MuiSvgIcon-root"
+                  data-testid="CheckCircleIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"
+                  />
+                </svg>
+                <p
+                  class="MuiTypography-root MuiTypography-body2  css-1823vqr-MuiTypography-root"
+                >
+                  Role-based access
+                </p>
+              </div>
+              <div
+                class="MuiBox-root css-bfkyfa"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-2pmdpe-MuiSvgIcon-root"
+                  data-testid="CheckCircleIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"
+                  />
+                </svg>
+                <p
+                  class="MuiTypography-root MuiTypography-body2  css-1823vqr-MuiTypography-root"
+                >
+                  Export-ready data
+                </p>
+              </div>
+              <div
+                class="MuiBox-root css-bfkyfa"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-2pmdpe-MuiSvgIcon-root"
+                  data-testid="CheckCircleIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"
+                  />
+                </svg>
+                <p
+                  class="MuiTypography-root MuiTypography-body2  css-1823vqr-MuiTypography-root"
+                >
+                  Insightful dashboards
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="MuiBox-root css-12r70nr"
+          >
+            <div
+              class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2.5  css-1lybsbv-MuiGrid-root"
+            >
+              <div
+                class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4  css-wg4xta-MuiGrid-root"
+              >
+                <div
+                  class="MuiBox-root css-867b0l"
+                >
+                  <p
+                    class="MuiTypography-root MuiTypography-body1  css-15uyqxo-MuiTypography-root"
+                  >
+                    <span
+                      class="MuiBox-root css-y4yuzd"
+                    >
+                      0.00%
+                    </span>
+                  </p>
+                  <p
+                    class="MuiTypography-root MuiTypography-body2  css-e57jjl-MuiTypography-root"
+                  >
+                    Data uptime in the last 12 months
+                  </p>
+                </div>
+              </div>
+              <div
+                class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4  css-wg4xta-MuiGrid-root"
+              >
+                <div
+                  class="MuiBox-root css-867b0l"
+                >
+                  <p
+                    class="MuiTypography-root MuiTypography-body1  css-15uyqxo-MuiTypography-root"
+                  >
+                    <span
+                      class="MuiBox-root css-y4yuzd"
+                    >
+                      0.0 min
+                    </span>
+                  </p>
+                  <p
+                    class="MuiTypography-root MuiTypography-body2  css-e57jjl-MuiTypography-root"
+                  >
+                    Average export turnaround
+                  </p>
+                </div>
+              </div>
+              <div
+                class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-4  css-wg4xta-MuiGrid-root"
+              >
+                <div
+                  class="MuiBox-root css-867b0l"
+                >
+                  <p
+                    class="MuiTypography-root MuiTypography-body1  css-15uyqxo-MuiTypography-root"
+                  >
+                    <span
+                      class="MuiBox-root css-y4yuzd"
+                    >
+                      0.0x
+                    </span>
+                  </p>
+                  <p
+                    class="MuiTypography-root MuiTypography-body2  css-e57jjl-MuiTypography-root"
+                  >
+                    Faster approvals for managers
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="MuiBox-root css-1chm7qp"
+        >
+          <span
+            class="MuiTypography-root MuiTypography-caption  css-14ctfxt-MuiTypography-root"
+          >
+            SCROLL
+          </span>
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-20bmp1-MuiSvgIcon-root"
+            data-testid="KeyboardArrowDownIcon"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z"
+            />
+          </svg>
+        </div>
+      </section>
+      <div
+        class="MuiContainer-root MuiContainer-maxWidthLg  css-1bbbwhe-MuiContainer-root"
+      >
+        <div
+          class="MuiBox-root css-u1oynh"
+          id="trusted"
+        >
+          <div
+            class="MuiBox-root css-y3ly9k"
+          >
+            <p
+              class="MuiTypography-root MuiTypography-body1  css-1wvjhem-MuiTypography-root"
+            >
+              Trusted by teams that care about clarity
+            </p>
+          </div>
+          <div
+            class="MuiBox-root css-vgl9sc"
+          >
+            <div
+              class="MuiBox-root css-hfg0o8"
+            >
+              <div
+                class="MuiBox-root css-rfh7of"
+              >
+                Atlas HR
+              </div>
+              <div
+                class="MuiBox-root css-rfh7of"
+              >
+                Northwind Ops
+              </div>
+              <div
+                class="MuiBox-root css-rfh7of"
+              >
+                Acme Labs
+              </div>
+              <div
+                class="MuiBox-root css-rfh7of"
+              >
+                Cobalt Systems
+              </div>
+              <div
+                class="MuiBox-root css-rfh7of"
+              >
+                HelioCo
+              </div>
+              <div
+                class="MuiBox-root css-rfh7of"
+              >
+                Vertex Group
+              </div>
+              <div
+                class="MuiBox-root css-rfh7of"
+              >
+                Lumen Works
+              </div>
+              <div
+                class="MuiBox-root css-rfh7of"
+              >
+                Atlas HR
+              </div>
+              <div
+                class="MuiBox-root css-rfh7of"
+              >
+                Northwind Ops
+              </div>
+              <div
+                class="MuiBox-root css-rfh7of"
+              >
+                Acme Labs
+              </div>
+              <div
+                class="MuiBox-root css-rfh7of"
+              >
+                Cobalt Systems
+              </div>
+              <div
+                class="MuiBox-root css-rfh7of"
+              >
+                HelioCo
+              </div>
+              <div
+                class="MuiBox-root css-rfh7of"
+              >
+                Vertex Group
+              </div>
+              <div
+                class="MuiBox-root css-rfh7of"
+              >
+                Lumen Works
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="MuiBox-root css-4jc6d9"
+          id="operational-benchmarks"
+        >
+          <div
+            class="MuiBox-root css-11xhw5n"
+          >
+            <div
+              class="MuiBox-root css-y3ly9k"
+            >
+              <p
+                class="MuiTypography-root MuiTypography-body1  css-igcryw-MuiTypography-root"
+              >
+                By the numbers
+              </p>
+              <h2
+                class="MuiTypography-root MuiTypography-body1  css-936k1o-MuiTypography-root"
+              >
+                Operational benchmarks at a glance
+              </h2>
+              <p
+                class="MuiTypography-root MuiTypography-body1  css-z1c735-MuiTypography-root"
+              >
+                A single source of truth translates into measurable outcomes. These benchmarks reflect the operational scale the platform is designed to support.
+              </p>
+            </div>
+          </div>
+          <div
+            class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2.5  css-1p0uuab-MuiGrid-root"
+          >
+            <div
+              class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-4  css-11l5t4l-MuiGrid-root"
+            >
+              <div
+                class="MuiBox-root css-y3ly9k"
+              >
+                <div
+                  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1  MuiCard-root  css-fyeypj-MuiPaper-root-MuiCard-root"
+                  style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);"
+                >
+                  <div
+                    class="MuiCardContent-root  css-zbr9h2-MuiCardContent-root"
+                  >
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-1nxa4z3-MuiTypography-root"
+                    >
+                      <span
+                        class="MuiBox-root css-y4yuzd"
+                      >
+                        0+
+                      </span>
+                    </p>
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-d445sl-MuiTypography-root"
+                    >
+                      Active employee records
+                    </p>
+                    <p
+                      class="MuiTypography-root MuiTypography-body2  css-67y5o6-MuiTypography-root"
+                    >
+                      Consolidated across divisions and locations.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-4  css-11l5t4l-MuiGrid-root"
+            >
+              <div
+                class="MuiBox-root css-5ktv1l"
+              >
+                <div
+                  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1  MuiCard-root  css-fyeypj-MuiPaper-root-MuiCard-root"
+                  style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);"
+                >
+                  <div
+                    class="MuiCardContent-root  css-zbr9h2-MuiCardContent-root"
+                  >
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-1nxa4z3-MuiTypography-root"
+                    >
+                      <span
+                        class="MuiBox-root css-y4yuzd"
+                      >
+                        0
+                      </span>
+                    </p>
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-d445sl-MuiTypography-root"
+                    >
+                      Departments organized
+                    </p>
+                    <p
+                      class="MuiTypography-root MuiTypography-body2  css-67y5o6-MuiTypography-root"
+                    >
+                      Clear ownership, headcount, and budgets.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-4  css-11l5t4l-MuiGrid-root"
+            >
+              <div
+                class="MuiBox-root css-53wtt7"
+              >
+                <div
+                  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1  MuiCard-root  css-fyeypj-MuiPaper-root-MuiCard-root"
+                  style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);"
+                >
+                  <div
+                    class="MuiCardContent-root  css-zbr9h2-MuiCardContent-root"
+                  >
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-1nxa4z3-MuiTypography-root"
+                    >
+                      <span
+                        class="MuiBox-root css-y4yuzd"
+                      >
+                        0.0 hrs
+                      </span>
+                    </p>
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-d445sl-MuiTypography-root"
+                    >
+                      Average onboarding cycle
+                    </p>
+                    <p
+                      class="MuiTypography-root MuiTypography-body2  css-67y5o6-MuiTypography-root"
+                    >
+                      From invite to day-one readiness.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-4  css-11l5t4l-MuiGrid-root"
+            >
+              <div
+                class="MuiBox-root css-y3ly9k"
+              >
+                <div
+                  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1  MuiCard-root  css-fyeypj-MuiPaper-root-MuiCard-root"
+                  style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);"
+                >
+                  <div
+                    class="MuiCardContent-root  css-zbr9h2-MuiCardContent-root"
+                  >
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-1nxa4z3-MuiTypography-root"
+                    >
+                      <span
+                        class="MuiBox-root css-y4yuzd"
+                      >
+                        0 mo
+                      </span>
+                    </p>
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-d445sl-MuiTypography-root"
+                    >
+                      Rolling audit history
+                    </p>
+                    <p
+                      class="MuiTypography-root MuiTypography-body2  css-67y5o6-MuiTypography-root"
+                    >
+                      Structured logs ready for review.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-4  css-11l5t4l-MuiGrid-root"
+            >
+              <div
+                class="MuiBox-root css-5ktv1l"
+              >
+                <div
+                  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1  MuiCard-root  css-fyeypj-MuiPaper-root-MuiCard-root"
+                  style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);"
+                >
+                  <div
+                    class="MuiCardContent-root  css-zbr9h2-MuiCardContent-root"
+                  >
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-1nxa4z3-MuiTypography-root"
+                    >
+                      <span
+                        class="MuiBox-root css-y4yuzd"
+                      >
+                        0+
+                      </span>
+                    </p>
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-d445sl-MuiTypography-root"
+                    >
+                      Weekly exports delivered
+                    </p>
+                    <p
+                      class="MuiTypography-root MuiTypography-body2  css-67y5o6-MuiTypography-root"
+                    >
+                      Finance and leadership ready.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-4  css-11l5t4l-MuiGrid-root"
+            >
+              <div
+                class="MuiBox-root css-53wtt7"
+              >
+                <div
+                  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1  MuiCard-root  css-fyeypj-MuiPaper-root-MuiCard-root"
+                  style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);"
+                >
+                  <div
+                    class="MuiCardContent-root  css-zbr9h2-MuiCardContent-root"
+                  >
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-1nxa4z3-MuiTypography-root"
+                    >
+                      <span
+                        class="MuiBox-root css-y4yuzd"
+                      >
+                        0.0%
+                      </span>
+                    </p>
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-d445sl-MuiTypography-root"
+                    >
+                      Roster accuracy
+                    </p>
+                    <p
+                      class="MuiTypography-root MuiTypography-body2  css-67y5o6-MuiTypography-root"
+                    >
+                      Validated by automated checks.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <span
+            class="MuiTypography-root MuiTypography-caption  css-1t978lx-MuiTypography-root"
+          >
+            Benchmarks shown are illustrative.
+          </span>
+        </div>
+        <div
+          class="MuiBox-root css-4jc6d9"
+          id="features"
+        >
+          <div
+            class="MuiBox-root css-11xhw5n"
+          >
+            <div
+              class="MuiBox-root css-y3ly9k"
+            >
+              <p
+                class="MuiTypography-root MuiTypography-body1  css-igcryw-MuiTypography-root"
+              >
+                Everything you need
+              </p>
+              <h2
+                class="MuiTypography-root MuiTypography-body1  css-936k1o-MuiTypography-root"
+              >
+                A complete toolkit to operate smoothly
+              </h2>
+              <p
+                class="MuiTypography-root MuiTypography-body1  css-z1c735-MuiTypography-root"
+              >
+                From employee profiles to dashboards, every module is designed for fast decisions and confident sharing — no extra tools required.
+              </p>
+            </div>
+          </div>
+          <div
+            class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2.5  css-1p0uuab-MuiGrid-root"
+          >
+            <div
+              class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-4  css-11l5t4l-MuiGrid-root"
+            >
+              <div
+                class="MuiBox-root css-y3ly9k"
+              >
+                <div
+                  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1  MuiCard-root  css-9m8c2i-MuiPaper-root-MuiCard-root"
+                  style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);"
+                >
+                  <div
+                    class="MuiBox-root css-1kk488r"
+                  />
+                  <div
+                    class="MuiCardContent-root  css-i4n7ey-MuiCardContent-root"
+                  >
+                    <div
+                      class="MuiBox-root css-afc4e2"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-20bmp1-MuiSvgIcon-root"
+                        data-testid="PeopleAltIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M16.67 13.13C18.04 14.06 19 15.32 19 17v3h4v-3c0-2.18-3.57-3.47-6.33-3.87"
+                          fill-rule="evenodd"
+                        />
+                        <circle
+                          cx="9"
+                          cy="8"
+                          fill-rule="evenodd"
+                          r="4"
+                        />
+                        <path
+                          d="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4c-.47 0-.91.1-1.33.24C14.5 5.27 15 6.58 15 8s-.5 2.73-1.33 3.76c.42.14.86.24 1.33.24m-6 1c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4"
+                          fill-rule="evenodd"
+                        />
+                      </svg>
+                    </div>
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-dedexj-MuiTypography-root"
+                    >
+                      Employee 360
+                    </p>
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-3s1cv7-MuiTypography-root"
+                    >
+                      Full profiles, quick edits, exports, and smart filters for any slice of your org.
+                    </p>
+                    <a
+                      class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary   MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary  css-5wsez1-MuiButtonBase-root-MuiButton-root"
+                      href="/employees"
+                      tabindex="0"
+                    >
+                      Open
+                      <span
+                        class="MuiButton-icon MuiButton-endIcon MuiButton-iconSizeMedium  css-1gulhci-MuiButton-endIcon"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-20bmp1-MuiSvgIcon-root"
+                          data-testid="ArrowForwardIcon"
+                          focusable="false"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+                          />
+                        </svg>
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-4  css-11l5t4l-MuiGrid-root"
+            >
+              <div
+                class="MuiBox-root css-5ktv1l"
+              >
+                <div
+                  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1  MuiCard-root  css-9m8c2i-MuiPaper-root-MuiCard-root"
+                  style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);"
+                >
+                  <div
+                    class="MuiBox-root css-13trenm"
+                  />
+                  <div
+                    class="MuiCardContent-root  css-i4n7ey-MuiCardContent-root"
+                  >
+                    <div
+                      class="MuiBox-root css-loorhh"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-20bmp1-MuiSvgIcon-root"
+                        data-testid="ShieldIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M12 1 3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5z"
+                        />
+                      </svg>
+                    </div>
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-dedexj-MuiTypography-root"
+                    >
+                      Department clarity
+                    </p>
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-3s1cv7-MuiTypography-root"
+                    >
+                      Keep teams organized with clean structures and quick pivots between units.
+                    </p>
+                    <a
+                      class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary   MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary  css-5wsez1-MuiButtonBase-root-MuiButton-root"
+                      href="/departments"
+                      tabindex="0"
+                    >
+                      Open
+                      <span
+                        class="MuiButton-icon MuiButton-endIcon MuiButton-iconSizeMedium  css-1gulhci-MuiButton-endIcon"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-20bmp1-MuiSvgIcon-root"
+                          data-testid="ArrowForwardIcon"
+                          focusable="false"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+                          />
+                        </svg>
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-4  css-11l5t4l-MuiGrid-root"
+            >
+              <div
+                class="MuiBox-root css-53wtt7"
+              >
+                <div
+                  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1  MuiCard-root  css-9m8c2i-MuiPaper-root-MuiCard-root"
+                  style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);"
+                >
+                  <div
+                    class="MuiBox-root css-1nbi25z"
+                  />
+                  <div
+                    class="MuiCardContent-root  css-i4n7ey-MuiCardContent-root"
+                  >
+                    <div
+                      class="MuiBox-root css-o839tm"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-20bmp1-MuiSvgIcon-root"
+                        data-testid="TimelineIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M23 8c0 1.1-.9 2-2 2-.18 0-.35-.02-.51-.07l-3.56 3.55c.05.16.07.34.07.52 0 1.1-.9 2-2 2s-2-.9-2-2c0-.18.02-.36.07-.52l-2.55-2.55c-.16.05-.34.07-.52.07s-.36-.02-.52-.07l-4.55 4.56c.05.16.07.33.07.51 0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2c.18 0 .35.02.51.07l4.56-4.55C8.02 9.36 8 9.18 8 9c0-1.1.9-2 2-2s2 .9 2 2c0 .18-.02.36-.07.52l2.55 2.55c.16-.05.34-.07.52-.07s.36.02.52.07l3.55-3.56C19.02 8.35 19 8.18 19 8c0-1.1.9-2 2-2s2 .9 2 2"
+                        />
+                      </svg>
+                    </div>
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-dedexj-MuiTypography-root"
+                    >
+                      Insightful dashboards
+                    </p>
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-3s1cv7-MuiTypography-root"
+                    >
+                      Trend lines, cohorts, and composition charts that show what moves the needle.
+                    </p>
+                    <a
+                      class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary   MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary  css-5wsez1-MuiButtonBase-root-MuiButton-root"
+                      href="/dashboard"
+                      tabindex="0"
+                    >
+                      Open
+                      <span
+                        class="MuiButton-icon MuiButton-endIcon MuiButton-iconSizeMedium  css-1gulhci-MuiButton-endIcon"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-20bmp1-MuiSvgIcon-root"
+                          data-testid="ArrowForwardIcon"
+                          focusable="false"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+                          />
+                        </svg>
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-4  css-11l5t4l-MuiGrid-root"
+            >
+              <div
+                class="MuiBox-root css-y3ly9k"
+              >
+                <div
+                  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1  MuiCard-root  css-9m8c2i-MuiPaper-root-MuiCard-root"
+                  style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);"
+                >
+                  <div
+                    class="MuiBox-root css-1jxfe1v"
+                  />
+                  <div
+                    class="MuiCardContent-root  css-i4n7ey-MuiCardContent-root"
+                  >
+                    <div
+                      class="MuiBox-root css-ya3j9x"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-20bmp1-MuiSvgIcon-root"
+                        data-testid="RocketLaunchIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M9.19 6.35c-2.04 2.29-3.44 5.58-3.57 5.89L2 10.69l4.05-4.05c.47-.47 1.15-.68 1.81-.55zM11.17 17s3.74-1.55 5.89-3.7c5.4-5.4 4.5-9.62 4.21-10.57-.95-.3-5.17-1.19-10.57 4.21C8.55 9.09 7 12.83 7 12.83zm6.48-2.19c-2.29 2.04-5.58 3.44-5.89 3.57L13.31 22l4.05-4.05c.47-.47.68-1.15.55-1.81zM9 18c0 .83-.34 1.58-.88 2.12C6.94 21.3 2 22 2 22s.7-4.94 1.88-6.12C4.42 15.34 5.17 15 6 15c1.66 0 3 1.34 3 3m4-9c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2"
+                        />
+                      </svg>
+                    </div>
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-dedexj-MuiTypography-root"
+                    >
+                      Launch updates fast
+                    </p>
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-3s1cv7-MuiTypography-root"
+                    >
+                      Create employees or departments in minutes with guided, validated workflows.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-4  css-11l5t4l-MuiGrid-root"
+            >
+              <div
+                class="MuiBox-root css-5ktv1l"
+              >
+                <div
+                  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1  MuiCard-root  css-9m8c2i-MuiPaper-root-MuiCard-root"
+                  style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);"
+                >
+                  <div
+                    class="MuiBox-root css-xrqxer"
+                  />
+                  <div
+                    class="MuiCardContent-root  css-i4n7ey-MuiCardContent-root"
+                  >
+                    <div
+                      class="MuiBox-root css-15vrqa1"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-20bmp1-MuiSvgIcon-root"
+                        data-testid="AutoGraphIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M14.06 9.94 12 9l2.06-.94L15 6l.94 2.06L18 9l-2.06.94L15 12zM4 14l.94-2.06L7 11l-2.06-.94L4 8l-.94 2.06L1 11l2.06.94zm4.5-5 1.09-2.41L12 5.5 9.59 4.41 8.5 2 7.41 4.41 5 5.5l2.41 1.09zm-4 11.5 6-6.01 4 4L23 8.93l-1.41-1.41-7.09 7.97-4-4L3 19z"
+                        />
+                      </svg>
+                    </div>
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-dedexj-MuiTypography-root"
+                    >
+                      Always in sync
+                    </p>
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-3s1cv7-MuiTypography-root"
+                    >
+                      Charts, filters, and exports all run off the same single source of truth.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-4  css-11l5t4l-MuiGrid-root"
+            >
+              <div
+                class="MuiBox-root css-53wtt7"
+              >
+                <div
+                  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1  MuiCard-root  css-9m8c2i-MuiPaper-root-MuiCard-root"
+                  style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);"
+                >
+                  <div
+                    class="MuiBox-root css-1sp6d5q"
+                  />
+                  <div
+                    class="MuiCardContent-root  css-i4n7ey-MuiCardContent-root"
+                  >
+                    <div
+                      class="MuiBox-root css-192fruo"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-20bmp1-MuiSvgIcon-root"
+                        data-testid="DevicesIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M4 6h18V4H4c-1.1 0-2 .9-2 2v11H0v3h14v-3H4zm19 2h-6c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h6c.55 0 1-.45 1-1V9c0-.55-.45-1-1-1m-1 9h-4v-7h4z"
+                        />
+                      </svg>
+                    </div>
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-dedexj-MuiTypography-root"
+                    >
+                      Any device
+                    </p>
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-3s1cv7-MuiTypography-root"
+                    >
+                      Responsive layouts keep dashboards and lists usable anywhere you work.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="MuiBox-root css-4jc6d9"
+          id="platform"
+        >
+          <div
+            class="MuiBox-root css-11xhw5n"
+          >
+            <div
+              class="MuiBox-root css-y3ly9k"
+            >
+              <p
+                class="MuiTypography-root MuiTypography-body1  css-igcryw-MuiTypography-root"
+              >
+                The platform
+              </p>
+              <h2
+                class="MuiTypography-root MuiTypography-body1  css-936k1o-MuiTypography-root"
+              >
+                Governance, automation, and reporting
+              </h2>
+              <p
+                class="MuiTypography-root MuiTypography-body1  css-z1c735-MuiTypography-root"
+              >
+                Keep sensitive data protected, automate the routine, and deliver leadership-ready insights — all from one connected system.
+              </p>
+            </div>
+          </div>
+          <div
+            class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2.5  css-1p0uuab-MuiGrid-root"
+          >
+            <div
+              class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-4  css-1lj5egr-MuiGrid-root"
+            >
+              <div
+                class="MuiBox-root css-y3ly9k"
+              >
+                <div
+                  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1  MuiCard-root  css-1wjcb4p-MuiPaper-root-MuiCard-root"
+                  style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);"
+                >
+                  <div
+                    class="MuiCardContent-root  css-1n8p2md-MuiCardContent-root"
+                  >
+                    <div
+                      class="MuiBox-root css-1qf1x51"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-20bmp1-MuiSvgIcon-root"
+                        data-testid="ShieldIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M12 1 3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5z"
+                        />
+                      </svg>
+                    </div>
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-qwql2q-MuiTypography-root"
+                    >
+                      Security & governance
+                    </p>
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-eb9i3x-MuiTypography-root"
+                    >
+                      Teams see what they need while sensitive data stays protected across the org.
+                    </p>
+                    <div
+                      class="MuiStack-root  css-1wd5hcn-MuiStack-root"
+                    >
+                      <div
+                        class="MuiStack-root  css-jj9op2-MuiStack-root"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-1nhtwih-MuiSvgIcon-root"
+                          data-testid="CheckCircleIcon"
+                          focusable="false"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"
+                          />
+                        </svg>
+                        <p
+                          class="MuiTypography-root MuiTypography-body1  css-fqpw1h-MuiTypography-root"
+                        >
+                          Role-based access per department
+                        </p>
+                      </div>
+                      <div
+                        class="MuiStack-root  css-jj9op2-MuiStack-root"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-1nhtwih-MuiSvgIcon-root"
+                          data-testid="CheckCircleIcon"
+                          focusable="false"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"
+                          />
+                        </svg>
+                        <p
+                          class="MuiTypography-root MuiTypography-body1  css-fqpw1h-MuiTypography-root"
+                        >
+                          Export logs and approval trails
+                        </p>
+                      </div>
+                      <div
+                        class="MuiStack-root  css-jj9op2-MuiStack-root"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-1nhtwih-MuiSvgIcon-root"
+                          data-testid="CheckCircleIcon"
+                          focusable="false"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"
+                          />
+                        </svg>
+                        <p
+                          class="MuiTypography-root MuiTypography-body1  css-fqpw1h-MuiTypography-root"
+                        >
+                          Data retention controls with reminders
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-4  css-1lj5egr-MuiGrid-root"
+            >
+              <div
+                class="MuiBox-root css-gz4wkv"
+              >
+                <div
+                  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1  MuiCard-root  css-1wjcb4p-MuiPaper-root-MuiCard-root"
+                  style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);"
+                >
+                  <div
+                    class="MuiCardContent-root  css-1n8p2md-MuiCardContent-root"
+                  >
+                    <div
+                      class="MuiBox-root css-b48l94"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-20bmp1-MuiSvgIcon-root"
+                        data-testid="BoltIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M11 21h-1l1-7H7.5c-.58 0-.57-.32-.38-.66s.05-.08.07-.12C8.48 10.94 10.42 7.54 13 3h1l-1 7h3.5c.49 0 .56.33.47.51l-.07.15C12.96 17.55 11 21 11 21"
+                        />
+                      </svg>
+                    </div>
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-qwql2q-MuiTypography-root"
+                    >
+                      Process automation
+                    </p>
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-eb9i3x-MuiTypography-root"
+                    >
+                      Reduce manual handoffs with task-ready workflows and clear ownership.
+                    </p>
+                    <div
+                      class="MuiStack-root  css-1wd5hcn-MuiStack-root"
+                    >
+                      <div
+                        class="MuiStack-root  css-jj9op2-MuiStack-root"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-1nhtwih-MuiSvgIcon-root"
+                          data-testid="CheckCircleIcon"
+                          focusable="false"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"
+                          />
+                        </svg>
+                        <p
+                          class="MuiTypography-root MuiTypography-body1  css-fqpw1h-MuiTypography-root"
+                        >
+                          New-hire checklists by team
+                        </p>
+                      </div>
+                      <div
+                        class="MuiStack-root  css-jj9op2-MuiStack-root"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-1nhtwih-MuiSvgIcon-root"
+                          data-testid="CheckCircleIcon"
+                          focusable="false"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"
+                          />
+                        </svg>
+                        <p
+                          class="MuiTypography-root MuiTypography-body1  css-fqpw1h-MuiTypography-root"
+                        >
+                          Department change alerts
+                        </p>
+                      </div>
+                      <div
+                        class="MuiStack-root  css-jj9op2-MuiStack-root"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-1nhtwih-MuiSvgIcon-root"
+                          data-testid="CheckCircleIcon"
+                          focusable="false"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"
+                          />
+                        </svg>
+                        <p
+                          class="MuiTypography-root MuiTypography-body1  css-fqpw1h-MuiTypography-root"
+                        >
+                          Manager approval routing
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-4  css-1lj5egr-MuiGrid-root"
+            >
+              <div
+                class="MuiBox-root css-v4ilb6"
+              >
+                <div
+                  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1  MuiCard-root  css-1wjcb4p-MuiPaper-root-MuiCard-root"
+                  style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);"
+                >
+                  <div
+                    class="MuiCardContent-root  css-1n8p2md-MuiCardContent-root"
+                  >
+                    <div
+                      class="MuiBox-root css-1ob9tcb"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-20bmp1-MuiSvgIcon-root"
+                        data-testid="AssessmentIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2M9 17H7v-7h2zm4 0h-2V7h2zm4 0h-2v-4h2z"
+                        />
+                      </svg>
+                    </div>
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-qwql2q-MuiTypography-root"
+                    >
+                      Executive reporting
+                    </p>
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-eb9i3x-MuiTypography-root"
+                    >
+                      Pack leadership updates with consistent metrics and clean summaries.
+                    </p>
+                    <div
+                      class="MuiStack-root  css-1wd5hcn-MuiStack-root"
+                    >
+                      <div
+                        class="MuiStack-root  css-jj9op2-MuiStack-root"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-1nhtwih-MuiSvgIcon-root"
+                          data-testid="CheckCircleIcon"
+                          focusable="false"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"
+                          />
+                        </svg>
+                        <p
+                          class="MuiTypography-root MuiTypography-body1  css-fqpw1h-MuiTypography-root"
+                        >
+                          Headcount and growth mix
+                        </p>
+                      </div>
+                      <div
+                        class="MuiStack-root  css-jj9op2-MuiStack-root"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-1nhtwih-MuiSvgIcon-root"
+                          data-testid="CheckCircleIcon"
+                          focusable="false"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"
+                          />
+                        </svg>
+                        <p
+                          class="MuiTypography-root MuiTypography-body1  css-fqpw1h-MuiTypography-root"
+                        >
+                          Tenure and age distributions
+                        </p>
+                      </div>
+                      <div
+                        class="MuiStack-root  css-jj9op2-MuiStack-root"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-1nhtwih-MuiSvgIcon-root"
+                          data-testid="CheckCircleIcon"
+                          focusable="false"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"
+                          />
+                        </svg>
+                        <p
+                          class="MuiTypography-root MuiTypography-body1  css-fqpw1h-MuiTypography-root"
+                        >
+                          Budget-ready department rollups
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="MuiBox-root css-4jc6d9"
+          id="workflow"
+        >
+          <div
+            class="MuiBox-root css-16ieni4"
+          >
+            <div
+              class="MuiBox-root css-y3ly9k"
+            >
+              <p
+                class="MuiTypography-root MuiTypography-body1  css-igcryw-MuiTypography-root"
+              >
+                How it works
+              </p>
+              <h2
+                class="MuiTypography-root MuiTypography-body1  css-936k1o-MuiTypography-root"
+              >
+                Live in three focused steps
+              </h2>
+              <p
+                class="MuiTypography-root MuiTypography-body1  css-1kkrn0w-MuiTypography-root"
+              >
+                Set up once, align departments, and publish insights without disrupting the team.
+              </p>
+            </div>
+          </div>
+          <div
+            class="MuiBox-root css-79elbk"
+          >
+            <div
+              aria-hidden="true"
+              class="MuiBox-root css-tq0mah"
+            />
+            <div
+              class="MuiGrid-root MuiGrid-container  css-1hk5ios-MuiGrid-root"
+            >
+              <div
+                class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-4  css-1lj5egr-MuiGrid-root"
+              >
+                <div
+                  class="MuiBox-root css-y3ly9k"
+                >
+                  <div
+                    class="MuiBox-root css-c34vcg"
+                  >
+                    <div
+                      class="MuiBox-root css-1irg57b"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-20bmp1-MuiSvgIcon-root"
+                        data-testid="VerifiedUserIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M12 1 3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5zm-2 16-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9z"
+                        />
+                      </svg>
+                      <div
+                        class="MuiBox-root css-x56qyu"
+                      >
+                        1
+                      </div>
+                    </div>
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-13nzgwt-MuiTypography-root"
+                    >
+                      Secure access
+                    </p>
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-4t85rg-MuiTypography-root"
+                    >
+                      Protected routes and login flows keep sensitive data safe from day one.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-4  css-1lj5egr-MuiGrid-root"
+              >
+                <div
+                  class="MuiBox-root css-pbmk3v"
+                >
+                  <div
+                    class="MuiBox-root css-c34vcg"
+                  >
+                    <div
+                      class="MuiBox-root css-1irg57b"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-20bmp1-MuiSvgIcon-root"
+                        data-testid="ShieldIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M12 1 3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5z"
+                        />
+                      </svg>
+                      <div
+                        class="MuiBox-root css-x56qyu"
+                      >
+                        2
+                      </div>
+                    </div>
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-13nzgwt-MuiTypography-root"
+                    >
+                      Configure teams
+                    </p>
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-4t85rg-MuiTypography-root"
+                    >
+                      Set up departments, import employees, and wire up quick actions.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-4  css-1lj5egr-MuiGrid-root"
+              >
+                <div
+                  class="MuiBox-root css-1tbj7ts"
+                >
+                  <div
+                    class="MuiBox-root css-c34vcg"
+                  >
+                    <div
+                      class="MuiBox-root css-1irg57b"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-20bmp1-MuiSvgIcon-root"
+                        data-testid="TimelineIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M23 8c0 1.1-.9 2-2 2-.18 0-.35-.02-.51-.07l-3.56 3.55c.05.16.07.34.07.52 0 1.1-.9 2-2 2s-2-.9-2-2c0-.18.02-.36.07-.52l-2.55-2.55c-.16.05-.34.07-.52.07s-.36-.02-.52-.07l-4.55 4.56c.05.16.07.33.07.51 0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2c.18 0 .35.02.51.07l4.56-4.55C8.02 9.36 8 9.18 8 9c0-1.1.9-2 2-2s2 .9 2 2c0 .18-.02.36-.07.52l2.55 2.55c.16-.05.34-.07.52-.07s.36.02.52.07l3.55-3.56C19.02 8.35 19 8.18 19 8c0-1.1.9-2 2-2s2 .9 2 2"
+                        />
+                      </svg>
+                      <div
+                        class="MuiBox-root css-x56qyu"
+                      >
+                        3
+                      </div>
+                    </div>
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-13nzgwt-MuiTypography-root"
+                    >
+                      Share insights
+                    </p>
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-4t85rg-MuiTypography-root"
+                    >
+                      Use dashboards and exports to keep leadership aligned every week.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="MuiBox-root css-15izwtl"
+        >
+          <div
+            class="MuiBox-root css-16ieni4"
+          >
+            <div
+              class="MuiBox-root css-y3ly9k"
+            >
+              <p
+                class="MuiTypography-root MuiTypography-body1  css-igcryw-MuiTypography-root"
+              >
+                Service levels
+              </p>
+              <h2
+                class="MuiTypography-root MuiTypography-body1  css-936k1o-MuiTypography-root"
+              >
+                Performance guardrails built for confidence
+              </h2>
+              <p
+                class="MuiTypography-root MuiTypography-body1  css-1kkrn0w-MuiTypography-root"
+              >
+                Automation depth and operational coverage designed to keep your people data dependable.
+              </p>
+            </div>
+          </div>
+          <div
+            class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2.5  css-1p0uuab-MuiGrid-root"
+          >
+            <div
+              class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-3  css-10voxkt-MuiGrid-root"
+            >
+              <div
+                class="MuiBox-root css-y3ly9k"
+              >
+                <div
+                  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1  MuiCard-root  css-fyeypj-MuiPaper-root-MuiCard-root"
+                  style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);"
+                >
+                  <div
+                    class="MuiCardContent-root  css-zbr9h2-MuiCardContent-root"
+                  >
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-1twuozi-MuiTypography-root"
+                    >
+                      <span
+                        class="MuiBox-root css-y4yuzd"
+                      >
+                        0/7
+                      </span>
+                    </p>
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-15vd4ve-MuiTypography-root"
+                    >
+                      Monitoring and alerts
+                    </p>
+                    <p
+                      class="MuiTypography-root MuiTypography-body2  css-67y5o6-MuiTypography-root"
+                    >
+                      Operational coverage for core workflows.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-3  css-10voxkt-MuiGrid-root"
+            >
+              <div
+                class="MuiBox-root css-5ktv1l"
+              >
+                <div
+                  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1  MuiCard-root  css-fyeypj-MuiPaper-root-MuiCard-root"
+                  style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);"
+                >
+                  <div
+                    class="MuiCardContent-root  css-zbr9h2-MuiCardContent-root"
+                  >
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-1twuozi-MuiTypography-root"
+                    >
+                      <span
+                        class="MuiBox-root css-y4yuzd"
+                      >
+                        0 min
+                      </span>
+                    </p>
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-15vd4ve-MuiTypography-root"
+                    >
+                      Median response time
+                    </p>
+                    <p
+                      class="MuiTypography-root MuiTypography-body2  css-67y5o6-MuiTypography-root"
+                    >
+                      Team notified on critical exceptions.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-3  css-10voxkt-MuiGrid-root"
+            >
+              <div
+                class="MuiBox-root css-53wtt7"
+              >
+                <div
+                  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1  MuiCard-root  css-fyeypj-MuiPaper-root-MuiCard-root"
+                  style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);"
+                >
+                  <div
+                    class="MuiCardContent-root  css-zbr9h2-MuiCardContent-root"
+                  >
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-1twuozi-MuiTypography-root"
+                    >
+                      <span
+                        class="MuiBox-root css-y4yuzd"
+                      >
+                        0 regions
+                      </span>
+                    </p>
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-15vd4ve-MuiTypography-root"
+                    >
+                      Deployment options
+                    </p>
+                    <p
+                      class="MuiTypography-root MuiTypography-body2  css-67y5o6-MuiTypography-root"
+                    >
+                      Support regional data residency needs.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-sm-6 MuiGrid-grid-md-3  css-10voxkt-MuiGrid-root"
+            >
+              <div
+                class="MuiBox-root css-1ap6fsp"
+              >
+                <div
+                  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1  MuiCard-root  css-fyeypj-MuiPaper-root-MuiCard-root"
+                  style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);"
+                >
+                  <div
+                    class="MuiCardContent-root  css-zbr9h2-MuiCardContent-root"
+                  >
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-1twuozi-MuiTypography-root"
+                    >
+                      <span
+                        class="MuiBox-root css-y4yuzd"
+                      >
+                        0+
+                      </span>
+                    </p>
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-15vd4ve-MuiTypography-root"
+                    >
+                      Automation rules
+                    </p>
+                    <p
+                      class="MuiTypography-root MuiTypography-body2  css-67y5o6-MuiTypography-root"
+                    >
+                      Built-in triggers for ops playbooks.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="MuiBox-root css-15izwtl"
+        >
+          <div
+            class="MuiBox-root css-11xhw5n"
+          >
+            <div
+              class="MuiBox-root css-y3ly9k"
+            >
+              <p
+                class="MuiTypography-root MuiTypography-body1  css-igcryw-MuiTypography-root"
+              >
+                Who it's for
+              </p>
+              <h2
+                class="MuiTypography-root MuiTypography-body1  css-936k1o-MuiTypography-root"
+              >
+                One data layer, every team aligned
+              </h2>
+              <p
+                class="MuiTypography-root MuiTypography-body1  css-z1c735-MuiTypography-root"
+              >
+                People leaders, engineering managers, and operations teams rely on the same trusted data to move fast and stay in sync.
+              </p>
+            </div>
+          </div>
+          <div
+            class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2.5  css-1p0uuab-MuiGrid-root"
+          >
+            <div
+              class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-4  css-1lj5egr-MuiGrid-root"
+            >
+              <div
+                class="MuiBox-root css-y3ly9k"
+              >
+                <div
+                  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1  MuiCard-root  css-1w1rcmw-MuiPaper-root-MuiCard-root"
+                  style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);"
+                >
+                  <div
+                    class="MuiCardContent-root  css-xt5h0d-MuiCardContent-root"
+                  >
+                    <div
+                      class="MuiBox-root css-driq9y"
+                    >
+                      “
+                    </div>
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-1risbja-MuiTypography-root"
+                    >
+                      We went from ad-hoc spreadsheets to instant exports that finance loves.
+                    </p>
+                    <div
+                      class="MuiStack-root  css-1hyf038-MuiStack-root"
+                    >
+                      <div
+                        class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault  css-gd2dah-MuiAvatar-root"
+                      >
+                        P
+                      </div>
+                      <div
+                        class="MuiBox-root css-0"
+                      >
+                        <p
+                          class="MuiTypography-root MuiTypography-body1  css-1oqxamc-MuiTypography-root"
+                        >
+                          People Ops
+                        </p>
+                        <span
+                          class="MuiTypography-root MuiTypography-caption  css-bttn9n-MuiTypography-root"
+                        >
+                          HR Lead
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-4  css-1lj5egr-MuiGrid-root"
+            >
+              <div
+                class="MuiBox-root css-1n97ixy"
+              >
+                <div
+                  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1  MuiCard-root  css-1w1rcmw-MuiPaper-root-MuiCard-root"
+                  style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);"
+                >
+                  <div
+                    class="MuiCardContent-root  css-xt5h0d-MuiCardContent-root"
+                  >
+                    <div
+                      class="MuiBox-root css-driq9y"
+                    >
+                      “
+                    </div>
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-1risbja-MuiTypography-root"
+                    >
+                      Charts and filters answer headcount questions before they are even asked.
+                    </p>
+                    <div
+                      class="MuiStack-root  css-1hyf038-MuiStack-root"
+                    >
+                      <div
+                        class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault  css-gd2dah-MuiAvatar-root"
+                      >
+                        T
+                      </div>
+                      <div
+                        class="MuiBox-root css-0"
+                      >
+                        <p
+                          class="MuiTypography-root MuiTypography-body1  css-1oqxamc-MuiTypography-root"
+                        >
+                          Tech Leads
+                        </p>
+                        <span
+                          class="MuiTypography-root MuiTypography-caption  css-bttn9n-MuiTypography-root"
+                        >
+                          Engineering Manager
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-4  css-1lj5egr-MuiGrid-root"
+            >
+              <div
+                class="MuiBox-root css-19dee9g"
+              >
+                <div
+                  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1  MuiCard-root  css-1w1rcmw-MuiPaper-root-MuiCard-root"
+                  style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);"
+                >
+                  <div
+                    class="MuiCardContent-root  css-xt5h0d-MuiCardContent-root"
+                  >
+                    <div
+                      class="MuiBox-root css-driq9y"
+                    >
+                      “
+                    </div>
+                    <p
+                      class="MuiTypography-root MuiTypography-body1  css-1risbja-MuiTypography-root"
+                    >
+                      Department and growth mix are clear enough to drop straight into board updates.
+                    </p>
+                    <div
+                      class="MuiStack-root  css-1hyf038-MuiStack-root"
+                    >
+                      <div
+                        class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault  css-gd2dah-MuiAvatar-root"
+                      >
+                        L
+                      </div>
+                      <div
+                        class="MuiBox-root css-0"
+                      >
+                        <p
+                          class="MuiTypography-root MuiTypography-body1  css-1oqxamc-MuiTypography-root"
+                        >
+                          Leadership
+                        </p>
+                        <span
+                          class="MuiTypography-root MuiTypography-caption  css-bttn9n-MuiTypography-root"
+                        >
+                          VP, Operations
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="MuiBox-root css-4jc6d9"
+          id="faq"
+        >
+          <div
+            class="MuiBox-root css-16ieni4"
+          >
+            <div
+              class="MuiBox-root css-y3ly9k"
+            >
+              <p
+                class="MuiTypography-root MuiTypography-body1  css-igcryw-MuiTypography-root"
+              >
+                Questions
+              </p>
+              <h2
+                class="MuiTypography-root MuiTypography-body1  css-936k1o-MuiTypography-root"
+              >
+                Everything teams ask before rollout
+              </h2>
+            </div>
+          </div>
+          <div
+            class="MuiBox-root css-8natme"
+          >
+            <div
+              class="MuiBox-root css-8u1zsh"
+            >
+              <div
+                class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1  MuiAccordion-root MuiAccordion-rounded  css-10r2xz-MuiPaper-root-MuiAccordion-root"
+                style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);"
+              >
+                <h3
+                  class="MuiAccordion-heading  css-rolk5j-MuiAccordion-heading"
+                >
+                  <div
+                    aria-expanded="false"
+                    class="MuiButtonBase-root  MuiAccordionSummary-root  css-1726laa-MuiButtonBase-root-MuiAccordionSummary-root"
+                    role="button"
+                    tabindex="0"
+                  >
+                    <div
+                      class="MuiAccordionSummary-content  css-1betqn-MuiAccordionSummary-content"
+                    >
+                      <p
+                        class="MuiTypography-root MuiTypography-body1  css-19jz19x-MuiTypography-root"
+                      >
+                        Can I export data for finance or ops reviews?
+                      </p>
+                    </div>
+                    <div
+                      class="MuiAccordionSummary-expandIconWrapper  css-yw020d-MuiAccordionSummary-expandIconWrapper"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-1ls7ddq-MuiSvgIcon-root"
+                        data-testid="ExpandMoreIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </h3>
+                <div
+                  class="MuiCollapse-root MuiCollapse-vertical  MuiCollapse-hidden  css-1ev76c2-MuiCollapse-root"
+                  style="min-height: 0px;"
+                >
+                  <div
+                    class="MuiCollapse-wrapper MuiCollapse-vertical  css-smkl36-MuiCollapse-wrapper"
+                  >
+                    <div
+                      class="MuiCollapse-wrapperInner MuiCollapse-vertical  css-9l5vo-MuiCollapse-wrapperInner"
+                    >
+                      <div
+                        class="MuiAccordion-region "
+                        role="region"
+                      >
+                        <div
+                          class="MuiAccordionDetails-root  css-1iaksna-MuiAccordionDetails-root"
+                        >
+                          <p
+                            class="MuiTypography-root MuiTypography-body1  css-1yfmn5l-MuiTypography-root"
+                          >
+                            Yes — use the built-in exports in Employees and Departments to get a clean CSV anytime, filtered to exactly the slice you need.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="MuiBox-root css-1fqyxh7"
+            >
+              <div
+                class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1  MuiAccordion-root MuiAccordion-rounded  css-10r2xz-MuiPaper-root-MuiAccordion-root"
+                style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);"
+              >
+                <h3
+                  class="MuiAccordion-heading  css-rolk5j-MuiAccordion-heading"
+                >
+                  <div
+                    aria-expanded="false"
+                    class="MuiButtonBase-root  MuiAccordionSummary-root  css-1726laa-MuiButtonBase-root-MuiAccordionSummary-root"
+                    role="button"
+                    tabindex="0"
+                  >
+                    <div
+                      class="MuiAccordionSummary-content  css-1betqn-MuiAccordionSummary-content"
+                    >
+                      <p
+                        class="MuiTypography-root MuiTypography-body1  css-19jz19x-MuiTypography-root"
+                      >
+                        Does it support remote and hybrid tracking?
+                      </p>
+                    </div>
+                    <div
+                      class="MuiAccordionSummary-expandIconWrapper  css-yw020d-MuiAccordionSummary-expandIconWrapper"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-1ls7ddq-MuiSvgIcon-root"
+                        data-testid="ExpandMoreIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </h3>
+                <div
+                  class="MuiCollapse-root MuiCollapse-vertical  MuiCollapse-hidden  css-1ev76c2-MuiCollapse-root"
+                  style="min-height: 0px;"
+                >
+                  <div
+                    class="MuiCollapse-wrapper MuiCollapse-vertical  css-smkl36-MuiCollapse-wrapper"
+                  >
+                    <div
+                      class="MuiCollapse-wrapperInner MuiCollapse-vertical  css-9l5vo-MuiCollapse-wrapperInner"
+                    >
+                      <div
+                        class="MuiAccordion-region "
+                        role="region"
+                      >
+                        <div
+                          class="MuiAccordionDetails-root  css-1iaksna-MuiAccordionDetails-root"
+                        >
+                          <p
+                            class="MuiTypography-root MuiTypography-body1  css-1yfmn5l-MuiTypography-root"
+                          >
+                            Dashboard charts already visualize remote and hybrid preferences without any extra setup or configuration.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="MuiBox-root css-ytb0kv"
+            >
+              <div
+                class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1  MuiAccordion-root MuiAccordion-rounded  css-10r2xz-MuiPaper-root-MuiAccordion-root"
+                style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);"
+              >
+                <h3
+                  class="MuiAccordion-heading  css-rolk5j-MuiAccordion-heading"
+                >
+                  <div
+                    aria-expanded="false"
+                    class="MuiButtonBase-root  MuiAccordionSummary-root  css-1726laa-MuiButtonBase-root-MuiAccordionSummary-root"
+                    role="button"
+                    tabindex="0"
+                  >
+                    <div
+                      class="MuiAccordionSummary-content  css-1betqn-MuiAccordionSummary-content"
+                    >
+                      <p
+                        class="MuiTypography-root MuiTypography-body1  css-19jz19x-MuiTypography-root"
+                      >
+                        How fast can we onboard?
+                      </p>
+                    </div>
+                    <div
+                      class="MuiAccordionSummary-expandIconWrapper  css-yw020d-MuiAccordionSummary-expandIconWrapper"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-1ls7ddq-MuiSvgIcon-root"
+                        data-testid="ExpandMoreIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </h3>
+                <div
+                  class="MuiCollapse-root MuiCollapse-vertical  MuiCollapse-hidden  css-1ev76c2-MuiCollapse-root"
+                  style="min-height: 0px;"
+                >
+                  <div
+                    class="MuiCollapse-wrapper MuiCollapse-vertical  css-smkl36-MuiCollapse-wrapper"
+                  >
+                    <div
+                      class="MuiCollapse-wrapperInner MuiCollapse-vertical  css-9l5vo-MuiCollapse-wrapperInner"
+                    >
+                      <div
+                        class="MuiAccordion-region "
+                        role="region"
+                      >
+                        <div
+                          class="MuiAccordionDetails-root  css-1iaksna-MuiAccordionDetails-root"
+                        >
+                          <p
+                            class="MuiTypography-root MuiTypography-body1  css-1yfmn5l-MuiTypography-root"
+                          >
+                            Most teams are running in under a day: set roles, add departments, and import employees in a single sitting.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="MuiBox-root css-g6j60s"
+            >
+              <div
+                class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1  MuiAccordion-root MuiAccordion-rounded  css-10r2xz-MuiPaper-root-MuiAccordion-root"
+                style="--Paper-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);"
+              >
+                <h3
+                  class="MuiAccordion-heading  css-rolk5j-MuiAccordion-heading"
+                >
+                  <div
+                    aria-expanded="false"
+                    class="MuiButtonBase-root  MuiAccordionSummary-root  css-1726laa-MuiButtonBase-root-MuiAccordionSummary-root"
+                    role="button"
+                    tabindex="0"
+                  >
+                    <div
+                      class="MuiAccordionSummary-content  css-1betqn-MuiAccordionSummary-content"
+                    >
+                      <p
+                        class="MuiTypography-root MuiTypography-body1  css-19jz19x-MuiTypography-root"
+                      >
+                        Is access role-based?
+                      </p>
+                    </div>
+                    <div
+                      class="MuiAccordionSummary-expandIconWrapper  css-yw020d-MuiAccordionSummary-expandIconWrapper"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-1ls7ddq-MuiSvgIcon-root"
+                        data-testid="ExpandMoreIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </h3>
+                <div
+                  class="MuiCollapse-root MuiCollapse-vertical  MuiCollapse-hidden  css-1ev76c2-MuiCollapse-root"
+                  style="min-height: 0px;"
+                >
+                  <div
+                    class="MuiCollapse-wrapper MuiCollapse-vertical  css-smkl36-MuiCollapse-wrapper"
+                  >
+                    <div
+                      class="MuiCollapse-wrapperInner MuiCollapse-vertical  css-9l5vo-MuiCollapse-wrapperInner"
+                    >
+                      <div
+                        class="MuiAccordion-region "
+                        role="region"
+                      >
+                        <div
+                          class="MuiAccordionDetails-root  css-1iaksna-MuiAccordionDetails-root"
+                        >
+                          <p
+                            class="MuiTypography-root MuiTypography-body1  css-1yfmn5l-MuiTypography-root"
+                          >
+                            Protected routes and role-aware surfaces mean people only see what they should, by department and seniority.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <section
+        class="MuiBox-root css-13fpl40"
+      >
+        <div
+          aria-hidden="true"
+          class="MuiBox-root css-7iao98"
+        />
+        <div
+          class="MuiContainer-root MuiContainer-maxWidthMd  css-nvtv1h-MuiContainer-root"
+        >
+          <div
+            class="MuiBox-root css-y3ly9k"
+          >
+            <div
+              class="MuiBox-root css-1unaie2"
+            >
+              <p
+                class="MuiTypography-root MuiTypography-body1  css-igcryw-MuiTypography-root"
+              >
+                Get started
+              </p>
+              <h2
+                class="MuiTypography-root MuiTypography-body1  css-1aipnr6-MuiTypography-root"
+              >
+                Ready to see your workforce 
+                <span
+                  class="MuiBox-root css-1cv996i"
+                >
+                  come into focus
+                </span>
+                ?
+              </h2>
+              <p
+                class="MuiTypography-root MuiTypography-body1  css-1fwb67k-MuiTypography-root"
+              >
+                Jump into the dashboard, filter employees, and ship updates without extra tooling. No spreadsheets required.
+              </p>
+              <div
+                class="MuiStack-root  css-jqawk7-MuiStack-root"
+              >
+                <a
+                  class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary   MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeLarge MuiButton-textSizeLarge MuiButton-colorPrimary  css-gbqpv0-MuiButtonBase-root-MuiButton-root"
+                  href="/dashboard"
+                  tabindex="0"
+                >
+                  Open Dashboard
+                  <span
+                    class="MuiButton-icon MuiButton-endIcon MuiButton-iconSizeLarge  css-3155yg-MuiButton-endIcon"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-20bmp1-MuiSvgIcon-root"
+                      data-testid="ArrowForwardIcon"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+                      />
+                    </svg>
+                  </span>
+                </a>
+                <a
+                  class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary   MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge MuiButton-outlinedSizeLarge MuiButton-colorPrimary  css-1e74b2t-MuiButtonBase-root-MuiButton-root"
+                  href="/register"
+                  tabindex="0"
+                >
+                  Create account
+                </a>
+              </div>
+              <div
+                class="MuiStack-root  css-k0g22q-MuiStack-root"
+              >
+                <div
+                  class="MuiStack-root  css-fcz5d9-MuiStack-root"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-2pmdpe-MuiSvgIcon-root"
+                    data-testid="CheckCircleIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"
+                    />
+                  </svg>
+                  <p
+                    class="MuiTypography-root MuiTypography-body2  css-1xmxnxa-MuiTypography-root"
+                  >
+                    No credit card
+                  </p>
+                </div>
+                <div
+                  class="MuiStack-root  css-fcz5d9-MuiStack-root"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-2pmdpe-MuiSvgIcon-root"
+                    data-testid="CheckCircleIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"
+                    />
+                  </svg>
+                  <p
+                    class="MuiTypography-root MuiTypography-body2  css-1xmxnxa-MuiTypography-root"
+                  >
+                    Setup in under a day
+                  </p>
+                </div>
+                <div
+                  class="MuiStack-root  css-fcz5d9-MuiStack-root"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium  css-2pmdpe-MuiSvgIcon-root"
+                    data-testid="CheckCircleIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8z"
+                    />
+                  </svg>
+                  <p
+                    class="MuiTypography-root MuiTypography-body2  css-1xmxnxa-MuiTypography-root"
+                  >
+                    Export-ready data
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</DocumentFragment>
+`;

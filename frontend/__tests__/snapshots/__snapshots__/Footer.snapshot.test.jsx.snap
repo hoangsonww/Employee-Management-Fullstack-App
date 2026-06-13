@@ -1,0 +1,143 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer snapshot matches the rendered markup 1`] = `
+<DocumentFragment>
+  <footer
+    class="MuiBox-root css-ix2xpx"
+  >
+    <div
+      class="MuiBox-root css-1inxg8x"
+    />
+    <div
+      class="MuiBox-root css-1ssx4aj"
+    />
+    <div
+      class="MuiContainer-root MuiContainer-maxWidthLg  css-5c1adp-MuiContainer-root"
+    >
+      <div
+        class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-4  css-480o17-MuiGrid-root"
+      >
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-4  css-1lj5egr-MuiGrid-root"
+        >
+          <h6
+            class="MuiTypography-root MuiTypography-h6  css-jho08z-MuiTypography-root"
+          >
+            About Us
+          </h6>
+          <p
+            class="MuiTypography-root MuiTypography-body2  css-1nmqws6-MuiTypography-root"
+          >
+            We provide a comprehensive Employee Management System that helps you manage your employees and departments with ease. Our mission is to make HR processes seamless and efficient.
+          </p>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-4  css-1lj5egr-MuiGrid-root"
+        >
+          <h6
+            class="MuiTypography-root MuiTypography-h6  css-jho08z-MuiTypography-root"
+          >
+            Quick Links
+          </h6>
+          <div
+            class="MuiBox-root css-0"
+          >
+            <a
+              class="MuiTypography-root MuiTypography-inherit  MuiLink-root MuiLink-underlineNone  css-1ty68i9-MuiTypography-root-MuiLink-root"
+              href="/"
+            >
+              Home
+            </a>
+            <a
+              class="MuiTypography-root MuiTypography-inherit  MuiLink-root MuiLink-underlineNone  css-1ty68i9-MuiTypography-root-MuiLink-root"
+              href="/dashboard"
+            >
+              Dashboard
+            </a>
+            <a
+              class="MuiTypography-root MuiTypography-inherit  MuiLink-root MuiLink-underlineNone  css-1ty68i9-MuiTypography-root-MuiLink-root"
+              href="/employees"
+            >
+              Employees
+            </a>
+            <a
+              class="MuiTypography-root MuiTypography-inherit  MuiLink-root MuiLink-underlineNone  css-1ty68i9-MuiTypography-root-MuiLink-root"
+              href="/departments"
+            >
+              Departments
+            </a>
+            <a
+              class="MuiTypography-root MuiTypography-inherit  MuiLink-root MuiLink-underlineNone  css-1ty68i9-MuiTypography-root-MuiLink-root"
+              href="/profile"
+            >
+              Profile
+            </a>
+            <a
+              class="MuiTypography-root MuiTypography-inherit  MuiLink-root MuiLink-underlineNone  css-1ty68i9-MuiTypography-root-MuiLink-root"
+              href="/login"
+            >
+              Login
+            </a>
+            <a
+              class="MuiTypography-root MuiTypography-inherit  MuiLink-root MuiLink-underlineNone  css-18xdus5-MuiTypography-root-MuiLink-root"
+              href="/register"
+            >
+              Register
+            </a>
+          </div>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-4  css-1lj5egr-MuiGrid-root"
+        >
+          <h6
+            class="MuiTypography-root MuiTypography-h6  css-jho08z-MuiTypography-root"
+          >
+            Contact Us
+          </h6>
+          <p
+            class="MuiTypography-root MuiTypography-body2  css-1nmqws6-MuiTypography-root"
+          >
+            Project Maintainer: 
+            <a
+              class="MuiTypography-root MuiTypography-inherit  MuiLink-root MuiLink-underlineAlways  css-1hun5y9-MuiTypography-root-MuiLink-root"
+              href="https://github.com/hoangsonww"
+            >
+              Son Nguyen
+            </a>
+          </p>
+          <p
+            class="MuiTypography-root MuiTypography-body2  css-1nmqws6-MuiTypography-root"
+          >
+            Email: 
+            <a
+              class="MuiTypography-root MuiTypography-inherit  MuiLink-root MuiLink-underlineAlways  css-1hun5y9-MuiTypography-root-MuiLink-root"
+              href="mailto:hoangson091104@gmail.com"
+            >
+              hoangson091104@gmail.com
+            </a>
+          </p>
+          <p
+            class="MuiTypography-root MuiTypography-body2  css-1nmqws6-MuiTypography-root"
+          >
+            Phone: +1 (123) 456-7890
+          </p>
+          <p
+            class="MuiTypography-root MuiTypography-body2  css-1c1tih0-MuiTypography-root"
+          >
+            Address: 123 Employee St, Suite 100, New York, NY 10001
+          </p>
+        </div>
+      </div>
+      <div
+        class="MuiBox-root css-vqz7cl"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body2  css-1nmqws6-MuiTypography-root"
+        >
+          © 2024 Employee Management System. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
+</DocumentFragment>
+`;

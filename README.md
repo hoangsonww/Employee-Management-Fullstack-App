@@ -664,6 +664,16 @@ To run tests for the frontend application, use the following command:
 npm test
 ```
 
+The frontend uses **Jest** + **React Testing Library**. Alongside the behavioral suites, every screen has a **snapshot test** under `frontend/__tests__/snapshots/` (one file per screen — Landing, Login, Register, Reset Password, Verify Username, Dashboard, Employee List/Form, Department List/Form, New Department, Profile, Passkeys, Not Found, Quick Actions, Navbar, Footer). Each renders the component with the providers it needs (router, mocked services) and asserts the rendered markup with `toMatchSnapshot()`, so unintended UI changes surface as a diff. The snapshots are deterministic — the 3D hero and charts are stubbed, `autoFocus` is neutralized, `Date` is frozen where rendered, and data fetches are mocked — so they pass identically on local machines and CI regardless of timezone or run time.
+
+```bash
+# Run only the snapshot suites
+npm test -- __tests__/snapshots
+
+# Update the baselines after an intentional UI change, then commit the .snap files
+npm test -- -u
+```
+
 **NOTE: You might need different IDEs for the backend and the frontend. FYI, I used IntelliJ IDEA for the backend and Webstorm for the frontend.**
 
 ## Detailed Component Instructions
