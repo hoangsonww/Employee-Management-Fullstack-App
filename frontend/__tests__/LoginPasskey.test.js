@@ -47,7 +47,10 @@ describe('<Login /> passkey flow', () => {
   });
 
   it('renders the passkey button and signs in successfully', async () => {
-    loginWithPasskey.mockResolvedValueOnce({ token: 'tokP', username: 'alice' });
+    loginWithPasskey.mockResolvedValueOnce({
+      token: 'tokP',
+      username: 'alice',
+    });
 
     render(
       <MemoryRouter>
@@ -55,26 +58,38 @@ describe('<Login /> passkey flow', () => {
       </MemoryRouter>
     );
 
-    const passkeyButton = screen.getByRole('button', { name: /sign in with a passkey/i });
+    const passkeyButton = screen.getByRole('button', {
+      name: /sign in with a passkey/i,
+    });
+
     fireEvent.click(passkeyButton);
 
     await waitFor(() => {
       expect(loginWithPasskey).toHaveBeenCalledTimes(1);
-      expect(localStorage.getItem('token')).toBe('tokP');
-      expect(localStorage.getItem('EMSusername')).toBe('alice');
     });
+
+    expect(localStorage.getItem('token')).toBe('tokP');
+    expect(localStorage.getItem('EMSusername')).toBe('alice');
 
     await waitFor(() => {
-      expect(screen.getByText(/login successful/i)).toBeInTheDocument();
+      expect(
+        screen.getByText(/login successful/i)
+      ).toBeInTheDocument();
     });
 
-    fireEvent.click(screen.getByRole('button', { name: /go to dashboard/i }));
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /go to dashboard/i,
+      })
+    );
+
     expect(navigate).toHaveBeenCalledWith('/dashboard');
   });
 
   it('shows a friendly error when the passkey ceremony fails', async () => {
     const err = new Error('cancelled');
     err.name = 'NotAllowedError';
+
     loginWithPasskey.mockRejectedValueOnce(err);
 
     render(
@@ -83,11 +98,18 @@ describe('<Login /> passkey flow', () => {
       </MemoryRouter>
     );
 
-    fireEvent.click(screen.getByRole('button', { name: /sign in with a passkey/i }));
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /sign in with a passkey/i,
+      })
+    );
 
     await waitFor(() => {
-      expect(notifyError).toHaveBeenCalledWith('The passkey prompt was dismissed.');
+      expect(notifyError).toHaveBeenCalledWith(
+        'The passkey prompt was dismissed.'
+      );
     });
+
     expect(navigate).not.toHaveBeenCalled();
     expect(localStorage.getItem('token')).toBeNull();
   });

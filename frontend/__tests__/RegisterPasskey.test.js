@@ -30,11 +30,27 @@ jest.mock('../src/services/passkeyService', () => ({
 }));
 
 const fillAndSubmit = () => {
-  fireEvent.change(screen.getByLabelText(/username/i), { target: { value: 'newuser' } });
-  const [pwd, confirm] = screen.getAllByLabelText(/password/i, { selector: 'input' });
-  fireEvent.change(pwd, { target: { value: 'secret' } });
-  fireEvent.change(confirm, { target: { value: 'secret' } });
-  fireEvent.click(screen.getByRole('button', { name: /^register$/i }));
+  fireEvent.change(screen.getByLabelText(/username/i), {
+    target: { value: 'newuser' },
+  });
+
+  const [pwd, confirm] = screen.getAllByLabelText(/password/i, {
+    selector: 'input',
+  });
+
+  fireEvent.change(pwd, {
+    target: { value: 'secret' },
+  });
+
+  fireEvent.change(confirm, {
+    target: { value: 'secret' },
+  });
+
+  fireEvent.click(
+    screen.getByRole('button', {
+      name: /^register$/i,
+    })
+  );
 };
 
 describe('<Register /> auto-login + passkey prompt', () => {
@@ -49,45 +65,73 @@ describe('<Register /> auto-login + passkey prompt', () => {
 
   it('auto-logs in and navigates to dashboard when passkeys are unsupported', async () => {
     isWebAuthnSupported.mockReturnValue(false);
+
     global.fetch
       .mockResolvedValueOnce({ ok: true }) // /register
-      .mockResolvedValueOnce({ ok: true, json: async () => ({ token: 'tokR', username: 'newuser' }) }); // /authenticate
+      .mockResolvedValueOnce({
+        ok: true,
+        json: async () => ({
+          token: 'tokR',
+          username: 'newuser',
+        }),
+      }); // /authenticate
 
     render(
       <MemoryRouter>
         <Register />
       </MemoryRouter>
     );
+
     fillAndSubmit();
 
     await waitFor(() => {
       expect(localStorage.getItem('token')).toBe('tokR');
-      expect(navigate).toHaveBeenCalledWith('/dashboard');
     });
+
+    expect(navigate).toHaveBeenCalledWith('/dashboard');
   });
 
   it('auto-logs in and shows the passkey prompt when passkeys are supported', async () => {
     isWebAuthnSupported.mockReturnValue(true);
-    global.fetch.mockResolvedValueOnce({ ok: true }).mockResolvedValueOnce({ ok: true, json: async () => ({ token: 'tokR2', username: 'newuser' }) });
+
+    global.fetch
+      .mockResolvedValueOnce({ ok: true })
+      .mockResolvedValueOnce({
+        ok: true,
+        json: async () => ({
+          token: 'tokR2',
+          username: 'newuser',
+        }),
+      });
 
     render(
       <MemoryRouter>
         <Register />
       </MemoryRouter>
     );
+
     fillAndSubmit();
 
     await waitFor(() => {
-      expect(screen.getByText(/set up a passkey/i)).toBeInTheDocument();
+      expect(
+        screen.getByText(/set up a passkey/i)
+      ).toBeInTheDocument();
     });
+
     expect(localStorage.getItem('token')).toBe('tokR2');
 
-    fireEvent.click(screen.getByRole('button', { name: /maybe later/i }));
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /maybe later/i,
+      })
+    );
+
     expect(navigate).toHaveBeenCalledWith('/dashboard');
   });
 
   it('falls back to the "go to login" dialog when auto-login fails', async () => {
     isWebAuthnSupported.mockReturnValue(true);
+
     global.fetch
       .mockResolvedValueOnce({ ok: true }) // /register ok
       .mockResolvedValueOnce({ ok: false }); // /authenticate fails
@@ -97,13 +141,21 @@ describe('<Register /> auto-login + passkey prompt', () => {
         <Register />
       </MemoryRouter>
     );
+
     fillAndSubmit();
 
     await waitFor(() => {
-      expect(screen.getByText(/your account is ready/i)).toBeInTheDocument();
+      expect(
+        screen.getByText(/your account is ready/i)
+      ).toBeInTheDocument();
     });
 
-    fireEvent.click(screen.getByRole('button', { name: /go to login/i }));
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /go to login/i,
+      })
+    );
+
     expect(navigate).toHaveBeenCalledWith('/login');
   });
 });

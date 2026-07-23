@@ -44,13 +44,20 @@ describe('<Login />', () => {
       </MemoryRouter>
     );
 
-    const passwordInput = screen.getByLabelText(/password/i, { selector: 'input' });
+    const passwordInput = screen.getByLabelText(/password/i, {
+      selector: 'input',
+    });
+
     expect(passwordInput).toHaveAttribute('type', 'password');
 
-    fireEvent.click(screen.getByLabelText(/toggle password visibility/i));
+    fireEvent.click(
+      screen.getByLabelText(/toggle password visibility/i)
+    );
     expect(passwordInput).toHaveAttribute('type', 'text');
 
-    fireEvent.click(screen.getByLabelText(/toggle password visibility/i));
+    fireEvent.click(
+      screen.getByLabelText(/toggle password visibility/i)
+    );
     expect(passwordInput).toHaveAttribute('type', 'password');
   });
 
@@ -66,30 +73,47 @@ describe('<Login />', () => {
       json: async () => ({ token: 'tok123' }),
     });
 
-    fireEvent.change(screen.getByLabelText(/username/i), { target: { value: 'user1' } });
-    fireEvent.change(screen.getByLabelText(/password/i, { selector: 'input' }), { target: { value: 'pass1' } });
-    fireEvent.click(screen.getByRole('button', { name: /^login$/i }));
+    fireEvent.change(screen.getByLabelText(/username/i), {
+      target: { value: 'user1' },
+    });
+
+    fireEvent.change(
+      screen.getByLabelText(/password/i, { selector: 'input' }),
+      {
+        target: { value: 'pass1' },
+      }
+    );
+
+    fireEvent.click(
+      screen.getByRole('button', { name: /^login$/i })
+    );
 
     expect(screen.getByRole('progressbar')).toBeInTheDocument();
 
     await waitFor(
       () => {
         expect(localStorage.getItem('token')).toBe('tok123');
-        expect(localStorage.getItem('EMSusername')).toBe('user1');
       },
       { timeout: 3000 }
     );
 
-    // Wait for success dialog
+    expect(localStorage.getItem('EMSusername')).toBe('user1');
+
     await waitFor(
       () => {
-        expect(screen.getByText(/Login successful/i)).toBeInTheDocument();
+        expect(
+          screen.getByText(/Login successful/i)
+        ).toBeInTheDocument();
       },
       { timeout: 3000 }
     );
 
-    // Click the continue button (it should have the destinationLabel text)
-    fireEvent.click(screen.getByRole('button', { name: /go to dashboard/i }));
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: /go to dashboard/i,
+      })
+    );
+
     expect(navigate).toHaveBeenCalledWith('/dashboard');
   });
 
@@ -103,16 +127,36 @@ describe('<Login />', () => {
     global.fetch.mockResolvedValueOnce({
       ok: false,
       status: 401,
-      text: async () => JSON.stringify({ message: 'Invalid username or password. Please try again.' }),
+      text: async () =>
+        JSON.stringify({
+          message:
+            'Invalid username or password. Please try again.',
+        }),
     });
 
-    fireEvent.change(screen.getByLabelText(/username/i), { target: { value: 'u' } });
-    fireEvent.change(screen.getByLabelText(/password/i, { selector: 'input' }), { target: { value: 'p' } });
-    fireEvent.click(screen.getByRole('button', { name: /^login$/i }));
+    fireEvent.change(screen.getByLabelText(/username/i), {
+      target: { value: 'u' },
+    });
+
+    fireEvent.change(
+      screen.getByLabelText(/password/i, {
+        selector: 'input',
+      }),
+      {
+        target: { value: 'p' },
+      }
+    );
+
+    fireEvent.click(
+      screen.getByRole('button', { name: /^login$/i })
+    );
 
     await waitFor(() => {
-      expect(notifyError).toHaveBeenCalledWith('Invalid username or password. Please try again.');
-      expect(navigate).not.toHaveBeenCalled();
+      expect(notifyError).toHaveBeenCalledWith(
+        'Invalid username or password. Please try again.'
+      );
     });
+
+    expect(navigate).not.toHaveBeenCalled();
   });
 });
