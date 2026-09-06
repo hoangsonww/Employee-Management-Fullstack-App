@@ -1,0 +1,30 @@
+replicaCount: 1
+
+image:
+  repository: mariadb
+  tag: "11.4"
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 3306
+
+database:
+  name: employee_management
+  user: employee_user
+  password: employee_password
+  rootPassword: root_password
+
+persistence:
+  enabled: true
+  storageClass: gp3
+  accessMode: ReadWriteOnce
+  size: 10Gi
+
+resources:
+  requests:
+    cpu: 250m
+    memory: 512Mi
+  limits:
+    cpu: "1"
+    memory: 1Gi

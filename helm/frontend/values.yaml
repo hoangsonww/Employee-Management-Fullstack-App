@@ -1,0 +1,22 @@
+replicaCount: 2
+
+image:
+  repository: 758626605773.dkr.ecr.ap-south-1.amazonaws.com/employee-frontend
+  tag: "1.1"
+  pullPolicy: IfNotPresent
+
+service:
+  type: LoadBalancer
+  port: 80
+  targetPort: 80
+
+backend:
+  url: /api
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi

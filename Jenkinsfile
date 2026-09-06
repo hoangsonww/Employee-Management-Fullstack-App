@@ -2,18 +2,24 @@ pipeline {
     agent any
 
     environment {
-        AWS_REGION = 'us-east-1'
-        ECR_REGISTRY = credentials('ecr-registry-url')
-        EKS_CLUSTER_NAME = 'employee-management-eks'
+        AWS_REGION = 'ap-south-1'
+        ECR_REGISTRY = '758626605773.dkr.ecr.ap-south-1.amazonaws.com'
+        EKS_CLUSTER_NAME = 'employee-eks-oyhCjlbD'
+
         DOCKER_BUILDKIT = '1'
         IMAGE_TAG = "${env.GIT_COMMIT.take(8)}"
-        BACKEND_IMAGE = "${ECR_REGISTRY}/employee-management-backend:${IMAGE_TAG}"
-        FRONTEND_IMAGE = "${ECR_REGISTRY}/employee-management-frontend:${IMAGE_TAG}"
+
+        BACKEND_IMAGE = "${ECR_REGISTRY}/employee-backend:${IMAGE_TAG}"
+        FRONTEND_IMAGE = "${ECR_REGISTRY}/employee-frontend:${IMAGE_TAG}"
+
         KUBECONFIG = "${WORKSPACE}/.kube/config"
+
         DEPLOYMENT_STRATEGY = "${params.DEPLOYMENT_STRATEGY ?: 'rolling'}"
         ACTIVE_VERSION = "${params.ACTIVE_VERSION ?: 'blue'}"
         CANARY_WEIGHT = "${params.CANARY_WEIGHT ?: '10'}"
     }
+
+    parameters {
 
     parameters {
         choice(

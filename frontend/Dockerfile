@@ -18,11 +18,12 @@ RUN npm run build
 # Use an official Nginx image to serve the application
 FROM nginx:alpine
 
-# Copy the build artifacts from the builder stage
+# Copy the React build
 COPY --from=builder /app/build /usr/share/nginx/html
 
-# Expose the default port for Nginx
+# Copy custom Nginx configuration
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
 EXPOSE 80
 
-# Start Nginx
 CMD ["nginx", "-g", "daemon off;"]

@@ -2,10 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: backend-deployment
-  labels:
-    app: backend
+  namespace: employee-app
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: backend
@@ -16,16 +15,32 @@ spec:
     spec:
       containers:
         - name: backend
-          image: employee-management-backend:latest
+          image: 758626605773.dkr.ecr.ap-south-1.amazonaws.com/employee-backend:1.0
+          imagePullPolicy: Always
           ports:
-            - containerPort: 3000
+            - containerPort: 8080
           env:
-            - name: NODE_ENV
-              value: "production"
-          volumeMounts:
-            - name: backend-code
-              mountPath: /app
-      volumes:
-        - name: backend-code
-          hostPath:
-            path: /home/user/project/backend
+            - name: MYSQL_HOST
+              value: "REPLACE_WITH_RDS_ENDPOINT"
+            - name: MYSQL_PORT
+              value: "3306"
+            - name: MYSQL_DB
+              value: "employee_management"
+            - name: MYSQL_USER
+              value: "REPLACE_WITH_DB_USER"
+            - name: MYSQL_PASSWORD
+              value: "REPLACE_WITH_DB_PASSWORD"
+            - name: MYSQL_SSL_MODE
+              value: "DISABLED"
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 60
+            periodSeconds: 20

@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  labels:
+    app: backend
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: backend
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+
+          ports:
+            - containerPort: {{ .Values.service.targetPort }}
+
+          env:
+            - name: MYSQL_HOST
+              value: {{ .Values.database.host | quote }}
+
+            - name: MYSQL_PORT
+              value: {{ .Values.database.port | quote }}
+
+            - name: MYSQL_DB
+              value: {{ .Values.database.name | quote }}
+
+            - name: MYSQL_USER
+              value: {{ .Values.database.user | quote }}
+
+            - name: MYSQL_PASSWORD
+              value: {{ .Values.database.password | quote }}
+
+            - name: JWT_SECRET
+              value: {{ .Values.jwtSecret | quote }}
+
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          livenessProbe:
+            httpGet:
+              path: /api/health
+              port: 8080
+            initialDelaySeconds: 60
+            periodSeconds: 20
+            timeoutSeconds: 5
+            failureThreshold: 6
+
+          readinessProbe:
+            httpGet:
+              path: /api/health
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 6

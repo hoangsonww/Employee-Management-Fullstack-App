@@ -2,11 +2,12 @@ apiVersion: v1
 kind: Service
 metadata:
   name: frontend-service
+  namespace: employee-app
 spec:
   selector:
     app: frontend
   ports:
     - protocol: TCP
-      port: 3001
-      targetPort: 3001
-  type: NodePort  # Expose frontend for external access
+      port: 80
+      targetPort: 80
+  type: LoadBalancer

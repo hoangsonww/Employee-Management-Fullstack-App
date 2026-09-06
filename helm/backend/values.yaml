@@ -1,0 +1,34 @@
+replicaCount: 2
+
+image:
+  repository: 758626605773.dkr.ecr.ap-south-1.amazonaws.com/employee-backend
+  tag: "1.2"
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 8080
+  targetPort: 8080
+
+database:
+  host: mariadb.employee-app.svc.cluster.local
+  port: "3306"
+  name: employee_management
+  user: employee_user
+  password: employee_password
+
+jwtSecret: "employee-management-jwt-secret-2026"
+
+resources:
+  requests:
+    cpu: 250m
+    memory: 512Mi
+  limits:
+    cpu: "1"
+    memory: 1Gi
+
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 70
